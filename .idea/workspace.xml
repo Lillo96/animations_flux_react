@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4130bfb-4d06-4066-810c-d720df1820b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/AppContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/animationDispatcher.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/menu/menuActionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/menu/menuActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/menu/menuObject.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/menu/menuStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/menu/menuActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuActionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/menu/menuActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/menu/menuObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/menu/menuStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuStore.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="marcolilliu &lt;mash96@hotmail.it&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jmom6szumxgaxUlef4a7tC7Jmf" />
@@ -41,6 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,14 +78,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604418783424</updated>
-      <workItem from="1604418785314" duration="7236000" />
+      <workItem from="1604418785314" duration="7268000" />
+      <workItem from="1604503328756" duration="1541000" />
+      <workItem from="1604527744395" duration="598000" />
+      <workItem from="1604594610195" duration="4824000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial proj">
+      <created>1604429842750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604429842750</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial proj" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial proj" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="285" y="52" key="CommitChangelistDialog2" timestamp="1604429842488">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="285" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1604429842488" />
     <state x="804" y="440" key="Github.ShareDialog" timestamp="1604420124569">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

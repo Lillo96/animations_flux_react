@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
 import menuActionTypes from "./menuActionTypes";
 import animationDispatcher from "../animationDispatcher";
+import menu from "./menuObject";
 
 class menuStore extends ReduceStore {
     constructor() {
@@ -14,8 +15,17 @@ class menuStore extends ReduceStore {
 
     reduce(state, action){
         switch (action.type) {
-            case menuActionTypes.ADD_MENU:
-                return state;
+            case menuActionTypes.ADD_MENU: {
+                return state.set(
+                    action.id,
+                    menu({
+                        id: action.id
+                    }))
+            }
+
+            case menuActionTypes.CHANGE_MENU_VALUE: {
+                console.log("CHANGE_MENU_VALUE");
+            }
 
             default:
                 return state;

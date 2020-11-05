@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+//import fal, {getMenu} from './fal'
 
 function App() {
+  //const menu = getMenu('menu01');
+
   return (
     <div className="App">
       <header className="App-header">
