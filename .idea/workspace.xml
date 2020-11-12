@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4130bfb-4d06-4066-810c-d720df1820b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/checkboxes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootActionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootObject.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/animation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesActionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesObject.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/styleObject.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/AppContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AppContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/menu/menuStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/checkboxes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkboxes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/animation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +92,7 @@
       <workItem from="1605025822897" duration="5279000" />
       <workItem from="1605115093192" duration="166000" />
       <workItem from="1605117161956" duration="2619000" />
-      <workItem from="1605172192965" duration="3586000" />
+      <workItem from="1605172192965" duration="5222000" />
     </task>
     <task id="LOCAL-00001" summary="Initial proj">
       <created>1604429842750</created>
@@ -127,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604603918595</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <created>1605177914871</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605177914871</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +125,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial proj" />
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="WindowStateProjectService">
     <state x="1028" y="205" key="#ESLint" timestamp="1604996189530">
@@ -148,9 +137,10 @@
       <screen x="-1920" y="-42" width="1920" height="1080" />
     </state>
     <state x="-1787" y="308" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1604938747586" />
-    <state x="-1540" y="20" key="CommitChangelistDialog2" timestamp="1604603918233">
+    <state x="-1540" y="20" key="CommitChangelistDialog2" timestamp="1605177914583">
       <screen x="-1920" y="-42" width="1920" height="1080" />
     </state>
+    <state x="-1540" y="20" key="CommitChangelistDialog2/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1605177914583" />
     <state x="285" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1604429842488" />
     <state x="-1540" y="20" key="CommitChangelistDialog2/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1604603918233" />
     <state x="804" y="440" key="Github.ShareDialog" timestamp="1604420124569">

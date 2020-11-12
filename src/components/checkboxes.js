@@ -1,29 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-//import getAnimation from '../data/animation'
 //import CSSRootActions from '../data/CSSRoot/CSSRootActions'
 import checkboxesActions from '../data/checkboxes/checkboxesActions'
+import getAnimation from "../data/animation";
 
 function checkboxes ({
     id, entry, checks, limit, ...rest
 }) {
-//    let animation
+    let animation
 
     console.log("CHECKBOXES", rest.checkboxes.state);
 
     if (!rest.checkboxes.state.has(id)) {
         //ANIMATION
-
-        checkboxesActions.newcheckboxes(
-            id, entry, checks, limit
-        )
+        animation = getAnimation(id, {})
+        checkboxesActions.newcheckboxes(id, entry, checks, limit)
     } else {
-        const checkboxesObj = rest.
+        const checkboxesObj = rest.checkboxes.state.get(id)
+
+        //ANIMATION
+
+        console.log(checkboxesObj);
+
     }
 
 
     return (
-      <div {...rest}>
+      <div id={id} style={animation} {...rest}>
           { rest.children }
       </div>
     )
