@@ -2,13 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4130bfb-4d06-4066-810c-d720df1820b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/checkboxes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootActionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootObject.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/CSSRoot/CSSRootStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/animation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesActionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesObject.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/styleObject.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/imp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/menu/menuActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuActionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/menu/menuActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/menu/menuObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/AppContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AppContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/menu/menuStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/menu/menuStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,22 +46,28 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jmom6szumxgaxUlef4a7tC7Jmf" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -81,7 +102,16 @@
       <workItem from="1604418785314" duration="7268000" />
       <workItem from="1604503328756" duration="1541000" />
       <workItem from="1604527744395" duration="598000" />
-      <workItem from="1604594610195" duration="4824000" />
+      <workItem from="1604594610195" duration="5058000" />
+      <workItem from="1604655295741" duration="1196000" />
+      <workItem from="1604665305326" duration="1000" />
+      <workItem from="1604671838589" duration="6230000" />
+      <workItem from="1604932124761" duration="8387000" />
+      <workItem from="1604996033737" duration="5157000" />
+      <workItem from="1605025822897" duration="5279000" />
+      <workItem from="1605115093192" duration="166000" />
+      <workItem from="1605117161956" duration="2619000" />
+      <workItem from="1605172192965" duration="3586000" />
     </task>
     <task id="LOCAL-00001" summary="Initial proj">
       <created>1604429842750</created>
@@ -90,21 +120,39 @@
       <option name="project" value="LOCAL" />
       <updated>1604429842750</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="up">
+      <created>1604603918595</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604603918595</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial proj" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial proj" />
+    <MESSAGE value="up" />
+    <option name="LAST_COMMIT_MESSAGE" value="up" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="285" y="52" key="CommitChangelistDialog2" timestamp="1604429842488">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="1028" y="205" key="#ESLint" timestamp="1604996189530">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1028" y="205" key="#ESLint/0.0.1920.1080@0.0.1920.1080" timestamp="1604996189530" />
+    <state x="-1787" y="308" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604938747586">
+      <screen x="-1920" y="-42" width="1920" height="1080" />
+    </state>
+    <state x="-1787" y="308" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1604938747586" />
+    <state x="-1540" y="20" key="CommitChangelistDialog2" timestamp="1604603918233">
+      <screen x="-1920" y="-42" width="1920" height="1080" />
     </state>
     <state x="285" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1604429842488" />
+    <state x="-1540" y="20" key="CommitChangelistDialog2/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1604603918233" />
     <state x="804" y="440" key="Github.ShareDialog" timestamp="1604420124569">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -113,6 +161,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1604419695679" />
+    <state x="1110" y="297" width="639" height="486" key="find.popup" timestamp="1604997250578">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1110" y="297" width="639" height="486" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604997250578" />
     <state x="-1295" y="199" width="670" height="676" key="search.everywhere.popup" timestamp="1604423802527">
       <screen x="-1920" y="-42" width="1920" height="1080" />
     </state>

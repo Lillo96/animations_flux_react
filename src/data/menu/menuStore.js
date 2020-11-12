@@ -22,10 +22,11 @@ class menuStore extends ReduceStore {
                         id: action.id
                     }))
             }
-
+            break;
             case menuActionTypes.CHANGE_MENU_VALUE: {
                 console.log("CHANGE_MENU_VALUE");
             }
+            break;
 
             default:
                 return state;

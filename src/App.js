@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-//import fal, {getMenu} from './fal'
+import imp, {getCheckboxes} from './imp'
 
-function App() {
-  //const menu = getMenu('menu01');
+function App(props) {
+  //const checkbox = getCheckboxes('checkbox01')
 
   return (
     <div className="App">
@@ -13,6 +13,10 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <imp.checkboxes entry={'in'} id="checkbox01" checks={2} limit={2} {...props}
+        >
+        CIAO
+        </imp.checkboxes>
         <a
           className="App-link"
           href="https://reactjs.org"
