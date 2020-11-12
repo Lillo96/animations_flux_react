@@ -17,13 +17,11 @@ function checkboxes ({
         checkboxesActions.newcheckboxes(id, entry, checks, limit)
     } else {
         const checkboxesObj = rest.checkboxes.state.get(id)
-
-        //ANIMATION
+        animation = getAnimation(id, {}, checkboxesObj.style)
 
         console.log(checkboxesObj);
 
     }
-
 
     return (
       <div id={id} style={animation} {...rest}>
