@@ -1,36 +1,32 @@
 import React from 'react'
-import {Container} from 'flux/utils';
+import { Container } from 'flux/utils'
+import '../impAnimation.css'
+import checkboxesStore from "../data/checkboxes/checkboxesStore"
 
-import menuStore from "../data/menu/menuStore";
-import checkboxesStore from "../data/checkboxes/checkboxesStore";
 
 function getStores() {
     return [
-        menuStore,
-        checkboxesStore
-    ];
+        checkboxesStore,
+    ]
 }
 
 function getState() {
     return {
-        menus: {
-          state: menuStore.getState()
-        },
         checkboxes: {
-          state: checkboxesStore.getState()
+            state: checkboxesStore.getState()
         }
     }
 }
 
 let View
 
-export default function EnvAnimation (view) {
-    const Env = Container.createFunctional(ViewEnv, getStores, getState)
+export default function animationEnv (view) {
+    const Env = Container.createFunctional(EnvView, getStores, getState)
     View = view
     return <Env/>
 }
 
-function ViewEnv(props) {
+function EnvView (props) {
     return (
         <View {...props}/>
     )

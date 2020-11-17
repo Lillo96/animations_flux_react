@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React from 'react'
 import imp, {getCheckboxes} from './imp'
 
-function App(props) {
-  //const checkbox = getCheckboxes('checkbox01')
+function App (props) {
+
+  //const checkbox1 = getCheckboxes('prova')
+
+  const getValue=(e)=>{
+    console.warn(e.target.value)
+  }
 
   return (
     <div className="App">
@@ -13,10 +18,17 @@ function App(props) {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <imp.checkboxes entry={'in'} id="checkbox01" checks={2} limit={2} {...props}
-        >
-        CIAO
+
+        <imp.checkboxes id={"prova"} {...props} onChange={ (e) => { getValue(e)} }>
+
+          <ul>
+            <input id="c1" type="checkbox" />
+            <label htmlFor="c1">Checkbox</label>
+          </ul>
+
+
         </imp.checkboxes>
+
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -27,7 +39,7 @@ function App(props) {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

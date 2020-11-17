@@ -1,22 +1,17 @@
-import checkboxes, { setEntry as SetCheckboxesEntry, setEntryDirection as setCheckboxesEntryDirection } from './components/checkboxes'
+import checkboxes from "./components/checkboxes";
 
-import checkboxesObject from './data/checkboxes/checkboxesObject'
-
-import getAnimationData from "./view";
+import checkboxesObject from "./data/checkboxes/checkboxesObject"
 
 const imp = {
     checkboxes: checkboxes
 }
 
 export function getCheckboxes(id) {
-    const retObject = {
-        ...getAnimationData('checkboxes', id, checkboxesObject)
+    const returnObject = {
+        //console.log()
     }
 
-    retObject.setEntry = SetCheckboxesEntry
-    retObject.setEntryDirection = setCheckboxesEntryDirection
-
-    return retObject
+    return returnObject
 }
 
 export default imp

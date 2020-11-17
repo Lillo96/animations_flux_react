@@ -1,17 +1,12 @@
-import animationDispatcher from '../animationDispatcher'
-import checkboxesActionTypes from './checkboxesActionTypes'
+import animationDispatcher from "../animationDispatcher"
+import checkboxesActionTypes from "./checkboxesActionTypes"
 
 const checkboxesActions = {
-    newcheckboxes(
-        id, entry, checks, limit
-    ) {
-      animationDispatcher.dispatch ({
-          type: checkboxesActionTypes.NEW_CHECKBOXES,
-          id: id,
-          entry: entry,
-          checks: checks,
-          limit: limit
-      })
+    newCheckboxes (id) {
+        animationDispatcher.dispatch ({
+            type: checkboxesActionTypes.NEW_CHECKBOXES,
+            id: id
+        })
     },
     changeValue (id, key, value) {
         animationDispatcher.dispatch({
