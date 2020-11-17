@@ -24,7 +24,7 @@ class CheckboxesStore extends ReduceStore{
                     })
                 )}
             case checkboxesActionTypes.CHANGE_CHECKBOXES_VALUE: {
-                console.log();
+                console.log("Dentro CHANGE_CHECKBOXES_VALUE");
             }
 
             default:

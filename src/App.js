@@ -1,15 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react'
-import imp, {getCheckboxes} from './imp'
+import imp, { getCheckboxes } from './imp'
 
 function App (props) {
 
-  //const checkbox1 = getCheckboxes('prova')
-
-  const getValue=(e)=>{
-    console.warn(e.target.value)
-  }
+  const checkbox1 = getCheckboxes('prova')
 
   return (
     <div className="App">
@@ -19,7 +15,7 @@ function App (props) {
           Edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <imp.checkboxes id={"prova"} {...props} onChange={ (e) => { getValue(e)} }>
+        <imp.checkboxes id={"prova"} {...props} onChange={ (e) => { checkbox1.getValueCheck(e) }} {...props}>
 
           <ul>
             <input id="c1" type="checkbox" />
