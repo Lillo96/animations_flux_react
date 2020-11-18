@@ -44,10 +44,12 @@ function actionByType(type) {
 function getValueCheck (value) {
     console.log(value)
     const tmpValue = "ProvaValue"
+    const tmpID = 'checkbox1'
     console.log(tmpValue)
+    console.log('THIS.ID', this.id)
 
-    checkboxesActions.changeValue(this.id, 'onCheck', tmpValue)
-    //CSSRootActions.updateOnCheckRule(this.id, , tmpValue)
+    checkboxesActions.changeValue(tmpID, 'onCheck', tmpValue)
+    CSSRootActions.updateOnCheckRule(tmpID, 'onCheck', tmpValue)
 }
 
 export default getDataAnimation
