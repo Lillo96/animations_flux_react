@@ -21,6 +21,7 @@ class CheckboxesStore extends ReduceStore{
                     action.id,
                     checkboxes({
                         id: action.id,
+                        onCheck: action.onCheck
                     })
                 )}
             case checkboxesActionTypes.CHANGE_CHECKBOXES_VALUE: {

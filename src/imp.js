@@ -10,7 +10,7 @@ const imp = {
 
 export function getCheckboxes(id) {
     const returnObject = {
-        //console.log()
+        ...getDataAnimation('checkboxes', id, checkboxesObject)
     }
 
     return returnObject

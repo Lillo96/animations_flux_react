@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import checkboxesActions from "../data/checkboxes/checkboxesActions"
 
-function checkboxes({id, ...rest}) {
+function checkboxes({ id, onCheck, ...rest }) {
 
     if (!rest.checkboxes.state.has(id)) {
         checkboxesActions.newCheckboxes(id)
@@ -21,7 +21,8 @@ function checkboxes({id, ...rest}) {
 }
 
 checkboxes.propType = {
-    id: PropTypes.string
+    id: PropTypes.string,
+    onCheck: PropTypes.string
 }
 
 export default checkboxes
