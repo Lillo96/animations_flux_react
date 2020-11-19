@@ -1,6 +1,6 @@
 import { ReduceStore } from 'flux/utils'
 import animationDispatcher from "../animationDispatcher"
-import { CSSRootObject } from "./CSSRootObject"
+import { CSSRootObject, rule } from "./CSSRootObject"
 import CSSRootActionTypes from "./CSSRootActionTypes"
 
 class CSSRootStore extends ReduceStore{
@@ -15,8 +15,28 @@ class CSSRootStore extends ReduceStore{
     reduce (state, action) {
         switch (action.type) {
             case CSSRootActionTypes.INSERT_RULE: {
+                console.log("IIIIIIIIIIIIIIIIIIIIII")
+                let index
 
+                if (state.rules.has(action.id)) {
+                    console.log("DENTRO RULES ACTION ID OOOOONNNN")
+                } else {
+                    console.log("DENTRO ELSE ACTION ID OOOOOFFFFF")
+
+                    index = state.sheet.cssRules.length
+                    state.sheet.insertRule(action.rule, index)
+
+                    return state.setIn(['rules', action.id],
+                           rule({
+                               index: index,
+                               rule: action.rule
+                           })
+                    )
+                }
             }
+
+
+
 
             default:
                 return state

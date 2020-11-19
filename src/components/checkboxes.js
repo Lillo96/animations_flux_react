@@ -21,7 +21,7 @@ function checkboxes({ id, onCheck, ...rest }) {
 
         animation = getAnimation(id, {}, checkboxObj.style)
 
-        //CSSRootActions.
+        CSSRootActions.addRule(id, null)
     }
 
     return (
