@@ -20,6 +20,10 @@ class CSSRootStore extends ReduceStore{
 
                 if (state.rules.has(action.id)) {
                     console.log("DENTRO RULES ACTION ID OOOOONNNN")
+                    index = state.rules.get(action.id).index
+                    state.sheet.removeRule(index)
+                    state.sheet.insertRule(action.rule, index)
+                    return state.setIn(['rules', action.id, 'rule'], action.rule)
                 } else {
                     console.log("DENTRO ELSE ACTION ID OOOOOFFFFF")
 

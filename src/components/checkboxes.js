@@ -21,7 +21,7 @@ function checkboxes({ id, onCheck, ...rest }) {
 
         animation = getAnimation(id, {}, checkboxObj.style)
 
-        CSSRootActions.addRule(id, null)
+        CSSRootActions.addRule(id, `@keyframes ${id} {\n${checkboxesKeyFrames(checkboxObj)}\n}`)
     }
 
     return (
@@ -29,6 +29,21 @@ function checkboxes({ id, onCheck, ...rest }) {
             { rest.children }
         </div>
     )
+}
+
+function checkboxesKeyFrames ({ onCheck }) {
+    console.log("VALUE onCheck", onCheck)
+    let tmp
+
+    if (onCheck === ""){
+        console.log("DENTRO ONCHECK = '' ")
+        tmp ='\n\n' + '% {\n' +
+            '   color: red;\n' +
+            '}'
+    }
+    console.log('TMP', tmp)
+    return tmp
+
 }
 
 checkboxes.propType = {

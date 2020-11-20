@@ -6,7 +6,8 @@ import imp, { getCheckboxes } from './imp'
 function App (props) {
 
   const checkbox1 = getCheckboxes('prova')
-  //console.log("VALORE CHECK", checkbox1)
+  console.log(checkbox1.get)
+  console.log("VALORE CHECK", checkbox1.getKeyFrames())
 
   return (
     <div className="App">
@@ -33,6 +34,7 @@ function App (props) {
           rel="noopener noreferrer"
         >
           Learn React
+
         </a>
       </header>
     </div>

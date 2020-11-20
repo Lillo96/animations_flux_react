@@ -3,12 +3,14 @@ import checkboxesStore from "./data/checkboxes/checkboxesStore"
 import checkboxesActions from "./data/checkboxes/checkboxesActions"
 
 import CSSRootActions from "./data/CSSRoot/CSSRootActions"
+import CSSRootStore from "./data/CSSRoot/CSSRootStore"
 
 function getDataAnimation(type, id, tmpObj) {
     const state = objectByType(type)
     const obj = state.get(id, tmpObj({ id: id })).toJS()
     const ret = {
-        getValueCheck
+        getValueCheck,
+        getKeyFrames
     }
     console.log("STATE", state)
     console.log("OBJ", obj)
@@ -50,6 +52,13 @@ function getValueCheck (value) {
 
     checkboxesActions.changeValue(tmpID, 'onCheck', tmpValue)
     CSSRootActions.updateOnCheckRule(tmpID, 'onCheck', tmpValue)
+}
+
+function getKeyFrames () {
+    const tmpCSSStoreRoot = CSSRootStore.getState()
+    if (tmpCSSStoreRoot.rules.has(this.id)) {
+        return tmpCSSStoreRoot.rules.get(this.id).rule
+    }
 }
 
 export default getDataAnimation
