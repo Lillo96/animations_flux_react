@@ -6,8 +6,8 @@ import imp, { getCheckboxes } from './imp'
 function App (props) {
 
   const checkbox1 = getCheckboxes('prova')
-  console.log(checkbox1.get)
-  console.log("VALORE CHECK", checkbox1.getKeyFrames())
+  //console.log(checkbox1)
+  //console.log("VALORE CHECK", checkbox1.getKeyFrames())
 
   return (
     <div className="App">
@@ -17,14 +17,11 @@ function App (props) {
           Edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <imp.checkboxes id={'prova'} {...props} onChange={ (e) => { checkbox1.getValueCheck(e) }} {...props}>
+        {       /*CHECKBOX*/      }
 
-          <ul>
-            <input id="c1" type="checkbox" />
-            <label htmlFor="c1">Checkbox</label>
-          </ul>
-
-
+        { /* <input id="c1" type="checkbox" onClick={ () => { checkbox1.getValueCheck(10) }}/> */ }
+        <imp.checkboxes id={'prova'} onClick={ () => { checkbox1.getValueCheck('value') }} {...props}>
+          Checkbox
         </imp.checkboxes>
 
         <a

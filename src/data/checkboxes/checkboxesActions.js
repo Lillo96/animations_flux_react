@@ -10,9 +10,9 @@ const checkboxesActions = {
         })
     },
     changeValue (id, key, value) {
-        console.log("ID", id)
-        console.log("KEY", key)
-        console.log("VALUE", value)
+        //console.log("ID", id)
+        //console.log("KEY", key)
+        //console.log("VALUE", value)
 
         animationDispatcher.dispatch({
             type: checkboxesActionTypes.CHANGE_CHECKBOXES_VALUE,

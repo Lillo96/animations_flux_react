@@ -10,14 +10,14 @@ function checkboxes({ id, onCheck, ...rest }) {
     const value = { onCheck }
 
     if (!rest.checkboxes.state.has(id)) {
-        console.log('ID DENTRO NEW CHECKBOXES' ,id)
+        //console.log('ID DENTRO NEW CHECKBOXES' ,id)
         animation = getAnimation(id, value)
         checkboxesActions.newCheckboxes(id)
-        console.log("Dentro !rest")
+        //console.log("Dentro !rest")
     } else {
         const checkboxObj = rest.checkboxes.state.get(id)
-        console.log(checkboxObj)
-        console.log("Dentro else di !rest")
+        //console.log(checkboxObj)
+        //console.log("Dentro else di !rest")
 
         animation = getAnimation(id, {}, checkboxObj.style)
 
@@ -25,7 +25,7 @@ function checkboxes({ id, onCheck, ...rest }) {
     }
 
     return (
-        <div id={id} {...rest}>
+        <div id={id} style={animation} {...rest}>
             { rest.children }
         </div>
     )

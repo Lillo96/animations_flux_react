@@ -9,7 +9,7 @@ function getAnimation(id, valueDefault,style) {
         console.log("DENTRO STYLE NON ESISTE")
         const { onCheck } = valueDefault
         animation.animationID = id
-        animation.animationOnCheck =  onCheck|| 'false'
+        animation.animationOnCheck =  onCheck || 'false'
     }
 
     return animation

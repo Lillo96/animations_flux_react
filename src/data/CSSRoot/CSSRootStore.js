@@ -18,6 +18,18 @@ class CSSRootStore extends ReduceStore{
                 console.log("IIIIIIIIIIIIIIIIIIIIII")
                 let index
 
+                if ('sheet' in action) {
+                    index = action.sheet.cssRules.length
+                    action.sheet.insertRule(action.rule, index)
+                    return state.set('sheet', action.sheet).set('rules', state.rules.set(
+                        action.id,
+                        rule({
+                            index: index,
+                            rule: action.rule
+                        })
+                    ))
+                }
+
                 if (state.rules.has(action.id)) {
                     console.log("DENTRO RULES ACTION ID OOOOONNNN")
                     index = state.rules.get(action.id).index

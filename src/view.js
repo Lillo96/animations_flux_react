@@ -12,17 +12,17 @@ function getDataAnimation(type, id, tmpObj) {
         getValueCheck,
         getKeyFrames
     }
-    console.log("STATE", state)
-    console.log("OBJ", obj)
+    //console.log("STATE", state)
+    //console.log("OBJ", obj)
 
     for (const prop in obj) {
-        console.log("PROP", prop)
-        if (Object.prototype.hasOwnProperty(obj, prop)) {
-            console.log("OBJ[PROP]", obj[prop])
+        //console.log("PROP", prop)
+        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+            //console.log("OBJ[PROP]", obj[prop])
             ret[prop] = obj[prop]
         }
     }
-    console.log("RET", ret)
+    //console.log("RET", ret)
     return ret
 }
 
@@ -44,14 +44,13 @@ function actionByType(type) {
 }
 
 function getValueCheck (value) {
-    console.log(value)
-    const tmpValue = "ProvaValue"
+    //console.log(value)
     const tmpID = 'checkbox1'
-    console.log(tmpValue)
+    //console.log(tmpValue)
     console.log('THIS.ID', this.id)
 
-    checkboxesActions.changeValue(tmpID, 'onCheck', tmpValue)
-    CSSRootActions.updateOnCheckRule(tmpID, 'onCheck', tmpValue)
+    checkboxesActions.changeValue(tmpID, 'onCheck', 'on')
+    CSSRootActions.updateOnCheckRule(tmpID, 'animationOnCheck', 'on')
 }
 
 function getKeyFrames () {
