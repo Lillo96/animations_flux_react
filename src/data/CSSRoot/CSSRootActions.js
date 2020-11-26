@@ -19,7 +19,7 @@ const CSSRootActions = {
 
 function sheetRule(id, rule) {
     if (flag) {
-        console.log('DENTRO flag True')
+        //console.log('DENTRO flag True')
         setTimeout(() => {
             animationDispatcher.dispatch({
                 type: CSSRootActionTypes.INSERT_RULE,
@@ -28,15 +28,15 @@ function sheetRule(id, rule) {
             })
         },200)
     } else {
-        console.log("DENTRO flag False", document.readyState)
+        //console.log("DENTRO flag False", document.readyState)
         if (document.readyState === 'complete') {
             flag = true
             for (const styleSheet of document.styleSheets) {
-                console.log("STYLE SHEET", document.styleSheets)
+                //console.log("STYLE SHEET", document.styleSheets)
                 if (styleSheet.cssRules.length > 0 &&
                     Object.hasOwnProperty.call(Object.getPrototypeOf(styleSheet.cssRules[0]),'name')) {
                     if (styleSheet.cssRules[0].name === 'impAnimationLibrary') {
-                        console.log("CIAOOOOOOO")
+                        //console.log("CIAOOOOOOO")
                         animationDispatcher.dispatch({
                             type: CSSRootActionTypes.INSERT_RULE,
                             sheet: styleSheet,

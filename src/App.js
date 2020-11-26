@@ -7,7 +7,7 @@ function App (props) {
 
   const checkbox1 = getCheckboxes('prova')
   //console.log(checkbox1)
-  //console.log("VALORE CHECK", checkbox1.getKeyFrames())
+  console.log(checkbox1)
 
   return (
     <div className="App">

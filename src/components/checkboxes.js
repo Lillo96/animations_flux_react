@@ -16,7 +16,7 @@ function checkboxes({ id, onCheck, ...rest }) {
         //console.log("Dentro !rest")
     } else {
         const checkboxObj = rest.checkboxes.state.get(id)
-        //console.log(checkboxObj)
+        console.log(checkboxObj)
         //console.log("Dentro else di !rest")
 
         animation = getAnimation(id, {}, checkboxObj.style)
@@ -29,19 +29,20 @@ function checkboxes({ id, onCheck, ...rest }) {
             { rest.children }
         </div>
     )
+
+
+
 }
 
-function checkboxesKeyFrames ({ onCheck }) {
+function checkboxesKeyFrames (onCheck) {
     console.log("VALUE onCheck", onCheck)
     let tmp
 
     if (onCheck === ""){
-        console.log("DENTRO ONCHECK = '' ")
-        tmp ='\n\n' + '% {\n' +
-            '   color: red;\n' +
-            '}'
+        //console.log("DENTRO ONCHECK = '' ")
+        tmp ='\n from \n 33%, \n 66%, \n to  {\n    opacity: 1;\n    color: black;\n }'
     }
-    console.log('TMP', tmp)
+    //console.log('TMP', tmp)
     return tmp
 
 }
