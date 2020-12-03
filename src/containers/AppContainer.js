@@ -1,8 +1,10 @@
 import React from 'react'
 import { Container } from 'flux/utils'
-import '../impAnimation.css'
+
 import checkboxesStore from "../data/checkboxes/checkboxesStore"
 import CSSRootStore from "../data/CSSRoot/CSSRootStore"
+
+import '../impAnimation.css'
 
 function getStores() {
     return [

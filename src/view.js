@@ -9,7 +9,6 @@ function getDataAnimation(type, id, tmpObj) {
     const state = objectByType(type)
     const obj = state.get(id, tmpObj({ id: id })).toJS()
     const ret = {
-        getValueCheck,
         getKeyFrames
     }
     //console.log("STATE", state)
@@ -40,17 +39,10 @@ function actionByType(type) {
     switch (type) {
         case 'checkboxes':
             return checkboxesActions
+
+        default:
+            throw TypeError(`"${type}" is not an animation defined in uit`)
     }
-}
-
-function getValueCheck (value) {
-    //console.log(value)
-    const tmpID = 'checkbox1'
-    //console.log(tmpValue)
-    console.log('THIS.ID', this.id)
-
-    checkboxesActions.changeValue(tmpID, 'onCheck', 'on')
-    CSSRootActions.updateOnCheckRule(tmpID, 'animationOnCheck', 'on')
 }
 
 function getKeyFrames () {

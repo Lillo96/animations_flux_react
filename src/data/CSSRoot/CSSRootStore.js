@@ -3,9 +3,9 @@ import animationDispatcher from "../animationDispatcher"
 import { CSSRootObject, rule } from "./CSSRootObject"
 import CSSRootActionTypes from "./CSSRootActionTypes"
 
-class CSSRootStore extends ReduceStore{
+class CSSRootStore extends ReduceStore {
     constructor () {
-        super(animationDispatcher);
+        super(animationDispatcher)
     }
 
     getInitialState () {
@@ -18,6 +18,7 @@ class CSSRootStore extends ReduceStore{
                 //console.log("IIIIIIIIIIIIIIIIIIIIII")
                 let index
 
+                // Called only if state.sheet is not defined yet
                 if ('sheet' in action) {
                     index = action.sheet.cssRules.length
                     action.sheet.insertRule(action.rule, index)
@@ -31,28 +32,23 @@ class CSSRootStore extends ReduceStore{
                 }
 
                 if (state.rules.has(action.id)) {
-                    //console.log("DENTRO RULES ACTION ID OOOOONNNN")
                     index = state.rules.get(action.id).index
                     state.sheet.removeRule(index)
                     state.sheet.insertRule(action.rule, index)
                     return state.setIn(['rules', action.id, 'rule'], action.rule)
                 } else {
-                    //console.log("DENTRO ELSE ACTION ID OOOOOFFFFF")
-
                     index = state.sheet.cssRules.length
                     state.sheet.insertRule(action.rule, index)
 
-                    return state.setIn(['rules', action.id],
-                           rule({
-                               index: index,
-                               rule: action.rule
-                           })
+                    return state.setIn(
+                        ['rules', action.id],
+                        rule({
+                            index: index,
+                            rule: action.rule
+                        })
                     )
                 }
             }
-
-
-
 
             default:
                 return state

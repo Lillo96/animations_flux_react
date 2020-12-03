@@ -1,4 +1,4 @@
-import checkboxes from "./components/checkboxes";
+import checkboxes, {setCheckLimit} from "./components/checkboxes";
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
 
@@ -9,11 +9,10 @@ const imp = {
 }
 
 export function getCheckboxes(id) {
-    const returnObject = {
-        ...getDataAnimation('checkboxes', id, checkboxesObject)
+    return {
+        ...getDataAnimation('checkboxes', id, checkboxesObject),
+        setCheckLimit
     }
-
-    return returnObject
 }
 
 export default imp
