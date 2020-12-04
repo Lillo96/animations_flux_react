@@ -5,7 +5,7 @@ import getAnimation from "../data/animation"
 import CSSRootActions from "../data/CSSRoot/CSSRootActions"
 
 function checkboxes({
-    id, checkLimit, duration, timing, delay, iterations,
+    id, checkLimit, typeInput, duration, timing, delay, iterations,
     direction, fillMode, playState, ...rest
 }) {
     let animation
@@ -15,7 +15,7 @@ function checkboxes({
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
        //console.log(animation)
        checkboxesActions.newCheckboxes(
-            id, checkLimit, duration, timing, delay,
+            id, checkLimit, typeInput, duration, timing, delay,
             iterations, direction, fillMode, playState
         )
         //console.log("Dentro !rest")
@@ -35,7 +35,9 @@ function checkboxes({
 
    return (
        <div id={id} style={animation} {...rest}>
-            { rest.children }
+           <label>
+               { rest.children }
+           </label>
        </div>
    )
 }
@@ -44,26 +46,52 @@ function checkboxesKeyFrames (state) {
     //console.log("VALUE onCheck", state)
     let tmp
 
-    if (state.get('checkLimit')){
-        //console.log('OOO')
-        tmp = (state.get('checkLimit') / 100).toString()
-        //console.log(tmp)
-    } else {
-        //console.log('IIII')
-        tmp = 1
-    }
-
     let originFrame
     let endFrame
 
-    originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n'
-    endFrame = 'to {\n'
+    let typeC = state.get('typeInput')
 
-    originFrame += 'opacity: 0;\n' + 'color: red;\n' + 'color: red;\n'
-    endFrame += 'opacity: ' + tmp + ';\n' + 'color: red;\n'
+    if (state.get('checkLimit')){
+        console.log('true')
 
-    originFrame += '}\n\n'
-    endFrame += '}\n\n}\n\n'
+        switch (typeC) {
+            case 1 :
+
+                tmp = 0.8
+
+                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: black;\n }\n\n'
+                endFrame = 'to {\n opacity: ' + tmp + ';\n color: white;\n }\n\n}\n\n'
+                break;
+
+            case 2 :
+                tmp = 0.8
+
+                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: white;\n }\n\n'
+                endFrame = 'to {\n opacity: ' + tmp + ';\n color: white;\n }\n\n}\n\n'
+                break;
+        }
+
+
+    } else {
+        console.log('tmp = 1')
+
+        switch (typeC) {
+            case 1 :
+                tmp = 1
+
+                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: red;\n }\n\n'
+                endFrame = 'to {\n opacity: ' + tmp + ';\n color: red;\n }\n\n}\n\n'
+
+                break;
+            case 2 :
+                tmp = 1
+
+                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0.5;\n color: black\n }\n\n'
+                //endFrame = 'to {\n opacity: ' + tmp + ';\n content: \'\';\n display: block\n width: 0%;\n height: 2px;\n background-color: #000;\n position: absolute;\n top: 50%;\n left: 7.5%;\n transform: translateY(-50%);\n transition: width 100ms ease-in-out;\n }\n\n}\n\n'
+                endFrame = 'to {\n color: white; opacity: 0.5;\n clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n text-decoration-color: black;\n text-decoration: line-through;\n text-decoration-thickness: 3px;\n text-decoration-color: red;\n transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);\n }\n\n}\n\n'
+                break;
+        }
+    }
 
     return originFrame + endFrame
 }
@@ -76,8 +104,10 @@ export function setCheckLimit (value) {
 checkboxes.propType = {
     anim: PropTypes.object,
     id: PropTypes.string,
+    typeInput: PropTypes.number,
     //onCheck: PropTypes.string,
-    checkLimit: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    //checkLimit: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    checkLimit: PropTypes.bool,
     duration: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     timing: PropTypes.string,
     delay: PropTypes.string,

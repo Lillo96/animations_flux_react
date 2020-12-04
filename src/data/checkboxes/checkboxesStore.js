@@ -27,6 +27,7 @@ class CheckboxesStore extends ReduceStore {
                     checkboxes({
                         id: action.id,
                         checkLimit: action.checkLimit,
+                        typeInput: action.typeInput,
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
