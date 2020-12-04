@@ -3,8 +3,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals'
 import envAnimation from "./containers/AppContainer"
+import Demo from "./Demo";
 
-ReactDOM.render(envAnimation(App), document.getElementById('root'))
+ReactDOM.render(envAnimation(Demo), document.getElementById('root'))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

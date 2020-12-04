@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import checkboxesActions from "../data/checkboxes/checkboxesActions"
 import getAnimation from "../data/animation"
 import CSSRootActions from "../data/CSSRoot/CSSRootActions"
+import {getCheckboxes} from "../imp";
 
 function checkboxes({
     id, checkLimit, typeInput, duration, timing, delay, iterations,
@@ -35,9 +36,7 @@ function checkboxes({
 
    return (
        <div id={id} style={animation} {...rest}>
-           <label>
                { rest.children }
-           </label>
        </div>
    )
 }

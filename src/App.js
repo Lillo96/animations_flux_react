@@ -7,13 +7,13 @@ function App (props) {
 
   const checkbox1 = getCheckboxes('checkboxprova')
   const checkbox2 = getCheckboxes('checkboxprova2')
-  const checkbox3 = getCheckboxes('checkboxprova3')
+  //const checkbox3 = getCheckboxes('checkboxprova3')
   //console.log(checkbox1)
   //console.log(checkbox1)
 
   const [checked, setChecked] = React.useState(true);
   const [checked1, setChecked1] = React.useState(true);
-  const [checked2, setChecked2] = React.useState(true);
+  //const [checked2, setChecked2] = React.useState(true);
 
   return (
     <div className="App">
@@ -51,24 +51,10 @@ function App (props) {
             <input type="checkbox"
                    checked={!checked1}
                    onChange={() => setChecked1(!checked1)}
-                   onClick={() => { checkbox3.setCheckLimit(!checked1) }}
+                   onClick={() => { checkbox2.setCheckLimit(!checked1) }}
             />
             Checkbox
           </label>
-
-
-        </imp.checkboxes>
-
-        <imp.checkboxes id='checkboxprova3' typeInput={2} checkLimit={ true } {...props}>
-
-          <label>
-            <input type="checkbox"
-                   checked={!checked2}
-                   onChange={() => setChecked2(!checked2)}
-                   onClick={() => { checkbox2.setCheckLimit(!checked2) }}
-            />
-          </label>
-
 
         </imp.checkboxes>
 
