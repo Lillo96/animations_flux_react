@@ -42,7 +42,7 @@ function Demo(props) {
 
                         </imp.checkboxes>
 
-                        <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true } {...props}>
+                       <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true } {...props}>
 
                             <label>
                                 <input type="checkbox"
@@ -54,6 +54,7 @@ function Demo(props) {
                             </label>
 
                         </imp.checkboxes>
+
 
                     </div>
 

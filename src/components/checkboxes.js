@@ -5,11 +5,18 @@ import getAnimation from "../data/animation"
 import CSSRootActions from "../data/CSSRoot/CSSRootActions"
 import {getCheckboxes} from "../imp";
 
+import styled, {css, keyframes} from "styled-components"
+
 function checkboxes({
     id, checkLimit, typeInput, duration, timing, delay, iterations,
     direction, fillMode, playState, ...rest
 }) {
     let animation
+    let role
+    let CSS
+    let checkboxObj
+    let Ex
+    let Ex2
 
    if (!rest.checkboxes.state.has(id)) {
         //console.log('ID DENTRO NEW CHECKBOXES' ,id)
@@ -19,26 +26,182 @@ function checkboxes({
             id, checkLimit, typeInput, duration, timing, delay,
             iterations, direction, fillMode, playState
         )
-        //console.log("Dentro !rest")
+       console.log("Dentro !rest")
+
+       Ex2 = cssStyles(true, 1)
    } else {
+       console.log("Dentro else di !rest", rest.checkboxes.state.get(id).get('checkLimit'))
+
         const checkboxObj = rest.checkboxes.state.get(id)
         //console.log(checkboxObj)
-        //console.log("Dentro else di !rest")
         //console.log(checkboxObj.style)
         animation = getAnimation(id, {}, checkboxObj.style)
         //console.log(animation)
 
         //console.log('ID', id)
-        console.log('CHECKFRAM', checkboxesKeyFrames(checkboxObj))
-        CSSRootActions.addRule(id, checkboxesKeyFrames(checkboxObj))
+
+
+        //console.log('CHECKFRAM', checkboxesKeyFrames(checkboxObj))
+        //CSSRootActions.addRule(id, checkboxesKeyFrames(checkboxObj))
+        //Ex = cssStyles(checkLimit, typeInput)
+
+       console.log(rest.checkboxes.state.get(id))
+       //const checkboxObj = rest.checkboxes.state.get(id)
+       Ex = cssStyles(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
+       console.log(Ex)
+       Ex2 = cssStyles(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
    }
+    //console.log(rest.checkboxes.state.get(id))
+    //checkboxObj = rest.checkboxes.state.get(id)
+    //Ex = cssStyles(checkboxObj.get('checkLimit'), checkboxObj.get('typeInput'))
+
+    const Ex1 = styled.div`
+    /*  /!* all declarations will be prefixed *!/
+      padding: 2em 1em;
+      background: papayawhip;
+    
+      /!* pseudo selectors work as well *!/
+      &:hover {
+        background: palevioletred;
+      }
+    
+      /!* media queries are no problem *!/
+      @media (max-width: 600px) {
+        background: tomato;
+    
+        /!* nested rules work as expected *!/
+        &:hover {
+          background: yellow;
+        }
+      }
+    
+      > p {
+        /!* descendant-selectors work as well, but are more of an escape hatch *!/
+        text-decoration: underline;
+      }
+    
+      /!* Contextual selectors work as well *!/
+      html.test & {
+        display: none;
+      }*/
+      
+     color: red;
+     opacity: 0.5; 
+     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+     text-decoration-color: black;
+     text-decoration: line-through;
+     text-decoration-thickness: 3px;
+     text-decoration-color: red;
+     transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    `;
+
 
 
    return (
+
        <div id={id} style={animation} {...rest}>
+            <Ex2>
                { rest.children }
+            </Ex2>
        </div>
    )
+}
+
+function cssStyles(checkLimit, typeInput) {
+
+    //console.log(state)
+
+    //let typeCL = state.get('typeInput')
+    let tmp
+
+    console.log("AAA", checkLimit)
+    if (checkLimit){
+        console.log('true')
+
+        switch (typeInput) {
+            case 1 :
+                console.log("CC", typeInput)
+                //tmp = 0.8
+
+                //originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: black;\n }\n\n'
+                //endFrame = 'to {\n opacity: ' + tmp + ';\n color: white;\n }\n\n}\n\n'
+
+                tmp = styled.div`
+                opacity: 0.8;
+                color: white;
+                `;
+
+
+                break;
+
+            case 2 :
+                console.log("BB", typeInput)
+                //tmp = 0.8
+
+                //originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: white;\n }\n\n'
+                //endFrame = 'to {\n opacity: ' + tmp + ';\n color: white;\n }\n\n}\n\n'
+
+                tmp = styled.div`
+                opacity: 0.8;
+                color: white;
+                `;
+
+                break;
+
+        }
+
+
+    } else {
+        console.log('tmp = 1')
+        console.log("QQ", typeInput)
+        switch (typeInput) {
+            case 1 :
+                console.log("GG", typeInput)
+                //tmp = 1
+
+                //originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: red;\n }\n\n'
+                //endFrame = 'to {\n opacity: ' + tmp + ';\n color: red;\n }\n\n}\n\n'
+
+                tmp = styled.div`
+                opacity: 1;
+                color: red;
+                `;
+
+                break;
+
+            case 2 :
+                console.log("OO", typeInput)
+                //tmp = 1
+
+                //originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0.5;\n color: black\n }\n\n'
+                //endFrame = 'to {\n opacity: ' + tmp + ';\n content: \'\';\n display: block\n width: 0%;\n height: 2px;\n background-color: #000;\n position: absolute;\n top: 50%;\n left: 7.5%;\n transform: translateY(-50%);\n transition: width 100ms ease-in-out;\n }\n\n}\n\n'
+                //endFrame = 'to {\n color: white; opacity: 0.5;\n clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n text-decoration-color: black;\n text-decoration: line-through;\n text-decoration-thickness: 3px;\n text-decoration-color: red;\n transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);\n }\n\n}\n\n'
+
+                tmp = styled.div`
+                opacity: 0.5;
+                color: white;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                text-decoration-color: black;
+                text-decoration: line-through;
+                text-decoration-thickness: 3px;
+                text-decoration-color: red;
+                transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                `;
+
+                break;
+
+        }
+    }
+
+    console.log(tmp)
+/*
+    tmp = styled.div`
+                opacity: 0.8;
+                color: white;
+                `;
+*/
+    return tmp
+
 }
 
 function checkboxesKeyFrames (state) {
