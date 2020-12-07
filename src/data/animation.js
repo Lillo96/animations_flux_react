@@ -6,6 +6,15 @@ function getAnimation(id, valueDefault, style) {
     let originFrame
     let endFrame
 
+    const pulse = keyframes`
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    `
+
 
     if (style) {
         //console.log("DENTRO STYLE ESISTE")

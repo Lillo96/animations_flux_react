@@ -55,7 +55,6 @@ function Demo(props) {
 
                         </imp.checkboxes>
 
-
                     </div>
 
                 </header>

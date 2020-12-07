@@ -17,6 +17,8 @@ function checkboxes({
     let checkboxObj
     let Ex
     let Ex2
+    let tmpAnimation
+    let tmpCSS
 
    if (!rest.checkboxes.state.has(id)) {
         //console.log('ID DENTRO NEW CHECKBOXES' ,id)
@@ -28,7 +30,9 @@ function checkboxes({
         )
        console.log("Dentro !rest")
 
-       Ex2 = cssStyles(true, 1)
+       //Ex2 = cssStyles(true, 1)
+
+       tmpCSS = cssStylesKeyFrames(true,1)
    } else {
        console.log("Dentro else di !rest", rest.checkboxes.state.get(id).get('checkLimit'))
 
@@ -47,64 +51,156 @@ function checkboxes({
 
        console.log(rest.checkboxes.state.get(id))
        //const checkboxObj = rest.checkboxes.state.get(id)
-       Ex = cssStyles(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
-       console.log(Ex)
+
        Ex2 = cssStyles(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
+
+       tmpCSS = cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
    }
     //console.log(rest.checkboxes.state.get(id))
     //checkboxObj = rest.checkboxes.state.get(id)
     //Ex = cssStyles(checkboxObj.get('checkLimit'), checkboxObj.get('typeInput'))
 
-    const Ex1 = styled.div`
-    /*  /!* all declarations will be prefixed *!/
-      padding: 2em 1em;
-      background: papayawhip;
-    
-      /!* pseudo selectors work as well *!/
-      &:hover {
-        background: palevioletred;
-      }
-    
-      /!* media queries are no problem *!/
-      @media (max-width: 600px) {
-        background: tomato;
-    
-        /!* nested rules work as expected *!/
-        &:hover {
-          background: yellow;
-        }
-      }
-    
-      > p {
-        /!* descendant-selectors work as well, but are more of an escape hatch *!/
-        text-decoration: underline;
-      }
-    
-      /!* Contextual selectors work as well *!/
-      html.test & {
-        display: none;
-      }*/
-      
-     color: red;
-     opacity: 0.5; 
-     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-     text-decoration-color: black;
-     text-decoration: line-through;
-     text-decoration-thickness: 3px;
-     text-decoration-color: red;
-     transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    `;
 
+    const KeyFrames = styled.div`
+          animation: ${tmpCSS} both;
+        `;
 
 
    return (
 
        <div id={id} style={animation} {...rest}>
-            <Ex2>
+            <KeyFrames>
                { rest.children }
-            </Ex2>
+            </KeyFrames>
        </div>
    )
+}
+
+function cssStylesKeyFrames(checkLimit, typeInput) {
+
+    let tmp
+
+    console.log("AAA", checkLimit)
+    if (checkLimit){
+        console.log('true')
+
+        switch (typeInput) {
+            case 1 :
+                console.log("CC", typeInput)
+
+                /*tmp = keyframes`
+                     from {
+                        opacity: 0;
+                        color: black;
+                     }
+                    
+                      to {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                `;*/
+
+                 tmp = keyframes`  
+                      from {
+                        opacity: 0;
+                        color: black;
+                      }
+                    
+                      to {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                  `;
+
+                break;
+
+            case 2 :
+                console.log("BB", typeInput)
+
+                tmp = keyframes`  
+                      from {
+                        opacity: 0;
+                        color: white;
+                      }
+                    
+                      to {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                  `;
+
+                break;
+
+        }
+
+
+    } else {
+        console.log('tmp = 1')
+        console.log("QQ", typeInput)
+        switch (typeInput) {
+            case 1 :
+                console.log("GG", typeInput)
+
+                /*tmp = keyframes`
+                     from {
+                        opacity: 0;
+                        color: red;
+                     }
+
+                      to {
+                        opacity: 1;
+                        color: red;
+                       }
+                `;
+                */
+
+                tmp = keyframes`  
+                      from {
+                        opacity: 0;
+                        color: red;
+                      }
+                    
+                      to {
+                        opacity: 1;
+                        color: red;
+                      }
+                  `;
+
+
+                break;
+
+            case 2 :
+                console.log("OO", typeInput)
+
+                tmp = keyframes`  
+                      from {
+                        opacity: 0.5;
+                        color: black;
+                      }
+                    
+                      to {
+                        color: white;
+                        opacity: 0.5;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration-color: black;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        text-decoration-color: red;
+                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                      }
+                  `;
+
+                //originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0.5;\n color: black\n }\n\n'
+                //endFrame = 'to {\n opacity: ' + tmp + ';\n content: \'\';\n display: block\n width: 0%;\n height: 2px;\n background-color: #000;\n position: absolute;\n top: 50%;\n left: 7.5%;\n transform: translateY(-50%);\n transition: width 100ms ease-in-out;\n }\n\n}\n\n'
+                //endFrame = 'to {\n color: white; opacity: 0.5;\n clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n text-decoration-color: black;\n text-decoration: line-through;\n text-decoration-thickness: 3px;\n text-decoration-color: red;\n transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);\n }\n\n}\n\n'
+
+
+                break;
+
+        }
+    }
+
+    return tmp
 }
 
 function cssStyles(checkLimit, typeInput) {
