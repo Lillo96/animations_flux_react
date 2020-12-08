@@ -2,69 +2,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import checkboxesActions from "../data/checkboxes/checkboxesActions"
 import getAnimation from "../data/animation"
-import CSSRootActions from "../data/CSSRoot/CSSRootActions"
-import {getCheckboxes} from "../imp";
 
-import styled, {css, keyframes} from "styled-components"
+import styled, {keyframes} from "styled-components"
 
 function checkboxes({
-    id, checkLimit, typeInput, duration, timing, delay, iterations,
+    id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay, iterations,
     direction, fillMode, playState, ...rest
 }) {
     let animation
-    let role
-    let CSS
-    let checkboxObj
-    let Ex
-    let Ex2
-    let tmpAnimation
-    let tmpCSS
+    let getAnimationCSS
 
    if (!rest.checkboxes.state.has(id)) {
-        //console.log('ID DENTRO NEW CHECKBOXES' ,id)
-        animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
-       //console.log(animation)
-       checkboxesActions.newCheckboxes(
-            id, checkLimit, typeInput, duration, timing, delay,
-            iterations, direction, fillMode, playState
-        )
        console.log("Dentro !rest")
 
-       //Ex2 = cssStyles(true, 1)
+       animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
+       //console.log(animation)
 
-       tmpCSS = cssStylesKeyFrames(true,1)
+       checkboxesActions.newCheckboxes(
+            id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
+            iterations, direction, fillMode, playState
+        )
+       setAnimationCSS(id, cssStylesKeyFrames(true,1))
+
    } else {
-       console.log("Dentro else di !rest", rest.checkboxes.state.get(id).get('checkLimit'))
+        console.log("Dentro else di !rest")
 
         const checkboxObj = rest.checkboxes.state.get(id)
-        //console.log(checkboxObj)
-        //console.log(checkboxObj.style)
+
         animation = getAnimation(id, {}, checkboxObj.style)
         //console.log(animation)
 
-        //console.log('ID', id)
+        setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
+        getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
 
-
-        //console.log('CHECKFRAM', checkboxesKeyFrames(checkboxObj))
-        //CSSRootActions.addRule(id, checkboxesKeyFrames(checkboxObj))
-        //Ex = cssStyles(checkLimit, typeInput)
-
-       console.log(rest.checkboxes.state.get(id))
-       //const checkboxObj = rest.checkboxes.state.get(id)
-
-       Ex2 = cssStyles(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
-
-       tmpCSS = cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
    }
-    //console.log(rest.checkboxes.state.get(id))
-    //checkboxObj = rest.checkboxes.state.get(id)
-    //Ex = cssStyles(checkboxObj.get('checkLimit'), checkboxObj.get('typeInput'))
 
 
-    const KeyFrames = styled.div`
-          animation: ${tmpCSS} both;
-        `;
-
+   const KeyFrames = styled.div`
+          animation: ${getAnimationCSS} both;
+       `;
 
    return (
 
@@ -80,13 +56,13 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
 
     let tmp
 
-    console.log("AAA", checkLimit)
+    //console.log("AAA", checkLimit)
     if (checkLimit){
-        console.log('true')
+        //console.log('true')
 
         switch (typeInput) {
             case 1 :
-                console.log("CC", typeInput)
+                //console.log("CC", typeInput)
 
                 /*tmp = keyframes`
                      from {
@@ -115,7 +91,7 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                 break;
 
             case 2 :
-                console.log("BB", typeInput)
+                //console.log("BB", typeInput)
 
                 tmp = keyframes`  
                       from {
@@ -131,15 +107,34 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
 
                 break;
 
+            case 3:
+
+                tmp = keyframes`  
+                      from {
+                        opacity: 0;
+                        color: white;
+                      }
+                    
+                      to {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                  `;
+
+                break;
+
+            default:
+                return
+
         }
 
 
     } else {
-        console.log('tmp = 1')
-        console.log("QQ", typeInput)
+        //console.log('tmp = 1')
+        //console.log("QQ", typeInput)
         switch (typeInput) {
             case 1 :
-                console.log("GG", typeInput)
+                //console.log("GG", typeInput)
 
                 /*tmp = keyframes`
                      from {
@@ -170,7 +165,7 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                 break;
 
             case 2 :
-                console.log("OO", typeInput)
+                //console.log("OO", typeInput)
 
                 tmp = keyframes`  
                       from {
@@ -197,6 +192,24 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
 
                 break;
 
+            case 3:
+
+                tmp = keyframes`  
+                      from {
+                        opacity: 0;
+                        color: white;
+                      }
+                    
+                      to {
+                        opacity: 1;
+                        color: white;
+                      }
+                  `;
+
+                break;
+
+            default:
+                return
         }
     }
 
@@ -210,7 +223,7 @@ function cssStyles(checkLimit, typeInput) {
     //let typeCL = state.get('typeInput')
     let tmp
 
-    console.log("AAA", checkLimit)
+    //console.log("AAA", checkLimit)
     if (checkLimit){
         console.log('true')
 
@@ -300,71 +313,35 @@ function cssStyles(checkLimit, typeInput) {
 
 }
 
-function checkboxesKeyFrames (state) {
-    //console.log("VALUE onCheck", state)
-    let tmp
-
-    let originFrame
-    let endFrame
-
-    let typeC = state.get('typeInput')
-
-    if (state.get('checkLimit')){
-        console.log('true')
-
-        switch (typeC) {
-            case 1 :
-
-                tmp = 0.8
-
-                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: black;\n }\n\n'
-                endFrame = 'to {\n opacity: ' + tmp + ';\n color: white;\n }\n\n}\n\n'
-                break;
-
-            case 2 :
-                tmp = 0.8
-
-                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: white;\n }\n\n'
-                endFrame = 'to {\n opacity: ' + tmp + ';\n color: white;\n }\n\n}\n\n'
-                break;
-        }
-
-
-    } else {
-        console.log('tmp = 1')
-
-        switch (typeC) {
-            case 1 :
-                tmp = 1
-
-                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0;\n color: red;\n }\n\n'
-                endFrame = 'to {\n opacity: ' + tmp + ';\n color: red;\n }\n\n}\n\n'
-
-                break;
-            case 2 :
-                tmp = 1
-
-                originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0.5;\n color: black\n }\n\n'
-                //endFrame = 'to {\n opacity: ' + tmp + ';\n content: \'\';\n display: block\n width: 0%;\n height: 2px;\n background-color: #000;\n position: absolute;\n top: 50%;\n left: 7.5%;\n transform: translateY(-50%);\n transition: width 100ms ease-in-out;\n }\n\n}\n\n'
-                endFrame = 'to {\n color: white; opacity: 0.5;\n clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n text-decoration-color: black;\n text-decoration: line-through;\n text-decoration-thickness: 3px;\n text-decoration-color: red;\n transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);\n }\n\n}\n\n'
-                break;
-        }
-    }
-
-    return originFrame + endFrame
+export function setCheckLimit (value) {
+    //console.log(value)
+    checkboxesActions.changeValue(this.id, 'checkLimit', value)
 }
 
-export function setCheckLimit (value) {
-    console.log(value)
-    checkboxesActions.changeValue(this.id, 'checkLimit', value)
+export function setAnimationCSS (id, value) {
+    //console.log(value)
+    checkboxesActions.changeValue(id, 'animationCSS', value)
+}
+
+export function setTextValue (valueCheck, valueText) {
+    switch (valueCheck) {
+        case true:
+            checkboxesActions.changeValue(this.id, 'textValue', this.textInput)
+            break;
+
+        case false:
+            checkboxesActions.changeValue(this.id, 'textValue', valueText)
+            break;
+
+        default:
+            return
+    }
 }
 
 checkboxes.propType = {
     anim: PropTypes.object,
     id: PropTypes.string,
     typeInput: PropTypes.number,
-    //onCheck: PropTypes.string,
-    //checkLimit: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     checkLimit: PropTypes.bool,
     duration: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     timing: PropTypes.string,
@@ -372,7 +349,10 @@ checkboxes.propType = {
     iterations: PropTypes.string,
     direction: PropTypes.string,
     fillMode: PropTypes.string,
-    playState: PropTypes.string
+    playState: PropTypes.string,
+    animationCSS: PropTypes.string,
+    textInput: PropTypes.string,
+    textValue: PropTypes.string
 }
 
 export default checkboxes

@@ -19,7 +19,7 @@ class CheckboxesStore extends ReduceStore {
             case checkboxesActionTypes.NEW_CHECKBOXES:
 
                 if (!action.text) {
-                    console.log('NOOOO')
+                    console.log('null')
                 }
 
                  return state.set(
@@ -28,6 +28,9 @@ class CheckboxesStore extends ReduceStore {
                         id: action.id,
                         checkLimit: action.checkLimit,
                         typeInput: action.typeInput,
+                        animationCSS: action.animationCSS,
+                        textInput: action.textInput,
+                        textValue: action.textValue,
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
@@ -35,8 +38,9 @@ class CheckboxesStore extends ReduceStore {
                             iterations: action.iterations,
                             direction: action.direction,
                             fillMode: action.fillMode,
-                            playState: action.playState
-                        })
+                            playState: action.playState,
+                        }),
+
                     })
                 )
 

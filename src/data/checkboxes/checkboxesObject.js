@@ -4,10 +4,11 @@ const checkboxes = Immutable.Record({
     id: '',
     type: 'checkboxes',
     typeInput: null,
-    //entry: true,
-    //entryDirection: null,
     checkLimit: true,
-    style: null
+    style: null,
+    animationCSS: '',
+    textInput: '',
+    textValue: ''
 })
 
 export default checkboxes

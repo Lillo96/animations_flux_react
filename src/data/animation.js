@@ -1,20 +1,5 @@
-import styled, {css, keyframes} from "styled-components"
-
 function getAnimation(id, valueDefault, style) {
     const animation = {}
-
-    let originFrame
-    let endFrame
-
-    const pulse = keyframes`
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    `
-
 
     if (style) {
         //console.log("DENTRO STYLE ESISTE")
@@ -28,8 +13,6 @@ function getAnimation(id, valueDefault, style) {
 
         //originFrame = '@keyframes checkboxprova {\nfrom {\n opacity: 0;\n color: white;\n }\n\n'
         //endFrame = 'to {\n opacity: ' + 1 + ';\n color: white;\n }\n\n}\n\n'
-
-
 
     } else {
         //console.log("DENTRO STYLE NON ESISTE")

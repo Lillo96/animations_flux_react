@@ -3,20 +3,24 @@ import checkboxesActionTypes from "./checkboxesActionTypes"
 
 const checkboxesActions = {
     newCheckboxes (
-      id, checkLimit, typeInput, duration, timing, delay,
-      iterations, direction, fillMode, playState) {
+      id, checkLimit, typeInput, textInput, textValue, duration, timing, delay,
+      iterations, direction, fillMode, playState, animationCSS) {
          animationDispatcher.dispatch ({
             type: checkboxesActionTypes.NEW_CHECKBOXES,
             id: id,
             checkLimit: checkLimit,
             typeInput: typeInput,
+            animationCSS: animationCSS,
+            textInput: textInput,
+            textValue: textValue,
             duration: duration,
             timing: timing,
             delay: delay,
             iterations: iterations,
             direction: direction,
             fillMode: direction,
-            playState: playState
+            playState: playState,
+
         })
     },
     changeValue (id, key, value) {

@@ -8,8 +8,6 @@ function App (props) {
   const checkbox1 = getCheckboxes('checkboxprova')
   const checkbox2 = getCheckboxes('checkboxprova2')
   //const checkbox3 = getCheckboxes('checkboxprova3')
-  //console.log(checkbox1)
-  //console.log(checkbox1)
 
   const [checked, setChecked] = React.useState(true);
   const [checked1, setChecked1] = React.useState(true);
