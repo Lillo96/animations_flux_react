@@ -39,7 +39,7 @@ function checkboxes({
 
 
    const KeyFrames = styled.div`
-          animation: ${getAnimationCSS} both;
+          animation: 1s ${getAnimationCSS} both;
        `;
 
    return (
@@ -61,65 +61,133 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
         //console.log('true')
 
         switch (typeInput) {
-            case 1 :
+            case 1:
                 //console.log("CC", typeInput)
-
-                /*tmp = keyframes`
-                     from {
-                        opacity: 0;
-                        color: black;
-                     }
-                    
-                      to {
-                         opacity: 0.8;
-                         color: white;
-                      }
-                `;*/
-
-                 tmp = keyframes`  
-                      from {
-                        opacity: 0;
-                        color: black;
-                      }
-                    
-                      to {
-                         opacity: 0.8;
-                         color: white;
-                      }
-                  `;
-
-                break;
-
-            case 2 :
-                //console.log("BB", typeInput)
-
                 tmp = keyframes`  
-                      from {
+                      0% {
                         opacity: 0;
+                        color: black;
+                      }
+                      
+                      25% {
+                        opacity: 0.25;
+                        color: black;
+                      }
+                      
+                      50% {
+                        opacity: 0.5;
+                        color: white;
+                      }
+                      
+                      75% {
+                        opacity: 0.75;
                         color: white;
                       }
                     
-                      to {
+                      100% {
                          opacity: 0.8;
                          color: white;
                       }
                   `;
+
+                 /*tmp = keyframes`
+                      from {
+                        opacity: 0;
+                        color: black;
+                      }
+                    
+                      to {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                  `;*/
+
+                break;
+
+            case 2:
+                //console.log("BB", typeInput)
+
+                tmp = keyframes`  
+                      0% {
+                        opacity: 0;
+                        color: black;
+                      }
+                      
+                      25% {
+                        opacity: 0.25;
+                        color: black;
+                      }
+                      
+                      50% {
+                        opacity: 0.5;
+                        color: white;
+                      }
+                      
+                      75% {
+                        opacity: 0.75;
+                        color: white;
+                      }
+                    
+                      100% {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                  `;
+
+                /*tmp = keyframes`
+                      from {
+                        opacity: 0;
+                        color: black;
+                      }
+                    
+                      to {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                  `;*/
 
                 break;
 
             case 3:
 
                 tmp = keyframes`  
+                      0% {
+                        opacity: 0;
+                        color: black;
+                      }
+                      
+                      25% {
+                        opacity: 0.25;
+                        color: black;
+                      }
+                      
+                      50% {
+                        opacity: 0.5;
+                        color: white;
+                      }
+                      
+                      75% {
+                        opacity: 0.75;
+                        color: white;
+                      }
+                    
+                      100% {
+                         opacity: 0.8;
+                         color: white;
+                      }
+                  `;
+
+                /*tmp = keyframes`
                       from {
                         opacity: 0;
-                        color: white;
+                        color: black;
                       }
                     
                       to {
                          opacity: 0.8;
                          color: white;
                       }
-                  `;
+                  `;*/
 
                 break;
 
@@ -133,44 +201,102 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
         //console.log('tmp = 1')
         //console.log("QQ", typeInput)
         switch (typeInput) {
-            case 1 :
+            case 1:
                 //console.log("GG", typeInput)
 
-                /*tmp = keyframes`
-                     from {
+                tmp = keyframes`  
+                      0% {
                         opacity: 0;
+                        color: white;
+                      }
+                      
+                      25% {
+                        opacity: 0.25;
+                        color: white;
+                      }
+                      
+                      50% {
+                        opacity: 0.5;
                         color: red;
-                     }
-
-                      to {
+                      }
+                      
+                      75% {
+                        opacity: 0.75;
+                        color: red;
+                      }
+                    
+                      100% {
                         opacity: 1;
                         color: red;
-                       }
-                `;
-                */
+                      }
+                  `;
 
-                tmp = keyframes`  
+                /*tmp = keyframes`
                       from {
                         opacity: 0;
-                        color: red;
+                        color: white;
                       }
                     
                       to {
                         opacity: 1;
                         color: red;
                       }
-                  `;
-
+                  `;*/
 
                 break;
 
-            case 2 :
+            case 2:
                 //console.log("OO", typeInput)
 
                 tmp = keyframes`  
+                      0% {
+                        opacity: 0;
+                        color: white;
+                      }
+                      
+                      25% {
+                        opacity: 0.25;
+                        color: white;
+                      }
+                      
+                      50% {
+                        color: white;
+                        opacity: 0.5;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration-color: black;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        text-decoration-color: red;
+                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.35, 0.74);
+                      }
+                      
+                      75% {
+                        color: white;
+                        opacity: 0.75;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration-color: black;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        text-decoration-color: red;
+                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.40, 0.84);
+                      }
+                    
+                      100% {
+                        color: white;
+                        opacity: 1;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration-color: black;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        text-decoration-color: red;
+                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                      }
+                  `;
+
+                /*tmp = keyframes`
                       from {
                         opacity: 0.5;
-                        color: black;
+                        color: white;
                       }
                     
                       to {
@@ -183,7 +309,7 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                         text-decoration-color: red;
                         transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
                       }
-                  `;
+                  `;*/
 
                 //originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0.5;\n color: black\n }\n\n'
                 //endFrame = 'to {\n opacity: ' + tmp + ';\n content: \'\';\n display: block\n width: 0%;\n height: 2px;\n background-color: #000;\n position: absolute;\n top: 50%;\n left: 7.5%;\n transform: translateY(-50%);\n transition: width 100ms ease-in-out;\n }\n\n}\n\n'
@@ -195,16 +321,43 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
             case 3:
 
                 tmp = keyframes`  
+                      0% {
+                        opacity: 0;
+                        color: white;
+                      }
+                      
+                      25% {
+                        opacity: 0.25;
+                        color: white;
+                      }
+                      
+                      50% {
+                        opacity: 0.5;
+                        color: red;
+                      }
+                      
+                      75% {
+                        opacity: 0.75;
+                        color: red;
+                      }
+                    
+                      100% {
+                        opacity: 1;
+                        color: red;
+                      }
+                  `;
+
+                /*tmp = keyframes`
                       from {
                         opacity: 0;
-                        color: black;
+                        color: white;
                       }
                     
                       to {
                         opacity: 1;
                         color: red;
                       }
-                  `;
+                  `;*/
 
                 break;
 

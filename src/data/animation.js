@@ -11,9 +11,6 @@ function getAnimation(id, valueDefault, style) {
         animation.animationFillMode = style.fillMode
         animation.animationPlayState = style.playState
 
-        //originFrame = '@keyframes checkboxprova {\nfrom {\n opacity: 0;\n color: white;\n }\n\n'
-        //endFrame = 'to {\n opacity: ' + 1 + ';\n color: white;\n }\n\n}\n\n'
-
     } else {
         //console.log("DENTRO STYLE NON ESISTE")
         const { duration, timing, delay, iterations, direction, fillMode, playState } = valueDefault
