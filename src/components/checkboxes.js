@@ -197,12 +197,12 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                 tmp = keyframes`  
                       from {
                         opacity: 0;
-                        color: white;
+                        color: black;
                       }
                     
                       to {
                         opacity: 1;
-                        color: white;
+                        color: red;
                       }
                   `;
 
