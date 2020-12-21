@@ -10,10 +10,9 @@ function checkboxes({
     direction, fillMode, playState, ...rest
 }) {
     let animation
-    let getAnimationCSS
+    let getAnimationCSS, getAnimationCSS_1
 
    if (!rest.checkboxes.state.has(id)) {
-       console.log("Dentro !rest")
 
        animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
        //console.log(animation)
@@ -22,10 +21,12 @@ function checkboxes({
             id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
             iterations, direction, fillMode, playState
         )
+
        setAnimationCSS(id, cssStylesKeyFrames(true,1))
 
    } else {
-        console.log("Dentro else di !rest")
+
+        //console.log("Dentro else di !rest")
 
         const checkboxObj = rest.checkboxes.state.get(id)
 
@@ -34,29 +35,129 @@ function checkboxes({
 
         setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
         getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
+        getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
 
    }
 
-
    const KeyFrames = styled.div`
-          animation: 1s ${getAnimationCSS} both;
+          animation: 0s ${getAnimationCSS} both;
+       `;
+
+   const KeyFrame2 = styled.div`
+          animation: 1s ${getAnimationCSS_1} both;
        `;
 
    return (
-
        <div id={id} style={animation} {...rest}>
-            <KeyFrames>
-               { rest.children }
-            </KeyFrames>
+           <KeyFrame2>
+               <KeyFrames>
+                   { rest.children }
+               </KeyFrames>
+           </KeyFrame2>
+
        </div>
    )
+}
+
+function setKeyframes2(checkLimit, typeInput) {
+
+    let tmp
+
+    if (checkLimit){
+        console.log('Ok')
+    } else {
+        //console.log('tmp = 1')
+        //console.log("QQ", typeInput)
+        switch (typeInput) {
+
+            case 2:
+                //console.log("OO", typeInput)
+
+               /* tmp = keyframes`
+                    to {
+                        color: white;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        transition-timing-function: clip-path 3s cubic-bezier(.25,.77,.74,.24);
+                    }
+                    
+                    from {
+                        color: white;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        transition-timing-function: clip-path 3s cubic-bezier(.25,.77,.74,.24);
+                    }
+                `;*/
+
+
+                tmp = keyframes`  
+                      
+                      50% {
+                        clip-path: polygon(0 0, 1% 0, 1% 100%, 0% 100%);
+                        color: white;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        transition-timing-function: clip-path 3s cubic-bezier(.25,.77,.74,.24);
+                      }
+                      
+                      75% {
+                        color: white;
+                        clip-path: polygon(0 0, 1% 0, 1% 100%, 0% 100%);
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        transition-timing-function: clip-path 3s cubic-bezier(.25,.77,.74,.24);
+                      }
+                    
+                      100% {
+                        color: white;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        transition-timing-function: clip-path 3s cubic-bezier(.25,.77,.74,.24);
+                      }
+                  `;
+
+
+                /*tmp = keyframes`
+                      from {
+                        opacity: 0.5;
+                        color: white;
+                      }
+
+                      to {
+                        color: white;
+                        opacity: 0.5;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                        text-decoration-color: black;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        text-decoration-color: red;
+                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                      }
+                  `;*/
+
+                //originFrame = '@keyframes ' + state.get('id') + ' {\nfrom {\n opacity: 0.5;\n color: black\n }\n\n'
+                //endFrame = 'to {\n opacity: ' + tmp + ';\n content: \'\';\n display: block\n width: 0%;\n height: 2px;\n background-color: #000;\n position: absolute;\n top: 50%;\n left: 7.5%;\n transform: translateY(-50%);\n transition: width 100ms ease-in-out;\n }\n\n}\n\n'
+                //endFrame = 'to {\n color: white; opacity: 0.5;\n clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n text-decoration-color: black;\n text-decoration: line-through;\n text-decoration-thickness: 3px;\n text-decoration-color: red;\n transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);\n }\n\n}\n\n'
+
+
+                break;
+
+            default:
+                return
+        }
+    }
+
+    return tmp
+
 }
 
 function cssStylesKeyFrames(checkLimit, typeInput) {
 
     let tmp
 
-    //console.log("AAA", checkLimit)
     if (checkLimit){
         //console.log('true')
 
@@ -111,26 +212,31 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                       0% {
                         opacity: 0;
                         color: black;
+                        transition: 0s;
                       }
                       
                       25% {
                         opacity: 0.25;
                         color: black;
+                        transition: 0s;
                       }
                       
                       50% {
                         opacity: 0.5;
                         color: white;
+                        transition: 0s;
                       }
                       
                       75% {
                         opacity: 0.75;
                         color: white;
+                        transition: 0s;
                       }
                     
                       100% {
                          opacity: 0.8;
                          color: white;
+                         transition: 0s;
                       }
                   `;
 
@@ -252,44 +358,31 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                       0% {
                         opacity: 0;
                         color: white;
+                        transition: 0s;
                       }
                       
                       25% {
                         opacity: 0.25;
                         color: white;
+                        transition: 0s;
                       }
                       
                       50% {
                         color: white;
                         opacity: 0.5;
-                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                        text-decoration-color: black;
-                        text-decoration: line-through;
-                        text-decoration-thickness: 3px;
-                        text-decoration-color: red;
-                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.35, 0.74);
+                        transition: 0s;
                       }
                       
                       75% {
                         color: white;
                         opacity: 0.75;
-                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                        text-decoration-color: black;
-                        text-decoration: line-through;
-                        text-decoration-thickness: 3px;
-                        text-decoration-color: red;
-                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.40, 0.84);
+                        transition: 0s;
                       }
                     
                       100% {
-                        color: white;
+                        color: red;
                         opacity: 1;
-                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                        text-decoration-color: black;
-                        text-decoration: line-through;
-                        text-decoration-thickness: 3px;
-                        text-decoration-color: red;
-                        transition: clip-path 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        transition: 0s;
                       }
                   `;
 
@@ -410,6 +503,9 @@ function cssStyles(checkLimit, typeInput) {
 
                 break;
 
+            default:
+                return
+
         }
 
 
@@ -451,6 +547,9 @@ function cssStyles(checkLimit, typeInput) {
                 `;
 
                 break;
+
+            default:
+                return
 
         }
     }

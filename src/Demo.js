@@ -24,6 +24,7 @@ function Demo(props) {
         color: 'black',
     }
 
+
     return (
         <div className="Demo" style={{textAlign: 'center'}}>
                 <header className="Demo-header" style={ demoHeaderConst }>
@@ -70,8 +71,8 @@ function Demo(props) {
 
                         </imp.checkboxes>
 
-                    </div>
 
+                    </div>
                 </header>
         </div>
     )

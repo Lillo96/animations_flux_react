@@ -18,13 +18,9 @@ class CheckboxesStore extends ReduceStore {
         switch (action.type) {
             case checkboxesActionTypes.NEW_CHECKBOXES:
 
-                if (!action.text) {
-                    console.log('null')
-                }
-
-                 return state.set(
+                return state.set(
                     action.id,
-                    checkboxes({
+                     checkboxes({
                         id: action.id,
                         checkLimit: action.checkLimit,
                         typeInput: action.typeInput,
@@ -39,27 +35,26 @@ class CheckboxesStore extends ReduceStore {
                             direction: action.direction,
                             fillMode: action.fillMode,
                             playState: action.playState,
-                        }),
-
-                    })
-                )
-
-
+                            }),
+                        })
+                );
 
             case checkboxesActionTypes.CHANGE_CHECKBOXES_VALUE:
-                if (state.get(action.id).has(action.key)) {
-                    return state.setIn([action.id, action.key], action.value)
-                } else if (action.key.startsWith('style.')) {
-                    action.key = action.key.substr(6)
 
-                    if (state.get(action.id).style.has(action.key)) {
-                        return state.setIn([action.id, 'style', action.key], action.value)
+                    if (state.get(action.id).has(action.key)) {
+                        return state.setIn([action.id, action.key], action.value)
+                    } else if (action.key.startsWith('style.')) {
+                        action.key = action.key.substr(6)
+
+                        if (state.get(action.id).style.has(action.key)) {
+                            return state.setIn([action.id, 'style', action.key], action.value)
+                        } else {
+                            throw Error('style of checkboxes does not have a property ' + action.key)
+                        }
                     } else {
-                        throw Error('style of checkboxes does not have a property ' + action.key)
+                        throw Error('checkboxes does not have a property ' + action.key)
                     }
-                } else {
-                    throw Error('checkboxes does not have a property ' + action.key)
-                }
+
 
             default:
                 return state

@@ -3,11 +3,11 @@ import { Container } from 'flux/utils'
 
 import checkboxesStore from "../data/checkboxes/checkboxesStore"
 
-import '../impAnimation.css'
+//import '../impAnimation.css'
 
-function getStores() {
+function getStores () {
     return [
-        checkboxesStore
+        checkboxesStore,
     ]
 }
 
@@ -25,7 +25,6 @@ export default function animationEnv (view) {
     const Env = Container.createFunctional(EnvView, getStores, getState)
     View = view
     return <Env/>
-
 }
 
 function EnvView (props) {

@@ -1,6 +1,7 @@
 import checkboxesStore from "./data/checkboxes/checkboxesStore"
+//import React from 'react'
 
-import checkboxesActions from "./data/checkboxes/checkboxesActions"
+//import checkboxesActions from "./data/checkboxes/checkboxesActions"
 
 function getDataAnimation(type, id, tmpObj) {
     const state = objectByType(type)

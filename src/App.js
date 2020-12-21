@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react'
 import imp, { getCheckboxes } from './imp'
+import checkboxes from "./components/checkboxes";
 
 function App (props) {
 
@@ -14,8 +15,8 @@ function App (props) {
   //const [checked2, setChecked2] = React.useState(true);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App" {...props}>
+      <header className="App-header" {...props}>
         <img src={logo} className="App-logo" alt="logo"/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
