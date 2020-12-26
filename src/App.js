@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react'
-import imp, { getCheckboxes } from './imp'
+import imp, { getCheckboxes, getCards, getItems } from './imp'
 import checkboxes from "./components/checkboxes";
 
 function App (props) {
@@ -56,6 +56,15 @@ function App (props) {
           </label>
 
         </imp.checkboxes>
+
+        {/*<imp.cards id='cardsprova' {...props}>
+          <p>Ciao</p>
+        </imp.cards>*/}
+
+
+        <imp.items id='itemsprova' {...props}>
+          <p>Ciaooooo</p>
+        </imp.items>
 
         <a
             className="App-link"

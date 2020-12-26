@@ -1,24 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import cardsActions from "../data/cards/cardsActions";
+import itemsActions from "../data/items/itemsActions";
 import getAnimation from "../data/animation"
 
 import styled, {keyframes} from "styled-components"
 
-function cards({
-    id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay, iterations,
-    direction, fillMode, playState, ...rest
-}) {
+function items({
+                   id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay, iterations,
+                   direction, fillMode, playState, ...rest
+               }) {
 
     let animation
     let getAnimationCSS, getAnimationCSS_1
 
-    if (!rest.cards.state.has(id)) {
+    if (!rest.items.state.has(id)) {
 
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
         //console.log(animation)
 
-        cardsActions.newCards(
+        itemsActions.newItems(
             id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
             iterations, direction, fillMode, playState
         )
@@ -29,9 +29,9 @@ function cards({
 
         //console.log("Dentro else di !rest")
 
-        const cardObj = rest.cards.state.get(id)
+        const itemObj = rest.items.state.get(id)
 
-        animation = getAnimation(id, {}, cardObj.style)
+        animation = getAnimation(id, {}, itemObj.style)
         //console.log(animation)
 
         // setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
@@ -42,15 +42,13 @@ function cards({
 
     return (
         <div id={id} style={animation} {...rest}>
-             { rest.children }
+            { rest.children }
         </div>
     )
 }
 
 
-
-
-cards.propType = {
+items.propType = {
     anim: PropTypes.object,
     id: PropTypes.string,
     typeInput: PropTypes.number,
@@ -67,4 +65,4 @@ cards.propType = {
     textValue: PropTypes.string
 }
 
-export default cards
+export default items

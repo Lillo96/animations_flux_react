@@ -2,10 +2,10 @@ import { ReduceStore } from 'flux/utils'
 import animationDispatcher from "../animationDispatcher"
 import Immutable from 'immutable'
 import style from '../styleObject'
-import cardsActionTypes from "./cardsActionTypes";
-import cards from "./cardsObject"
+import itemsActionTypes from "./itemsActionTypes";
+import items from "./itemsObject"
 
-class CardsStore extends ReduceStore {
+class ItemsStore extends ReduceStore {
     constructor () {
         super(animationDispatcher)
     }
@@ -16,11 +16,11 @@ class CardsStore extends ReduceStore {
 
     reduce (state, action) {
         switch (action.type) {
-            case cardsActionTypes.NEW_CARDS:
+            case itemsActionTypes.NEW_ITEMS:
 
                 return state.set(
                     action.id,
-                    cards({
+                    items({
                         id: action.id,
                         checkLimit: action.checkLimit,
                         typeInput: action.typeInput,
@@ -39,7 +39,7 @@ class CardsStore extends ReduceStore {
                     })
                 );
 
-            case cardsActionTypes.CHANGE_CARDS_VALUE:
+            case itemsActionTypes.CHANGE_ITEMS_VALUE:
 
                 if (state.get(action.id).has(action.key)) {
                     return state.setIn([action.id, action.key], action.value)
@@ -49,10 +49,10 @@ class CardsStore extends ReduceStore {
                     if (state.get(action.id).style.has(action.key)) {
                         return state.setIn([action.id, 'style', action.key], action.value)
                     } else {
-                        throw Error('style of cards does not have a property ' + action.key)
+                        throw Error('style of items does not have a property ' + action.key)
                     }
                 } else {
-                    throw Error('cards does not have a property ' + action.key)
+                    throw Error('items does not have a property ' + action.key)
                 }
 
 
@@ -62,4 +62,4 @@ class CardsStore extends ReduceStore {
     }
 }
 
-export default new CardsStore()
+export default new ItemsStore()
