@@ -1,6 +1,6 @@
 import getDataAnimation from "./view"
 import checkboxes, {setCheckLimit, setTextValue} from "./components/checkboxes";
-import cards, {setCheckLimitCards} from "./components/cards"
+import cards, {setCheckLimitCards, getCardContainer, getCardBack, getCardFront, getCardInner, getImageArea, getImageWrapper} from "./components/cards"
 import items from "./components/items"
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
@@ -24,7 +24,13 @@ export function getCheckboxes(id) {
 export function getCards(id) {
     return {
         ...getDataAnimation('cards', id, cardsObject),
-        setCheckLimitCards
+        setCheckLimitCards,
+        getCardContainer,
+        getCardFront,
+        getCardInner,
+        getCardBack,
+        getImageArea,
+        getImageWrapper
     }
 }
 

@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react'
 import imp, { getCheckboxes, getCards, getItems } from './imp'
 import checkboxes from "./components/checkboxes";
-import cards, {setCheckLimitCards} from "./components/cards";
+import cards, {setCheckLimitCards, getCardContainer, getCardBack, getCardInner, getCardFront, getImageArea, getImageWrapper} from "./components/cards";
 import styled, {css} from "styled-components";
 
 function App (props) {
@@ -19,6 +19,12 @@ function App (props) {
   const card1 = getCards('cardsprova')
 
   const [flipped, setFlipped ] = React.useState(false);
+
+  //const CardContainer = getCardContainer('cardsprova')
+  //const CardFront = getCardFront('cardsprova')
+  //const CardBack = getCardBack('cardsprova')
+  //const CardInner = getCardInner('cardsprova')
+
   console.log(flipped);
 
   const demoHeaderConst = {
@@ -78,31 +84,64 @@ function App (props) {
         >
           Flip
         </button>*/}
-        <imp.cards id='cardsprova' {...props}>
+        {/*<imp.cards id='cardsprova' {...props}>
 
           <CardContainer>
             <CardInner className={flipped ? "flipped" : ""}>
               <CardFront>
                 <h2>Title</h2>
                 <p>Here is some content for the front</p>
-                <button onClick={() => setFlipped(true)}>Flip</button>
+                <button onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</button>
               </CardFront>
               <CardBack>
                 <h2>Back the title</h2>
                 <p>Here is the content that goes on the back</p>
-                <button onClick={() => setFlipped(false)}>Flip</button>
+                <button onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</button>
               </CardBack>
 
             </CardInner>
 
           </CardContainer>
 
-          {/*<div className="flip3D" style={demoHeaderConst}>
+          <div className="flip3D" style={demoHeaderConst}>
             <div className="back">Box 1 - Back </div>
             <div className="front">Box 1 - Front</div>
-          </div>*/}
-        </imp.cards>
+          </div>
+        </imp.cards>*/}
 
+       {/*<imp.cards id='cardsprova01' {...props}>
+
+          <div class="image-area">
+            <div class="img-wrapper">
+              <img src="https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Atul Prajapati"/>
+              <h2>David James</h2>
+              <ul>
+                <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+              </ul>
+            </div>
+          </div>
+
+        </imp.cards>*/}
+
+       <imp.cards id='cardsprova02' {...props}>
+
+          <ImageArea>
+            <ImageWrapper>
+              <img src="https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Atul Prajapati"/>
+              <h2>David James</h2>
+                <ul>
+                  <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                  <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                  <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                  <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                </ul>
+              </ImageWrapper>
+          </ImageArea>
+
+        </imp.cards>
 
         {/*<imp.items id='itemsprova' {...props}>
           <p>Ciaooooo</p>
@@ -124,14 +163,22 @@ function App (props) {
 
 export default App
 
-const CardContainer = styled.div`
+const ImageArea = getImageArea()
+const ImageWrapper = getImageWrapper()
+
+const CardContainer = getCardContainer('cardsprova')
+const CardFront = getCardFront('cardsprova')
+const CardBack = getCardBack('cardsprova')
+const CardInner = getCardInner('cardsprova')
+
+/*const CardContainer = styled.div`
             display: flex;
             flex-direction: column;
             transition: z-index 500ms, transform 500ms;
             z-index: 0;
             -webkit-perspective: 1000px;
             transform-style: preserve-3d;
-            
+
             &.flipped {
                 z-index: 1;
             }
@@ -167,8 +214,9 @@ const CardInner = styled.div`
         display: flex;
         transition: transform 500ms;
         transform-style: preserve-3d;
-        
+
         &.flipped {
             transform: rotateY(180deg);
         }
-    `;
+    `;*/
+

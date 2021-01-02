@@ -4,7 +4,8 @@ import cardsActions from "../data/cards/cardsActions"
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css} from "styled-components"
-import checkboxesActions from "../data/checkboxes/checkboxesActions";
+
+let tmp_CardID
 
 function cards({
     id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay, iterations,
@@ -23,9 +24,10 @@ function cards({
             id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
             iterations, direction, fillMode, playState
         )
+            // NON DOVREBBE SERVIRE
+        //setAnimationCSS(id, cssStylesKeyFrames(true,1))
 
-        setAnimationCSS(id, cssStylesKeyFrames(true,1))
-
+        tmp_CardID = id
     } else {
 
         //console.log("Dentro else di !rest")
@@ -36,10 +38,14 @@ function cards({
         //console.log(animation)
 
         //setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
-        setAnimationCSS(id, cssStylesKeyFrames(true,1))
-        getAnimationCSS = rest.cards.state.get(id).get('animationCSS')
+
+            // NON DOVREBBE SERVIRE
+        //setAnimationCSS(id, cssStylesKeyFrames(true,1))
+        //getAnimationCSS = rest.cards.state.get(id).get('animationCSS')
+
         // getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
 
+        tmp_CardID = rest.cards.state.get(id).get('id')
     }
 
     /*const CardContainer = styled.div`
@@ -100,6 +106,166 @@ function cards({
     )
 }
 
+export function getImageArea() {
+
+    const ImageArea = styled.div`
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          position: absolute;
+       `;
+
+    return ImageArea
+}
+
+export function getImageWrapper() {
+
+    /*const ImageWrapper = styled.div`
+          width: 300px;
+          height: 400px;
+          position: relative;
+          overflow: hidden;
+       `;*/
+
+    const ImageWrapper = styled.div`
+          width: 300px;
+          height: 400px;
+          position: relative;
+          overflow: hidden;
+          
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 180%;
+            height: 100%;
+            width: 100%;
+            background: rgba(255,255,255,.3);
+            z-index: 1;
+            transform: skew(45deg);
+            transition: .5s;
+          }
+          
+          &:hover:before {
+            left: -180%;
+          }
+          
+          &.img {
+            height: 400px;
+            width: 300px;
+            filter: grayscale(100%);
+            transition: 2s;
+          }
+          
+          &.img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+          }
+       `;
+
+    return ImageWrapper
+}
+
+export function getCardContainer(idCardHTML) {
+    //let CardContainer
+    console.log('fuori')
+
+    //console.log("ID", idCardHTML)
+    //console.log("TMP_CARD", tmp_CardID)
+    //if (idCardHTML === tmp_CardID) {
+        console.log('dentro')
+        const CardContainer = styled.div`
+            display: flex;
+            flex-direction: column;
+            transition: z-index 500ms, transform 500ms;
+            z-index: 0;
+            -webkit-perspective: 1000px;
+            transform-style: preserve-3d;
+
+            &.flipped {
+                z-index: 1;
+            }
+       `;
+    //}
+
+    return CardContainer
+}
+
+export function getCardFront(idCardHTML) {
+    //let CardFront
+    const CardSide = css`
+        width: 100%;
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -moz-backface-visibility: none;
+        -webkit-backface-visibility: none;
+        backface-visibility: none;
+        border: 2px solid #0d0d0d;
+    `;
+
+    //if (idCardHTML === tmp_CardID) {
+        const CardFront = styled.div`
+        
+        ${CardSide}
+        
+        z-index: 0;
+        background: #d7d7d7;
+    `;
+   // }
+
+    return CardFront
+}
+
+export function getCardBack(idCardHTML) {
+    //let CardBack
+
+    const CardSide = css`
+        width: 100%;
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -moz-backface-visibility: none;
+        -webkit-backface-visibility: none;
+        backface-visibility: none;
+        border: 2px solid #0d0d0d;
+    `;
+
+    //if (idCardHTML === tmp_CardID) {
+        const CardBack = styled.div`
+        
+        ${CardSide}
+        
+        
+        transform: rotateY(180deg) translate(100%, 0);
+        background: #d7d7d7;
+        z-index: 1;
+    `;
+   // }
+
+    return CardBack
+}
+
+export function getCardInner(idCardHTML) {
+    //let CardInner
+
+    //if (idCardHTML === tmp_CardID) {
+        const CardInner = styled.div`
+        flex: 1;
+        display: flex;
+        transition: transform 500ms;
+        transform-style: preserve-3d;
+
+        &.flipped {
+            transform: rotateY(180deg);
+        }
+        `;
+    //}
+
+    return CardInner
+}
 
 export function setAnimationCSS (id, value) {
     //console.log(value)
