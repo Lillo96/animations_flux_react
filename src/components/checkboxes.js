@@ -29,12 +29,14 @@ function checkboxes({
         //console.log("Dentro else di !rest")
 
         const checkboxObj = rest.checkboxes.state.get(id)
+       // console.log("checkOBJ",checkboxObj)
 
         animation = getAnimation(id, {}, checkboxObj.style)
         //console.log(animation)
 
         setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
-        getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
+
+       getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
         getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
 
    }

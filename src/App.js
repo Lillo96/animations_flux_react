@@ -3,6 +3,8 @@ import './App.css';
 import React from 'react'
 import imp, { getCheckboxes, getCards, getItems } from './imp'
 import checkboxes from "./components/checkboxes";
+import cards, {setCheckLimitCards} from "./components/cards";
+import styled, {css} from "styled-components";
 
 function App (props) {
 
@@ -13,6 +15,18 @@ function App (props) {
   const [checked, setChecked] = React.useState(true);
   const [checked1, setChecked1] = React.useState(true);
   //const [checked2, setChecked2] = React.useState(true);
+
+  const card1 = getCards('cardsprova')
+
+  const [flipped, setFlipped ] = React.useState(false);
+  console.log(flipped);
+
+  const demoHeaderConst = {
+    width: '240px',
+    height: '200px',
+    margin: '10px',
+    float: 'left',
+  }
 
   return (
     <div className="App" {...props}>
@@ -30,7 +44,7 @@ function App (props) {
           Check Me!
         </label>*/}
 
-        <imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={ true } {...props}>
+        {/*<imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={ true } {...props}>
 
           <label>
             <input type="checkbox"
@@ -42,9 +56,9 @@ function App (props) {
           </label>
 
 
-        </imp.checkboxes>
+        </imp.checkboxes>*/}
 
-        <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true } {...props}>
+        {/*<imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true } {...props}>
 
           <label>
             <input type="checkbox"
@@ -55,16 +69,44 @@ function App (props) {
             Checkbox
           </label>
 
-        </imp.checkboxes>
+        </imp.checkboxes>*/}
 
-        {/*<imp.cards id='cardsprova' {...props}>
-          <p>Ciao</p>
-        </imp.cards>*/}
+        {/*<button
+            flipped={!flipped}
+            onChange={() => setFlipped(!flipped)}
+            onClick={() => { card1.setCheckLimitCards() }}
+        >
+          Flip
+        </button>*/}
+        <imp.cards id='cardsprova' {...props}>
+
+          <CardContainer>
+            <CardInner className={flipped ? "flipped" : ""}>
+              <CardFront>
+                <h2>Title</h2>
+                <p>Here is some content for the front</p>
+                <button onClick={() => setFlipped(true)}>Flip</button>
+              </CardFront>
+              <CardBack>
+                <h2>Back the title</h2>
+                <p>Here is the content that goes on the back</p>
+                <button onClick={() => setFlipped(false)}>Flip</button>
+              </CardBack>
+
+            </CardInner>
+
+          </CardContainer>
+
+          {/*<div className="flip3D" style={demoHeaderConst}>
+            <div className="back">Box 1 - Back </div>
+            <div className="front">Box 1 - Front</div>
+          </div>*/}
+        </imp.cards>
 
 
-        <imp.items id='itemsprova' {...props}>
+        {/*<imp.items id='itemsprova' {...props}>
           <p>Ciaooooo</p>
-        </imp.items>
+        </imp.items>*/}
 
         <a
             className="App-link"
@@ -81,3 +123,52 @@ function App (props) {
 }
 
 export default App
+
+const CardContainer = styled.div`
+            display: flex;
+            flex-direction: column;
+            transition: z-index 500ms, transform 500ms;
+            z-index: 0;
+            -webkit-perspective: 1000px;
+            transform-style: preserve-3d;
+            
+            &.flipped {
+                z-index: 1;
+            }
+       `;
+
+const CardSide = css`
+        width: 100%;
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -moz-backface-visibility: none;
+        -webkit-backface-visibility: none;
+        backface-visibility: none;
+        border: 2px solid #0d0d0d;
+    `;
+
+const CardFront = styled.div`
+        ${CardSide}
+        z-index: 0;
+        background: #d7d7d7;
+    `;
+
+const CardBack = styled.div`
+        ${CardSide}
+        transform: rotateY(180deg) translate(100%, 0);
+        background: #d7d7d7;
+        z-index: 1;
+    `;
+
+const CardInner = styled.div`
+        flex: 1;
+        display: flex;
+        transition: transform 500ms;
+        transform-style: preserve-3d;
+        
+        &.flipped {
+            transform: rotateY(180deg);
+        }
+    `;
