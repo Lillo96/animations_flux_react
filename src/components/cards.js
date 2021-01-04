@@ -113,6 +113,7 @@ export function getImageArea() {
           left: 50%;
           transform: translate(-50%, -50%);
           position: absolute;
+          
        `;
 
     return ImageArea
@@ -127,6 +128,24 @@ export function getImageWrapper() {
           overflow: hidden;
        `;*/
 
+
+    /*const HeaderImg = styled.img.attrs({
+        src: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+    })`
+        height: 400px;
+        width: 300px;
+        filter: grayscale(100%);
+        transition: 2s;
+     `;*/
+
+
+    /*const Img = styled.img`
+        height: 400px;
+        width: 300px;
+        filter: grayscale(100%);
+        transition: 2s;
+    `;
+*/
     const ImageWrapper = styled.div`
           width: 300px;
           height: 400px;
@@ -150,20 +169,93 @@ export function getImageWrapper() {
             left: -180%;
           }
           
-          &.img {
-            height: 400px;
-            width: 300px;
-            filter: grayscale(100%);
-            transition: 2s;
-          }
           
-          &.img:hover {
-            filter: grayscale(0%);
-            transform: scale(1.1);
-          }
+
        `;
 
     return ImageWrapper
+}
+
+export function getHeaderImage() {
+    const HeaderImg = styled.img.attrs({
+        src: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+    })`
+        height: 400px;
+        width: 300px;
+        filter: grayscale(100%);
+        transition: 2s;
+        
+        &:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+          }
+        
+         
+          
+     `;
+
+    return HeaderImg
+}
+
+export function getName() {
+
+    const Name = styled.h2`
+        background: tomato;
+        font-family: Poppins;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 10px 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transform: perspective(400px) rotateY(90deg);
+        transform-origin: right;
+        transition: 1s;
+        
+        &:hover {
+            transform: perspective(400px) rotateY(0deg);
+        }
+    `;
+
+    return Name
+}
+
+export function getIconUL() {
+
+    const IconUL = styled.ul`
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background: rgba(255,255,255,0);
+    `;
+
+    return IconUL
+}
+
+export function getIconLi() {
+
+    const IconLI = styled.li`
+        background: #333;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 40px;
+        transform: perspective(800px) rotateY(90deg);
+        transition: .5s;
+        transform-origin: left;
+        
+        &:hover {
+            transform: perspective(800px) rotateY(0deg);
+        }
+    `;
+
+    return IconLI
+
 }
 
 export function getCardContainer(idCardHTML) {

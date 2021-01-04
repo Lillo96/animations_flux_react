@@ -3,7 +3,19 @@ import './App.css';
 import React from 'react'
 import imp, { getCheckboxes, getCards, getItems } from './imp'
 import checkboxes from "./components/checkboxes";
-import cards, {setCheckLimitCards, getCardContainer, getCardBack, getCardInner, getCardFront, getImageArea, getImageWrapper} from "./components/cards";
+import cards, {
+    setCheckLimitCards,
+    getCardContainer,
+    getCardBack,
+    getCardInner,
+    getCardFront,
+    getImageArea,
+    getImageWrapper,
+    getHeaderImage,
+    getName,
+    getIconUL,
+    getIconLi
+} from "./components/cards";
 import styled, {css} from "styled-components";
 
 function App (props) {
@@ -50,6 +62,8 @@ function App (props) {
           Check Me!
         </label>*/}
 
+        {/*CHECKBOX*/}
+
         {/*<imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={ true } {...props}>
 
           <label>
@@ -84,6 +98,9 @@ function App (props) {
         >
           Flip
         </button>*/}
+
+        {/*CARD*/}
+
         {/*<imp.cards id='cardsprova' {...props}>
 
           <CardContainer>
@@ -126,22 +143,28 @@ function App (props) {
 
         </imp.cards>*/}
 
-       <imp.cards id='cardsprova02' {...props}>
+       {/*<imp.cards id='cardsprova02' {...props}>
 
           <ImageArea>
             <ImageWrapper>
-              <img src="https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Atul Prajapati"/>
-              <h2>David James</h2>
-                <ul>
+              <HeaderImage alt="Atul Prajapati"/>
+                   <NameCard>David James</NameCard>
+                <IconUL>
+                  <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
                   <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
                   <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
                   <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                  <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                </ul>
+                </IconUL>
               </ImageWrapper>
           </ImageArea>
 
-        </imp.cards>
+       </imp.cards>*/}
+
+       <imp.cards id='cardsprova03' {...props}>
+
+
+
+       </imp.cards>
 
         {/*<imp.items id='itemsprova' {...props}>
           <p>Ciaooooo</p>
@@ -165,6 +188,10 @@ export default App
 
 const ImageArea = getImageArea()
 const ImageWrapper = getImageWrapper()
+const HeaderImage = getHeaderImage()
+const NameCard = getName()
+const IconUL = getIconUL()
+const IconLI = getIconLi()
 
 const CardContainer = getCardContainer('cardsprova')
 const CardFront = getCardFront('cardsprova')
