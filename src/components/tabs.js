@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import itemsActions from "../data/items/itemsActions";
+import tabsActions from "../data/tabs/tabsActions";
 import getAnimation from "../data/animation"
 
 import styled, {keyframes} from "styled-components"
 
-function items({
+function tabs({
                    id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay, iterations,
                    direction, fillMode, playState, ...rest
                }) {
@@ -13,12 +13,12 @@ function items({
     let animation
     let getAnimationCSS, getAnimationCSS_1
 
-    if (!rest.items.state.has(id)) {
+    if (!rest.tabs.state.has(id)) {
 
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
         //console.log(animation)
 
-        itemsActions.newItems(
+        tabsActions.newTabs(
             id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
             iterations, direction, fillMode, playState
         )
@@ -29,7 +29,7 @@ function items({
 
         //console.log("Dentro else di !rest")
 
-        const itemObj = rest.items.state.get(id)
+        const itemObj = rest.tabs.state.get(id)
 
         animation = getAnimation(id, {}, itemObj.style)
         //console.log(animation)
@@ -48,7 +48,7 @@ function items({
 }
 
 
-items.propType = {
+tabs.propType = {
     anim: PropTypes.object,
     id: PropTypes.string,
     typeInput: PropTypes.number,
@@ -65,4 +65,4 @@ items.propType = {
     textValue: PropTypes.string
 }
 
-export default items
+export default tabs

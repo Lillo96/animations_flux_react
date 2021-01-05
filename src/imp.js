@@ -30,16 +30,16 @@ import cards, {
     getCardGeneralTitle,
     getCardGeneralText
 } from "./components/cards"
-import items from "./components/items"
+import tabs from "./components/tabs"
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
 import cardsObject from "./data/cards/cardsObject"
-import itemsObject from "./data/items/itemsObject"
+import tabsObject from "./data/tabs/tabsObject"
 
 const imp = {
     checkboxes: checkboxes,
     cards: cards,
-    items: items
+    tabs: tabs
 }
 
 export function getCheckboxes(id) {
@@ -84,9 +84,9 @@ export function getCards(id) {
     }
 }
 
-export function getItems(id) {
+export function getTabs(id) {
     return {
-        ...getDataAnimation('items', id, itemsObject)
+        ...getDataAnimation('tabs', id, tabsObject)
     }
 
 }

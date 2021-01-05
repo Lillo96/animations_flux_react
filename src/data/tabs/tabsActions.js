@@ -1,12 +1,12 @@
 import animationDispatcher from "../animationDispatcher"
-import itemsActionTypes from "./itemsActionTypes";
+import tabsActionTypes from "./tabsActionTypes";
 
-const itemsActions = {
-    newItems (
+const tabsActions = {
+    newTabs (
         id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
         iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
-            type: itemsActionTypes.NEW_ITEMS,
+            type: tabsActionTypes.NEW_ITEMS,
             id: id,
             checkLimit: checkLimit,
             typeInput: typeInput,
@@ -29,7 +29,7 @@ const itemsActions = {
         //console.log("VALUE", value)
 
         animationDispatcher.dispatch({
-            type: itemsActionTypes.CHANGE_ITEMS_VALUE,
+            type: tabsActionTypes.CHANGE_ITEMS_VALUE,
             id: id,
             key: key,
             value: value
@@ -37,4 +37,4 @@ const itemsActions = {
     }
 }
 
-export default itemsActions
+export default tabsActions

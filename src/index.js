@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals'
 import Demo from "./Demo";
 import animationEnv from "./containers/AppContainer"
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 ReactDOM.render(animationEnv(App), document.getElementById('root'))
 

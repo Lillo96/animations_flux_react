@@ -1,8 +1,8 @@
 import Immutable from 'immutable'
 
-const items = Immutable.Record({
+const tabs = Immutable.Record({
     id: '',
-    type: 'items',
+    type: 'tabs',
     typeInput: null,
     checkLimit: true,
     style: null,
@@ -11,4 +11,4 @@ const items = Immutable.Record({
     textValue: ''
 })
 
-export default items
+export default tabs

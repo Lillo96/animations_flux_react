@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react'
-import imp, { getCheckboxes, getCards, getItems } from './imp'
+import imp, { getCheckboxes, getCards, getTabs } from './imp'
 import checkboxes from "./components/checkboxes";
 import cards, {
     setCheckLimitCards,
@@ -35,6 +35,7 @@ import cards, {
 } from "./components/cards";
 import styled, {css} from "styled-components";
 
+
 function App (props) {
 
   const checkbox1 = getCheckboxes('checkboxprova')
@@ -62,6 +63,8 @@ function App (props) {
     margin: '10px',
     float: 'left',
   }
+
+
 
   return (
     <div className="App" {...props}>
@@ -177,7 +180,7 @@ function App (props) {
 
        </imp.cards>*/}
 
-       <imp.cards id='cardsprova03' {...props}>
+       {/*<imp.cards id='cardsprova03' {...props}>
 
            <CardCenter>
 
@@ -236,13 +239,47 @@ function App (props) {
                        <GeneralMoreTitle>Jane Doe</GeneralMoreTitle>
                        <GeneralMoreText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
                            lacus. Nam vestibulum sodales odio ut pulvinar.</GeneralMoreText>
-                       {/*<GeneralMore>Mouse over the card for more info</GeneralMore>*/}
+                       <GeneralMore>Mouse over the card for more info</GeneralMore>
                    </General>
                </Card>
 
            </CardCenter>
 
-       </imp.cards>
+       </imp.cards>*/}
+
+          {/*ITEMS*/}
+
+          <imp.tabs id='tabsprova' {...props}>
+              <div className="container">
+                  <div className="items">
+                      <div className="items-head">
+                          <p>UX DESIGN</p>
+                          <hr></hr>
+                      </div>
+
+                      <div className="items-body">
+                          <div className="items-body-content">
+                              <span>Web Usabilty Testing</span>
+                              <i className="fa fa-angle-right"></i>
+                          </div>
+                          <div className="items-body-content">
+                              <span>Design of Everyday Things</span>
+                              <i className="fa fa-angle-right"></i>
+                          </div>
+                          <div className="items-body-content">
+                              <span>Practical Empathy: For Collaboration & Creativity in Your Work</span>
+                              <i className="fa fa-angle-right"></i>
+                          </div>
+                          <div className="items-body-content">
+                              <span>About Face: The Essentials of Interaction Design</span>
+                              <i className="fa fa-angle-right"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </imp.tabs>
+
 
         {/*<imp.items id='itemsprova' {...props}>
           <p>Ciaooooo</p>

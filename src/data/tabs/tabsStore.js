@@ -2,10 +2,10 @@ import { ReduceStore } from 'flux/utils'
 import animationDispatcher from "../animationDispatcher"
 import Immutable from 'immutable'
 import style from '../styleObject'
-import itemsActionTypes from "./itemsActionTypes";
-import items from "./itemsObject"
+import tabsActionTypes from "./tabsActionTypes";
+import tabs from "./tabsObject"
 
-class ItemsStore extends ReduceStore {
+class TabsStore extends ReduceStore {
     constructor () {
         super(animationDispatcher)
     }
@@ -16,11 +16,11 @@ class ItemsStore extends ReduceStore {
 
     reduce (state, action) {
         switch (action.type) {
-            case itemsActionTypes.NEW_ITEMS:
+            case tabsActionTypes.NEW_TABS:
 
                 return state.set(
                     action.id,
-                    items({
+                    tabs({
                         id: action.id,
                         checkLimit: action.checkLimit,
                         typeInput: action.typeInput,
@@ -39,7 +39,7 @@ class ItemsStore extends ReduceStore {
                     })
                 );
 
-            case itemsActionTypes.CHANGE_ITEMS_VALUE:
+            case tabsActionTypes.CHANGE_TABS_VALUE:
 
                 if (state.get(action.id).has(action.key)) {
                     return state.setIn([action.id, action.key], action.value)
@@ -62,4 +62,4 @@ class ItemsStore extends ReduceStore {
     }
 }
 
-export default new ItemsStore()
+export default new TabsStore()

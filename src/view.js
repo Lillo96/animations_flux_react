@@ -1,6 +1,6 @@
 import checkboxesStore from "./data/checkboxes/checkboxesStore"
 import cardsStore from "./data/cards/cardsStore";
-import itemsStore from "./data/items/itemsStore";
+import tabsStore from "./data/tabs/tabsStore";
 //import React from 'react'
 
 //import checkboxesActions from "./data/checkboxes/checkboxesActions"
@@ -31,8 +31,8 @@ function objectByType(type) {
         case 'cards':
             return cardsStore.getState()
 
-        case 'items':
-            return itemsStore.getState()
+        case 'tabs':
+            return tabsStore.getState()
 
         default:
             throw TypeError(`"${type}" is not an animation defined in uit`)
