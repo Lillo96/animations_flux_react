@@ -359,6 +359,230 @@ export function getCardInner(idCardHTML) {
     return CardInner
 }
 
+export function getCardCenter() {
+
+    const CardCenter = styled.div`
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        
+       `;
+
+    return CardCenter
+}
+
+export function getCard() {
+
+    const Card = styled.div`
+       
+        width: 450px;
+        height: 250px;
+        background-color: #fff;
+        background: linear-gradient(#f8f8f8, #fff);
+        box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        margin: 1.5rem;
+       `;
+
+    return Card
+}
+
+export function getAdditional() {
+
+    const Additional = styled.div`
+       
+        position: absolute;
+        width: 150px;
+        height: 100%;
+        background: linear-gradient(#dE685E, #EE786E);
+        transition: width 0.4s;
+        overflow: hidden;
+        z-index: 2;
+       `;
+
+    return Additional
+}
+
+export function getUserCard() {
+
+    const UserCard = styled.div`
+       
+        position: absolute;
+        width: 150px;
+        height: 100%;
+        background: linear-gradient(#dE685E, #EE786E);
+        transition: width 0.4s;
+        overflow: hidden;
+        z-index: 2;
+       `;
+
+    return UserCard
+}
+
+export function getLevelCenter() {
+
+    const LevelCenter = styled.div`
+        top: 15%;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 0.75em;
+        font-weight: bold;
+        background: rgba(0,0,0,0.15);
+        padding: 0.125rem 0.75rem;
+        border-radius: 100px;
+        white-space: nowrap;
+       `;
+
+    return LevelCenter
+}
+
+export function getPointsCenter() {
+
+    const PointsCenter = styled.div`
+        top: 15%;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 0.75em;
+        font-weight: bold;
+        background: rgba(0,0,0,0.15);
+        padding: 0.125rem 0.75rem;
+        border-radius: 100px;
+        white-space: nowrap;
+        
+        top: 85%;
+       `;
+
+    return PointsCenter
+}
+
+export function getSvg() {
+
+    const cssSvg = css`
+         width: 110px;
+         height: 110px;
+         viewBox: 0 0 250 250;
+         xmlns: "http://www.w3.org/2000/svg"; 
+         role: img;
+         aria-labelledby: title desc;
+    `;
+
+    const Svg = styled.div`
+        ${cssSvg}
+    
+        top: 50%;
+       `;
+
+    return Svg
+}
+
+export function getMoreInfo() {
+
+    const MoreInfo = styled.div`
+         width: 300px;
+         float: left;
+         position: absolute;
+         left: 150px;
+         height: 100%;
+       `;
+
+    return MoreInfo
+}
+
+export function getMoreInfoName() {
+
+    const Name = styled.h1`
+        color: #fff;
+        margin-bottom: 0;
+       `;
+
+    return Name
+}
+
+export function getCoords() {
+
+    const Coords = styled.div`
+        margin: 0 1rem;
+        color: #fff;
+        font-size: 1rem;
+       `;
+
+    return Coords
+}
+
+export function getStats() {
+
+    const Stats = styled.div`
+        font-size: 2rem;
+        display: flex;
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        top: auto;
+         color: #fff;
+         
+         .i {
+            display: block;
+         }
+       `;
+
+    return Stats
+}
+
+export function getStatsTitle() {
+
+    const Title = styled.div`
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+       `;
+
+    return Title
+}
+
+export function getStatsValue() {
+
+    const Value = styled.div`
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+       `;
+
+    return Value
+}
+
+export function getCardGeneral() {
+
+    const General = styled.div`
+        width: 300px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        padding: 1rem;
+        padding-top: 0;
+       `;
+
+    return General
+}
+
+export function getCardGeneralMore() {
+
+    const GeneralMore = styled.span`
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 0.9em;
+       `;
+
+    return GeneralMore
+}
+
 export function setAnimationCSS (id, value) {
     //console.log(value)
     cardsActions.changeValue(id, 'animationCSS', value)

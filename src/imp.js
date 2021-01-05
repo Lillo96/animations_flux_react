@@ -11,7 +11,22 @@ import cards, {
     getHeaderImage,
     getName,
     getIconUL,
-    getIconLi
+    getIconLi,
+    getCardCenter,
+    getCard,
+    getAdditional,
+    getUserCard,
+    getLevelCenter,
+    getPointsCenter,
+    getSvg,
+    getMoreInfo,
+    getMoreInfoName,
+    getCoords,
+    getStats,
+    getStatsValue,
+    getStatsTitle,
+    getCardGeneral,
+    getCardGeneralMore
 } from "./components/cards"
 import items from "./components/items"
 
@@ -46,7 +61,22 @@ export function getCards(id) {
         getHeaderImage,
         getName,
         getIconUL,
-        getIconLi
+        getIconLi,
+        getCardCenter,
+        getCard,
+        getAdditional,
+        getUserCard,
+        getLevelCenter,
+        getPointsCenter,
+        getSvg,
+        getMoreInfo,
+        getMoreInfoName,
+        getCoords,
+        getStats,
+        getStatsValue,
+        getStatsTitle,
+        getCardGeneral,
+        getCardGeneralMore
     }
 }
 

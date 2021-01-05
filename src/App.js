@@ -14,7 +14,22 @@ import cards, {
     getHeaderImage,
     getName,
     getIconUL,
-    getIconLi
+    getIconLi,
+    getCardCenter,
+    getCard,
+    getAdditional,
+    getUserCard,
+    getLevelCenter,
+    getPointsCenter,
+    getSvg,
+    getMoreInfo,
+    getMoreInfoName,
+    getCoords,
+    getStats,
+    getStatsValue,
+    getStatsTitle,
+    getCardGeneral,
+    getCardGeneralMore
 } from "./components/cards";
 import styled, {css} from "styled-components";
 
@@ -49,10 +64,10 @@ function App (props) {
   return (
     <div className="App" {...props}>
       <header className="App-header" {...props}>
-        <img src={logo} className="App-logo" alt="logo"/>
+        {/*<img src={logo} className="App-logo" alt="logo"/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p>*/}
 
        {/* <label>
           <input type="checkbox"
@@ -162,7 +177,68 @@ function App (props) {
 
        <imp.cards id='cardsprova03' {...props}>
 
+           <CardCenter>
 
+               <Card>
+                   <Additional>
+                       <UserCard>
+                           <LevelCenter>
+                               Level 13
+                           </LevelCenter>
+                           <PointsCenter>
+                               5,312 Points
+                           </PointsCenter>
+                           <Svg>
+                               <title id="title">Teacher</title>
+                               <desc id="desc">Cartoon of a Caucasian woman smiling, and wearing black glasses and a
+                                   purple shirt with white collar drawn by Alvaro Montoro.
+                               </desc>
+                           </Svg>
+
+                       </UserCard>
+                       <MoreInfo>
+                           <MoreInfoName>Jane Doe</MoreInfoName>
+                           <Coords>
+                               <span>Group Name</span>
+                               <span>Joined January 2019</span>
+                           </Coords>
+                           <Coords>
+                               <span>Position/Role</span>
+                               <span>City, Country</span>
+                           </Coords>
+                           <Stats>
+                               <div>
+                                   <StatsTitle>Awards</StatsTitle>
+                                   <i className="fa fa-trophy"></i>
+                                   <StatsValue>2</StatsValue>
+                               </div>
+                               <div>
+                                   <StatsTitle>Matches</StatsTitle>
+                                   <i className="fa fa-gamepad"></i>
+                                   <StatsValue>27</StatsValue>
+                               </div>
+                               <div>
+                                   <StatsTitle>Pals</StatsTitle>
+                                   <i className="fa fa-group"></i>
+                                   <StatsValue>123</StatsValue>
+                               </div>
+                               <div>
+                                   <StatsTitle>Coffee</StatsTitle>
+                                   <i className="fa fa-coffee"></i>
+                                   <StatsValue>∞</StatsValue>
+                               </div>
+                           </Stats>
+                       </MoreInfo>
+                   </Additional>
+                   <General>
+                       <h1>Jane Doe</h1>
+                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
+                           lacus. Nam vestibulum sodales odio ut pulvinar.</p>
+                       <GeneralMore>Mouse over the card for more info</GeneralMore>
+                   </General>
+               </Card>
+
+           </CardCenter>
 
        </imp.cards>
 
@@ -170,7 +246,7 @@ function App (props) {
           <p>Ciaooooo</p>
         </imp.items>*/}
 
-        <a
+        {/*<a
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
@@ -178,7 +254,7 @@ function App (props) {
         >
           Learn React
 
-        </a>
+        </a>*/}
       </header>
     </div>
   )
@@ -192,6 +268,21 @@ const HeaderImage = getHeaderImage()
 const NameCard = getName()
 const IconUL = getIconUL()
 const IconLI = getIconLi()
+const CardCenter = getCardCenter()
+const Card = getCard()
+const Additional = getAdditional()
+const UserCard = getUserCard()
+const LevelCenter = getLevelCenter()
+const PointsCenter = getPointsCenter()
+const Svg = getSvg()
+const MoreInfo = getMoreInfo()
+const MoreInfoName = getMoreInfoName()
+const Coords = getCoords()
+const Stats = getStats()
+const StatsTitle = getStatsTitle()
+const StatsValue = getStatsValue()
+const General = getCardGeneral()
+const GeneralMore = getCardGeneralMore()
 
 const CardContainer = getCardContainer('cardsprova')
 const CardFront = getCardFront('cardsprova')
