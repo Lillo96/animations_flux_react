@@ -385,6 +385,8 @@ export function getCard() {
         overflow: hidden;
         position: relative;
         margin: 1.5rem;
+        
+        
        `;
 
     return Card
@@ -401,6 +403,11 @@ export function getAdditional() {
         transition: width 0.4s;
         overflow: hidden;
         z-index: 2;
+        
+        &:hover {
+            width: 100%;
+            border-radius: 0 5px 5px 0;
+          }
        `;
 
     return Additional
@@ -566,6 +573,29 @@ export function getCardGeneral() {
         box-sizing: border-box;
         padding: 1rem;
         padding-top: 0;
+        background-color: black;
+        
+        h1 {
+            front-size: 0.4rem;
+        }
+       `;
+
+    return General
+}
+
+export function getCardGeneralTitle() {
+
+    const General = styled.h1`
+            front-size: 4em;
+       `;
+
+    return General
+}
+
+export function getCardGeneralText() {
+
+    const General = styled.p`
+            front-size: 0.4em;
        `;
 
     return General
@@ -577,7 +607,7 @@ export function getCardGeneralMore() {
         position: absolute;
         bottom: 1rem;
         right: 1rem;
-        font-size: 0.9em;
+        font-size: 0.8em;
        `;
 
     return GeneralMore

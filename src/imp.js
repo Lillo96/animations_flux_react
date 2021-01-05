@@ -26,7 +26,9 @@ import cards, {
     getStatsValue,
     getStatsTitle,
     getCardGeneral,
-    getCardGeneralMore
+    getCardGeneralMore,
+    getCardGeneralTitle,
+    getCardGeneralText
 } from "./components/cards"
 import items from "./components/items"
 
@@ -76,7 +78,9 @@ export function getCards(id) {
         getStatsValue,
         getStatsTitle,
         getCardGeneral,
-        getCardGeneralMore
+        getCardGeneralMore,
+        getCardGeneralTitle,
+        getCardGeneralText
     }
 }
 

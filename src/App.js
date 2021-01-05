@@ -29,7 +29,9 @@ import cards, {
     getStatsValue,
     getStatsTitle,
     getCardGeneral,
-    getCardGeneralMore
+    getCardGeneralMore,
+    getCardGeneralTitle,
+    getCardGeneralText
 } from "./components/cards";
 import styled, {css} from "styled-components";
 
@@ -231,10 +233,10 @@ function App (props) {
                        </MoreInfo>
                    </Additional>
                    <General>
-                       <h1>Jane Doe</h1>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
-                           lacus. Nam vestibulum sodales odio ut pulvinar.</p>
-                       <GeneralMore>Mouse over the card for more info</GeneralMore>
+                       <GeneralMoreTitle>Jane Doe</GeneralMoreTitle>
+                       <GeneralMoreText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
+                           lacus. Nam vestibulum sodales odio ut pulvinar.</GeneralMoreText>
+                       {/*<GeneralMore>Mouse over the card for more info</GeneralMore>*/}
                    </General>
                </Card>
 
@@ -283,6 +285,8 @@ const StatsTitle = getStatsTitle()
 const StatsValue = getStatsValue()
 const General = getCardGeneral()
 const GeneralMore = getCardGeneralMore()
+const GeneralMoreTitle = getCardGeneralTitle()
+const GeneralMoreText = getCardGeneralText()
 
 const CardContainer = getCardContainer('cardsprova')
 const CardFront = getCardFront('cardsprova')
