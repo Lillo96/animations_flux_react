@@ -30,7 +30,16 @@ import cards, {
     getCardGeneralTitle,
     getCardGeneralText
 } from "./components/cards"
-import tabs from "./components/tabs"
+import tabs,{
+    getContainerItems,
+    getDivItems,
+    getDivItemsHead,
+    getDivItemsHead_p,
+    getDivItemsHead_hr,
+    getItemsBody,
+    getItemsBodyContent,
+    getItemsBodyContent_icon
+} from "./components/tabs"
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
 import cardsObject from "./data/cards/cardsObject"
@@ -86,7 +95,15 @@ export function getCards(id) {
 
 export function getTabs(id) {
     return {
-        ...getDataAnimation('tabs', id, tabsObject)
+        ...getDataAnimation('tabs', id, tabsObject),
+        getContainerItems,
+        getDivItems,
+        getDivItemsHead,
+        getDivItemsHead_p,
+        getDivItemsHead_hr,
+        getItemsBody,
+        getItemsBodyContent,
+        getItemsBodyContent_icon
     }
 
 }

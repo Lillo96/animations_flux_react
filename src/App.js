@@ -33,6 +33,16 @@ import cards, {
     getCardGeneralTitle,
     getCardGeneralText
 } from "./components/cards";
+import tabs, {
+    getContainerItems,
+    getDivItems,
+    getDivItemsHead,
+    getDivItemsHead_p,
+    getDivItemsHead_hr,
+    getItemsBody,
+    getItemsBodyContent,
+    getItemsBodyContent_icon
+} from "./components/tabs";
 import styled, {css} from "styled-components";
 
 
@@ -63,8 +73,6 @@ function App (props) {
     margin: '10px',
     float: 'left',
   }
-
-
 
   return (
     <div className="App" {...props}>
@@ -250,33 +258,33 @@ function App (props) {
           {/*ITEMS*/}
 
           <imp.tabs id='tabsprova' {...props}>
-              <div className="container">
-                  <div className="items">
-                      <div className="items-head">
-                          <p>UX DESIGN</p>
-                          <hr></hr>
-                      </div>
+              <ContainerItems>
+                  <DivItems>
+                      <DivItemsHead>
+                          <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
+                          <DivItemsHead_hr></DivItemsHead_hr>
+                      </DivItemsHead>
 
-                      <div className="items-body">
-                          <div className="items-body-content">
+                      <ItemsBody>
+                          <ItemsBodyContent>
                               <span>Web Usabilty Testing</span>
-                              <i className="fa fa-angle-right"></i>
-                          </div>
-                          <div className="items-body-content">
+                              <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                          </ItemsBodyContent>
+                          <ItemsBodyContent>
                               <span>Design of Everyday Things</span>
-                              <i className="fa fa-angle-right"></i>
-                          </div>
-                          <div className="items-body-content">
+                              <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                          </ItemsBodyContent>
+                          <ItemsBodyContent>
                               <span>Practical Empathy: For Collaboration & Creativity in Your Work</span>
-                              <i className="fa fa-angle-right"></i>
-                          </div>
-                          <div className="items-body-content">
+                              <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                          </ItemsBodyContent>
+                          <ItemsBodyContent>
                               <span>About Face: The Essentials of Interaction Design</span>
-                              <i className="fa fa-angle-right"></i>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                              <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                          </ItemsBodyContent>
+                      </ItemsBody>
+                  </DivItems>
+              </ContainerItems>
 
           </imp.tabs>
 
@@ -300,7 +308,7 @@ function App (props) {
 }
 
 export default App
-
+// CARD
 const ImageArea = getImageArea()
 const ImageWrapper = getImageWrapper()
 const HeaderImage = getHeaderImage()
@@ -329,6 +337,16 @@ const CardContainer = getCardContainer('cardsprova')
 const CardFront = getCardFront('cardsprova')
 const CardBack = getCardBack('cardsprova')
 const CardInner = getCardInner('cardsprova')
+
+// ITEMS
+const ContainerItems = getContainerItems()
+const DivItems = getDivItems()
+const DivItemsHead = getDivItemsHead()
+const DivItemsHead_p = getDivItemsHead_p()
+const DivItemsHead_hr = getDivItemsHead_hr()
+const ItemsBody = getItemsBody()
+const ItemsBodyContent = getItemsBodyContent()
+const ItemsBodyContentIcon = getItemsBodyContent_icon()
 
 /*const CardContainer = styled.div`
             display: flex;
