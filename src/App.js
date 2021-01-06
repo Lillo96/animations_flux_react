@@ -41,7 +41,13 @@ import tabs, {
     getDivItemsHead_hr,
     getItemsBody,
     getItemsBodyContent,
-    getItemsBodyContent_icon
+    getItemsBodyContent_icon,
+    getTilesWrap,
+    getTilesWrap_li,
+    getTilesWrap_h2,
+    getTilesWrap_h3,
+    getTilesWrap_p,
+    getTilesWrap_button
 } from "./components/tabs";
 import styled, {css} from "styled-components";
 
@@ -257,7 +263,7 @@ function App (props) {
 
           {/*ITEMS*/}
 
-          <imp.tabs id='tabsprova' {...props}>
+          {/*<imp.tabs id='tabsprova' {...props}>
               <ContainerItems>
                   <DivItems>
                       <DivItemsHead>
@@ -286,8 +292,52 @@ function App (props) {
                   </DivItems>
               </ContainerItems>
 
-          </imp.tabs>
+          </imp.tabs>*/}
 
+          <imp.tabs id='tabsprova01' {...props}>
+
+              <TilesWrap>
+                  <TilesWrap_li>
+                      <TilesWrap_h2>01</TilesWrap_h2>
+                      <TilesWrap_h3>Title 1</TilesWrap_h3>
+                      <TilesWrap_p>
+                          Lorem Ipsum is simply dummy text of the printing and typesetting
+                          industry. Lorem Ipsum has been the industry's standard dummy text ever
+                          since the 1500s.
+                      </TilesWrap_p>
+                      <TilesWrap_button>Read more</TilesWrap_button>
+                  </TilesWrap_li>
+                  <li>
+                      <h2>02</h2>
+                      <h3>Title 2</h3>
+                      <p>
+                          When an unknown printer took a galley of type and scrambled it to make
+                          a type specimen book. It has survived not only five centuries.
+                      </p>
+                      <button>Read more</button>
+                  </li>
+                  <li>
+                      <h2>03</h2>
+                      <h3>Title 3</h3>
+                      <p>
+                          But also the leap into electronic typesetting, remaining essentially
+                          unchanged. It was popularised in the 1960s.
+                      </p>
+                      <button>Read more</button>
+                  </li>
+                  <li>
+                      <h2>04</h2>
+                      <h3>Title 4</h3>
+                      <p>
+                          With the release of Letraset sheets containing Lorem Ipsum passages,
+                          and more recently with desktop publishing software like Aldus PageMaker
+                          including versions of Lorem Ipsum.
+                      </p>
+                      <button>Read more</button>
+                  </li>
+              </TilesWrap>
+
+          </imp.tabs>
 
         {/*<imp.items id='itemsprova' {...props}>
           <p>Ciaooooo</p>
@@ -347,6 +397,13 @@ const DivItemsHead_hr = getDivItemsHead_hr()
 const ItemsBody = getItemsBody()
 const ItemsBodyContent = getItemsBodyContent()
 const ItemsBodyContentIcon = getItemsBodyContent_icon()
+
+const TilesWrap = getTilesWrap()
+const TilesWrap_li = getTilesWrap_li()
+const TilesWrap_h2 = getTilesWrap_h2()
+const TilesWrap_h3 = getTilesWrap_h3()
+const TilesWrap_p = getTilesWrap_p()
+const TilesWrap_button = getTilesWrap_button()
 
 /*const CardContainer = styled.div`
             display: flex;

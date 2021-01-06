@@ -38,7 +38,13 @@ import tabs,{
     getDivItemsHead_hr,
     getItemsBody,
     getItemsBodyContent,
-    getItemsBodyContent_icon
+    getItemsBodyContent_icon,
+    getTilesWrap,
+    getTilesWrap_li,
+    getTilesWrap_h2,
+    getTilesWrap_h3,
+    getTilesWrap_p,
+    getTilesWrap_button
 } from "./components/tabs"
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
@@ -103,7 +109,13 @@ export function getTabs(id) {
         getDivItemsHead_hr,
         getItemsBody,
         getItemsBodyContent,
-        getItemsBodyContent_icon
+        getItemsBodyContent_icon,
+        getTilesWrap,
+        getTilesWrap_li,
+        getTilesWrap_h2,
+        getTilesWrap_h3,
+        getTilesWrap_p,
+        getTilesWrap_button
     }
 
 }

@@ -169,6 +169,110 @@ export function getItemsBodyContent_icon() {
     return ItemsBodyContentIcon
 }
 
+export function getTilesWrap() {
+
+    const TilesWrap = styled.ul`
+      padding: 0;
+      margin: 50px auto;
+      list-style: none;
+      text-align: center;
+      `;
+
+    return TilesWrap
+}
+
+export function getTilesWrap_li() {
+
+    const TilesWrap_li = styled.li`
+      display: inline-block;
+      width: 20%;
+      min-width: 200px;
+      max-width: 230px;
+      padding: 80px 20px 40px;
+      position: relative;
+      vertical-align: top;
+      margin: 10px;
+      font-family: 'helvetica', san-serif;
+      min-height: 25vh;
+      background: #262a2b;
+      border: 1px solid #252727;
+      text-align: left;
+      `;
+
+    return TilesWrap_li
+}
+
+export function getTilesWrap_h2() {
+
+    const TilesWrap_h2 = styled.h2`
+      font-size: 114px;
+      margin: 0;
+      position: absolute;
+      opacity: 0.2;
+      top: 50px;
+      right: 10px;
+      transition: all 0.3s ease-in-out; 
+      `;
+
+    return TilesWrap_h2
+}
+
+export function getTilesWrap_h3() {
+
+    const TilesWrap_h3 = styled.h3`
+          font-size: 20px;
+          color: #b7b7b7;
+          margin-bottom: 5px;
+      `;
+
+    return TilesWrap_h3
+}
+
+export function getTilesWrap_p() {
+
+    const TilesWrap_p = styled.p`
+          font-size: 16px;
+          line-height: 18px;
+          color: #b7b7b7;
+          margin-top: 5px;
+      `;
+
+    return TilesWrap_p
+}
+
+export function getTilesWrap_button() {
+
+    const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateY(-40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+          
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+      `;
+
+    return TilesWrap_button
+}
+
 tabs.propType = {
     anim: PropTypes.object,
     id: PropTypes.string,
