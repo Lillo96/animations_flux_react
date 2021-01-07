@@ -307,7 +307,7 @@ function App (props) {
                       </TilesWrap_p>
                       <TilesWrap_button>Read more</TilesWrap_button>
                   </TilesWrap_li>
-                  <li>
+{/*                  <li>
                       <h2>02</h2>
                       <h3>Title 2</h3>
                       <p>
@@ -334,7 +334,7 @@ function App (props) {
                           including versions of Lorem Ipsum.
                       </p>
                       <button>Read more</button>
-                  </li>
+                  </li>*/}
               </TilesWrap>
 
           </imp.tabs>
