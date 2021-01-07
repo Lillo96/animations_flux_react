@@ -135,6 +135,8 @@ function App (props) {
 
         {/*CARD*/}
 
+                {/*    CARD 1     */}
+
         {/*<imp.cards id='cardsprova' {...props}>
 
           <CardContainer>
@@ -177,7 +179,7 @@ function App (props) {
 
         </imp.cards>*/}
 
-       {/*<imp.cards id='cardsprova02' {...props}>
+       <imp.cards id='cardsprova02' {...props}>
 
           <ImageArea>
             <ImageWrapper>
@@ -192,7 +194,7 @@ function App (props) {
               </ImageWrapper>
           </ImageArea>
 
-       </imp.cards>*/}
+       </imp.cards>
 
        {/*<imp.cards id='cardsprova03' {...props}>
 
@@ -294,7 +296,7 @@ function App (props) {
 
           </imp.tabs>*/}
 
-          <imp.tabs id='tabsprova01' {...props}>
+          {/*<imp.tabs id='tabsprova01' {...props}>
 
               <TilesWrap>
                   <TilesWrap_li>
@@ -307,7 +309,7 @@ function App (props) {
                       </TilesWrap_p>
                       <TilesWrap_button>Read more</TilesWrap_button>
                   </TilesWrap_li>
-{/*                  <li>
+                  <li>
                       <h2>02</h2>
                       <h3>Title 2</h3>
                       <p>
@@ -334,10 +336,10 @@ function App (props) {
                           including versions of Lorem Ipsum.
                       </p>
                       <button>Read more</button>
-                  </li>*/}
+                  </li>
               </TilesWrap>
 
-          </imp.tabs>
+          </imp.tabs>*/}
 
         {/*<imp.items id='itemsprova' {...props}>
           <p>Ciaooooo</p>
@@ -359,12 +361,7 @@ function App (props) {
 
 export default App
 // CARD
-const ImageArea = getImageArea()
-const ImageWrapper = getImageWrapper()
-const HeaderImage = getHeaderImage()
-const NameCard = getName()
-const IconUL = getIconUL()
-const IconLI = getIconLi()
+
 const CardCenter = getCardCenter()
 const Card = getCard()
 const Additional = getAdditional()
@@ -383,10 +380,25 @@ const GeneralMore = getCardGeneralMore()
 const GeneralMoreTitle = getCardGeneralTitle()
 const GeneralMoreText = getCardGeneralText()
 
+        // CARD 1 -- START
+
 const CardContainer = getCardContainer('cardsprova')
 const CardFront = getCardFront('cardsprova')
 const CardBack = getCardBack('cardsprova')
 const CardInner = getCardInner('cardsprova')
+
+        // CARD 1 -- END
+
+        // CARD 2 -- START
+
+const ImageArea = getImageArea()
+const ImageWrapper = getImageWrapper()
+const HeaderImage = getHeaderImage()
+const NameCard = getName()
+const IconUL = getIconUL()
+const IconLI = getIconLi()
+
+        // CARD 2 -- END
 
 // ITEMS
 const ContainerItems = getContainerItems()

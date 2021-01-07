@@ -106,17 +106,231 @@ function cards({
     )
 }
 
+// CARD 1
+
+export function getCardContainer(idCardHTML) {
+    //let CardContainer
+    console.log('fuori')
+
+        console.log('dentro')
+        /*const CardContainer = styled.div`
+            display: flex;
+            flex-direction: column;
+            transition: z-index 500ms, transform 500ms;
+            z-index: 0;
+            -webkit-perspective: 1000px;
+            transform-style: preserve-3d;
+
+            &.flipped {
+                z-index: 1;
+            }
+       `;*/
+
+
+    const tmp = keyframes`  
+                      
+                      from {
+                        display: flex;
+                        flex-direction: column;
+                        transition: z-index 500ms, transform 500ms;
+                        z-index: 0;
+                        -webkit-perspective: 1000px;
+                        transform-style: preserve-3d;
+                      }
+                      
+                      to {
+                        z-index: 1;
+                      }
+                  `;
+
+    const CardContainerFinal = styled.div`
+          animation: 1s ${tmp} both;
+       `;
+
+
+    return CardContainerFinal
+}
+
+export function getCardFront(idCardHTML) {
+    //let CardFront
+    /*const CardSide = css`
+        width: 100%;
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -moz-backface-visibility: none;
+        -webkit-backface-visibility: none;
+        backface-visibility: none;
+        border: 2px solid #0d0d0d;
+    `;
+
+        const CardFront = styled.div`
+        
+        ${CardSide}
+        
+        z-index: 0;
+        background: #d7d7d7;
+    `;
+     */
+
+    const tmp = keyframes`  
+                      
+                      from {}
+                      
+                      to {
+                        width: 100%;
+                        min-width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        -moz-backface-visibility: none;
+                        -webkit-backface-visibility: none;
+                        backface-visibility: none;
+                        border: 2px solid #0d0d0d;
+                        
+                        z-index: 0;
+                        background: #d7d7d7;
+                      }
+                  `;
+
+    const CardFrontFinal = styled.div`
+          animation: 1s ${tmp} both;
+       `;
+
+    return CardFrontFinal
+
+}
+
+export function getCardBack(idCardHTML) {
+    //let CardBack
+
+    /*const CardSide = css`
+        width: 100%;
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -moz-backface-visibility: none;
+        -webkit-backface-visibility: none;
+        backface-visibility: none;
+        border: 2px solid #0d0d0d;
+    `;
+
+
+    const CardBack = styled.div`
+        
+        ${CardSide}
+        
+        
+        transform: rotateY(180deg) translate(100%, 0);
+        background: #d7d7d7;
+        z-index: 1;
+    `;*/
+
+    const tmp = keyframes`  
+                      
+                      from {
+                        
+                      }
+                      
+                      to {
+                        width: 100%;
+                        min-width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        -moz-backface-visibility: none;
+                        -webkit-backface-visibility: none;
+                        backface-visibility: none;
+                        border: 2px solid #0d0d0d;
+                      
+                        transform: rotateY(180deg) translate(100%, 0);
+                        background: #d7d7d7;
+                        z-index: 1;
+                      }
+    `;
+
+    const CardBackFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+
+    return CardBackFinal
+}
+
+export function getCardInner(idCardHTML) {
+
+        const CardInner = styled.div`
+        flex: 1;
+        display: flex;
+        transition: transform 500ms;
+        transform-style: preserve-3d;
+
+        &.flipped {
+            transform: rotateY(180deg);
+        }
+        `;
+
+
+    /*const tmp = keyframes`
+                      
+                      0% {
+                        transform: rotateY(0deg);
+                      }
+                      
+                      100% {
+                        flex: 1;
+                        display: flex;
+                        transition: transform 500ms;
+                        transform-style: preserve-3d;
+                
+                        ransform: rotateY(180tdeg);
+                      }
+    `;
+
+    const CardInnerFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;*/
+
+
+    return CardInner
+}
+
+//
+
+// CARD 2
+
 export function getImageArea() {
 
-    const ImageArea = styled.div`
+    const tmp = keyframes`  
+                      
+                      from {
+                        
+                      }
+                      
+                      to {
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        position: absolute;
+                      }
+                  `;
+
+    const ImageAreaFinal = styled.div`
+          animation: 1s ${tmp} both;
+       `;
+
+
+/*    const ImageArea = styled.div`
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           position: absolute;
           
-       `;
+       `;*/
 
-    return ImageArea
+    return ImageAreaFinal
 }
 
 export function getImageWrapper() {
@@ -146,6 +360,9 @@ export function getImageWrapper() {
         transition: 2s;
     `;
 */
+
+
+
     const ImageWrapper = styled.div`
           width: 300px;
           height: 400px;
@@ -153,30 +370,39 @@ export function getImageWrapper() {
           overflow: hidden;
           
           &:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 180%;
-            height: 100%;
-            width: 100%;
-            background: rgba(255,255,255,.3);
-            z-index: 1;
-            transform: skew(45deg);
-            transition: .5s;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 180%;
+                height: 100%;
+                width: 100%;
+                background: rgba(255,255,255,.3);
+                z-index: 1;
+                transform: skew(45deg);
+                transition: .5s;
           }
           
           &:hover:before {
             left: -180%;
           }
-          
-          
-
+           
        `;
 
     return ImageWrapper
 }
 
 export function getHeaderImage() {
+
+
+    const tmp = keyframes`
+
+         to {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+         }
+    `;
+
+
     const HeaderImg = styled.img.attrs({
         src: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
     })`
@@ -186,15 +412,15 @@ export function getHeaderImage() {
         transition: 2s;
         
         &:hover {
-            filter: grayscale(0%);
-            transform: scale(1.1);
-          }
-        
-         
-          
+             animation: ${tmp} 1s both; 
+        }
+  
      `;
 
+    //
+
     return HeaderImg
+
 }
 
 export function getName() {
@@ -258,106 +484,7 @@ export function getIconLi() {
 
 }
 
-export function getCardContainer(idCardHTML) {
-    //let CardContainer
-    console.log('fuori')
-
-    //console.log("ID", idCardHTML)
-    //console.log("TMP_CARD", tmp_CardID)
-    //if (idCardHTML === tmp_CardID) {
-        console.log('dentro')
-        const CardContainer = styled.div`
-            display: flex;
-            flex-direction: column;
-            transition: z-index 500ms, transform 500ms;
-            z-index: 0;
-            -webkit-perspective: 1000px;
-            transform-style: preserve-3d;
-
-            &.flipped {
-                z-index: 1;
-            }
-       `;
-    //}
-
-    return CardContainer
-}
-
-export function getCardFront(idCardHTML) {
-    //let CardFront
-    const CardSide = css`
-        width: 100%;
-        min-width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        -moz-backface-visibility: none;
-        -webkit-backface-visibility: none;
-        backface-visibility: none;
-        border: 2px solid #0d0d0d;
-    `;
-
-    //if (idCardHTML === tmp_CardID) {
-        const CardFront = styled.div`
-        
-        ${CardSide}
-        
-        z-index: 0;
-        background: #d7d7d7;
-    `;
-   // }
-
-    return CardFront
-}
-
-export function getCardBack(idCardHTML) {
-    //let CardBack
-
-    const CardSide = css`
-        width: 100%;
-        min-width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        -moz-backface-visibility: none;
-        -webkit-backface-visibility: none;
-        backface-visibility: none;
-        border: 2px solid #0d0d0d;
-    `;
-
-    //if (idCardHTML === tmp_CardID) {
-        const CardBack = styled.div`
-        
-        ${CardSide}
-        
-        
-        transform: rotateY(180deg) translate(100%, 0);
-        background: #d7d7d7;
-        z-index: 1;
-    `;
-   // }
-
-    return CardBack
-}
-
-export function getCardInner(idCardHTML) {
-    //let CardInner
-
-    //if (idCardHTML === tmp_CardID) {
-        const CardInner = styled.div`
-        flex: 1;
-        display: flex;
-        transition: transform 500ms;
-        transform-style: preserve-3d;
-
-        &.flipped {
-            transform: rotateY(180deg);
-        }
-        `;
-    //}
-
-    return CardInner
-}
+//
 
 export function getCardCenter() {
 
