@@ -197,6 +197,38 @@ export function getTilesWrap_li() {
       background: #262a2b;
       border: 1px solid #252727;
       text-align: left;
+      
+      &:hover button {
+                transform: translateY(5px);
+                opacity: 1;
+                color: white; 
+          }
+      &:hover h2 {
+            top: 0px;
+            opacity: 0.6;
+      }
+      
+      &:before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          z-index: -1;
+          background: #fff;
+          transform: skew(2deg, 2deg);
+      }
+      
+      /*&.after {
+          content: '';
+          position: absolute;
+          width: 40%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          background: rgba(255, 255, 255, 0.02);
+      }*/
       `;
 
     return TilesWrap_li
@@ -268,10 +300,28 @@ export function getTilesWrap_button() {
               z-index: -1;
               transition: all 0.3s ease-in-out;
           }
+          
+          &:hover {
+                color: #262a2b;
+          }
+          
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
       `;
 
     return TilesWrap_button
 }
+
+// export function getT() {
+//
+//     const  = styled.`
+//
+//       `;
+//
+//     return
+// }
 
 tabs.propType = {
     anim: PropTypes.object,
