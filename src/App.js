@@ -96,7 +96,7 @@ function App (props) {
           Check Me!
         </label>*/}
 
-        {/*CHECKBOX*/}
+                {/*CHECKBOX*/}
 
         {/*<imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={ true } {...props}>
 

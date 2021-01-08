@@ -6,11 +6,12 @@ import getAnimation from "../data/animation"
 import styled, {keyframes} from "styled-components"
 
 function checkboxes({
-    id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay, iterations,
-    direction, fillMode, playState, ...rest
+    id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+    opacityCheck, timeAnimation, typeAnimFillMode, duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
     let getAnimationCSS, getAnimationCSS_1
+    let timeAnim, fillAnim, timeAnim2
 
    if (!rest.checkboxes.state.has(id)) {
 
@@ -18,11 +19,11 @@ function checkboxes({
        //console.log(animation)
 
        checkboxesActions.newCheckboxes(
-            id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
-            iterations, direction, fillMode, playState
+            id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck, opacityCheck,
+            timeAnimation, typeAnimFillMode, duration, timing, delay,iterations, direction, fillMode, playState
         )
 
-       setAnimationCSS(id, cssStylesKeyFrames(true,1))
+       setAnimationCSS(id, cssStylesKeyFrames(true,1, colorStart))
 
    } else {
 
@@ -34,30 +35,44 @@ function checkboxes({
         animation = getAnimation(id, {}, checkboxObj.style)
         //console.log(animation)
 
-        setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
+        setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'),
+                                               rest.checkboxes.state.get(id).get('typeInput'),
+                                               rest.checkboxes.state.get(id).get('colorStart'),
+                                               rest.checkboxes.state.get(id).get('colorEnd'),
+                                               rest.checkboxes.state.get(id).get('opacityNotCheck'),
+                                               rest.checkboxes.state.get(id).get('opacityCheck')
+                            ))
 
-       getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
+        getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
         getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
 
+        timeAnim = rest.checkboxes.state.get(id).get('timeAnimation')
+        fillAnim = rest.checkboxes.state.get(id).get('typeAnimFillMode')
+
+        if (rest.checkboxes.state.get(id).get('typeInput') == 2) {
+            timeAnim2 = rest.checkboxes.state.get(id).get('timeAnimation')
+            timeAnim = '0s'
+        }
    }
 
    const KeyFrames = styled.div`
-          animation: 0s ${getAnimationCSS} both;
+          animation: ${timeAnim} ${getAnimationCSS} ${fillAnim};
        `;
 
    const KeyFrame2 = styled.div`
-          animation: 1s ${getAnimationCSS_1} both;
+          animation: ${timeAnim2} ${getAnimationCSS_1} both;
        `;
 
    return (
        <div id={id} style={animation} {...rest}>
-           <KeyFrame2>
+          <KeyFrame2>
                <KeyFrames>
                    { rest.children }
                </KeyFrames>
-           </KeyFrame2>
+          </KeyFrame2>
 
        </div>
+
    )
 }
 
@@ -156,40 +171,40 @@ function setKeyframes2(checkLimit, typeInput) {
 
 }
 
-function cssStylesKeyFrames(checkLimit, typeInput) {
+function cssStylesKeyFrames(checkLimit, typeInput, colorStart, colorEnd, opacityNotCheck, opacityCheck) {
 
     let tmp
 
     if (checkLimit){
-        //console.log('true')
 
         switch (typeInput) {
             case 1:
-                //console.log("CC", typeInput)
+                console.log("OO", opacityNotCheck)
+
                 tmp = keyframes`  
                       0% {
                         opacity: 0;
-                        color: black;
+                        color: ${colorStart};
                       }
                       
                       25% {
-                        opacity: 0.25;
-                        color: black;
+                        opacity: ${opacityNotCheck/4};
+                        color: ${colorStart};
                       }
                       
                       50% {
-                        opacity: 0.5;
-                        color: white;
+                        opacity: ${opacityNotCheck/2};
+                        color: ${colorStart};
                       }
                       
                       75% {
-                        opacity: 0.75;
-                        color: white;
+                        opacity: ${opacityNotCheck/4 + opacityNotCheck/2};
+                        color: ${colorStart};
                       }
                     
                       100% {
-                         opacity: 0.8;
-                         color: white;
+                         opacity: ${opacityNotCheck};
+                         color: ${colorStart};
                       }
                   `;
 
@@ -213,31 +228,31 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                 tmp = keyframes`  
                       0% {
                         opacity: 0;
-                        color: black;
+                        color: ${colorStart};
                         transition: 0s;
                       }
                       
                       25% {
-                        opacity: 0.25;
-                        color: black;
+                        opacity: ${opacityNotCheck/4};
+                        color: ${colorStart};
                         transition: 0s;
                       }
                       
                       50% {
-                        opacity: 0.5;
-                        color: white;
+                        opacity: ${opacityNotCheck/2};
+                        color: ${colorStart};
                         transition: 0s;
                       }
                       
                       75% {
-                        opacity: 0.75;
-                        color: white;
+                        opacity: ${opacityNotCheck/4 + opacityNotCheck/2};
+                        color: ${colorStart};
                         transition: 0s;
                       }
                     
                       100% {
-                         opacity: 0.8;
-                         color: white;
+                         opacity: ${opacityNotCheck};
+                         color: ${colorStart};
                          transition: 0s;
                       }
                   `;
@@ -261,27 +276,27 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                 tmp = keyframes`  
                       0% {
                         opacity: 0;
-                        color: black;
+                        color: ${colorStart};
                       }
                       
                       25% {
-                        opacity: 0.25;
-                        color: black;
+                        opacity: ${opacityNotCheck/4};
+                        color: ${colorStart};
                       }
                       
                       50% {
-                        opacity: 0.5;
-                        color: white;
+                        opacity: ${opacityNotCheck/2};
+                        color: ${colorStart};
                       }
                       
                       75% {
-                        opacity: 0.75;
-                        color: white;
+                        opacity: ${opacityNotCheck/4 + opacityNotCheck/2};
+                        color: ${colorStart};
                       }
                     
                       100% {
-                         opacity: 0.8;
-                         color: white;
+                         opacity: ${opacityNotCheck};
+                         color: ${colorStart};
                       }
                   `;
 
@@ -310,32 +325,31 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
         //console.log("QQ", typeInput)
         switch (typeInput) {
             case 1:
-                //console.log("GG", typeInput)
 
                 tmp = keyframes`  
                       0% {
                         opacity: 0;
-                        color: white;
+                        color: ${colorStart};
                       }
                       
                       25% {
-                        opacity: 0.25;
-                        color: white;
+                        opacity: ${opacityCheck/4};
+                        color: ${colorStart};
                       }
                       
                       50% {
-                        opacity: 0.5;
-                        color: red;
+                        opacity: ${opacityCheck/2};
+                        color: ${colorEnd};
                       }
                       
                       75% {
-                        opacity: 0.75;
-                        color: red;
+                        opacity: ${opacityCheck/4 + opacityCheck/2};
+                        color: ${colorEnd};
                       }
                     
                       100% {
-                        opacity: 1;
-                        color: red;
+                        opacity: ${opacityCheck};
+                        color: ${colorEnd};
                       }
                   `;
 
@@ -359,31 +373,31 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                 tmp = keyframes`  
                       0% {
                         opacity: 0;
-                        color: white;
+                        color: ${colorEnd};
                         transition: 0s;
                       }
                       
                       25% {
-                        opacity: 0.25;
-                        color: white;
+                        opacity: ${opacityCheck/4};
+                        color: ${colorEnd};
                         transition: 0s;
                       }
                       
                       50% {
-                        color: white;
-                        opacity: 0.5;
+                        color: ${colorEnd};
+                        opacity: ${opacityCheck/2};
                         transition: 0s;
                       }
                       
                       75% {
-                        color: white;
-                        opacity: 0.75;
+                        color: ${colorEnd};
+                        opacity: ${opacityCheck/4 + opacityCheck/2};
                         transition: 0s;
                       }
                     
                       100% {
-                        color: red;
-                        opacity: 1;
+                        color: ${colorEnd};
+                        opacity: ${opacityCheck};
                         transition: 0s;
                       }
                   `;
@@ -418,27 +432,27 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
                 tmp = keyframes`  
                       0% {
                         opacity: 0;
-                        color: white;
+                        color: ${colorStart};
                       }
                       
                       25% {
-                        opacity: 0.25;
-                        color: white;
+                        opacity: ${opacityCheck/4};
+                        color: ${colorStart};
                       }
                       
                       50% {
-                        opacity: 0.5;
-                        color: red;
+                        opacity: ${opacityCheck/2};
+                        color: ${colorEnd};
                       }
                       
                       75% {
-                        opacity: 0.75;
-                        color: red;
+                        opacity: ${opacityCheck/4 + opacityCheck/2};
+                        color: ${colorEnd};
                       }
                     
                       100% {
-                        opacity: 1;
-                        color: red;
+                        opacity: ${opacityCheck}; 
+                        color: ${colorEnd};
                       }
                   `;
 
@@ -606,7 +620,13 @@ checkboxes.propType = {
     playState: PropTypes.string,
     animationCSS: PropTypes.string,
     textInput: PropTypes.string,
-    textValue: PropTypes.string
+    textValue: PropTypes.string,
+    colorStart: PropTypes.string,
+    colorEnd: PropTypes.string,
+    opacityNotCheck: PropTypes.string,
+    opacityCheck: PropTypes.string,
+    timeAnimation: PropTypes.string,
+    typeAnimFillMode: PropTypes.string
 }
 
 export default checkboxes

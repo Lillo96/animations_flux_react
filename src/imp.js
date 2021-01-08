@@ -1,5 +1,8 @@
 import getDataAnimation from "./view"
-import checkboxes, {setCheckLimit, setTextValue} from "./components/checkboxes";
+import checkboxes, {
+    setCheckLimit,
+    setTextValue,
+} from "./components/checkboxes";
 import cards, {
     setCheckLimitCards,
     getCardContainer,
@@ -61,7 +64,7 @@ export function getCheckboxes(id) {
     return {
         ...getDataAnimation('checkboxes', id, checkboxesObject),
         setCheckLimit,
-        setTextValue
+        setTextValue,
     }
 }
 
