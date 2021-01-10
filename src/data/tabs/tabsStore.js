@@ -4,6 +4,7 @@ import Immutable from 'immutable'
 import style from '../styleObject'
 import tabsActionTypes from "./tabsActionTypes";
 import tabs from "./tabsObject"
+import PropTypes from "prop-types";
 
 class TabsStore extends ReduceStore {
     constructor () {
@@ -27,6 +28,7 @@ class TabsStore extends ReduceStore {
                         animationCSS: action.animationCSS,
                         textInput: action.textInput,
                         textValue: action.textValue,
+
                         borderDim_ContItem: action.borderDim_ContItem,
                         borderType_ContItem: action.borderType_ContItem,
                         borderColor_ContItem: action.borderColor_ContItem,
@@ -72,6 +74,23 @@ class TabsStore extends ReduceStore {
                         fontSize_ItemsBodyContentIcon: action.fontSize_ItemsBodyContentIcon,
                         color_ItemsBodyContentIcon: action.color_ItemsBodyContentIcon,
                         fontWeight_ItemsBodyContentIcon: action.fontWeight_ItemsBodyContentIcon,
+
+                        width_TilesWrapLi1: action.width_TilesWrapLi1,
+                        fontFamily_TilesWrapLi1: action.fontFamily_TilesWrapLi1,
+                        fontFamily_TilesWrapLi2: action.fontFamily_TilesWrapLi2,
+                        height_TilesWrapLi: action.height_TilesWrapLi,
+                        backgroundColor_TilesWrapLi: action.backgroundColor_TilesWrapLi,
+                        borderDim_TilesWrapLi: action.borderDim_TilesWrapLi,
+                        borderType_TilesWrapLi: action.borderType_TilesWrapLi,
+                        borderColor_TilesWrapLi: action.borderColor_TilesWrapLi,
+                        fontSize_TilesWrap_h2: action.fontSize_TilesWrap_h2,
+                        fontSize_getTilesWrap_h3: action.fontSize_getTilesWrap_h3,
+                        color_getTilesWrap_h3: action.color_getTilesWrap_h3,
+                        marginBotton_getTilesWrap_h3: action.marginBotton_getTilesWrap_h3,
+                        fontSize_TilesWrap_p: action.fontSize_TilesWrap_p,
+                        lineHeight_TilesWrap_p: action.lineHeight_TilesWrap_p,
+                        color_TilesWrap_p: action.color_TilesWrap_p,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

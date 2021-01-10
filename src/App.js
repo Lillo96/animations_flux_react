@@ -408,12 +408,12 @@ const ItemsBody = getItemsBody()
 const ItemsBodyContent = getItemsBodyContent()
 const ItemsBodyContentIcon = getItemsBodyContent_icon()*/
 
-const TilesWrap = getTilesWrap()
+/*const TilesWrap = getTilesWrap()
 const TilesWrap_li = getTilesWrap_li()
 const TilesWrap_h2 = getTilesWrap_h2()
 const TilesWrap_h3 = getTilesWrap_h3()
 const TilesWrap_p = getTilesWrap_p()
-const TilesWrap_button = getTilesWrap_button()
+const TilesWrap_button = getTilesWrap_button()*/
 
 /*const CardContainer = styled.div`
             display: flex;

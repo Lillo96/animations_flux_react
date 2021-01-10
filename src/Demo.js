@@ -51,7 +51,13 @@ import {
     getDivItems,
     getDivItemsHead,
     getDivItemsHead_hr,
-    getDivItemsHead_p, getItemsBody, getItemsBodyContent, getItemsBodyContent_icon
+    getDivItemsHead_p,
+    getItemsBody,
+    getItemsBodyContent,
+    getItemsBodyContent_icon,
+    getTilesWrap, getTilesWrap_button,
+    getTilesWrap_h2, getTilesWrap_h3,
+    getTilesWrap_li, getTilesWrap_p
 } from "./components/tabs";
 
 let num
@@ -359,7 +365,6 @@ function VerticalTabs(props) {
                     >
                         <Tab label="1" {...a11yProps2(0)} />
                         <Tab label="2" {...a11yProps2(1)} />
-                        <Tab label="3" {...a11yProps2(2)} />
                     </Tabs>
                     <TabPanel2 value={value} index={0}>
                         <imp.tabs id='tabsprova' {...props}>
@@ -390,15 +395,39 @@ function VerticalTabs(props) {
                                     </ItemsBody>
                                 </DivItems>
                             </ContainerItems>
-
                         </imp.tabs>
                     </TabPanel2>
                     <TabPanel2 value={value} index={1}>
 
-                    </TabPanel2>
-                    <TabPanel2 value={value} index={2}>
+                        <imp.tabs id='tabsprova01' {...props}>
+
+                            <TilesWrap>
+                                <TilesWrap_li>
+                                    <TilesWrap_h2>01</TilesWrap_h2>
+                                    <TilesWrap_h3>Title 1</TilesWrap_h3>
+                                    <TilesWrap_p>
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                        since the 1500s.
+                                    </TilesWrap_p>
+                                    <TilesWrap_button>Read more</TilesWrap_button>
+                                </TilesWrap_li>
+                                <TilesWrap_li>
+                                    <TilesWrap_h2>02</TilesWrap_h2>
+                                    <TilesWrap_h3>Title 2</TilesWrap_h3>
+                                    <TilesWrap_p>
+                                        When an unknown printer took a galley of type and scrambled it to make
+                                        a type specimen book. It has survived not only five centuries.
+                                    </TilesWrap_p>
+                                    <TilesWrap_button>Read more</TilesWrap_button>
+                                </TilesWrap_li>
+
+                            </TilesWrap>
+
+                        </imp.tabs>
 
                     </TabPanel2>
+
                 </div>
             );
             break;
@@ -578,7 +607,6 @@ function Demo(props) {
             <TabPanel index={2} value={value} style={ demoTabPanel } {...props}>
                 <VerticalTabs type='3' {...props}/>
             </TabPanel>
-
         </div>
 
     )
@@ -634,3 +662,12 @@ const DivItemsHead_hr = getDivItemsHead_hr(getTabs('tabsprova'))
 const ItemsBody = getItemsBody(getTabs('tabsprova'))
 const ItemsBodyContent = getItemsBodyContent(getTabs('tabsprova'))
 const ItemsBodyContentIcon = getItemsBodyContent_icon(getTabs('tabsprova'))
+
+// ITEM 2 - START
+
+const TilesWrap = getTilesWrap(getTabs('tabsprova'))
+const TilesWrap_li = getTilesWrap_li(getTabs('tabsprova'))
+const TilesWrap_h2 = getTilesWrap_h2(getTabs('tabsprova'))
+const TilesWrap_h3 = getTilesWrap_h3(getTabs('tabsprova'))
+const TilesWrap_p = getTilesWrap_p(getTabs('tabsprova'))
+const TilesWrap_button = getTilesWrap_button(getTabs('tabsprova'))

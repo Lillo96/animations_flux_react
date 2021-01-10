@@ -3,8 +3,9 @@ import tabsActionTypes from "./tabsActionTypes";
 
 const tabsActions = {
     newTabs (
-        id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,borderDim_ContItem, borderType_ContItem,
-        borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
+        id, checkLimit, typeInput, animationCSS, textInput, textValue,
+
+        borderDim_ContItem, borderType_ContItem, borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
         paddingX_DivItemsHeadFinal,paddingY_DivItemsHeadFinal, paddingX_DivItemsHeadFinal_p, paddingY_DivItemsHeadFinal_p,
         margin_DivItemsHeadFinal_p, color_DivItemsHeadFinal_p, fontWeigh_DivItemsHeadFinal_p, fontSize_DivItemsHeadFinal_p,
         width_DivItemsHead_hr, marginX_DivItemsHead_hr, marginY_DivItemsHead_hr, borderDim_DivItemsHead_hr, borderType_DivItemsHead_hr,
@@ -12,7 +13,12 @@ const tabsActions = {
         paddingRight_ItemsBodyContent, display_ItemsBodyContent, color_ItemsBodyContent, fontSize_ItemsBodyContent, gripGap_ItemsBodyContent,
         borderDim_ItemsBodyContent, borderType_ItemsBodyContent, borderColor_ItemsBodyContent, borderRadius_hover_ItemsBodyContent, borderDim_hover_ItemsBodyContent, borderType_hover_ItemsBodyContent,
         borderColor_hover_ItemsBodyContent, fontSize_ItemsBodyContentIcon, color_ItemsBodyContentIcon, fontWeight_ItemsBodyContentIcon,
-        iterations, direction, fillMode, playState) {
+
+        width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
+        backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
+        fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
+
+        duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
             type: tabsActionTypes.NEW_TABS,
             id: id,
@@ -21,6 +27,7 @@ const tabsActions = {
             animationCSS: animationCSS,
             textInput: textInput,
             textValue: textInput,
+
             borderDim_ContItem: borderDim_ContItem,
             borderType_ContItem: borderType_ContItem,
             borderColor_ContItem: borderColor_ContItem,
@@ -66,6 +73,23 @@ const tabsActions = {
             fontSize_ItemsBodyContentIcon: fontSize_ItemsBodyContentIcon,
             color_ItemsBodyContentIcon: color_ItemsBodyContentIcon,
             fontWeight_ItemsBodyContentIcon: fontWeight_ItemsBodyContentIcon,
+
+            width_TilesWrapLi1: width_TilesWrapLi1,
+            fontFamily_TilesWrapLi1: fontFamily_TilesWrapLi1,
+            fontFamily_TilesWrapLi2: fontFamily_TilesWrapLi2,
+            height_TilesWrapLi: height_TilesWrapLi,
+            backgroundColor_TilesWrapLi: backgroundColor_TilesWrapLi,
+            borderDim_TilesWrapLi: borderDim_TilesWrapLi,
+            borderType_TilesWrapLi: borderType_TilesWrapLi,
+            borderColor_TilesWrapLi: borderColor_TilesWrapLi,
+            fontSize_TilesWrap_h2: fontSize_TilesWrap_h2,
+            fontSize_getTilesWrap_h3: fontSize_getTilesWrap_h3,
+            color_getTilesWrap_h3: color_getTilesWrap_h3,
+            marginBotton_getTilesWrap_h3: marginBotton_getTilesWrap_h3,
+            fontSize_TilesWrap_p: fontSize_TilesWrap_p,
+            lineHeight_TilesWrap_p: lineHeight_TilesWrap_p,
+            color_TilesWrap_p: color_TilesWrap_p,
+
             duration: duration,
             timing: timing,
             delay: delay,

@@ -55,10 +55,25 @@ const tabs = Immutable.Record({
     borderColor_hover_ItemsBodyContent: '#0B5AA2',
     fontSize_ItemsBodyContentIcon: '15px',
     color_ItemsBodyContentIcon: '#0B5AA2',
-    fontWeight_ItemsBodyContentIcon: 'bold'
-
+    fontWeight_ItemsBodyContentIcon: 'bold',
 
     //
+
+    width_TilesWrapLi1: '20%',
+    fontFamily_TilesWrapLi1: 'helvetica',
+    fontFamily_TilesWrapLi2: 'san-serif',
+    height_TilesWrapLi: '20vh',
+    backgroundColor_TilesWrapLi: '#262a2b',
+    borderDim_TilesWrapLi: '1px',
+    borderType_TilesWrapLi: 'solid',
+    borderColor_TilesWrapLi: '#252727',
+    fontSize_TilesWrap_h2: '114px',
+    fontSize_getTilesWrap_h3: '20px',
+    color_getTilesWrap_h3: '#b7b7b7',
+    marginBotton_getTilesWrap_h3: '5px',
+    fontSize_TilesWrap_p: '16px',
+    lineHeight_TilesWrap_p: '18px',
+    color_TilesWrap_p: '#b7b7b7',
 })
 
 export default tabs

@@ -15,6 +15,9 @@ function tabs({
                   paddingRight_ItemsBodyContent, display_ItemsBodyContent, color_ItemsBodyContent, fontSize_ItemsBodyContent, gripGap_ItemsBodyContent,
                   borderDim_ItemsBodyContent, borderType_ItemsBodyContent, borderColor_ItemsBodyContent, borderRadius_hover_ItemsBodyContent, borderDim_hover_ItemsBodyContent, borderType_hover_ItemsBodyContent,
                   borderColor_hover_ItemsBodyContent, fontSize_ItemsBodyContentIcon, color_ItemsBodyContentIcon, fontWeight_ItemsBodyContentIcon,
+                  width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
+                  backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
+                  fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
                   duration, timing, delay, iterations, direction, fillMode, playState, ...rest
                }) {
 
@@ -36,6 +39,9 @@ function tabs({
             paddingRight_ItemsBodyContent, display_ItemsBodyContent, color_ItemsBodyContent, fontSize_ItemsBodyContent, gripGap_ItemsBodyContent,
             borderDim_ItemsBodyContent, borderType_ItemsBodyContent, borderColor_ItemsBodyContent, borderRadius_hover_ItemsBodyContent, borderDim_hover_ItemsBodyContent, borderType_hover_ItemsBodyContent,
             borderColor_hover_ItemsBodyContent, fontSize_ItemsBodyContentIcon, color_ItemsBodyContentIcon, fontWeight_ItemsBodyContentIcon,
+            width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
+            backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
+            fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -237,7 +243,7 @@ export function getItemsBodyContent_icon(Item) {
     return ItemsBodyContentIcon
 }
 
-//
+//  ITEM 2
 
 export function getTilesWrap(Item) {
 
@@ -248,24 +254,42 @@ export function getTilesWrap(Item) {
       text-align: center;
       `;
 
-    return TilesWrap
+
+    const tmp = keyframes`
+                      
+                      from, to {
+                          padding: 0;
+                          margin: 50px auto;
+                          list-style: none;
+                          text-align: center;
+                      }
+                  `;
+
+    const TilesWrapFinal = styled.ul`
+          animation: $1s ${tmp} both;
+       `;
+
+    return TilesWrapFinal
 }
 
 export function getTilesWrap_li(Item) {
 
+    //${Item.minWidth_TilesWrapLi}
+    //${Item.minHei_TilesWrapLi}
+
     const TilesWrap_li = styled.li`
       display: inline-block;
-      width: 20%;
+      width: ${Item.width_TilesWrapLi1};
       min-width: 200px;
       max-width: 230px;
       padding: 80px 20px 40px;
       position: relative;
       vertical-align: top;
       margin: 10px;
-      font-family: 'helvetica', san-serif;
-      min-height: 25vh;
-      background: #262a2b;
-      border: 1px solid #252727;
+      font-family: ${Item.fontFamily_TilesWrapLi1}, ${Item.fontFamily_TilesWrapLi2};
+      min-height:  ${Item.height_TilesWrapLi};
+      background: ${Item.backgroundColor_TilesWrapLi};
+      border: ${Item.borderDim_TilesWrapLi} ${Item.borderType_TilesWrapLi} ${Item.borderColor_TilesWrapLi};
       text-align: left;
       
       &:hover button {
@@ -301,13 +325,25 @@ export function getTilesWrap_li(Item) {
       }*/
       `;
 
+
+/*    const tmp = keyframes`
+
+                      from, to {
+
+                      }
+                  `;
+
+    const TilesWrap_liFinal = styled.ul`
+          animation: $1s ${tmp} both;
+       `;*/
+
     return TilesWrap_li
 }
 
 export function getTilesWrap_h2(Item) {
 
     const TilesWrap_h2 = styled.h2`
-      font-size: 114px;
+      font-size: ${Item.fontSize_TilesWrap_h2};
       margin: 0;
       position: absolute;
       opacity: 0.2;
@@ -322,9 +358,9 @@ export function getTilesWrap_h2(Item) {
 export function getTilesWrap_h3(Item) {
 
     const TilesWrap_h3 = styled.h3`
-          font-size: 20px;
-          color: #b7b7b7;
-          margin-bottom: 5px;
+          font-size: ${Item.fontSize_getTilesWrap_h3};
+          color: ${Item.color_getTilesWrap_h3};
+          margin-bottom: ${Item.marginBotton_getTilesWrap_h3};
       `;
 
     return TilesWrap_h3
@@ -333,9 +369,9 @@ export function getTilesWrap_h3(Item) {
 export function getTilesWrap_p(Item) {
 
     const TilesWrap_p = styled.p`
-          font-size: 16px;
-          line-height: 18px;
-          color: #b7b7b7;
+          font-size: ${Item.fontSize_TilesWrap_p};
+          line-height: ${Item.lineHeight_TilesWrap_p};
+          color: ${Item.color_TilesWrap_p};
           margin-top: 5px;
       `;
 
@@ -384,14 +420,6 @@ export function getTilesWrap_button(Item) {
     return TilesWrap_button
 }
 
-// export function getT() {
-//
-//     const  = styled.`
-//
-//       `;
-//
-//     return
-// }
 
 tabs.propType = {
     anim: PropTypes.object,
@@ -453,6 +481,24 @@ tabs.propType = {
     fontSize_ItemsBodyContentIcon: PropTypes.string,
     color_ItemsBodyContentIcon: PropTypes.string,
     fontWeight_ItemsBodyContentIcon: PropTypes.string,
+
+    //
+
+    width_TilesWrapLi1: PropTypes.string,
+    fontFamily_TilesWrapLi1: PropTypes.string,
+    fontFamily_TilesWrapLi2: PropTypes.string,
+    height_TilesWrapLi: PropTypes.string,
+    backgroundColor_TilesWrapLi: PropTypes.string,
+    borderDim_TilesWrapLi: PropTypes.string,
+    borderType_TilesWrapLi: PropTypes.string,
+    borderColor_TilesWrapLi: PropTypes.string,
+    fontSize_TilesWrap_h2: PropTypes.string,
+    fontSize_getTilesWrap_h3: PropTypes.string,
+    color_getTilesWrap_h3: PropTypes.string,
+    marginBotton_getTilesWrap_h3: PropTypes.string,
+    fontSize_TilesWrap_p: PropTypes.string,
+    lineHeight_TilesWrap_p: PropTypes.string,
+    color_TilesWrap_p: PropTypes.string
 }
 
 export default tabs
