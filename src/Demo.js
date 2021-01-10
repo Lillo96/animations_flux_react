@@ -76,28 +76,67 @@ const useStyles1 = makeStyles((theme) => ({
 
 function SimpleSelect(props) {
     const classes = useStyles1();
-    const [age, setAge] = React.useState('');
+    const [CheckLimit, setCheckLimit] = React.useState(true);
+    const [ColorStart, setColorStart] = React.useState('red');
+    const [ColorEnd, setColorEnd] = React.useState('red');
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
+    const handleChangeCheckLimit = (event) => {
+        setCheckLimit(event.target.value);
     };
+    const handleColorStart = (event) => {
+        setColorStart(event.target.value);
+    };
+    const handleColorEnd = (event) => {
+        setColorEnd(event.target.value);
+    };
+
+    const checkbox1 = getCheckboxes('checkboxprova')
+
+    const [checked, setChecked] = React.useState(true);
 
     return (
         <div>
-            <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+
+             <FormControl className={classes.formControl}>
+                <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={age}
-                    onChange={handleChange}
+                    value={ColorStart}
+                    onChange={handleColorStart}
                 >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value={'red'}>red</MenuItem>
+                    <MenuItem value={'yellow'}>yellow</MenuItem>
                 </Select>
-            </FormControl>
-            {age}
+             </FormControl>
+
+             <FormControl className={classes.formControl}>
+                <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={ColorEnd}
+                    onChange={handleColorEnd}
+                >
+                    <MenuItem value={'red'}>red</MenuItem>
+                    <MenuItem value={'yellow'}>yellow</MenuItem>
+                </Select>
+
+             </FormControl>
+
+            <imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={CheckLimit} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                            opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both'{...props}>
+                <label>
+                    <input type="checkbox"
+                           checked={!checked}
+                           onChange={() => setChecked(!checked)}
+                           onClick={() => { checkbox1.setCheckLimit(!checked) }}
+                    />
+                    Checkbox
+                </label>
+
+            </imp.checkboxes>
+
         </div>
     );
 }
@@ -138,11 +177,9 @@ function VerticalTabs(props) {
         float: 'left',
     }
 
-    const checkbox1 = getCheckboxes('checkboxprova')
     const checkbox2 = getCheckboxes('checkboxprova2')
     const checkbox3 = getCheckboxes('checkboxprova3')
 
-    const [checked, setChecked] = React.useState(true);
     const [checked1, setChecked1] = React.useState(true);
     const [checked2, setChecked2] = React.useState(true);
 
@@ -158,6 +195,7 @@ function VerticalTabs(props) {
     };
 
     switch (props.type) {
+        // CHECKBOX
         case '1':
             return (
                 <div className={classes.root} {...props}>
@@ -212,6 +250,8 @@ function VerticalTabs(props) {
                 </div>
             );
             break;
+
+        // CARD
         case '2':
             return (
                 <div className={classes.root} {...props}>
@@ -352,6 +392,8 @@ function VerticalTabs(props) {
                 </div>
             );
             break;
+
+        // ITEM
         case '3':
             return (
                 <div className={classes.root} {...props}>
@@ -431,6 +473,7 @@ function VerticalTabs(props) {
                 </div>
             );
             break;
+
         default:
             return
             break;

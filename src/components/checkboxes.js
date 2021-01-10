@@ -18,17 +18,34 @@ function checkboxes({
        animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
        //console.log(animation)
 
+       console.log("Dentro di !rest", colorEnd)
+
        checkboxesActions.newCheckboxes(
             id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck, opacityCheck,
             timeAnimation, typeAnimFillMode, duration, timing, delay,iterations, direction, fillMode, playState
         )
 
+
        setAnimationCSS(id, cssStylesKeyFrames(true,1, colorStart))
 
    } else {
 
-        //console.log("Dentro else di !rest")
+        console.log("Dentro else di !rest", colorEnd)
 
+        checkValue(
+            rest.checkboxes.state.get(id).get('id'),
+            checkLimit,
+            rest.checkboxes.state.get(id).get('checkLimit'),
+            colorStart,
+            rest.checkboxes.state.get(id).get('colorStart'),
+            colorEnd,
+            rest.checkboxes.state.get(id).get('colorEnd'),
+            opacityNotCheck,
+            rest.checkboxes.state.get(id).get('opacityNotCheck'),
+            opacityCheck,
+            rest.checkboxes.state.get(id).get('opacityCheck'))
+
+        console.log(rest.checkboxes.state.get(id).get('colorEnd'))
         const checkboxObj = rest.checkboxes.state.get(id)
        // console.log("checkOBJ",checkboxObj)
 
@@ -173,6 +190,7 @@ function setKeyframes2(checkLimit, typeInput) {
 
 function cssStylesKeyFrames(checkLimit, typeInput, colorStart, colorEnd, opacityNotCheck, opacityCheck) {
 
+    console.log('Cagliari', colorEnd)
     let tmp
 
     if (checkLimit){
@@ -603,6 +621,24 @@ export function setTextValue (valueCheck, valueText) {
 
         default:
             return
+    }
+}
+
+function checkValue (
+    id,
+    checkLimit, restcheckLimit,
+    colorStart, restcolorStart,
+    colorEnd, restcolorEnd,
+    opacityNotCheck, restopacityNotCheck,
+    opacityCheck, restopacityCheck ) {
+
+
+    if (colorEnd != restcolorEnd) {
+        checkboxesActions.changeValue(id, 'colorEnd', colorEnd)
+    }
+
+    if (colorStart != restcolorStart) {
+        checkboxesActions.changeValue(id, 'colorStart', colorStart)
     }
 }
 
