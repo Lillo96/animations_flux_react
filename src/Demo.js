@@ -1,5 +1,5 @@
 import React from 'react'
-import imp, {getCards, getCheckboxes} from './imp'
+import imp, {getCards, getCheckboxes, getTabs} from './imp'
 
 import checkboxes, {} from "./components/checkboxes";
 
@@ -46,6 +46,13 @@ import {
     getIconUL,
     getIconLi
 } from "./components/cards";
+import {
+    getContainerItems,
+    getDivItems,
+    getDivItemsHead,
+    getDivItemsHead_hr,
+    getDivItemsHead_p, getItemsBody, getItemsBodyContent, getItemsBodyContent_icon
+} from "./components/tabs";
 
 let num
 
@@ -355,8 +362,36 @@ function VerticalTabs(props) {
                         <Tab label="3" {...a11yProps2(2)} />
                     </Tabs>
                     <TabPanel2 value={value} index={0}>
+                        <imp.tabs id='tabsprova' {...props}>
+                            <ContainerItems>
+                                <DivItems>
+                                    <DivItemsHead>
+                                        <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
+                                        <DivItemsHead_hr></DivItemsHead_hr>
+                                    </DivItemsHead>
 
+                                    <ItemsBody>
+                                        <ItemsBodyContent>
+                                            <span>Web Usabilty Testing</span>
+                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                        </ItemsBodyContent>
+                                        <ItemsBodyContent>
+                                            <span>Design of Everyday Things</span>
+                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                        </ItemsBodyContent>
+                                        <ItemsBodyContent>
+                                            <span>Practical Empathy: For Collaboration & Creativity in Your Work</span>
+                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                        </ItemsBodyContent>
+                                        <ItemsBodyContent>
+                                            <span>About Face: The Essentials of Interaction Design</span>
+                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                        </ItemsBodyContent>
+                                    </ItemsBody>
+                                </DivItems>
+                            </ContainerItems>
 
+                        </imp.tabs>
                     </TabPanel2>
                     <TabPanel2 value={value} index={1}>
 
@@ -530,7 +565,7 @@ function Demo(props) {
                 <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                     <Tab label="Checkbox" {...a11yProps(0)}/>
                     <Tab label="Card" {...a11yProps(1)}/>
-                    <Tab label="Item One" {...a11yProps(2)}/>
+                    <Tab label="Item" {...a11yProps(2)}/>
                 </Tabs>
             </AppBar>
 
@@ -540,8 +575,8 @@ function Demo(props) {
             <TabPanel index={1} value={value} style={ demoTabPanel } {...props}>
                 <VerticalTabs type='2' {...props}/>
             </TabPanel>
-            <TabPanel index={2} value={value} style={ demoTabPanel }>
-                Item Three
+            <TabPanel index={2} value={value} style={ demoTabPanel } {...props}>
+                <VerticalTabs type='3' {...props}/>
             </TabPanel>
 
         </div>
@@ -588,3 +623,14 @@ const General = getCardGeneral(getCards('cardsprova03'))
 const GeneralMore = getCardGeneralMore(getCards('cardsprova03'))
 const GeneralMoreTitle = getCardGeneralTitle(getCards('cardsprova03'))
 const GeneralMoreText = getCardGeneralText(getCards('cardsprova03'))
+
+
+// ITEM 1 - START
+const ContainerItems = getContainerItems(getTabs('tabsprova'))
+const DivItems = getDivItems(getTabs('tabsprova'))
+const DivItemsHead = getDivItemsHead(getTabs('tabsprova'))
+const DivItemsHead_p = getDivItemsHead_p(getTabs('tabsprova'))
+const DivItemsHead_hr = getDivItemsHead_hr(getTabs('tabsprova'))
+const ItemsBody = getItemsBody(getTabs('tabsprova'))
+const ItemsBodyContent = getItemsBodyContent(getTabs('tabsprova'))
+const ItemsBodyContentIcon = getItemsBodyContent_icon(getTabs('tabsprova'))

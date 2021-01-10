@@ -399,14 +399,14 @@ const IconLI = getIconLi()
         // CARD 2 -- END
 
 // ITEMS
-const ContainerItems = getContainerItems()
+/*const ContainerItems = getContainerItems()
 const DivItems = getDivItems()
 const DivItemsHead = getDivItemsHead()
 const DivItemsHead_p = getDivItemsHead_p()
 const DivItemsHead_hr = getDivItemsHead_hr()
 const ItemsBody = getItemsBody()
 const ItemsBodyContent = getItemsBodyContent()
-const ItemsBodyContentIcon = getItemsBodyContent_icon()
+const ItemsBodyContentIcon = getItemsBodyContent_icon()*/
 
 const TilesWrap = getTilesWrap()
 const TilesWrap_li = getTilesWrap_li()
