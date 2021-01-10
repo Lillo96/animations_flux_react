@@ -8,8 +8,12 @@ import styled, {keyframes, css} from "styled-components"
 let tmp_CardID
 
 function cards({
-    id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay, iterations,
-    direction, fillMode, playState, ...rest
+    id, checkLimit, typeInput, animationCSS, textInput, textValue,
+    textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
+    borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
+    buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
+    colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+    duration, timing, delay, iterations,direction, fillMode, playState, ...rest
 }) {
 
     let animation, flipped
@@ -21,8 +25,12 @@ function cards({
         //console.log(animation)
 
         cardsActions.newCards(
-            id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
-            iterations, direction, fillMode, playState
+            id, checkLimit, typeInput, animationCSS, textInput, textValue,
+            textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
+            borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
+            buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
+            colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+            duration, timing, delay,iterations, direction, fillMode, playState
         )
             // NON DOVREBBE SERVIRE
         //setAnimationCSS(id, cssStylesKeyFrames(true,1))
@@ -45,7 +53,8 @@ function cards({
 
         // getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
 
-        tmp_CardID = rest.cards.state.get(id).get('id')
+         tmp_CardID = rest.cards.state.get(id).get('id')
+
     }
 
     /*const CardContainer = styled.div`
@@ -108,12 +117,15 @@ function cards({
 
 // CARD 1
 
-export function getCardContainer(idCardHTML) {
+export function getCardContainer (Card) {
+
+    console.log(Card)
     //let CardContainer
     console.log('fuori')
 
         console.log('dentro')
-        /*const CardContainer = styled.div`
+        const CardContainer = styled.div`
+            text-align: center;
             display: flex;
             flex-direction: column;
             transition: z-index 500ms, transform 500ms;
@@ -124,96 +136,88 @@ export function getCardContainer(idCardHTML) {
             &.flipped {
                 z-index: 1;
             }
-       `;*/
+       `;
 
-
-    const tmp = keyframes`  
+    const tmp = keyframes`
                       
-                      from {
-                        display: flex;
-                        flex-direction: column;
+                      from, to {
+                        text-align: ${Card.textAlign};
+                        display: ${Card.display};
+                        flex-direction: ${Card.flexDirection};
                         transition: z-index 500ms, transform 500ms;
                         z-index: 0;
                         -webkit-perspective: 1000px;
                         transform-style: preserve-3d;
-                      }
-                      
-                      to {
                         z-index: 1;
                       }
                   `;
 
     const CardContainerFinal = styled.div`
-          animation: 1s ${tmp} both;
+          animation: ${Card.timeAnim} ${tmp} both;
        `;
 
 
     return CardContainerFinal
 }
 
-export function getCardFront(idCardHTML) {
+export function getCardFront(Card) {
     //let CardFront
-    /*const CardSide = css`
-        width: 100%;
+
+    const CardSide = css`
+        width: ${Card.width};
+        height: ${Card.height};
         min-width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        -moz-backface-visibility: none;
-        -webkit-backface-visibility: none;
-        backface-visibility: none;
-        border: 2px solid #0d0d0d;
+        display: ${Card.display};
+        flex-direction: ${Card.flexDirection};
+        justify-content: center;
+        -webkit-backface-visibility: ${Card.backfaceVisibility};
+        border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
     `;
 
-        const CardFront = styled.div`
+    const CardFront = styled.div`
         
         ${CardSide}
         
-        z-index: 0;
-        background: #d7d7d7;
+        z-index: 1;
+        background: ${Card.colorCard};
     `;
-     */
 
-    const tmp = keyframes`  
+   const tmp = keyframes`
                       
-                      from {}
-                      
-                      to {
-                        width: 100%;
+                      from, to {
+                        width: ${Card.width};
+                        height: ${Card.height};
                         min-width: 100%;
-                        display: flex;
-                        flex-direction: column;
+                        min-height: 100%;
+                        display: ${Card.display};
+                        flex-direction: ${Card.flexDirection};
                         justify-content: space-between;
-                        -moz-backface-visibility: none;
-                        -webkit-backface-visibility: none;
-                        backface-visibility: none;
-                        border: 2px solid #0d0d0d;
+                        -webkit-backface-visibility: ${Card.backfaceVisibility};
+                        border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                         
                         z-index: 0;
-                        background: #d7d7d7;
+                        background: ${Card.colorCard};
                       }
                   `;
 
     const CardFrontFinal = styled.div`
-          animation: 1s ${tmp} both;
+          animation: ${Card.timeAnim} ${tmp} both;
        `;
 
     return CardFrontFinal
 
 }
 
-export function getCardBack(idCardHTML) {
+export function getCardBack(Card) {
     //let CardBack
 
-    /*const CardSide = css`
+    const CardSide = css`
         width: 100%;
         min-width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        -moz-backface-visibility: none;
-        -webkit-backface-visibility: none;
-        backface-visibility: none;
+        justify-content: center;
+        -webkit-backface-visibility: hidden;
         border: 2px solid #0d0d0d;
     `;
 
@@ -221,35 +225,31 @@ export function getCardBack(idCardHTML) {
     const CardBack = styled.div`
         
         ${CardSide}
-        
-        
+
         transform: rotateY(180deg) translate(100%, 0);
         background: #d7d7d7;
-        z-index: 1;
-    `;*/
+        z-index: 0;
+    `;
 
-    const tmp = keyframes`  
+   const tmp = keyframes`
                       
-                      from {
-                        
-                      }
-                      
-                      to {
-                        width: 100%;
+                      from,to {
+                        width: ${Card.width};
+                        height: ${Card.height};
                         min-width: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        -moz-backface-visibility: none;
-                        -webkit-backface-visibility: none;
-                        backface-visibility: none;
-                        border: 2px solid #0d0d0d;
+                        min-height: 100%;                    
+                        display: ${Card.display};
+                        flex-direction: ${Card.flexDirection};
+                        justify-content: center;
+                        -webkit-backface-visibility: ${Card.flexDirection};
+                        border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                       
                         transform: rotateY(180deg) translate(100%, 0);
-                        background: #d7d7d7;
-                        z-index: 1;
+                        background: ${Card.colorCard};
+                        z-index: 0;
                       }
     `;
+
 
     const CardBackFinal = styled.div`
           animation: 1s ${tmp} both;
@@ -259,45 +259,35 @@ export function getCardBack(idCardHTML) {
     return CardBackFinal
 }
 
-export function getCardInner(idCardHTML) {
+export function getCardInner(Card) {
 
         const CardInner = styled.div`
-        flex: 1;
-        display: flex;
-        transition: transform 500ms;
-        transform-style: preserve-3d;
-
-        &.flipped {
-            transform: rotateY(180deg);
-        }
+            flex: 1;
+            display: ${Card.display};
+            transition: transform 500ms;
+            transform-style: preserve-3d;
+    
+            &.flipped {
+                transform: rotateY(180deg);;
+            }
         `;
-
-
-    /*const tmp = keyframes`
-                      
-                      0% {
-                        transform: rotateY(0deg);
-                      }
-                      
-                      100% {
-                        flex: 1;
-                        display: flex;
-                        transition: transform 500ms;
-                        transform-style: preserve-3d;
-                
-                        ransform: rotateY(180tdeg);
-                      }
-    `;
-
-    const CardInnerFinal = styled.div`
-          animation: 1s ${tmp} both;
-    `;*/
-
 
     return CardInner
 }
 
-//
+export function getCardButton(Card) {
+
+    const Button = styled.button`
+              font-size: ${Card.buttonFontSize};
+              margin: ${Card.buttonMargin};
+              padding: 0.25em 1em;
+              border: ${Card.buttonBorder}; solid palevioletred;
+              border-radius: ${Card.buttonBorderRadius};
+              background-color: ${Card.buttonBackColor};
+        `;
+
+    return Button
+}
 
 // CARD 2
 
@@ -484,49 +474,86 @@ export function getIconLi() {
 
 }
 
-//
+// CARD 3
 
-export function getCardCenter() {
+export function getCardCenter(Card) {
 
     const CardCenter = styled.div`
         position: absolute;
         top: 50%;
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
-        
        `;
 
-    return CardCenter
+    const tmp = keyframes`
+                      
+                      from,to {
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      -webkit-transform: translate(-50%, -50%);
+                      }
+    `;
+
+
+    const CardCenterFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return CardCenterFinal
 }
 
-export function getCard() {
+export function getCard(Card) {
 
-    const Card = styled.div`
+    if (Card.width === '100%') Card.width = '450px';
+    if (Card.height === '100%') Card.height = '250px';
+
+    const CardF = styled.div`
        
-        width: 450px;
-        height: 250px;
-        background-color: #fff;
-        background: linear-gradient(#f8f8f8, #fff);
+        width: ${Card.width};
+        height: ${Card.height};
+        background-color: ${Card.colorCard};
+        background: linear-gradient(${Card.colorCard2}, ${Card.colorCard});
         box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
         border-radius: 6px;
         overflow: hidden;
         position: relative;
-        margin: 1.5rem;
-        
-        
+        margin: ${Card.marginCard}; 
+      
        `;
 
-    return Card
+    const tmp = keyframes`
+                      
+                      from,to {
+                                    width: ${Card.width};
+                                    height: ${Card.height};
+                                    background-color: ${Card.colorCard};
+                                    background: linear-gradient(${Card.colorCard2}, ${Card.colorCard});
+                                    box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+                                    border-radius: 6px;
+                                    overflow: hidden;
+                                    position: relative;
+                                    margin: ${Card.marginCard}; 
+                      }
+    `;
+
+
+    const CardFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+
+    return CardFinal
 }
 
-export function getAdditional() {
+export function getAdditional(Card) {
 
     const Additional = styled.div`
        
         position: absolute;
         width: 150px;
         height: 100%;
-        background: linear-gradient(#dE685E, #EE786E);
+        background: linear-gradient(${Card.colorCardTrans1}, ${Card.colorCardTrans2});
         transition: width 0.4s;
         overflow: hidden;
         z-index: 2;
@@ -537,32 +564,52 @@ export function getAdditional() {
           }
        `;
 
+
+
     return Additional
 }
 
-export function getUserCard() {
+export function getUserCard(Card) {
 
     const UserCard = styled.div`
        
         position: absolute;
         width: 150px;
         height: 100%;
-        background: linear-gradient(#dE685E, #EE786E);
+        background: linear-gradient(${Card.colorCardTrans1}, ${Card.colorCardTrans2});
         transition: width 0.4s;
         overflow: hidden;
         z-index: 2;
        `;
 
-    return UserCard
+    const tmp = keyframes`  
+              from,to {
+                    position: absolute;
+                    width: 150px;
+                    height: 100%;
+                    background: linear-gradient(${Card.colorCardTrans1}, ${Card.colorCardTrans2});
+                    transition: width 0.4s;
+                    overflow: hidden;
+                    z-index: 2;
+              }
+    `;
+
+
+    const UserCardFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+
+    return UserCardFinal
 }
 
-export function getLevelCenter() {
+export function getLevelCenter(Card) {
 
     const LevelCenter = styled.div`
         top: 15%;
-        color: #fff;
+        color: ${Card.colorCard};
         text-transform: uppercase;
-        font-size: 0.75em;
+        font-size: ${Card.fontSizeLCentral};
         font-weight: bold;
         background: rgba(0,0,0,0.15);
         padding: 0.125rem 0.75rem;
@@ -570,16 +617,34 @@ export function getLevelCenter() {
         white-space: nowrap;
        `;
 
-    return LevelCenter
+    const tmp = keyframes`  
+              from,to {
+                    top: 15%;
+                    color: ${Card.colorCard};
+                    text-transform: uppercase;
+                    font-size: ${Card.fontSizeLCentral};
+                    font-weight: bold;
+                    background: rgba(0,0,0,0.15);
+                    padding: 0.125rem 0.75rem;
+                    border-radius: 100px;
+                    white-space: nowrap;  
+              }
+    `;
+
+    const LevelCenterFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return LevelCenterFinal
 }
 
-export function getPointsCenter() {
+export function getPointsCenter(Card) {
 
     const PointsCenter = styled.div`
         top: 15%;
         color: #fff;
         text-transform: uppercase;
-        font-size: 0.75em;
+        font-size: ${Card.fontSizePointsCenter};
         font-weight: bold;
         background: rgba(0,0,0,0.15);
         padding: 0.125rem 0.75rem;
@@ -589,10 +654,30 @@ export function getPointsCenter() {
         top: 85%;
        `;
 
-    return PointsCenter
+    const tmp = keyframes`  
+              from,to {
+                    top: 15%;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-size: ${Card.fontSizePointsCenter};
+                    font-weight: bold;
+                    background: rgba(0,0,0,0.15);
+                    padding: 0.125rem 0.75rem;
+                    border-radius: 100px;
+                    white-space: nowrap;
+                    
+                    top: 85%; 
+              }
+    `;
+
+    const PointsCenterFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return PointsCenterFinal
 }
 
-export function getSvg() {
+export function getSvg(Card) {
 
     const cssSvg = css`
          width: 110px;
@@ -609,10 +694,21 @@ export function getSvg() {
         top: 50%;
        `;
 
-    return Svg
+    const tmp = keyframes`  
+              from,to {
+                    ${cssSvg}
+                
+                    top: 50%;
+    `;
+
+    const SvgFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return SvgFinal
 }
 
-export function getMoreInfo() {
+export function getMoreInfo(Card) {
 
     const MoreInfo = styled.div`
          width: 300px;
@@ -622,20 +718,43 @@ export function getMoreInfo() {
          height: 100%;
        `;
 
-    return MoreInfo
+    const tmp = keyframes`  
+              from,to {
+                 width: 300px;
+                 float: left;
+                 position: absolute;
+                 left: 150px;
+                 height: 100%;
+    `;
+
+    const MoreInfoFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return MoreInfoFinal
 }
 
-export function getMoreInfoName() {
+export function getMoreInfoName(Card) {
 
     const Name = styled.h1`
         color: #fff;
         margin-bottom: 0;
        `;
 
-    return Name
+    const tmp = keyframes`  
+              from,to {
+                    color: #fff;
+                    margin-bottom: 0;
+    `;
+
+    const NameFinal = styled.h1`
+          animation: 1s ${tmp} both;
+    `;
+
+    return NameFinal
 }
 
-export function getCoords() {
+export function getCoords(Card) {
 
     const Coords = styled.div`
         margin: 0 1rem;
@@ -643,10 +762,21 @@ export function getCoords() {
         font-size: 1rem;
        `;
 
-    return Coords
+    const tmp = keyframes`  
+              from,to {
+                    margin: 0 1rem;
+                    color: #fff;
+                    font-size: 1rem;
+    `;
+
+    const CoordsFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return CoordsFinal
 }
 
-export function getStats() {
+export function getStats(Card) {
 
     const Stats = styled.div`
         font-size: 2rem;
@@ -656,7 +786,7 @@ export function getStats() {
         left: 1rem;
         right: 1rem;
         top: auto;
-         color: #fff;
+        color: #fff;
          
          .i {
             display: block;
@@ -666,7 +796,7 @@ export function getStats() {
     return Stats
 }
 
-export function getStatsTitle() {
+export function getStatsTitle(Card) {
 
     const Title = styled.div`
         font-size: 0.75rem;
@@ -674,10 +804,21 @@ export function getStatsTitle() {
         text-transform: uppercase;
        `;
 
-    return Title
+    const tmp = keyframes`  
+              from,to {
+                font-size: 0.75rem;
+                font-weight: bold;
+                text-transform: uppercase;
+    `;
+
+    const TitleFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return TitleFinal
 }
 
-export function getStatsValue() {
+export function getStatsValue(Card) {
 
     const Value = styled.div`
         font-size: 1.5rem;
@@ -685,10 +826,21 @@ export function getStatsValue() {
         line-height: 1.5rem;
        `;
 
-    return Value
+    const tmp = keyframes`  
+              from,to {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    line-height: 1.5rem;
+    `;
+
+    const ValueFinal = styled.div`
+          animation: 1s ${tmp} both;
+    `;
+
+    return ValueFinal
 }
 
-export function getCardGeneral() {
+export function getCardGeneral(Card) {
 
     const General = styled.div`
         width: 300px;
@@ -710,25 +862,45 @@ export function getCardGeneral() {
     return General
 }
 
-export function getCardGeneralTitle() {
+export function getCardGeneralTitle(Card) {
 
     const General = styled.h1`
             front-size: 4em;
        `;
 
-    return General
+
+    const tmp = keyframes`  
+              from,to {
+                    front-size: 4em;
+    `;
+
+    const GeneralFinal = styled.h1`
+          animation: 1s ${tmp} both;
+    `;
+
+    return GeneralFinal
 }
 
-export function getCardGeneralText() {
+export function getCardGeneralText(Card) {
 
     const General = styled.p`
             front-size: 0.4em;
        `;
 
-    return General
+    const tmp = keyframes`  
+              from,to {
+                    front-size: 0.4em;
+    `;
+
+    const GeneralFinal = styled.p`
+          animation: 1s ${tmp} both;
+    `;
+
+
+    return GeneralFinal
 }
 
-export function getCardGeneralMore() {
+export function getCardGeneralMore(Card) {
 
     const GeneralMore = styled.span`
         position: absolute;
@@ -737,8 +909,22 @@ export function getCardGeneralMore() {
         font-size: 0.8em;
        `;
 
-    return GeneralMore
+    const tmp = keyframes`  
+              from,to {
+                     position: absolute;
+                     bottom: 1rem;
+                     right: 1rem;
+                     font-size: 0.8em;
+    `;
+
+    const GeneralMoreFinal = styled.span`
+          animation: 1s ${tmp} both;
+    `;
+
+    return GeneralMoreFinal
 }
+
+//
 
 export function setAnimationCSS (id, value) {
     //console.log(value)
@@ -875,7 +1061,30 @@ cards.propType = {
     playState: PropTypes.string,
     animationCSS: PropTypes.string,
     textInput: PropTypes.string,
-    textValue: PropTypes.string
+    textValue: PropTypes.string,
+    textAlign: PropTypes.string,
+    display: PropTypes.string,
+    flexDirection: PropTypes.string,
+    colorCard: PropTypes.string,
+    perspective: PropTypes.string,
+    backfaceVisibility: PropTypes.string,
+    borderDim: PropTypes.string,
+    borderType: PropTypes.string,
+    borderColor: PropTypes.string,
+    height: PropTypes.string,
+    width: PropTypes.string,
+    timeAnim: PropTypes.string,
+    buttonFontSize: PropTypes.string,
+    buttonMargin: PropTypes.string,
+    buttonBorder: PropTypes.string,
+    buttonBorderRadius: PropTypes.string,
+    buttonBackColor: PropTypes.string,
+    colorCard2: PropTypes.string,
+    marginCard: PropTypes.string,
+    colorCardTrans1: PropTypes.string,
+    colorCardTrans2: PropTypes.string,
+    fontSizeLCentral: PropTypes.string,
+    fontSizePointsCenter: PropTypes.string,
 }
 
 export default cards

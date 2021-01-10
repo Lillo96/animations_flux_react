@@ -3,8 +3,12 @@ import cardsActionTypes from "./cardsActionTypes"
 
 const cardsActions = {
     newCards (
-        id, checkLimit, typeInput, animationCSS, textInput, textValue, duration, timing, delay,
-        iterations, direction, fillMode, playState) {
+        id, checkLimit, typeInput, animationCSS, textInput, textValue,
+        textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
+        borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
+        buttonMargin, buttonPadding, buttonBorder, buttonBorderRadius, buttonBackColor,
+        colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+        duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
             type: cardsActionTypes.NEW_CARDS,
             id: id,
@@ -13,6 +17,24 @@ const cardsActions = {
             animationCSS: animationCSS,
             textInput: textInput,
             textValue: textInput,
+            textAlign: textAlign,
+            display: display,
+            flexDirection: flexDirection,
+            colorCard: colorCard,
+            perspective: perspective,
+            backfaceVisibility: backfaceVisibility,
+            borderDim: borderDim,
+            borderType: borderType,
+            borderColor: borderColor,
+            height: height,
+            width: width,
+            timeAnim: timeAnim,
+            buttonFontSize: buttonFontSize,
+            buttonMargin: buttonMargin,
+            buttonPadding: buttonPadding,
+            buttonBorder: buttonBorder,
+            buttonBorderRadius: buttonBorderRadius,
+            buttonBackColor: buttonBackColor,
             duration: duration,
             timing: timing,
             delay: delay,
@@ -20,7 +42,12 @@ const cardsActions = {
             direction: direction,
             fillMode: direction,
             playState: playState,
-
+            colorCard2: colorCard2,
+            marginCard: marginCard,
+            colorCardTrans1: colorCardTrans1,
+            colorCardTrans2: colorCardTrans2,
+            fontSizeLCentral: fontSizeLCentral,
+            fontSizePointsCenter: fontSizePointsCenter,
         })
     },
     changeValue (id, key, value) {

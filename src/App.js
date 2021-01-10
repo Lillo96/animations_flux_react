@@ -156,10 +156,6 @@ function App (props) {
 
           </CardContainer>
 
-          <div className="flip3D" style={demoHeaderConst}>
-            <div className="back">Box 1 - Back </div>
-            <div className="front">Box 1 - Front</div>
-          </div>
         </imp.cards>*/}
 
        {/*<imp.cards id='cardsprova01' {...props}>
@@ -179,7 +175,7 @@ function App (props) {
 
         </imp.cards>*/}
 
-       <imp.cards id='cardsprova02' {...props}>
+{/*       <imp.cards id='cardsprova02' {...props}>
 
           <ImageArea>
             <ImageWrapper>
@@ -194,7 +190,7 @@ function App (props) {
               </ImageWrapper>
           </ImageArea>
 
-       </imp.cards>
+       </imp.cards>*/}
 
        {/*<imp.cards id='cardsprova03' {...props}>
 
@@ -362,6 +358,7 @@ function App (props) {
 export default App
 // CARD
 
+/*
 const CardCenter = getCardCenter()
 const Card = getCard()
 const Additional = getAdditional()
@@ -379,6 +376,7 @@ const General = getCardGeneral()
 const GeneralMore = getCardGeneralMore()
 const GeneralMoreTitle = getCardGeneralTitle()
 const GeneralMoreText = getCardGeneralText()
+*/
 
         // CARD 1 -- START
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import imp, { getCheckboxes } from './imp'
+import imp, {getCards, getCheckboxes} from './imp'
 
 import checkboxes, {} from "./components/checkboxes";
 
@@ -15,7 +15,39 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+import {
+    getCardBack,
+    getCardContainer,
+    getCardFront,
+    getCardInner,
+    getCardButton,
+    getCardCenter,
+    getCard,
+    getAdditional,
+    getUserCard,
+    getLevelCenter,
+    getPointsCenter,
+    getSvg,
+    getMoreInfo,
+    getMoreInfoName,
+    getCoords,
+    getStats,
+    getStatsTitle,
+    getStatsValue,
+    getCardGeneral,
+    getCardGeneralMore,
+    getCardGeneralTitle,
+    getCardGeneralText,
+    getImageArea,
+    getImageWrapper,
+    getHeaderImage,
+    getName,
+    getIconUL,
+    getIconLi
+} from "./components/cards";
 
+let num
 
 // FORM
 
@@ -29,9 +61,9 @@ const useStyles1 = makeStyles((theme) => ({
     },
 }));
 
-function SimpleSelect() {
+function SimpleSelect(props) {
     const classes = useStyles1();
-    const [age, setAge] = React.useState('ciao');
+    const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
         setAge(event.target.value);
@@ -52,6 +84,7 @@ function SimpleSelect() {
                     <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
             </FormControl>
+            {age}
         </div>
     );
 }
@@ -85,8 +118,24 @@ const useStyles2 = makeStyles((theme) => ({
 
 function VerticalTabs(props) {
 
+    const demoHeaderConst = {
+        width: '240px',
+        height: '200px',
+        margin: '10px',
+        float: 'left',
+    }
+
     const checkbox1 = getCheckboxes('checkboxprova')
+    const checkbox2 = getCheckboxes('checkboxprova2')
+    const checkbox3 = getCheckboxes('checkboxprova3')
+
     const [checked, setChecked] = React.useState(true);
+    const [checked1, setChecked1] = React.useState(true);
+    const [checked2, setChecked2] = React.useState(true);
+
+    const [flipped, setFlipped ] = React.useState(false);
+
+    const card1 = getCards('cardsprova')
 
     const classes = useStyles2();
     const [value, setValue] = React.useState(0);
@@ -95,46 +144,234 @@ function VerticalTabs(props) {
         setValue(newValue);
     };
 
-    return (
-        <div className={classes.root} {...props}>
-            <Tabs
-                orientation="vertical"
-                variant="scrollable"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                className={classes.tabs}
-            >
-                <Tab label="Item One" {...a11yProps2(0)} />
-                <Tab label="Item Two" {...a11yProps2(1)} />
-                <Tab label="Item Three" {...a11yProps2(2)} />
-            </Tabs>
-            <TabPanel2 value={value} index={0}>
+    switch (props.type) {
+        case '1':
+            return (
+                <div className={classes.root} {...props}>
+                    <Tabs
+                        orientation="vertical"
+                        variant="scrollable"
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="Vertical tabs example"
+                        className={classes.tabs}
+                    >
+                        <Tab label="1" {...a11yProps2(0)} />
+                        <Tab label="2" {...a11yProps2(1)} />
+                        <Tab label="3" {...a11yProps2(2)} />
+                    </Tabs>
 
-                <imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={ true }
-                                colorStart='yellow' colorEnd='white' opacityNotCheck='1'
-                                opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both' {...props}>
+                    <TabPanel2 value={value} index={0}>
+                        <SimpleSelect {...props}/>
+                    </TabPanel2>
+                    <TabPanel2 value={value} index={1}>
+                        <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true }
+                                        colorStart='yellow' colorEnd='red' opacityNotCheck='1'
+                                        opacityCheck='2' timeAnimation='4s' typeAnimFillMode='both' transition='' {...props}>
 
-                    <label>
-                        <input type="checkbox"
-                               checked={!checked}
-                               onChange={() => setChecked(!checked)}
-                               onClick={() => { checkbox1.setCheckLimit(!checked) }}
-                        />
-                        Checkbox
-                    </label>
+                            <label>
+                                <input type="checkbox"
+                                       checked={!checked1}
+                                       onChange={() => setChecked1(!checked1)}
+                                       onClick={() => { checkbox2.setCheckLimit(!checked1) }}
+                                />
+                                Checkbox
+                            </label>
 
-                </imp.checkboxes>
+                        </imp.checkboxes>
+                    </TabPanel2>
+                    <TabPanel2 value={value} index={2}>
+                        <imp.checkboxes id='checkboxprova3' typeInput={3} checkLimit={ true } textInput='Checkbox off'
+                                        colorStart='black' colorEnd='red' opacityNotCheck='1'
+                                        opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both' {...props}>
 
-            </TabPanel2>
-            <TabPanel2 value={value} index={1}>
-                Item Two
-            </TabPanel2>
-            <TabPanel2 value={value} index={2}>
-                Item Three
-            </TabPanel2>
-        </div>
-    );
+                            <label>
+                                <input type="checkbox"
+                                       checked={!checked2}
+                                       onChange={() => setChecked2(!checked2)}
+                                       onClick={() => { checkbox3.setTextValue(!checked2, 'Checkbox on'); checkbox3.setCheckLimit(!checked2);}}
+                                />
+                                { getCheckboxes('checkboxprova3').textValue }
+                            </label>
+
+                        </imp.checkboxes>
+                    </TabPanel2>
+                </div>
+            );
+            break;
+        case '2':
+            return (
+                <div className={classes.root} {...props}>
+                    <Tabs
+                        orientation="vertical"
+                        variant="scrollable"
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="Vertical tabs example"
+                        className={classes.tabs}
+                    >
+                        <Tab label="1" {...a11yProps2(0)} />
+                        <Tab label="2" {...a11yProps2(1)} />
+                        <Tab label="3" {...a11yProps2(2)} />
+                    </Tabs>
+                    <TabPanel2 value={value} index={0}>
+
+                        <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard='#d7d7d7'
+                                   backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='100%'
+                                   width='100%' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
+                                   buttonBackColor='white'
+                                   {...props}>
+
+                            <CardContainer>
+                                <CardInner className={flipped ? "flipped" : ""}>
+                                    <CardFront>
+                                        <h2>Title</h2>
+                                        <p>Here is some content for the front</p>
+                                        <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                    </CardFront>
+                                    <CardBack>
+                                        <h2>Back the title</h2>
+                                        <p>Here is the content that goes on the back</p>
+                                        <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                    </CardBack>
+
+                                </CardInner>
+                            </CardContainer>
+
+                        </imp.cards>
+
+                    </TabPanel2>
+                    <TabPanel2 value={value} index={1}>
+
+                        <imp.cards id='cardsprova02' {...props}>
+
+                            <ImageArea>
+                                <ImageWrapper>
+                                    <HeaderImage alt="Atul Prajapati"/>
+                                    <NameCard>David James</NameCard>
+                                    <IconUL>
+                                        <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
+                                        <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                                        <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                                        <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                                    </IconUL>
+                                </ImageWrapper>
+                            </ImageArea>
+
+                        </imp.cards>
+
+                    </TabPanel2>
+                    <TabPanel2 value={value} index={2}>
+
+                        <imp.cards id='cardsprova03' textAlign='center' display='flex' flexDirection='column' colorCard='#fff' colorCard2='#f8f8f8'
+                                   backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='250px'
+                                   width='450px' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
+                                   buttonBackColor='white' marginCard='1.5rem' colorCardTrans1='#dE685E' fontSizeLCentral='0.75em'
+                                   fontSizePointsCenter='0.75em'
+                                   {...props}>
+
+                            <CardCenter>
+
+                                <Card>
+                                    <Additional>
+                                        <UserCard>
+                                            <LevelCenter>
+                                                Level 13
+                                            </LevelCenter>
+                                            <PointsCenter>
+                                                5,312 Points
+                                            </PointsCenter>
+                                            <Svg>
+                                                <title id="title">Teacher</title>
+                                                {/*<desc id="desc">Cartoon of a Caucasian woman smiling, and wearing black glasses and a
+                                                    purple shirt with white collar drawn by Alvaro Montoro.
+                                                </desc>*/}
+                                            </Svg>
+
+                                        </UserCard>
+                                        <MoreInfo>
+                                            <MoreInfoName>Jane Doe</MoreInfoName>
+                                            <Coords>
+                                                <span>Group Name</span>
+                                                <span>Joined January 2019</span>
+                                            </Coords>
+                                            <Coords>
+                                                <span>Position/Role</span>
+                                                <span>City, Country</span>
+                                            </Coords>
+                                            <Stats>
+                                                <div>
+                                                    <StatsTitle>Awards</StatsTitle>
+                                                    <i className="fa fa-trophy"></i>
+                                                    <StatsValue>2</StatsValue>
+                                                </div>
+                                                <div>
+                                                    <StatsTitle>Matches</StatsTitle>
+                                                    <i className="fa fa-gamepad"></i>
+                                                    <StatsValue>27</StatsValue>
+                                                </div>
+                                                <div>
+                                                    <StatsTitle>Pals</StatsTitle>
+                                                    <i className="fa fa-group"></i>
+                                                    <StatsValue>123</StatsValue>
+                                                </div>
+                                                <div>
+                                                    <StatsTitle>Coffee</StatsTitle>
+                                                    <i className="fa fa-coffee"></i>
+                                                    <StatsValue>∞</StatsValue>
+                                                </div>
+                                            </Stats>
+                                        </MoreInfo>
+                                    </Additional>
+                                    <General>
+                                        <GeneralMoreTitle>Jane Doe</GeneralMoreTitle>
+                                        <GeneralMoreText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
+                                            lacus. Nam vestibulum sodales odio ut pulvinar.</GeneralMoreText>
+                                        <GeneralMore>Mouse over the card for more info</GeneralMore>
+                                    </General>
+                                </Card>
+
+                            </CardCenter>
+
+                        </imp.cards>
+
+                    </TabPanel2>
+                </div>
+            );
+            break;
+        case '3':
+            return (
+                <div className={classes.root} {...props}>
+                    <Tabs
+                        orientation="vertical"
+                        variant="scrollable"
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="Vertical tabs example"
+                        className={classes.tabs}
+                    >
+                        <Tab label="1" {...a11yProps2(0)} />
+                        <Tab label="2" {...a11yProps2(1)} />
+                        <Tab label="3" {...a11yProps2(2)} />
+                    </Tabs>
+                    <TabPanel2 value={value} index={0}>
+
+
+                    </TabPanel2>
+                    <TabPanel2 value={value} index={1}>
+
+                    </TabPanel2>
+                    <TabPanel2 value={value} index={2}>
+
+                    </TabPanel2>
+                </div>
+            );
+            break;
+        default:
+            return
+            break;
+    }
+
 }
 
 function TabPanel2(props) {
@@ -200,15 +437,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Demo(props) {
-
-    const checkbox1 = getCheckboxes('checkboxprova')
-    const checkbox2 = getCheckboxes('checkboxprova2')
-    const checkbox3 = getCheckboxes('checkboxprova3')
-
-    const [checked, setChecked] = React.useState(true);
-    const [checked1, setChecked1] = React.useState(true);
-    const [checked2, setChecked2] = React.useState(true);
-
 
     const tmp = {
         backgroundColor: '#282c34',
@@ -301,18 +529,16 @@ function Demo(props) {
             <AppBar position="static" style={ demoHeaderConst } {...props}>
                 <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                     <Tab label="Checkbox" {...a11yProps(0)}/>
-                    <Tab label="Item One" {...a11yProps(1)}/>
+                    <Tab label="Card" {...a11yProps(1)}/>
                     <Tab label="Item One" {...a11yProps(2)}/>
                 </Tabs>
             </AppBar>
 
             <TabPanel index={0} value={value} style={ demoTabPanel } {...props}>
-
-                    <VerticalTabs {...props}/>
-
+                <VerticalTabs type='1' {...props}/>
             </TabPanel>
-            <TabPanel index={1} value={value} style={ demoTabPanel }>
-                Item Two
+            <TabPanel index={1} value={value} style={ demoTabPanel } {...props}>
+                <VerticalTabs type='2' {...props}/>
             </TabPanel>
             <TabPanel index={2} value={value} style={ demoTabPanel }>
                 Item Three
@@ -325,3 +551,40 @@ function Demo(props) {
 }
 
 export default Demo
+
+// CARD 1 -- START
+
+const CardContainer = getCardContainer(getCards('cardsprova'))
+const CardFront = getCardFront(getCards('cardsprova'))
+const CardBack = getCardBack(getCards('cardsprova'))
+const CardInner = getCardInner(getCards('cardsprova'))
+const CardButton = getCardButton(getCards('cardsprova'))
+
+// CARD 2 - START
+
+const ImageArea = getImageArea(getCards('cardsprova02'))
+const ImageWrapper = getImageWrapper(getCards('cardsprova02'))
+const HeaderImage = getHeaderImage(getCards('cardsprova02'))
+const NameCard = getName(getCards('cardsprova02'))
+const IconUL = getIconUL(getCards('cardsprova02'))
+const IconLI = getIconLi(getCards('cardsprova02'))
+
+// CARD 3 - START
+
+const CardCenter = getCardCenter(getCards('cardsprova03'))
+const Card = getCard(getCards('cardsprova03'))
+const Additional = getAdditional(getCards('cardsprova03'))
+const UserCard = getUserCard(getCards('cardsprova03'))
+const LevelCenter = getLevelCenter(getCards('cardsprova03'))
+const PointsCenter = getPointsCenter(getCards('cardsprova03'))
+const Svg = getSvg(getCards('cardsprova03'))
+const MoreInfo = getMoreInfo(getCards('cardsprova03'))
+const MoreInfoName = getMoreInfoName(getCards('cardsprova03'))
+const Coords = getCoords(getCards('cardsprova03'))
+const Stats = getStats(getCards('cardsprova03'))
+const StatsTitle = getStatsTitle(getCards('cardsprova03'))
+const StatsValue = getStatsValue(getCards('cardsprova03'))
+const General = getCardGeneral(getCards('cardsprova03'))
+const GeneralMore = getCardGeneralMore(getCards('cardsprova03'))
+const GeneralMoreTitle = getCardGeneralTitle(getCards('cardsprova03'))
+const GeneralMoreText = getCardGeneralText(getCards('cardsprova03'))
