@@ -14,7 +14,8 @@ const checkboxes = Immutable.Record({
     opacityNotCheck: 1,
     opacityCheck: 1,
     timeAnimation: '1s',
-    typeAnimFillMode: 'both'
+    typeAnimFillMode: 'both',
+    colorLine: 'black'
 })
 
 export default checkboxes

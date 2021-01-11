@@ -76,9 +76,18 @@ const useStyles1 = makeStyles((theme) => ({
 
 function SimpleSelect(props) {
     const classes = useStyles1();
+
     const [CheckLimit, setCheckLimit] = React.useState(true);
     const [ColorStart, setColorStart] = React.useState('red');
     const [ColorEnd, setColorEnd] = React.useState('red');
+
+    const [ColorStart1, setColorStart1] = React.useState('red');
+    const [ColorEnd1, setColorEnd1] = React.useState('red');
+
+    const [ColorStart2, setColorStart2] = React.useState('red');
+    const [ColorEnd2, setColorEnd2] = React.useState('red');
+
+    const [ColorLine, setColorLine] = React.useState('black');
 
     const handleChangeCheckLimit = (event) => {
         setCheckLimit(event.target.value);
@@ -90,55 +99,199 @@ function SimpleSelect(props) {
         setColorEnd(event.target.value);
     };
 
+    const handleColorStart1 = (event) => {
+        setColorStart1(event.target.value);
+    };
+    const handleColorEnd1 = (event) => {
+        setColorEnd1(event.target.value);
+    };
+
+    const handleColorStart2 = (event) => {
+        setColorStart2(event.target.value);
+    };
+    const handleColorEnd2 = (event) => {
+        setColorEnd2(event.target.value);
+    };
+
+    const handleColorLine = (event) => {
+        setColorLine(event.target.value);
+    }
+
     const checkbox1 = getCheckboxes('checkboxprova')
+    const checkbox2 = getCheckboxes('checkboxprova2')
+    const checkbox3 = getCheckboxes('checkboxprova3')
 
     const [checked, setChecked] = React.useState(true);
+    const [checked1, setChecked1] = React.useState(true);
+    const [checked2, setChecked2] = React.useState(true);
 
-    return (
-        <div>
 
-             <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={ColorStart}
-                    onChange={handleColorStart}
-                >
-                    <MenuItem value={'red'}>red</MenuItem>
-                    <MenuItem value={'yellow'}>yellow</MenuItem>
-                </Select>
-             </FormControl>
+    switch (props.num) {
 
-             <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={ColorEnd}
-                    onChange={handleColorEnd}
-                >
-                    <MenuItem value={'red'}>red</MenuItem>
-                    <MenuItem value={'yellow'}>yellow</MenuItem>
-                </Select>
+        case '1':
+                    return (
+                        <div>
 
-             </FormControl>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={ColorStart}
+                                    onChange={handleColorStart}
+                                >
+                                    <MenuItem value={'red'}>red</MenuItem>
+                                    <MenuItem value={'yellow'}>yellow</MenuItem>
+                                </Select>
+                            </FormControl>
 
-            <imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={CheckLimit} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
-                            opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both'{...props}>
-                <label>
-                    <input type="checkbox"
-                           checked={!checked}
-                           onChange={() => setChecked(!checked)}
-                           onClick={() => { checkbox1.setCheckLimit(!checked) }}
-                    />
-                    Checkbox
-                </label>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={ColorEnd}
+                                    onChange={handleColorEnd}
+                                >
+                                    <MenuItem value={'red'}>red</MenuItem>
+                                    <MenuItem value={'yellow'}>yellow</MenuItem>
+                                </Select>
 
-            </imp.checkboxes>
+                            </FormControl>
 
-        </div>
-    );
+                            <imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={false} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                                            opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both'{...props}>
+                                <label>
+                                    <input type="checkbox"
+                                           checked={!checked}
+                                           onChange={() => setChecked(!checked)}
+                                           onClick={() => { checkbox1.setCheckLimit(!checked) }}
+                                    />
+                                    Checkbox
+                                </label>
+
+                            </imp.checkboxes>
+
+                        </div>
+                    );
+        break;
+
+        case '2':
+                return (
+                        <div>
+
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={ColorStart1}
+                                    onChange={handleColorStart1}
+                                >
+                                    <MenuItem value={'red'}>red</MenuItem>
+                                    <MenuItem value={'yellow'}>yellow</MenuItem>
+                                </Select>
+                            </FormControl>
+
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={ColorEnd1}
+                                    onChange={handleColorEnd1}
+                                >
+                                    <MenuItem value={'red'}>red</MenuItem>
+                                    <MenuItem value={'black'}>black</MenuItem>
+                                </Select>
+
+                            </FormControl>
+
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-label">ColorLine</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={ColorLine}
+                                    onChange={handleColorLine}
+                                >
+                                    <MenuItem value={'red'}>red</MenuItem>
+                                    <MenuItem value={'black'}>black</MenuItem>
+                                    <MenuItem value={'white'}>white</MenuItem>
+
+                                </Select>
+
+                            </FormControl>
+
+                            <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true }
+                                            colorStart={ColorStart1} colorEnd={ColorEnd1} colorLine={ColorLine} {...props}>
+
+                                <label>
+                                    <input type="checkbox"
+                                           checked={!checked1}
+                                           onChange={() => setChecked1(!checked1)}
+                                           onClick={() => { checkbox2.setCheckLimit(!checked1) }}
+                                    />
+                                    Checkbox
+                                </label>
+
+                            </imp.checkboxes>
+
+                        </div>
+                    );
+        break;
+
+        case '3':
+            return (
+                <div>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorStart2}
+                            onChange={handleColorStart2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorEnd2}
+                            onChange={handleColorEnd2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <imp.checkboxes id='checkboxprova3' typeInput={3} checkLimit={ true } textInput='Checkbox off'
+                                    colorStart={ColorStart2} colorEnd={ColorEnd2} opacityNotCheck='1'
+                                    opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both' {...props}>
+
+                        <label>
+                            <input type="checkbox"
+                                   checked={!checked2}
+                                   onChange={() => setChecked2(!checked2)}
+                                   onClick={() => { checkbox3.setTextValue(!checked2, 'Checkbox on'); checkbox3.setCheckLimit(!checked2);}}
+                            />
+                            { getCheckboxes('checkboxprova3').textValue }
+                        </label>
+
+                    </imp.checkboxes>
+
+                </div>
+            );
+            break;
+    }
+
 }
 
 //TAB VERTICALE
@@ -177,12 +330,6 @@ function VerticalTabs(props) {
         float: 'left',
     }
 
-    const checkbox2 = getCheckboxes('checkboxprova2')
-    const checkbox3 = getCheckboxes('checkboxprova3')
-
-    const [checked1, setChecked1] = React.useState(true);
-    const [checked2, setChecked2] = React.useState(true);
-
     const [flipped, setFlipped ] = React.useState(false);
 
     const card1 = getCards('cardsprova')
@@ -213,39 +360,13 @@ function VerticalTabs(props) {
                     </Tabs>
 
                     <TabPanel2 value={value} index={0}>
-                        <SimpleSelect {...props}/>
+                        <SimpleSelect num='1' {...props}/>
                     </TabPanel2>
                     <TabPanel2 value={value} index={1}>
-                        <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true }
-                                        colorStart='yellow' colorEnd='red' opacityNotCheck='1'
-                                        opacityCheck='2' timeAnimation='4s' typeAnimFillMode='both' transition='' {...props}>
-
-                            <label>
-                                <input type="checkbox"
-                                       checked={!checked1}
-                                       onChange={() => setChecked1(!checked1)}
-                                       onClick={() => { checkbox2.setCheckLimit(!checked1) }}
-                                />
-                                Checkbox
-                            </label>
-
-                        </imp.checkboxes>
+                        <SimpleSelect num='2' {...props}/>
                     </TabPanel2>
                     <TabPanel2 value={value} index={2}>
-                        <imp.checkboxes id='checkboxprova3' typeInput={3} checkLimit={ true } textInput='Checkbox off'
-                                        colorStart='black' colorEnd='red' opacityNotCheck='1'
-                                        opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both' {...props}>
-
-                            <label>
-                                <input type="checkbox"
-                                       checked={!checked2}
-                                       onChange={() => setChecked2(!checked2)}
-                                       onClick={() => { checkbox3.setTextValue(!checked2, 'Checkbox on'); checkbox3.setCheckLimit(!checked2);}}
-                                />
-                                { getCheckboxes('checkboxprova3').textValue }
-                            </label>
-
-                        </imp.checkboxes>
+                        <SimpleSelect num='3' {...props}/>
                     </TabPanel2>
                 </div>
             );

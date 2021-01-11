@@ -33,6 +33,7 @@ class CheckboxesStore extends ReduceStore {
                         opacityCheck: action.opacityCheck,
                         timeAnimation: action.timeAnimation,
                         typeAnimFillMode: action.typeAnimFillMode,
+                        colorLine: action.colorLine,
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

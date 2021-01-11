@@ -7,7 +7,7 @@ import styled, {keyframes} from "styled-components"
 
 function checkboxes({
     id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
-    opacityCheck, timeAnimation, typeAnimFillMode, duration, timing, delay, iterations, direction, fillMode, playState, ...rest
+    opacityCheck, timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
     let getAnimationCSS, getAnimationCSS_1
@@ -22,7 +22,7 @@ function checkboxes({
 
        checkboxesActions.newCheckboxes(
             id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck, opacityCheck,
-            timeAnimation, typeAnimFillMode, duration, timing, delay,iterations, direction, fillMode, playState
+            timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay,iterations, direction, fillMode, playState
         )
 
 
@@ -43,7 +43,10 @@ function checkboxes({
             opacityNotCheck,
             rest.checkboxes.state.get(id).get('opacityNotCheck'),
             opacityCheck,
-            rest.checkboxes.state.get(id).get('opacityCheck'))
+            rest.checkboxes.state.get(id).get('opacityCheck'),
+            colorLine,
+            rest.checkboxes.state.get(id).get('colorLine')
+            )
 
         console.log(rest.checkboxes.state.get(id).get('colorEnd'))
         const checkboxObj = rest.checkboxes.state.get(id)
@@ -61,7 +64,10 @@ function checkboxes({
                             ))
 
         getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
-        getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
+        getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'),
+                                          rest.checkboxes.state.get(id).get('typeInput'),
+                                          rest.checkboxes.state.get(id).get('colorLine')
+                                        )
 
         timeAnim = rest.checkboxes.state.get(id).get('timeAnimation')
         fillAnim = rest.checkboxes.state.get(id).get('typeAnimFillMode')
@@ -93,7 +99,7 @@ function checkboxes({
    )
 }
 
-function setKeyframes2(checkLimit, typeInput) {
+function setKeyframes2(checkLimit, typeInput, colorLine) {
 
     let tmp
 
@@ -130,14 +136,14 @@ function setKeyframes2(checkLimit, typeInput) {
                       
                       50% {
                         clip-path: polygon(0 0, 1% 0, 1% 100%, 0% 100%);
-                        color: white;
+                        color: ${colorLine};
                         text-decoration: line-through;
                         text-decoration-thickness: 3px;
                         transition-timing-function: clip-path 3s cubic-bezier(.25,.77,.74,.24);
                       }
                       
                       75% {
-                        color: white;
+                        color: ${colorLine};
                         clip-path: polygon(0 0, 1% 0, 1% 100%, 0% 100%);
                         text-decoration: line-through;
                         text-decoration-thickness: 3px;
@@ -145,7 +151,7 @@ function setKeyframes2(checkLimit, typeInput) {
                       }
                     
                       100% {
-                        color: white;
+                        color: ${colorLine};
                         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
                         text-decoration: line-through;
                         text-decoration-thickness: 3px;
@@ -630,7 +636,9 @@ function checkValue (
     colorStart, restcolorStart,
     colorEnd, restcolorEnd,
     opacityNotCheck, restopacityNotCheck,
-    opacityCheck, restopacityCheck ) {
+    opacityCheck, restopacityCheck,
+    colorLine, restcolorLine
+) {
 
 
     if (colorEnd != restcolorEnd) {
@@ -639,6 +647,10 @@ function checkValue (
 
     if (colorStart != restcolorStart) {
         checkboxesActions.changeValue(id, 'colorStart', colorStart)
+    }
+
+    if (colorLine != restcolorLine) {
+        checkboxesActions.changeValue(id, 'colorLine', colorLine)
     }
 }
 
@@ -662,7 +674,8 @@ checkboxes.propType = {
     opacityNotCheck: PropTypes.string,
     opacityCheck: PropTypes.string,
     timeAnimation: PropTypes.string,
-    typeAnimFillMode: PropTypes.string
+    typeAnimFillMode: PropTypes.string,
+    colorLine: PropTypes.string
 }
 
 export default checkboxes
