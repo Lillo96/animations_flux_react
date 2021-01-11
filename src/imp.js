@@ -61,6 +61,16 @@ const imp = {
     tabs: tabs
 }
 
+/*export function getHTMLCards(nameFunction) {
+    switch (nameFunction) {
+        case 'CardContainer':
+            return {
+                setCheckLimitCards,
+            }
+            break;
+    }
+}*/
+
 export function getCheckboxes(id) {
     return {
         ...getDataAnimation('checkboxes', id, checkboxesObject),

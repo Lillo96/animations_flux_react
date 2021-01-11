@@ -126,6 +126,10 @@ function SimpleSelect(props) {
     const [checked2, setChecked2] = React.useState(true);
 
 
+    const [flipped, setFlipped ] = React.useState(false);
+
+    const card1 = getCards('cardsprova')
+
     switch (props.num) {
 
         case '1':
@@ -175,7 +179,6 @@ function SimpleSelect(props) {
                         </div>
                     );
         break;
-
 
         case '2':
                 return (
@@ -291,6 +294,348 @@ function SimpleSelect(props) {
                 </div>
             );
             break;
+
+        case '4':
+            return (
+                <div>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label"></InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorStart2}
+                            onChange={handleColorStart2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorEnd2}
+                            onChange={handleColorEnd2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard='#d7d7d7'
+                       backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='100%'
+                       width='100%' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
+                       buttonBackColor='white'
+                       {...props}>
+
+                        <CardContainer>
+                            <CardInner className={flipped ? "flipped" : ""}>
+                                <CardFront>
+                                    <h2>Title</h2>
+                                    <p>Here is some content for the front</p>
+                                    <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                </CardFront>
+                                <CardBack>
+                                    <h2>Back the title</h2>
+                                    <p>Here is the content that goes on the back</p>
+                                    <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                </CardBack>
+
+                            </CardInner>
+                        </CardContainer>
+
+                     </imp.cards>
+                </div>
+                );
+            break;
+
+        case '5':
+            return (
+                <div>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label"></InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorStart2}
+                            onChange={handleColorStart2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorEnd2}
+                            onChange={handleColorEnd2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <imp.cards id='cardsprova02' {...props}>
+
+                        <ImageArea>
+                            <ImageWrapper>
+                                <HeaderImage alt="Atul Prajapati"/>
+                                <NameCard>David James</NameCard>
+                                <IconUL>
+                                    <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
+                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                                </IconUL>
+                            </ImageWrapper>
+                        </ImageArea>
+
+                    </imp.cards>
+
+                </div>
+            );
+            break;
+
+        case '6':
+            return (
+                <div>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label"></InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorStart2}
+                            onChange={handleColorStart2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ColorEnd2}
+                            onChange={handleColorEnd2}
+                        >
+                            <MenuItem value={'red'}>red</MenuItem>
+                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <imp.cards id='cardsprova03' textAlign='center' display='flex' flexDirection='column' colorCard='#fff' colorCard2='#f8f8f8'
+                               backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='250px'
+                               width='450px' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
+                               buttonBackColor='white' marginCard='1.5rem' colorCardTrans1='#dE685E' fontSizeLCentral='0.75em'
+                               fontSizePointsCenter='0.75em'
+                               {...props}>
+
+                        <CardCenter>
+
+                            <Card>
+                                <Additional>
+                                    <UserCard>
+                                        <LevelCenter>
+                                            Level 13
+                                        </LevelCenter>
+                                        <PointsCenter>
+                                            5,312 Points
+                                        </PointsCenter>
+                                        <Svg>
+                                            <title id="title">Teacher</title>
+                                            {/*<desc id="desc">Cartoon of a Caucasian woman smiling, and wearing black glasses and a
+                                                    purple shirt with white collar drawn by Alvaro Montoro.
+                                                </desc>*/}
+                                        </Svg>
+
+                                    </UserCard>
+                                    <MoreInfo>
+                                        <MoreInfoName>Jane Doe</MoreInfoName>
+                                        <Coords>
+                                            <span>Group Name</span>
+                                            <span>Joined January 2019</span>
+                                        </Coords>
+                                        <Coords>
+                                            <span>Position/Role</span>
+                                            <span>City, Country</span>
+                                        </Coords>
+                                        <Stats>
+                                            <div>
+                                                <StatsTitle>Awards</StatsTitle>
+                                                <i className="fa fa-trophy"></i>
+                                                <StatsValue>2</StatsValue>
+                                            </div>
+                                            <div>
+                                                <StatsTitle>Matches</StatsTitle>
+                                                <i className="fa fa-gamepad"></i>
+                                                <StatsValue>27</StatsValue>
+                                            </div>
+                                            <div>
+                                                <StatsTitle>Pals</StatsTitle>
+                                                <i className="fa fa-group"></i>
+                                                <StatsValue>123</StatsValue>
+                                            </div>
+                                            <div>
+                                                <StatsTitle>Coffee</StatsTitle>
+                                                <i className="fa fa-coffee"></i>
+                                                <StatsValue>∞</StatsValue>
+                                            </div>
+                                        </Stats>
+                                    </MoreInfo>
+                                </Additional>
+                                <General>
+                                    <GeneralMoreTitle>Jane Doe</GeneralMoreTitle>
+                                    <GeneralMoreText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
+                                        lacus. Nam vestibulum sodales odio ut pulvinar.</GeneralMoreText>
+                                    <GeneralMore>Mouse over the card for more info</GeneralMore>
+                                </General>
+                            </Card>
+
+                        </CardCenter>
+
+                    </imp.cards>
+
+                </div>
+            );
+            break;
+
+        case '7':
+            return (
+              <div>
+                  <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-label"></InputLabel>
+                      <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={ColorStart2}
+                          onChange={handleColorStart2}
+                      >
+                          <MenuItem value={'red'}>red</MenuItem>
+                          <MenuItem value={'yellow'}>yellow</MenuItem>
+                      </Select>
+                  </FormControl>
+
+                  <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                      <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={ColorEnd2}
+                          onChange={handleColorEnd2}
+                      >
+                          <MenuItem value={'red'}>red</MenuItem>
+                          <MenuItem value={'yellow'}>yellow</MenuItem>
+                      </Select>
+
+                  </FormControl>
+
+                  <imp.tabs id='tabsprova' {...props}>
+                      <ContainerItems>
+                          <DivItems>
+                              <DivItemsHead>
+                                  <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
+                                  <DivItemsHead_hr></DivItemsHead_hr>
+                              </DivItemsHead>
+
+                              <ItemsBody>
+                                  <ItemsBodyContent>
+                                      <span>Web Usabilty Testing</span>
+                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                  </ItemsBodyContent>
+                                  <ItemsBodyContent>
+                                      <span>Design of Everyday Things</span>
+                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                  </ItemsBodyContent>
+                                  <ItemsBodyContent>
+                                      <span>Practical Empathy: For Collaboration & Creativity in Your Work</span>
+                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                  </ItemsBodyContent>
+                                  <ItemsBodyContent>
+                                      <span>About Face: The Essentials of Interaction Design</span>
+                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                  </ItemsBodyContent>
+                              </ItemsBody>
+                          </DivItems>
+                      </ContainerItems>
+                  </imp.tabs>
+              </div>
+            );
+            break;
+
+        case '8':
+            return (
+              <div>
+                  <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-label"></InputLabel>
+                      <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={ColorStart2}
+                          onChange={handleColorStart2}
+                      >
+                          <MenuItem value={'red'}>red</MenuItem>
+                          <MenuItem value={'yellow'}>yellow</MenuItem>
+                      </Select>
+                  </FormControl>
+
+                  <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                      <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={ColorEnd2}
+                          onChange={handleColorEnd2}
+                      >
+                          <MenuItem value={'red'}>red</MenuItem>
+                          <MenuItem value={'yellow'}>yellow</MenuItem>
+                      </Select>
+
+                  </FormControl>
+
+                  <imp.tabs id='tabsprova01' {...props}>
+
+                      <TilesWrap>
+                          <TilesWrap_li>
+                              <TilesWrap_h2>01</TilesWrap_h2>
+                              <TilesWrap_h3>Title 1</TilesWrap_h3>
+                              <TilesWrap_p>
+                                  Lorem Ipsum is simply dummy text of the printing and typesetting
+                                  industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                  since the 1500s.
+                              </TilesWrap_p>
+                              <TilesWrap_button>Read more</TilesWrap_button>
+                          </TilesWrap_li>
+                          <TilesWrap_li>
+                              <TilesWrap_h2>02</TilesWrap_h2>
+                              <TilesWrap_h3>Title 2</TilesWrap_h3>
+                              <TilesWrap_p>
+                                  When an unknown printer took a galley of type and scrambled it to make
+                                  a type specimen book. It has survived not only five centuries.
+                              </TilesWrap_p>
+                              <TilesWrap_button>Read more</TilesWrap_button>
+                          </TilesWrap_li>
+
+                      </TilesWrap>
+
+                  </imp.tabs>
+
+              </div>
+            );
+            break;
+
     }
 
 }
@@ -331,9 +676,7 @@ function VerticalTabs(props) {
         float: 'left',
     }
 
-    const [flipped, setFlipped ] = React.useState(false);
 
-    const card1 = getCards('cardsprova')
 
     const classes = useStyles2();
     const [value, setValue] = React.useState(0);
@@ -390,126 +733,13 @@ function VerticalTabs(props) {
                         <Tab label="3" {...a11yProps2(2)} />
                     </Tabs>
                     <TabPanel2 value={value} index={0}>
-
-                        <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard='#d7d7d7'
-                                   backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='100%'
-                                   width='100%' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
-                                   buttonBackColor='white'
-                                   {...props}>
-
-                            <CardContainer>
-                                <CardInner className={flipped ? "flipped" : ""}>
-                                    <CardFront>
-                                        <h2>Title</h2>
-                                        <p>Here is some content for the front</p>
-                                        <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
-                                    </CardFront>
-                                    <CardBack>
-                                        <h2>Back the title</h2>
-                                        <p>Here is the content that goes on the back</p>
-                                        <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
-                                    </CardBack>
-
-                                </CardInner>
-                            </CardContainer>
-
-                        </imp.cards>
-
+                        <SimpleSelect num='4' {...props}/>
                     </TabPanel2>
                     <TabPanel2 value={value} index={1}>
-
-                        <imp.cards id='cardsprova02' {...props}>
-
-                            <ImageArea>
-                                <ImageWrapper>
-                                    <HeaderImage alt="Atul Prajapati"/>
-                                    <NameCard>David James</NameCard>
-                                    <IconUL>
-                                        <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
-                                        <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                                        <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                                        <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                                    </IconUL>
-                                </ImageWrapper>
-                            </ImageArea>
-
-                        </imp.cards>
-
+                        <SimpleSelect num='5' {...props}/>
                     </TabPanel2>
                     <TabPanel2 value={value} index={2}>
-
-                        <imp.cards id='cardsprova03' textAlign='center' display='flex' flexDirection='column' colorCard='#fff' colorCard2='#f8f8f8'
-                                   backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='250px'
-                                   width='450px' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
-                                   buttonBackColor='white' marginCard='1.5rem' colorCardTrans1='#dE685E' fontSizeLCentral='0.75em'
-                                   fontSizePointsCenter='0.75em'
-                                   {...props}>
-
-                            <CardCenter>
-
-                                <Card>
-                                    <Additional>
-                                        <UserCard>
-                                            <LevelCenter>
-                                                Level 13
-                                            </LevelCenter>
-                                            <PointsCenter>
-                                                5,312 Points
-                                            </PointsCenter>
-                                            <Svg>
-                                                <title id="title">Teacher</title>
-                                                {/*<desc id="desc">Cartoon of a Caucasian woman smiling, and wearing black glasses and a
-                                                    purple shirt with white collar drawn by Alvaro Montoro.
-                                                </desc>*/}
-                                            </Svg>
-
-                                        </UserCard>
-                                        <MoreInfo>
-                                            <MoreInfoName>Jane Doe</MoreInfoName>
-                                            <Coords>
-                                                <span>Group Name</span>
-                                                <span>Joined January 2019</span>
-                                            </Coords>
-                                            <Coords>
-                                                <span>Position/Role</span>
-                                                <span>City, Country</span>
-                                            </Coords>
-                                            <Stats>
-                                                <div>
-                                                    <StatsTitle>Awards</StatsTitle>
-                                                    <i className="fa fa-trophy"></i>
-                                                    <StatsValue>2</StatsValue>
-                                                </div>
-                                                <div>
-                                                    <StatsTitle>Matches</StatsTitle>
-                                                    <i className="fa fa-gamepad"></i>
-                                                    <StatsValue>27</StatsValue>
-                                                </div>
-                                                <div>
-                                                    <StatsTitle>Pals</StatsTitle>
-                                                    <i className="fa fa-group"></i>
-                                                    <StatsValue>123</StatsValue>
-                                                </div>
-                                                <div>
-                                                    <StatsTitle>Coffee</StatsTitle>
-                                                    <i className="fa fa-coffee"></i>
-                                                    <StatsValue>∞</StatsValue>
-                                                </div>
-                                            </Stats>
-                                        </MoreInfo>
-                                    </Additional>
-                                    <General>
-                                        <GeneralMoreTitle>Jane Doe</GeneralMoreTitle>
-                                        <GeneralMoreText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
-                                            lacus. Nam vestibulum sodales odio ut pulvinar.</GeneralMoreText>
-                                        <GeneralMore>Mouse over the card for more info</GeneralMore>
-                                    </General>
-                                </Card>
-
-                            </CardCenter>
-
-                        </imp.cards>
-
+                        <SimpleSelect num='6' {...props}/>
                     </TabPanel2>
                 </div>
             );
@@ -531,65 +761,10 @@ function VerticalTabs(props) {
                         <Tab label="2" {...a11yProps2(1)} />
                     </Tabs>
                     <TabPanel2 value={value} index={0}>
-                        <imp.tabs id='tabsprova' {...props}>
-                            <ContainerItems>
-                                <DivItems>
-                                    <DivItemsHead>
-                                        <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
-                                        <DivItemsHead_hr></DivItemsHead_hr>
-                                    </DivItemsHead>
-
-                                    <ItemsBody>
-                                        <ItemsBodyContent>
-                                            <span>Web Usabilty Testing</span>
-                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                        </ItemsBodyContent>
-                                        <ItemsBodyContent>
-                                            <span>Design of Everyday Things</span>
-                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                        </ItemsBodyContent>
-                                        <ItemsBodyContent>
-                                            <span>Practical Empathy: For Collaboration & Creativity in Your Work</span>
-                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                        </ItemsBodyContent>
-                                        <ItemsBodyContent>
-                                            <span>About Face: The Essentials of Interaction Design</span>
-                                            <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                        </ItemsBodyContent>
-                                    </ItemsBody>
-                                </DivItems>
-                            </ContainerItems>
-                        </imp.tabs>
+                        <SimpleSelect num='7' {...props}/>
                     </TabPanel2>
                     <TabPanel2 value={value} index={1}>
-
-                        <imp.tabs id='tabsprova01' {...props}>
-
-                            <TilesWrap>
-                                <TilesWrap_li>
-                                    <TilesWrap_h2>01</TilesWrap_h2>
-                                    <TilesWrap_h3>Title 1</TilesWrap_h3>
-                                    <TilesWrap_p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                        since the 1500s.
-                                    </TilesWrap_p>
-                                    <TilesWrap_button>Read more</TilesWrap_button>
-                                </TilesWrap_li>
-                                <TilesWrap_li>
-                                    <TilesWrap_h2>02</TilesWrap_h2>
-                                    <TilesWrap_h3>Title 2</TilesWrap_h3>
-                                    <TilesWrap_p>
-                                        When an unknown printer took a galley of type and scrambled it to make
-                                        a type specimen book. It has survived not only five centuries.
-                                    </TilesWrap_p>
-                                    <TilesWrap_button>Read more</TilesWrap_button>
-                                </TilesWrap_li>
-
-                            </TilesWrap>
-
-                        </imp.tabs>
-
+                        <SimpleSelect num='8' {...props}/>
                     </TabPanel2>
 
                 </div>
