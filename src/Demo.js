@@ -44,7 +44,8 @@ import {
     getHeaderImage,
     getName,
     getIconUL,
-    getIconLi
+    getIconLi,
+    setValueVariable
 } from "./components/cards";
 import {
     getContainerItems,
@@ -137,9 +138,9 @@ function SimpleSelect(props) {
 
     const [flipped, setFlipped ] = React.useState(false);
 
-
-
     const card1 = getCards('cardsprova')
+
+    console.log("CIAOOO")
 
     switch (props.num) {
 
@@ -337,13 +338,10 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard={BackfaceColor}
-                       backfaceVisibility={BackfaceVisibility} borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='100%'
-                       width='100%' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
-                       buttonBackColor='white'
+                    <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard='red'
                        {...props}>
-
-                        <CardContainer>
+                        {/*onClick={ () => {card1.setValueVariable(card1.id, 'colorCard', BackfaceColor)}}*/}
+                        <CardContainer >
                             <CardInner className={flipped ? "flipped" : ""}>
                                 <CardFront>
                                     <h2>Title</h2>

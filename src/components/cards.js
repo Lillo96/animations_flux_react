@@ -16,8 +16,6 @@ function cards({
     duration, timing, delay, iterations,direction, fillMode, playState, ...rest
 }) {
 
-
-
     let animation, flipped
     let getAnimationCSS, getAnimationCSS_1
 
@@ -44,6 +42,7 @@ function cards({
     } else {
 
         if (colorCard != rest.cards.state.get(id).get('colorCard')) {
+            console.log("CI SONOOO")
             cardsActions.changeValue(id, 'colorCard', colorCard)
         }
 
@@ -217,8 +216,8 @@ export function getCardFront(Card) {
           animation: ${Card.timeAnim} ${tmp} both;
        `;
 
+    console.log(CardFrontFinal)
     return CardFrontFinal
-
 }
 
 export function getCardBack(Card) {
@@ -1071,6 +1070,11 @@ function cssStylesKeyFrames(checkLimit, typeInput) {
 export function setCheckLimitCards (value) {
     //console.log(value)
     cardsActions.changeValue(this.id, 'checkLimit', value)
+}
+
+export function setValueVariable (id, idVar, value) {
+    console.log(id, idVar, value);
+    cardsActions.changeValue(id, idVar, value)
 }
 
 cards.propType = {

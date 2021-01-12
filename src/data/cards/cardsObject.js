@@ -13,7 +13,7 @@ const cards = Immutable.Record({
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
-    colorCard: '#d7d7d7',
+    colorCard: '#white',
     perspective: '',
     backfaceVisibility: 'hidden',
     borderDim: '2px',

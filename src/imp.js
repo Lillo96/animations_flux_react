@@ -32,7 +32,8 @@ import cards, {
     getCardGeneral,
     getCardGeneralMore,
     getCardGeneralTitle,
-    getCardGeneralText
+    getCardGeneralText,
+    setValueVariable
 } from "./components/cards"
 import tabs,{
     getContainerItems,
@@ -110,7 +111,8 @@ export function getCards(id) {
         getCardGeneral,
         getCardGeneralMore,
         getCardGeneralTitle,
-        getCardGeneralText
+        getCardGeneralText,
+        setValueVariable
     }
 }
 
