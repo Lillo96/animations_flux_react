@@ -89,6 +89,9 @@ function SimpleSelect(props) {
 
     const [ColorLine, setColorLine] = React.useState('black');
 
+    const [BackfaceColor, setBackfaceColor] = React.useState('white');
+    const [BackfaceVisibility, setBackfaceVisibility] = React.useState('hidden');
+
     const handleChangeCheckLimit = (event) => {
         setCheckLimit(event.target.value);
     };
@@ -117,6 +120,13 @@ function SimpleSelect(props) {
         setColorLine(event.target.value);
     }
 
+    const handleBackfaceColor = (event) => {
+        setBackfaceColor(event.target.value);
+    }
+    const handleBackfaceVisibility = (event) => {
+        setBackfaceVisibility(event.target.value);
+    }
+
     const checkbox1 = getCheckboxes('checkboxprova')
     const checkbox2 = getCheckboxes('checkboxprova2')
     const checkbox3 = getCheckboxes('checkboxprova3')
@@ -125,8 +135,9 @@ function SimpleSelect(props) {
     const [checked1, setChecked1] = React.useState(true);
     const [checked2, setChecked2] = React.useState(true);
 
-
     const [flipped, setFlipped ] = React.useState(false);
+
+
 
     const card1 = getCards('cardsprova')
 
@@ -300,34 +311,34 @@ function SimpleSelect(props) {
                 <div>
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label"></InputLabel>
+                        <InputLabel id="demo-simple-select-label">Background-color</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={ColorStart2}
-                            onChange={handleColorStart2}
+                            value={BackfaceColor}
+                            onChange={handleBackfaceColor}
                         >
-                            <MenuItem value={'red'}>red</MenuItem>
-                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                            <MenuItem value={'white'}>white</MenuItem>
+                            <MenuItem value={'#D9D9D9'}>light gray</MenuItem>
                         </Select>
                     </FormControl>
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                        <InputLabel id="demo-simple-select-label">Backface-visibility</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={ColorEnd2}
-                            onChange={handleColorEnd2}
+                            value={BackfaceVisibility}
+                            onChange={handleBackfaceVisibility}
                         >
-                            <MenuItem value={'red'}>red</MenuItem>
-                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                            <MenuItem value={'hidden'}>hidden</MenuItem>
+                            <MenuItem value={'none'}>none</MenuItem>
                         </Select>
 
                     </FormControl>
 
-                    <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard='#d7d7d7'
-                       backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='100%'
+                    <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard={BackfaceColor}
+                       backfaceVisibility={BackfaceVisibility} borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='100%'
                        width='100%' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
                        buttonBackColor='white'
                        {...props}>

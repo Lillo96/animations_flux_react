@@ -16,6 +16,8 @@ function cards({
     duration, timing, delay, iterations,direction, fillMode, playState, ...rest
 }) {
 
+
+
     let animation, flipped
     let getAnimationCSS, getAnimationCSS_1
 
@@ -35,9 +37,18 @@ function cards({
             // NON DOVREBBE SERVIRE
         //setAnimationCSS(id, cssStylesKeyFrames(true,1))
 
+        console.log("COLOR CARD", colorCard)
+        //console.log("COLOR CARD REST", rest.cards.state.get(id).get('colorCard'))
+
         tmp_CardID = id
     } else {
 
+        if (colorCard != rest.cards.state.get(id).get('colorCard')) {
+            cardsActions.changeValue(id, 'colorCard', colorCard)
+        }
+
+        console.log("COLOR CARD", colorCard)
+        console.log("COLOR CARD REST", rest.cards.state.get(id).get('colorCard'))
         //console.log("Dentro else di !rest")
 
         const cardObj = rest.cards.state.get(id)
@@ -148,7 +159,7 @@ export function getCardContainer (Card) {
                         z-index: 0;
                         -webkit-perspective: 1000px;
                         transform-style: preserve-3d;
-                        z-index: 1;
+                       
                       }
                   `;
 
@@ -162,6 +173,8 @@ export function getCardContainer (Card) {
 
 export function getCardFront(Card) {
     //let CardFront
+
+    console.log(Card.colorCard)
 
     const CardSide = css`
         width: ${Card.width};
@@ -185,18 +198,18 @@ export function getCardFront(Card) {
    const tmp = keyframes`
                       
                       from, to {
-                        width: ${Card.width};
-                        height: ${Card.height};
-                        min-width: 100%;
-                        min-height: 100%;
-                        display: ${Card.display};
-                        flex-direction: ${Card.flexDirection};
-                        justify-content: space-between;
-                        -webkit-backface-visibility: ${Card.backfaceVisibility};
-                        border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
-                        
-                        z-index: 0;
-                        background: ${Card.colorCard};
+                            width: ${Card.width};
+                            height: ${Card.height};
+                            min-width: 100%;
+                            min-height: 100%;
+                            display: ${Card.display};
+                            flex-direction: ${Card.flexDirection};
+                            justify-content: space-between;
+                            -webkit-backface-visibility: ${Card.backfaceVisibility};
+                            border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
+                          
+                            z-index: 0;
+                            background: ${Card.colorCard};
                       }
                   `;
 
@@ -211,6 +224,8 @@ export function getCardFront(Card) {
 export function getCardBack(Card) {
     //let CardBack
 
+    console.log(Card.colorCard)
+
     const CardSide = css`
         width: 100%;
         min-width: 100%;
@@ -221,7 +236,6 @@ export function getCardBack(Card) {
         border: 2px solid #0d0d0d;
     `;
 
-
     const CardBack = styled.div`
         
         ${CardSide}
@@ -230,6 +244,8 @@ export function getCardBack(Card) {
         background: #d7d7d7;
         z-index: 0;
     `;
+
+
 
    const tmp = keyframes`
                       
@@ -240,11 +256,13 @@ export function getCardBack(Card) {
                         min-height: 100%;                    
                         display: ${Card.display};
                         flex-direction: ${Card.flexDirection};
-                        justify-content: center;
-                        -webkit-backface-visibility: ${Card.flexDirection};
+                        justify-content: space-between;
+                        -webkit-backface-visibility: ${Card.backfaceVisibility};
                         border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                       
+                      
                         transform: rotateY(180deg) translate(100%, 0);
+                        // transform: rotateY(180deg) translate(100%, 0) rotate(180deg);
                         background: ${Card.colorCard};
                         z-index: 0;
                       }
@@ -261,6 +279,13 @@ export function getCardBack(Card) {
 
 export function getCardInner(Card) {
 
+    const tmp = keyframes`
+                      
+                      to {
+                       transform: rotateY(180deg);
+                      }
+    `;
+
         const CardInner = styled.div`
             flex: 1;
             display: ${Card.display};
@@ -268,7 +293,8 @@ export function getCardInner(Card) {
             transform-style: preserve-3d;
     
             &.flipped {
-                transform: rotateY(180deg);;
+            transform: rotateY(180deg);
+            //transform: rotateX(180deg);
             }
         `;
 
