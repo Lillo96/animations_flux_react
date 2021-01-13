@@ -399,11 +399,12 @@ function SimpleSelect(props) {
                             <ImageWrapper>
                                 <HeaderImage alt="Atul Prajapati"/>
                                 <NameCard>David James</NameCard>
-                                <IconUL>
-                                    <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
+                               <IconUL>
+
+{/*                                    <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
                                     <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
                                     <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
+                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>*/}
                                 </IconUL>
                             </ImageWrapper>
                         </ImageArea>

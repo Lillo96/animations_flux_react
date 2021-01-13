@@ -320,11 +320,7 @@ export function getImageArea() {
 
     const tmp = keyframes`  
                       
-                      from {
-                        
-                      }
-                      
-                      to {
+                      from, to {
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
@@ -377,14 +373,9 @@ export function getImageWrapper() {
 */
 
 
+    const tmp = keyframes`
 
-    const ImageWrapper = styled.div`
-          width: 300px;
-          height: 400px;
-          position: relative;
-          overflow: hidden;
-          
-          &:before {
+         from {
                 content: '';
                 position: absolute;
                 top: 0;
@@ -395,13 +386,132 @@ export function getImageWrapper() {
                 z-index: 1;
                 transform: skew(45deg);
                 transition: .5s;
-          }
+         }
+    `;
+
+    const tmp1 = keyframes`
+
+         from, to {
+               left: -180%;
+         }
+    `;
+
+    // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
+
+/*&:before {
+        // -webkit-animation: ${tmp} .5s both;
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 180%;
+        height: 100%;
+        width: 100%;
+        background: rgba(255,255,255,.3);
+        z-index: 1;
+        transform: skew(45deg);
+        transition: .5s;
+    }*/
+
+    // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA
+
+/*&:before {
+        // -webkit-animation: ${tmp} .5s both;
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -170%;
+        height: 100%;
+        width: 100%;
+        background: rgba(255,255,255,.3);
+        z-index: 1;
+        transform: skew(45deg);
+        transition: .5s;
+    }*/
+
+    // DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
+
+/*&:before {
+        // -webkit-animation: ${tmp} .5s both;
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -160%;
+        height: 100%;
+        width: 100%;
+        background: rgba(255,255,255,.3);
+        z-index: 1;
+        transform: skew(140deg);
+        transition: .5s;
+    }*/
+
+    // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
+
+/*&:before {
+        // -webkit-animation: ${tmp} .5s both;
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 160%;
+        height: 100%;
+        width: 100%;
+        background: rgba(255,255,255,.3);
+        z-index: 1;
+        transform: skew(140deg);
+        transition: .5s;
+    }*/
+
+    const ImageWrapper = styled.div`
+          width: 300px;
+          height: 400px;
+          position: relative;
+          overflow: hidden;
+          
+          &:before {
+                // -webkit-animation: ${tmp} .5s both;
+        
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 160%;
+                height: 100%;
+                width: 100%;
+                background: rgba(255,255,255,.3);
+                z-index: 1;
+                transform: skew(140deg);
+                transition: .5s;
+            }          
           
           &:hover:before {
-            left: -180%;
+            // -webkit-animation: ${tmp1} 1s forwards;
+            
+            left: -160%;
           }
            
        `;
+
+    // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
+
+/*&:hover:before {
+        left: 180%;
+    }*/
+
+    // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA - DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
+
+/*&:hover:before {
+        left: 180%;
+    }*/
+
+    // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
+
+/*&:hover:before {
+        // -webkit-animation: ${tmp1} 1s forwards;
+
+        left: -160%;
+    }*/
 
     return ImageWrapper
 }
@@ -440,6 +550,37 @@ export function getHeaderImage() {
 
 export function getName() {
 
+    const tmp = keyframes`
+
+         to {
+            transform: perspective(400px) rotateY(0deg);
+         }
+    `;
+
+    // SINISTRA IN BASSO
+
+/*    const Name = styled.h2`
+        background: tomato;
+        font-family: Poppins;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 50px 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transform: perspective(400px) rotateY(90deg);
+        transform-origin: left;
+        transition: 1s;
+        
+        &:hover {
+            animation: ${tmp} 1s both; 
+        }
+    `;*/
+
+    // DESTRA IN BASSO
+
     const Name = styled.h2`
         background: tomato;
         font-family: Poppins;
@@ -447,7 +588,7 @@ export function getName() {
         text-align: center;
         text-transform: uppercase;
         margin: 0;
-        padding: 10px 0;
+        padding: 50px 0;
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -456,9 +597,10 @@ export function getName() {
         transition: 1s;
         
         &:hover {
-            transform: perspective(400px) rotateY(0deg);
+            animation: ${tmp} 1s both; 
         }
     `;
+
 
     return Name
 }
