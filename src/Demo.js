@@ -90,8 +90,10 @@ function SimpleSelect(props) {
 
     const [ColorLine, setColorLine] = React.useState('black');
 
-    const [BackfaceColor, setBackfaceColor] = React.useState('white');
-    const [BackfaceVisibility, setBackfaceVisibility] = React.useState('hidden');
+    const [BackfaceColor, setBackfaceColor] = React.useState('#D9D9D9');
+    const [DirectionOfRotation, setDirectionOfRotation] = React.useState('toTheRight');
+
+    const [DirectionOfAnimation, setDirectionOfAnimation] = React.useState('topLeftBottomRight');
 
     const handleChangeCheckLimit = (event) => {
         setCheckLimit(event.target.value);
@@ -124,9 +126,16 @@ function SimpleSelect(props) {
     const handleBackfaceColor = (event) => {
         setBackfaceColor(event.target.value);
     }
-    const handleBackfaceVisibility = (event) => {
-        setBackfaceVisibility(event.target.value);
+    const handleDirectionOfRotation = (event) => {
+        setDirectionOfRotation(event.target.value);
     }
+
+    const handleDirectionOfAnimation = (event) => {
+        setDirectionOfAnimation(event.target.value);
+    }
+/*    const handleColor = (event) => {
+        setDirectionOfAnimation(event.target.value);
+    }*/
 
     const checkbox1 = getCheckboxes('checkboxprova')
     const checkbox2 = getCheckboxes('checkboxprova2')
@@ -308,6 +317,13 @@ function SimpleSelect(props) {
             break;
 
         case '4':
+
+            const CardContainer = getCardContainer(getCards('cardsprova'))
+            const CardFront = getCardFront(getCards('cardsprova'))
+            const CardBack = getCardBack(getCards('cardsprova'))
+            const CardInner = getCardInner(getCards('cardsprova'))
+            const CardButton = getCardButton(getCards('cardsprova'))
+
             return (
                 <div>
 
@@ -325,23 +341,23 @@ function SimpleSelect(props) {
                     </FormControl>
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label">Backface-visibility</InputLabel>
+                        <InputLabel id="demo-simple-select-label">Direction of rotation</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={BackfaceVisibility}
-                            onChange={handleBackfaceVisibility}
+                            value={DirectionOfRotation}
+                            onChange={handleDirectionOfRotation}
                         >
-                            <MenuItem value={'hidden'}>hidden</MenuItem>
-                            <MenuItem value={'none'}>none</MenuItem>
+                            <MenuItem value={'toTheRight'}>To the X</MenuItem>
+                            <MenuItem value={'toTheLeft'}>To the Y</MenuItem>
                         </Select>
 
                     </FormControl>
 
-                    <imp.cards id='cardsprova' textAlign='center' display='flex' flexDirection='column' colorCard='red'
+                    <imp.cards id='cardsprova' colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
                        {...props}>
                         {/*onClick={ () => {card1.setValueVariable(card1.id, 'colorCard', BackfaceColor)}}*/}
-                        <CardContainer >
+                       <CardContainer >
                             <CardInner className={flipped ? "flipped" : ""}>
                                 <CardFront>
                                     <h2>Title</h2>
@@ -363,19 +379,29 @@ function SimpleSelect(props) {
             break;
 
         case '5':
+
+            const ImageArea = getImageArea(getCards('cardsprova02'))
+            const ImageWrapper = getImageWrapper(getCards('cardsprova02'))
+            const HeaderImage = getHeaderImage(getCards('cardsprova02'))
+            const NameCard = getName(getCards('cardsprova02'))
+            const IconUL = getIconUL(getCards('cardsprova02'))
+            const IconLI = getIconLi(getCards('cardsprova02'))
+
             return (
                 <div>
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label"></InputLabel>
+                        <InputLabel id="demo-simple-select-label">>Direction of animation</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={ColorStart2}
-                            onChange={handleColorStart2}
+                            value={DirectionOfAnimation}
+                            onChange={handleDirectionOfAnimation}
                         >
-                            <MenuItem value={'red'}>red</MenuItem>
-                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                            <MenuItem value={'topLeftBottomRight'}>top left bottom right</MenuItem>
+                            <MenuItem value={'topRightBottomLeft'}>top right bottom left</MenuItem>
+                            <MenuItem value={'lowRightToHighLeft'}>low right to high left</MenuItem>
+                            <MenuItem value={'lowLeftToHighRight'}>low left to high right</MenuItem>
                         </Select>
                     </FormControl>
 
@@ -416,6 +442,25 @@ function SimpleSelect(props) {
             break;
 
         case '6':
+
+            const CardCenter = getCardCenter(getCards('cardsprova03'))
+            const Card = getCard(getCards('cardsprova03'))
+            const Additional = getAdditional(getCards('cardsprova03'))
+            const UserCard = getUserCard(getCards('cardsprova03'))
+            const LevelCenter = getLevelCenter(getCards('cardsprova03'))
+            const PointsCenter = getPointsCenter(getCards('cardsprova03'))
+            const Svg = getSvg(getCards('cardsprova03'))
+            const MoreInfo = getMoreInfo(getCards('cardsprova03'))
+            const MoreInfoName = getMoreInfoName(getCards('cardsprova03'))
+            const Coords = getCoords(getCards('cardsprova03'))
+            const Stats = getStats(getCards('cardsprova03'))
+            const StatsTitle = getStatsTitle(getCards('cardsprova03'))
+            const StatsValue = getStatsValue(getCards('cardsprova03'))
+            const General = getCardGeneral(getCards('cardsprova03'))
+            const GeneralMore = getCardGeneralMore(getCards('cardsprova03'))
+            const GeneralMoreTitle = getCardGeneralTitle(getCards('cardsprova03'))
+            const GeneralMoreText = getCardGeneralText(getCards('cardsprova03'))
+
             return (
                 <div>
 
@@ -523,6 +568,16 @@ function SimpleSelect(props) {
             break;
 
         case '7':
+
+            const ContainerItems = getContainerItems(getTabs('tabsprova'))
+            const DivItems = getDivItems(getTabs('tabsprova'))
+            const DivItemsHead = getDivItemsHead(getTabs('tabsprova'))
+            const DivItemsHead_p = getDivItemsHead_p(getTabs('tabsprova'))
+            const DivItemsHead_hr = getDivItemsHead_hr(getTabs('tabsprova'))
+            const ItemsBody = getItemsBody(getTabs('tabsprova'))
+            const ItemsBodyContent = getItemsBodyContent(getTabs('tabsprova'))
+            const ItemsBodyContentIcon = getItemsBodyContent_icon(getTabs('tabsprova'))
+
             return (
               <div>
                   <FormControl className={classes.formControl}>
@@ -552,7 +607,7 @@ function SimpleSelect(props) {
 
                   </FormControl>
 
-                  <imp.tabs id='tabsprova' {...props}>
+                <imp.tabs id='tabsprova' {...props}>
                       <ContainerItems>
                           <DivItems>
                               <DivItemsHead>
@@ -586,6 +641,14 @@ function SimpleSelect(props) {
             break;
 
         case '8':
+
+            const TilesWrap = getTilesWrap(getTabs('tabsprova'))
+            const TilesWrap_li = getTilesWrap_li(getTabs('tabsprova'))
+            const TilesWrap_h2 = getTilesWrap_h2(getTabs('tabsprova'))
+            const TilesWrap_h3 = getTilesWrap_h3(getTabs('tabsprova'))
+            const TilesWrap_p = getTilesWrap_p(getTabs('tabsprova'))
+            const TilesWrap_button = getTilesWrap_button(getTabs('tabsprova'))
+
             return (
               <div>
                   <FormControl className={classes.formControl}>
@@ -617,7 +680,7 @@ function SimpleSelect(props) {
 
                   <imp.tabs id='tabsprova01' {...props}>
 
-                      <TilesWrap>
+                     <TilesWrap>
                           <TilesWrap_li>
                               <TilesWrap_h2>01</TilesWrap_h2>
                               <TilesWrap_h3>Title 1</TilesWrap_h3>
@@ -966,25 +1029,28 @@ function Demo(props) {
 export default Demo
 
 // CARD 1 -- START
-
+/*
 const CardContainer = getCardContainer(getCards('cardsprova'))
 const CardFront = getCardFront(getCards('cardsprova'))
 const CardBack = getCardBack(getCards('cardsprova'))
 const CardInner = getCardInner(getCards('cardsprova'))
 const CardButton = getCardButton(getCards('cardsprova'))
+*/
+
+console.log("CONST")
 
 // CARD 2 - START
 
-const ImageArea = getImageArea(getCards('cardsprova02'))
+/*const ImageArea = getImageArea(getCards('cardsprova02'))
 const ImageWrapper = getImageWrapper(getCards('cardsprova02'))
 const HeaderImage = getHeaderImage(getCards('cardsprova02'))
 const NameCard = getName(getCards('cardsprova02'))
 const IconUL = getIconUL(getCards('cardsprova02'))
-const IconLI = getIconLi(getCards('cardsprova02'))
+const IconLI = getIconLi(getCards('cardsprova02'))*/
 
 // CARD 3 - START
 
-const CardCenter = getCardCenter(getCards('cardsprova03'))
+/*const CardCenter = getCardCenter(getCards('cardsprova03'))
 const Card = getCard(getCards('cardsprova03'))
 const Additional = getAdditional(getCards('cardsprova03'))
 const UserCard = getUserCard(getCards('cardsprova03'))
@@ -1000,18 +1066,18 @@ const StatsValue = getStatsValue(getCards('cardsprova03'))
 const General = getCardGeneral(getCards('cardsprova03'))
 const GeneralMore = getCardGeneralMore(getCards('cardsprova03'))
 const GeneralMoreTitle = getCardGeneralTitle(getCards('cardsprova03'))
-const GeneralMoreText = getCardGeneralText(getCards('cardsprova03'))
+const GeneralMoreText = getCardGeneralText(getCards('cardsprova03'))*/
 
 
 // ITEM 1 - START
-const ContainerItems = getContainerItems(getTabs('tabsprova'))
+/*const ContainerItems = getContainerItems(getTabs('tabsprova'))
 const DivItems = getDivItems(getTabs('tabsprova'))
 const DivItemsHead = getDivItemsHead(getTabs('tabsprova'))
 const DivItemsHead_p = getDivItemsHead_p(getTabs('tabsprova'))
 const DivItemsHead_hr = getDivItemsHead_hr(getTabs('tabsprova'))
 const ItemsBody = getItemsBody(getTabs('tabsprova'))
 const ItemsBodyContent = getItemsBodyContent(getTabs('tabsprova'))
-const ItemsBodyContentIcon = getItemsBodyContent_icon(getTabs('tabsprova'))
+const ItemsBodyContentIcon = getItemsBodyContent_icon(getTabs('tabsprova'))*/
 
 // ITEM 2 - START
 

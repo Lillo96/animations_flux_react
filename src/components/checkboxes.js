@@ -18,7 +18,7 @@ function checkboxes({
        animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
        //console.log(animation)
 
-       console.log("Dentro di !rest", colorEnd)
+       //console.log("Dentro di !rest", colorEnd)
 
        checkboxesActions.newCheckboxes(
             id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck, opacityCheck,
@@ -30,7 +30,7 @@ function checkboxes({
 
    } else {
 
-        console.log("Dentro else di !rest", colorEnd)
+        //console.log("Dentro else di !rest", colorEnd)
 
         checkValue(
             rest.checkboxes.state.get(id).get('id'),
@@ -48,7 +48,7 @@ function checkboxes({
             rest.checkboxes.state.get(id).get('colorLine')
             )
 
-        console.log(rest.checkboxes.state.get(id).get('colorEnd'))
+        //console.log(rest.checkboxes.state.get(id).get('colorEnd'))
         const checkboxObj = rest.checkboxes.state.get(id)
        // console.log("checkOBJ",checkboxObj)
 
@@ -196,14 +196,14 @@ function setKeyframes2(checkLimit, typeInput, colorLine) {
 
 function cssStylesKeyFrames(checkLimit, typeInput, colorStart, colorEnd, opacityNotCheck, opacityCheck) {
 
-    console.log('Cagliari', colorEnd)
+   // console.log('Cagliari', colorEnd)
     let tmp
 
     if (checkLimit){
 
         switch (typeInput) {
             case 1:
-                console.log("OO", opacityNotCheck)
+     //           console.log("OO", opacityNotCheck)
 
                 tmp = keyframes`  
                       0% {

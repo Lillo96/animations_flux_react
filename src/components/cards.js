@@ -13,11 +13,20 @@ function cards({
     borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
     buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
     colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+    directionOfRotation,
     duration, timing, delay, iterations,direction, fillMode, playState, ...rest
 }) {
 
     let animation, flipped
     let getAnimationCSS, getAnimationCSS_1
+    let CardContainer, CardFront, CardBack, CardInner, CardButton
+
+    const variableArray = [checkLimit, typeInput, animationCSS, textInput, textValue,
+        textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
+        borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
+        buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
+        colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+        directionOfRotation]
 
     if (!rest.cards.state.has(id)) {
 
@@ -41,9 +50,26 @@ function cards({
         tmp_CardID = id
     } else {
 
+        const variableArray = {checkLimit, typeInput, animationCSS, textInput, textValue,
+            textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
+            borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
+            buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
+            colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+            directionOfRotation}
+/*        for (let i=0; i<variableArray.length; i++) {
+            checkValueRest(variableArray[i], rest.cards.state.get(id))
+        }*/
+
+        //checkValueRest(variableArray[0], rest.cards.state.get(id))
+
+
         if (colorCard != rest.cards.state.get(id).get('colorCard')) {
             console.log("CI SONOOO")
             cardsActions.changeValue(id, 'colorCard', colorCard)
+        }
+        if (directionOfRotation != rest.cards.state.get(id).get('directionOfRotation')) {
+            console.log("CI SONOOO")
+            cardsActions.changeValue(id, 'directionOfRotation', directionOfRotation)
         }
 
         console.log("COLOR CARD", colorCard)
@@ -64,63 +90,25 @@ function cards({
         // getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
 
          tmp_CardID = rest.cards.state.get(id).get('id')
+         flipped = rest.cards.state.get(id)
+         const ciao = getCardContainer(flipped)
 
+
+         CardContainer = getCardContainer(flipped)
+         CardFront = getCardFront(flipped)
+         CardBack = getCardBack(flipped)
+         CardInner = getCardInner(flipped)
+         CardButton = getCardButton(flipped)
     }
 
-    /*const CardContainer = styled.div`
-            display: flex;
-            flex-direction: column;
-            transition: z-index 500ms, transform 500ms;
-            z-index: 0;
-            -webkit-perspective: 1000px;
-            transform-style: preserve-3d;
-            
-            &.flipped {
-                z-index: 1;
-            }
-       `;
 
-    const CardSide = css`
-        width: 100%;
-        min-width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        -moz-backface-visibility: none;
-        -webkit-backface-visibility: none;
-        backface-visibility: none;
-        border: 2px solid #0d0d0d;
-    `;
-
-    const CardFront = styled.div`
-        ${CardSide}
-        z-index: 0;
-        background: #d7d7d7;
-    `;
-
-    const CardBack = styled.div`
-        ${CardSide}
-        transform: rotateY(-180deg) translate(100%, 0);
-        background: #d7d7d7;
-        z-index: 1;
-    `;
-
-    const CardInner = styled.div`
-        flex: 1;
-        display: flex;
-        transition: transform 500ms;
-        transform-style: preserve-3d;
-        
-        &.flipped {
-            transform: rotateY(180deg);
-        }
-    `;*/
-
-    //const [flipped, setFlipped ] = React.useState(false);
 
     return (
-        <div id={id} style={animation} {...rest}>
-            { rest.children }
+        <div id={id} style={animation} {...rest} >
+
+                                    {rest.children }
+
+
         </div>
     )
 }
@@ -130,6 +118,7 @@ function cards({
 export function getCardContainer (Card) {
 
     console.log(Card)
+
     //let CardContainer
     console.log('fuori')
 
@@ -244,9 +233,50 @@ export function getCardBack(Card) {
         z-index: 0;
     `;
 
+    let tmp
 
+    if(Card.directionOfRotation === 'toTheLeft') {
 
-   const tmp = keyframes`
+             tmp = keyframes`
+                      
+                      from,to {
+                        width: ${Card.width};
+                        height: ${Card.height};
+                        min-width: 100%;
+                        min-height: 100%;                    
+                        display: ${Card.display};
+                        flex-direction: ${Card.flexDirection};
+                        justify-content: space-between;
+                        -webkit-backface-visibility: ${Card.backfaceVisibility};
+                        border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
+                      
+                        transform: rotateY(180deg) translate(100%, 0) rotate(180deg);
+                        background: ${Card.colorCard};
+                        z-index: 0;
+                      }
+                `;
+    } else {
+        tmp = keyframes`
+                      
+                      from,to {
+                        width: ${Card.width};
+                        height: ${Card.height};
+                        min-width: 100%;
+                        min-height: 100%;                    
+                        display: ${Card.display};
+                        flex-direction: ${Card.flexDirection};
+                        justify-content: space-between;
+                        -webkit-backface-visibility: ${Card.backfaceVisibility};
+                        border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
+                      
+                        transform: rotateY(180deg) translate(100%, 0);
+                        background: ${Card.colorCard};
+                        z-index: 0;
+                      }
+                `;
+    }
+
+/*   const tmp = keyframes`
                       
                       from,to {
                         width: ${Card.width};
@@ -260,12 +290,12 @@ export function getCardBack(Card) {
                         border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                       
                       
-                        transform: rotateY(180deg) translate(100%, 0);
-                        // transform: rotateY(180deg) translate(100%, 0) rotate(180deg);
+                        // transform: rotateY(180deg) translate(100%, 0);
+                         transform: rotateY(180deg) translate(100%, 0) rotate(180deg);
                         background: ${Card.colorCard};
                         z-index: 0;
                       }
-    `;
+    `;*/
 
 
     const CardBackFinal = styled.div`
@@ -285,17 +315,34 @@ export function getCardInner(Card) {
                       }
     `;
 
-        const CardInner = styled.div`
+    let CardInner
+
+    if(Card.directionOfRotation === 'toTheLeft') {
+         CardInner = styled.div`
             flex: 1;
             display: ${Card.display};
             transition: transform 500ms;
             transform-style: preserve-3d;
     
-            &.flipped {
-            transform: rotateY(180deg);
-            //transform: rotateX(180deg);
+            &:hover {
+                transform: rotateX(180deg);
             }
         `;
+    } else {
+          CardInner = styled.div`
+            flex: 1;
+            display: ${Card.display};
+            transition: transform 500ms;
+            transform-style: preserve-3d;
+    
+            &:hover {
+                transform: rotateY(180deg);
+                
+            }
+        `;
+    }
+
+
 
     return CardInner
 }
@@ -1219,6 +1266,10 @@ export function setValueVariable (id, idVar, value) {
     cardsActions.changeValue(id, idVar, value)
 }
 
+function checkValueRest (cardRest, card) {
+    console.log(cardRest, card)
+}
+
 cards.propType = {
     anim: PropTypes.object,
     id: PropTypes.string,
@@ -1257,6 +1308,7 @@ cards.propType = {
     colorCardTrans2: PropTypes.string,
     fontSizeLCentral: PropTypes.string,
     fontSizePointsCenter: PropTypes.string,
+    directionOfRotation: PropTypes.string
 }
 
 export default cards

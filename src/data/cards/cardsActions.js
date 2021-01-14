@@ -8,6 +8,7 @@ const cardsActions = {
         borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
         buttonMargin, buttonPadding, buttonBorder, buttonBorderRadius, buttonBackColor,
         colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+        directionOfRotation,
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
             type: cardsActionTypes.NEW_CARDS,
@@ -48,6 +49,7 @@ const cardsActions = {
             colorCardTrans2: colorCardTrans2,
             fontSizeLCentral: fontSizeLCentral,
             fontSizePointsCenter: fontSizePointsCenter,
+            directionOfRotation: directionOfRotation
         })
     },
     changeValue (id, key, value) {

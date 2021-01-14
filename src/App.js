@@ -380,10 +380,10 @@ const GeneralMoreText = getCardGeneralText()
 
         // CARD 1 -- START
 
-const CardContainer = getCardContainer('cardsprova')
+/*const CardContainer = getCardContainer('cardsprova')
 const CardFront = getCardFront('cardsprova')
 const CardBack = getCardBack('cardsprova')
-const CardInner = getCardInner('cardsprova')
+const CardInner = getCardInner('cardsprova')*/
 
         // CARD 1 -- END
 

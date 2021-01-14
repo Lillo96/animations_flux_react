@@ -50,6 +50,7 @@ class CardsStore extends ReduceStore {
                         colorCardTrans2: action.colorCardTrans2,
                         fontSizeLCentral: action.fontSizeLCentral,
                         fontSizePointsCenter: action.fontSizePointsCenter,
+                        directionOfRotation: action.directionOfRotation,
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
