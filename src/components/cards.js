@@ -743,7 +743,7 @@ export function getCard(Card) {
                                     height: ${Card.height};
                                     background-color: ${Card.colorCard};
                                     background: linear-gradient(${Card.colorCard2}, ${Card.colorCard});
-                                    box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+                                    box-shadow: 0 16px 16px -8px rgba(0,0,0,0.4);
                                     border-radius: 6px;
                                     overflow: hidden;
                                     position: relative;
@@ -762,12 +762,14 @@ export function getCard(Card) {
 
 export function getAdditional(Card) {
 
-    const Additional = styled.div`
+        // DA DESTRA VERSO SINITRA
+
+/*    const Additional = styled.div`
        
         position: absolute;
         width: 150px;
         height: 100%;
-        background: linear-gradient(${Card.colorCardTrans1}, ${Card.colorCardTrans2});
+        background: linear-gradient(#dE685E, #EE786E);
         transition: width 0.4s;
         overflow: hidden;
         z-index: 2;
@@ -776,9 +778,69 @@ export function getAdditional(Card) {
             width: 100%;
             border-radius: 0 5px 5px 0;
           }
+       `;*/
+
+        // DALL ALTO VERSO IL BASSO
+
+/*    const Additional = styled.div`
+       
+        position: absolute;
+        width: 100%;
+        height: 10%;
+        background: linear-gradient(#dE685E, #EE786E);
+        transition: height 0.4s;
+        overflow: hidden;
+        z-index: 2;
+        
+        &:hover {
+            width: 100%;
+            height: 100%;
+            border-radius: 0 5px 5px 0;
+          }
+       `;*/
+
+        // DAL BASSO VERSO L ALTO
+
+/*    const Additional = styled.div`
+       
+        position: absolute;
+        width: 100%;
+        top: 90%
+        height: 100%;
+        background: linear-gradient(#dE685E, #EE786E);
+        transition: top 0.4s;
+        overflow: hidden;
+        z-index: 2;
+        
+        &:hover {
+            width: 100%;
+            height: 100%
+            top: 0%;
+            border-radius: 0 5px 5px 0;
+          }
+       `;*/
+
+
+        // DA DESTRA VERSO SINISTRA
+
+    const Additional = styled.div`
+       
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 75%;
+        background: linear-gradient(#dE685E, #EE786E);
+        transition: left 0.4s;
+        overflow: hidden;
+        z-index: 2;
+        
+        &:hover {
+            width: 100%;
+            height: 100%;
+            left: 0%;
+            border-radius: 0 5px 5px 0;
+          }
        `;
-
-
 
     return Additional
 }
@@ -932,13 +994,40 @@ export function getMoreInfo(Card) {
          height: 100%;
        `;
 
-    const tmp = keyframes`  
+    // DA SINISTRA VERSO DESTRA
+    // DAL ALTO VERSO IL BASSO
+    // DAL BASSO VERSO L ALTO
+
+/*    const tmp = keyframes`
               from,to {
+                 text-align: center;
                  width: 300px;
-                 float: left;
+                 height: 50%;
+                 float: central;
+                 justify-content: center;
+
                  position: absolute;
                  left: 150px;
-                 height: 100%;
+                 height: 50%;
+                 bottom: 2rem;
+                 right: 1rem;
+    `;*/
+
+    // DA DESTRA VERSO SINISTRA
+
+    const tmp = keyframes`
+              from,to {
+                 text-align: center;
+                 width: 300px;
+                 height: 50%;
+                 float: central;
+                 justify-content: center;
+
+                 position: absolute;
+                 left: 40px;
+                 height: 50%;
+                 bottom: 2rem;
+                 right: 1rem;
     `;
 
     const MoreInfoFinal = styled.div`
@@ -1056,7 +1145,11 @@ export function getStatsValue(Card) {
 
 export function getCardGeneral(Card) {
 
-    const General = styled.div`
+    // DA SINISTRA VERSO DESTRA
+    // DAL ALTO VERSO IL BASSO
+    // DAL BASSO VERSO L ALTO
+
+/*    const General = styled.div`
         width: 300px;
         height: 100%;
         position: absolute;
@@ -1066,12 +1159,33 @@ export function getCardGeneral(Card) {
         box-sizing: border-box;
         padding: 1rem;
         padding-top: 0;
-        background-color: black;
+        background-color: white;
+        
+        h1 {
+            front-size: 0.4rem;
+        }
+       `;*/
+
+    // DA DESTRA VERSO SINISTRA
+
+    const General = styled.div`
+        width: 450px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        padding: 1rem;
+        padding-top: 0;
+        background-color: white;
         
         h1 {
             front-size: 0.4rem;
         }
        `;
+
+
 
     return General
 }
@@ -1123,11 +1237,25 @@ export function getCardGeneralMore(Card) {
         font-size: 0.8em;
        `;
 
-    const tmp = keyframes`  
+    // DA SINISTRA VERSO DESTRA
+    // DAL BASSO VERSO L ALTO
+    // DAL ALTO VERSO IL BASSO
+
+/*    const tmp = keyframes`
               from,to {
                      position: absolute;
                      bottom: 1rem;
                      right: 1rem;
+                     font-size: 0.8em;
+    `;*/
+
+    // DA DESTRA VERSO SINISTRA
+
+    const tmp = keyframes`  
+              from,to {
+                     position: absolute;
+                     bottom: 1rem;
+                     right: 8rem;
                      font-size: 0.8em;
     `;
 

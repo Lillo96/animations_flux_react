@@ -27,10 +27,10 @@ const cards = Immutable.Record({
     buttonBorder: '2px',
     buttonBorderRadius: '3px',
     buttonBackColor: 'white',
-    colorCard2: '',
+    colorCard2: '#f8f8f8',
     marginCard: '',
-    colorCardTrans1: '',
-    colorCardTrans2: '',
+    colorCardTrans1: 'red',
+    colorCardTrans2: 'red',
     fontSizeLCentral: '',
     fontSizePointsCenter: '',
     directionOfRotation: 'toTheRight'

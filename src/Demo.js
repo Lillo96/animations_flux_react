@@ -391,7 +391,7 @@ function SimpleSelect(props) {
                 <div>
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label">>Direction of animation</InputLabel>
+                        <InputLabel id="demo-simple-select-label">Direction of animation</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -502,23 +502,10 @@ function SimpleSelect(props) {
 
                             <Card>
                                 <Additional>
-                                    <UserCard>
-                                        <LevelCenter>
-                                            Level 13
-                                        </LevelCenter>
-                                        <PointsCenter>
-                                            5,312 Points
-                                        </PointsCenter>
-                                        <Svg>
-                                            <title id="title">Teacher</title>
-                                            {/*<desc id="desc">Cartoon of a Caucasian woman smiling, and wearing black glasses and a
-                                                    purple shirt with white collar drawn by Alvaro Montoro.
-                                                </desc>*/}
-                                        </Svg>
-
-                                    </UserCard>
                                     <MoreInfo>
-                                        <MoreInfoName>Jane Doe</MoreInfoName>
+
+                                        <a href={""} ><i className={"fa fa-link fa-1x"}></i></a>
+{/*                                           <MoreInfoName>Jane Doe</MoreInfoName>
                                         <Coords>
                                             <span>Group Name</span>
                                             <span>Joined January 2019</span>
@@ -526,35 +513,12 @@ function SimpleSelect(props) {
                                         <Coords>
                                             <span>Position/Role</span>
                                             <span>City, Country</span>
-                                        </Coords>
-                                        <Stats>
-                                            <div>
-                                                <StatsTitle>Awards</StatsTitle>
-                                                <i className="fa fa-trophy"></i>
-                                                <StatsValue>2</StatsValue>
-                                            </div>
-                                            <div>
-                                                <StatsTitle>Matches</StatsTitle>
-                                                <i className="fa fa-gamepad"></i>
-                                                <StatsValue>27</StatsValue>
-                                            </div>
-                                            <div>
-                                                <StatsTitle>Pals</StatsTitle>
-                                                <i className="fa fa-group"></i>
-                                                <StatsValue>123</StatsValue>
-                                            </div>
-                                            <div>
-                                                <StatsTitle>Coffee</StatsTitle>
-                                                <i className="fa fa-coffee"></i>
-                                                <StatsValue>∞</StatsValue>
-                                            </div>
-                                        </Stats>
+                                        </Coords>*/}
                                     </MoreInfo>
                                 </Additional>
                                 <General>
                                     <GeneralMoreTitle>Jane Doe</GeneralMoreTitle>
-                                    <GeneralMoreText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a volutpat mauris, at molestie
-                                        lacus. Nam vestibulum sodales odio ut pulvinar.</GeneralMoreText>
+                                    <GeneralMoreText>Lorem ipsum dolor sit amet</GeneralMoreText>
                                     <GeneralMore>Mouse over the card for more info</GeneralMore>
                                 </General>
                             </Card>
