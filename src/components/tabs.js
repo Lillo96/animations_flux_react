@@ -212,9 +212,14 @@ export function getItemsBodyContent(Item) {
           cursor: pointer;
           
           &:hover {
-            border-radius: ${Item.borderRadius_hover_ItemsBodyContent};
+            border-radius: 15px 50px 30px;
+            // border-radius: ${Item.borderRadius_hover_ItemsBodyContent};
             border: ${Item.borderDim_hover_ItemsBodyContent} ${Item.borderType_hover_ItemsBodyContent} ${Item.borderColor_hover_ItemsBodyContent};
+            // background-color: yellow;
+           
           }
+         
+          
       `;
 
     return ItemsBodyContent
@@ -314,15 +319,7 @@ export function getTilesWrap_li(Item) {
           transform: skew(2deg, 2deg);
       }
       
-      /*&.after {
-          content: '';
-          position: absolute;
-          width: 40%;
-          height: 100%;
-          left: 0;
-          top: 0;
-          background: rgba(255, 255, 255, 0.02);
-      }*/
+
       `;
 
 
@@ -342,14 +339,63 @@ export function getTilesWrap_li(Item) {
 
 export function getTilesWrap_h2(Item) {
 
-    const TilesWrap_h2 = styled.h2`
+    // NUMERI IN ALTO A SINISTRA
+
+/*    const TilesWrap_h2 = styled.h2`
       font-size: ${Item.fontSize_TilesWrap_h2};
       margin: 0;
       position: absolute;
       opacity: 0.2;
       top: 50px;
-      right: 10px;
+      right: 30%;
       transition: all 0.3s ease-in-out; 
+      `;*/
+
+    // NUMERI IN ALTO A DESTRA
+
+/*    const TilesWrap_h2 = styled.h2`
+      font-size: ${Item.fontSize_TilesWrap_h2};
+      margin: 0;
+      position: absolute;
+      opacity: 0.2;
+      top: 30px;
+      right: 10%;
+      transition: all 0.3s ease-in-out;
+
+      &:hover button {
+           transform: translateY(5px);
+           opacity: 1;
+           color: white;
+      }
+      &:hover h2 {
+            top: 0px;
+            opacity: 0.6;
+      }
+
+      &:before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          z-index: -1;
+          background: #fff;
+          transform: skew(2deg, 2deg);
+      }
+
+      `;*/
+
+
+    const TilesWrap_h2 = styled.h2`
+      font-size: ${Item.fontSize_TilesWrap_h2};
+      margin: 0;
+      position: absolute;
+      opacity: 0.2;
+      top: 30px;
+      right: 10%;
+      transition: all 0.3s ease-in-out;
+            
       `;
 
     return TilesWrap_h2
@@ -380,7 +426,9 @@ export function getTilesWrap_p(Item) {
 
 export function getTilesWrap_button(Item) {
 
-    const TilesWrap_button = styled.button`
+    // ENTRA DALL ALTO VERSO IL BASSO
+
+    /*const TilesWrap_button = styled.button`
           background: transparent;
           border: 1px solid #b7b7b7;
           padding: 10px 20px;
@@ -402,6 +450,127 @@ export function getTilesWrap_button(Item) {
               top: 0;
               opacity: 0;
               left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+          
+          &:hover {
+                color: #262a2b;
+          }
+          
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DAL BASSO VERSO L ALTO
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateY(40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+          
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+          
+          &:hover {
+                color: #262a2b;
+          }
+          
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DA DESTRA VERSO SINISTRA
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+          
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+          
+          &:hover {
+                color: #262a2b;
+          }
+          
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DA SINISTRA VERSO DESTRA
+
+    const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(-40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+          
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              // DA DESTRA A SINISTRA
+              // left: 140px;
+              // SINISTRA A DESTRA
+              left: -140px;
+               
               border-radius: 0 20px 20px 0;
               z-index: -1;
               transition: all 0.3s ease-in-out;
