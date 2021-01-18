@@ -149,6 +149,8 @@ function SimpleSelect(props) {
 
     const card1 = getCards('cardsprova')
 
+    console.log(getCheckboxes('checkboxprova3'))
+
     console.log("CIAOOO")
 
     switch (props.num) {
@@ -184,7 +186,7 @@ function SimpleSelect(props) {
 
                             </FormControl>
 
-                            <imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={false} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                            <imp.checkboxes id='checkboxprova' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
                                             opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both'{...props}>
                                 <label>
                                     <input type="checkbox"
@@ -307,7 +309,7 @@ function SimpleSelect(props) {
                                    onChange={() => setChecked2(!checked2)}
                                    onClick={() => { checkbox3.setTextValue(!checked2, 'Checkbox on'); checkbox3.setCheckLimit(!checked2);}}
                             />
-                            { getCheckboxes('checkboxprova3').textValue }
+                            {getCheckboxes('checkboxprova3').textValue}
                         </label>
 
                     </imp.checkboxes>

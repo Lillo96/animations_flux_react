@@ -13,6 +13,7 @@ function checkboxes({
     let getAnimationCSS, getAnimationCSS_1
     let timeAnim, fillAnim, timeAnim2
 
+
    if (!rest.checkboxes.state.has(id)) {
 
        animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
@@ -30,10 +31,13 @@ function checkboxes({
 
    } else {
 
+
+       const variableArray = [checkLimit, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+           opacityCheck, timeAnimation, typeAnimFillMode, colorLine]
         //console.log("Dentro else di !rest", colorEnd)
 
         checkValue(
-            rest.checkboxes.state.get(id).get('id'),
+/*            rest.checkboxes.state.get(id).get('id'),
             checkLimit,
             rest.checkboxes.state.get(id).get('checkLimit'),
             colorStart,
@@ -45,7 +49,8 @@ function checkboxes({
             opacityCheck,
             rest.checkboxes.state.get(id).get('opacityCheck'),
             colorLine,
-            rest.checkboxes.state.get(id).get('colorLine')
+            rest.checkboxes.state.get(id).get('colorLine'),*/
+            variableArray, rest.checkboxes.state.get(id)
             )
 
         //console.log(rest.checkboxes.state.get(id).get('colorEnd'))
@@ -54,6 +59,8 @@ function checkboxes({
 
         animation = getAnimation(id, {}, checkboxObj.style)
         //console.log(animation)
+
+       console.log(rest.checkboxes.state.get(id).get('checkLimit'))
 
         setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'),
                                                rest.checkboxes.state.get(id).get('typeInput'),
@@ -606,7 +613,7 @@ function cssStyles(checkLimit, typeInput) {
 }
 
 export function setCheckLimit (value) {
-    //console.log(value)
+    console.log(value)
     checkboxesActions.changeValue(this.id, 'checkLimit', value)
 }
 
@@ -616,6 +623,7 @@ export function setAnimationCSS (id, value) {
 }
 
 export function setTextValue (valueCheck, valueText) {
+    console.log(valueCheck)
     switch (valueCheck) {
         case true:
             checkboxesActions.changeValue(this.id, 'textValue', this.textInput)
@@ -630,18 +638,42 @@ export function setTextValue (valueCheck, valueText) {
     }
 }
 
-function checkValue (
-    id,
-    checkLimit, restcheckLimit,
-    colorStart, restcolorStart,
-    colorEnd, restcolorEnd,
-    opacityNotCheck, restopacityNotCheck,
-    opacityCheck, restopacityCheck,
-    colorLine, restcolorLine
-) {
+function checkValue (variableArray, rest) {
+
+    //console.log(variableArray, rest)
+    //console.log(colorEnd, restcolorEnd)
+
+    const tmp = ["checkLimit", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
+        "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine"]
+
+    /*
+        0: checkLimit,
+        1: textInput,
+        2: textValue,
+        3: colorStart,
+        4: colorEnd,
+        5: opacityNotCheck,
+        6: opacityCheck,
+        7: timeAnimation,
+        8: typeAnimFillMode,
+        9: colorLine
+    */
+
+    // Parte da 3 perchè non devo modificare "checkLimit", "textInput" e "textValue"
+    for (let i = 3; i < variableArray.length; i++) {
+        //if (variableArray[i] != rest.)
+        //console.log(variableArray[i])
+        //console.log(rest.get(tmp[i]))
+
+        if (variableArray[i] != rest.get(tmp[i])) {
+            checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+        }
+
+    }
 
 
-    if (colorEnd != restcolorEnd) {
+
+/*    if (colorEnd != restcolorEnd) {
         checkboxesActions.changeValue(id, 'colorEnd', colorEnd)
     }
 
@@ -651,7 +683,7 @@ function checkValue (
 
     if (colorLine != restcolorLine) {
         checkboxesActions.changeValue(id, 'colorLine', colorLine)
-    }
+    }*/
 }
 
 checkboxes.propType = {
