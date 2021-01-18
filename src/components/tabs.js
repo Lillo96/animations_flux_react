@@ -4,6 +4,7 @@ import tabsActions from "../data/tabs/tabsActions";
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css} from "styled-components"
+import checkboxesActions from "../data/checkboxes/checkboxesActions";
 
 function tabs({
                   id, checkLimit, typeInput, animationCSS, textInput, textValue, borderDim_ContItem, borderType_ContItem,
@@ -49,6 +50,21 @@ function tabs({
         //setAnimationCSS(id, cssStylesKeyFrames(true,1))
 
     } else {
+
+        const variableArray = {borderDim_ContItem, borderType_ContItem,
+            borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
+            paddingX_DivItemsHeadFinal,paddingY_DivItemsHeadFinal, paddingX_DivItemsHeadFinal_p, paddingY_DivItemsHeadFinal_p,
+            margin_DivItemsHeadFinal_p, color_DivItemsHeadFinal_p, fontWeigh_DivItemsHeadFinal_p, fontSize_DivItemsHeadFinal_p,
+            width_DivItemsHead_hr, marginX_DivItemsHead_hr, marginY_DivItemsHead_hr, borderDim_DivItemsHead_hr, borderType_DivItemsHead_hr,
+            borderColor_DivItemsHead_hr, padding_ItemsBody, margin_ItemsBody, display_ItemsBody, gripGap_ItemsBody, padding_ItemsBodyContent,
+            paddingRight_ItemsBodyContent, display_ItemsBodyContent, color_ItemsBodyContent, fontSize_ItemsBodyContent, gripGap_ItemsBodyContent,
+            borderDim_ItemsBodyContent, borderType_ItemsBodyContent, borderColor_ItemsBodyContent, borderRadius_hover_ItemsBodyContent, borderDim_hover_ItemsBodyContent, borderType_hover_ItemsBodyContent,
+            borderColor_hover_ItemsBodyContent, fontSize_ItemsBodyContentIcon, color_ItemsBodyContentIcon, fontWeight_ItemsBodyContentIcon,
+            width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
+            backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
+            fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p}
+
+        checkValue( variableArray, rest.checkboxes.state.get(id))
 
         //console.log("Dentro else di !rest")
 
@@ -589,6 +605,97 @@ export function getTilesWrap_button(Item) {
     return TilesWrap_button
 }
 
+function checkValue (variableArray, rest) {
+
+    //console.log(variableArray, rest)
+    //console.log(colorEnd, restcolorEnd)
+
+    const tmp = ["borderDim_ContItem", "borderType_ContItem",
+        "borderColor_ContItem", "colorDivItems", "width_DivItem", "borderDim_DivItems", "borderType_DivItems","borderColor_DivItems", "color_DivItemHead", "fontWeight_DivItemHead", "fontSize_DivItemHead",
+        "paddingX_DivItemsHeadFinal","paddingY_DivItemsHeadFinal", "paddingX_DivItemsHeadFinal_p", "paddingY_DivItemsHeadFinal_p",
+        "margin_DivItemsHeadFinal_p", "color_DivItemsHeadFinal_p", "fontWeigh_DivItemsHeadFinal_p", "fontSize_DivItemsHeadFinal_p",
+        "width_DivItemsHead_hr", "marginX_DivItemsHead_hr", "marginY_DivItemsHead_hr", "borderDim_DivItemsHead_hr", "borderType_DivItemsHead_hr",
+        "borderColor_DivItemsHead_hr", "padding_ItemsBody", "margin_ItemsBody", "display_ItemsBody", "gripGap_ItemsBody", "padding_ItemsBodyContent",
+        "paddingRight_ItemsBodyContent", "display_ItemsBodyContent", "color_ItemsBodyContent", "fontSize_ItemsBodyContent", "gripGap_ItemsBodyContent",
+        "borderDim_ItemsBodyContent", "borderType_ItemsBodyContent", "borderColor_ItemsBodyContent", "borderRadius_hover_ItemsBodyContent", "borderDim_hover_ItemsBodyContent", "borderType_hover_ItemsBodyContent",
+        "borderColor_hover_ItemsBodyContent", "fontSize_ItemsBodyContentIcon", "color_ItemsBodyContentIcon", "fontWeight_ItemsBodyContentIcon",
+        "width_TilesWrapLi1", "fontFamily_TilesWrapLi1","fontFamily_TilesWrapLi2","height_TilesWrapLi",
+        "backgroundColor_TilesWrapLi", "borderDim_TilesWrapLi", "borderType_TilesWrapLi","borderColor_TilesWrapLi","fontSize_TilesWrap_h2",
+        "fontSize_getTilesWrap_h3", "color_getTilesWrap_h3", "marginBotton_getTilesWrap_h3", "fontSize_TilesWrap_p", "lineHeight_TilesWrap_p", "color_TilesWrap_p"]
+
+    /*
+        0: "borderDim_ContItem",
+        1: "borderType_ContItem",
+        2: "borderColor_ContItem",
+        3: "colorDivItems",
+        4: "width_DivItem",
+        5: "borderDim_DivItems",
+        6: "borderType_DivItems",
+        7: "borderColor_DivItems",
+        8: "color_DivItemHead",
+        9: "fontWeight_DivItemHead",
+        10: "fontSize_DivItemHead",
+        11: "paddingX_DivItemsHeadFinal",
+        12: "paddingY_DivItemsHeadFinal",
+        13: "paddingX_DivItemsHeadFinal_p",
+        14: "paddingY_DivItemsHeadFinal_p",
+        15: "margin_DivItemsHeadFinal_p",
+        16: "color_DivItemsHeadFinal_p",
+        17: "fontWeigh_DivItemsHeadFinal_p",
+        18: "fontSize_DivItemsHeadFinal_p",
+        19: "width_DivItemsHead_hr",
+        20: "marginX_DivItemsHead_hr",
+        21: "marginY_DivItemsHead_hr",
+        22: "borderDim_DivItemsHead_hr",
+        23: "borderType_DivItemsHead_hr",
+        24: "borderColor_DivItemsHead_hr",
+        25: "padding_ItemsBody",
+        26: "margin_ItemsBody",
+        27: "display_ItemsBody",
+        28: "gripGap_ItemsBody",
+        29: "padding_ItemsBodyContent",
+        30: "paddingRight_ItemsBodyContent",
+        31: "display_ItemsBodyContent",
+        32: "color_ItemsBodyContent",
+        33: "fontSize_ItemsBodyContent",
+        35: "gripGap_ItemsBodyContent",
+        36: "borderDim_ItemsBodyContent",
+        37: "borderType_ItemsBodyContent",
+        38: "borderColor_ItemsBodyContent",
+        39: "borderRadius_hover_ItemsBodyContent",
+        40: "borderDim_hover_ItemsBodyContent",
+        41: "borderType_hover_ItemsBodyContent",
+        42: "borderColor_hover_ItemsBodyContent",
+        43: "fontSize_ItemsBodyContentIcon",
+        44: "color_ItemsBodyContentIcon",
+        45: "fontWeight_ItemsBodyContentIcon",
+        46: "width_TilesWrapLi1",
+        47: "fontFamily_TilesWrapLi1",
+        48: "fontFamily_TilesWrapLi2",
+        49: "height_TilesWrapLi",
+        50: "backgroundColor_TilesWrapLi",
+        51: "borderDim_TilesWrapLi",
+        52: "borderType_TilesWrapLi",
+        53: "borderColor_TilesWrapLi",
+        54: "fontSize_TilesWrap_h2",
+        55: "fontSize_getTilesWrap_h3",
+        56: "color_getTilesWrap_h3",
+        57: "marginBotton_getTilesWrap_h3",
+        58: "fontSize_TilesWrap_p",
+        59: "lineHeight_TilesWrap_p",
+        60: "color_TilesWrap_p"
+    */
+
+
+    for (let i = 0; i < variableArray.length; i++) {
+
+        if (variableArray[i] != rest.get(tmp[i])) {
+            checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+        }
+
+    }
+
+}
 
 tabs.propType = {
     anim: PropTypes.object,

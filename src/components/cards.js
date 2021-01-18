@@ -4,6 +4,7 @@ import cardsActions from "../data/cards/cardsActions"
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css} from "styled-components"
+import checkboxesActions from "../data/checkboxes/checkboxesActions";
 
 let tmp_CardID
 
@@ -60,9 +61,11 @@ function cards({
             checkValueRest(variableArray[i], rest.cards.state.get(id))
         }*/
 
+        checkValue( variableArray, rest.checkboxes.state.get(id))
+
         //checkValueRest(variableArray[0], rest.cards.state.get(id))
 
-
+/*
         if (colorCard != rest.cards.state.get(id).get('colorCard')) {
             console.log("CI SONOOO")
             cardsActions.changeValue(id, 'colorCard', colorCard)
@@ -71,7 +74,7 @@ function cards({
             console.log("CI SONOOO")
             cardsActions.changeValue(id, 'directionOfRotation', directionOfRotation)
         }
-
+*/
         console.log("COLOR CARD", colorCard)
         console.log("COLOR CARD REST", rest.cards.state.get(id).get('colorCard'))
         //console.log("Dentro else di !rest")
@@ -91,24 +94,14 @@ function cards({
 
          tmp_CardID = rest.cards.state.get(id).get('id')
          flipped = rest.cards.state.get(id)
-         const ciao = getCardContainer(flipped)
 
-
-         CardContainer = getCardContainer(flipped)
-         CardFront = getCardFront(flipped)
-         CardBack = getCardBack(flipped)
-         CardInner = getCardInner(flipped)
-         CardButton = getCardButton(flipped)
     }
 
 
 
     return (
         <div id={id} style={animation} {...rest} >
-
-                                    {rest.children }
-
-
+            {rest.children }
         </div>
     )
 }
@@ -116,7 +109,7 @@ function cards({
 // CARD 1
 
 export function getCardContainer (Card) {
-
+/*
     console.log(Card)
 
     //let CardContainer
@@ -135,7 +128,7 @@ export function getCardContainer (Card) {
             &.flipped {
                 z-index: 1;
             }
-       `;
+       `;*/
 
     const tmp = keyframes`
                       
@@ -162,8 +155,9 @@ export function getCardContainer (Card) {
 export function getCardFront(Card) {
     //let CardFront
 
-    console.log(Card.colorCard)
+    //console.log(Card.colorCard)
 
+/*
     const CardSide = css`
         width: ${Card.width};
         height: ${Card.height};
@@ -182,6 +176,7 @@ export function getCardFront(Card) {
         z-index: 1;
         background: ${Card.colorCard};
     `;
+*/
 
    const tmp = keyframes`
                       
@@ -201,20 +196,20 @@ export function getCardFront(Card) {
                       }
                   `;
 
-    const CardFrontFinal = styled.div`
+   const CardFrontFinal = styled.div`
           animation: ${Card.timeAnim} ${tmp} both;
        `;
 
-    console.log(CardFrontFinal)
-    return CardFrontFinal
+   //console.log(CardFrontFinal)
+   return CardFrontFinal
 }
 
 export function getCardBack(Card) {
     //let CardBack
 
-    console.log(Card.colorCard)
+    //console.log(Card.colorCard)
 
-    const CardSide = css`
+/*    const CardSide = css`
         width: 100%;
         min-width: 100%;
         display: flex;
@@ -231,7 +226,7 @@ export function getCardBack(Card) {
         transform: rotateY(180deg) translate(100%, 0);
         background: #d7d7d7;
         z-index: 0;
-    `;
+    `;*/
 
     let tmp
 
@@ -565,7 +560,6 @@ export function getImageWrapper() {
 
 export function getHeaderImage() {
 
-
     const tmp = keyframes`
 
          to {
@@ -587,9 +581,7 @@ export function getHeaderImage() {
              animation: ${tmp} 1s both; 
         }
   
-     `;
-
-    //
+    `;
 
     return HeaderImg
 
@@ -734,7 +726,7 @@ export function getCard(Card) {
         position: relative;
         margin: ${Card.marginCard}; 
       
-       `;
+    `;
 
     const tmp = keyframes`
                       
@@ -1396,6 +1388,60 @@ export function setValueVariable (id, idVar, value) {
 
 function checkValueRest (cardRest, card) {
     console.log(cardRest, card)
+}
+
+function checkValue (variableArray, rest) {
+
+    //console.log(variableArray, rest)
+    //console.log(colorEnd, restcolorEnd)
+
+    const tmp = ["checkLimit", "typeInput", "textInput", "textValue",
+        "textAlign", "display", "flexDirection", "colorCard", "perspective", "backfaceVisibility",
+        "borderDim", "borderType", "borderColor", "height", "width", "timeAnim", "buttonFontSize",
+        "buttonMargin", "buttonBorder", "buttonBorderRadius", "buttonBackColor",
+        "colorCard2", "marginCard", "colorCardTrans1", "colorCardTrans2", "fontSizeLCentral", "fontSizePointsCenter",
+        "directionOfRotation"]
+
+    /*
+        0: checkLimit,
+        1: typeInput,
+        2: textInput,
+        3: textValue,
+        4: textAlign,
+        5: display,
+        6: flexDirection,
+        7: colorCard,
+        8: perspective,
+        9: backfaceVisibility,
+        10: "borderDim",
+        11: "borderType",
+        12: "borderColor",
+        13: "height",
+        14: "width",
+        15: "timeAnim",
+        16: "buttonFontSize",
+        17: "buttonMargin",
+        18: "buttonBorder",
+        19: "buttonBorderRadius",
+        20: "buttonBackColor",
+        21: "colorCard2",
+        22: "marginCard",
+        23: "colorCardTrans1",
+        24: "colorCardTrans2",
+        25: "fontSizeLCentral",
+        26: "fontSizePointsCenter",
+        27: "directionOfRotation"
+    */
+
+
+    for (let i = 0; i < variableArray.length; i++) {
+
+        if (variableArray[i] != rest.get(tmp[i])) {
+            checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+        }
+
+    }
+
 }
 
 cards.propType = {

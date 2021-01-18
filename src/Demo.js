@@ -91,7 +91,7 @@ function SimpleSelect(props) {
     const [ColorLine, setColorLine] = React.useState('black');
 
     const [BackfaceColor, setBackfaceColor] = React.useState('#D9D9D9');
-    const [DirectionOfRotation, setDirectionOfRotation] = React.useState('toTheRight');
+    const [DirectionOfRotation, setDirectionOfRotation] = React.useState('toTheLeft');
 
     const [DirectionOfAnimation, setDirectionOfAnimation] = React.useState('topLeftBottomRight');
 
@@ -364,12 +364,12 @@ function SimpleSelect(props) {
                                 <CardFront>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                    <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                    {/* <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
                                 </CardFront>
                                 <CardBack>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                    <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                    {/* <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
                                 </CardBack>
 
                             </CardInner>
@@ -427,13 +427,13 @@ function SimpleSelect(props) {
                             <ImageWrapper>
                                 <HeaderImage alt="Atul Prajapati"/>
                                 <NameCard>David James</NameCard>
-                               <IconUL>
+                                {/* <IconUL> */}
 
 {/*                                    <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
                                     <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
                                     <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
                                     <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>*/}
-                                </IconUL>
+                                {/* </IconUL> */}
                             </ImageWrapper>
                         </ImageArea>
 
