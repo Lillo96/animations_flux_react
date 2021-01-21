@@ -51,6 +51,12 @@ class CardsStore extends ReduceStore {
                         fontSizeLCentral: action.fontSizeLCentral,
                         fontSizePointsCenter: action.fontSizePointsCenter,
                         directionOfRotation: action.directionOfRotation,
+
+                        directionOfAnimation: action.directionOfAnimation, // NEW FOR CARD 2
+                        directionName: action.directionName, // NEW FOR CARD 2
+
+                        directionOfRotation1: action.directionOfRotation1, //NEW FOR CARD 3
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

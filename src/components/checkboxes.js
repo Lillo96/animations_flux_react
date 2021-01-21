@@ -55,7 +55,7 @@ function checkboxes({
 
         //console.log(rest.checkboxes.state.get(id).get('colorEnd'))
         const checkboxObj = rest.checkboxes.state.get(id)
-        console.log("checkOBJ",checkboxObj)
+        //console.log("checkOBJ",checkboxObj)
 
         animation = getAnimation(id, {}, checkboxObj.style)
         //console.log(animation)

@@ -1,5 +1,6 @@
 import animationDispatcher from "../animationDispatcher"
 import cardsActionTypes from "./cardsActionTypes"
+import PropTypes from "prop-types";
 
 const cardsActions = {
     newCards (
@@ -8,7 +9,7 @@ const cardsActions = {
         borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
         buttonMargin, buttonPadding, buttonBorder, buttonBorderRadius, buttonBackColor,
         colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
-        directionOfRotation,
+        directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
             type: cardsActionTypes.NEW_CARDS,
@@ -49,7 +50,12 @@ const cardsActions = {
             colorCardTrans2: colorCardTrans2,
             fontSizeLCentral: fontSizeLCentral,
             fontSizePointsCenter: fontSizePointsCenter,
-            directionOfRotation: directionOfRotation
+            directionOfRotation: directionOfRotation,
+
+            directionOfAnimation: directionOfAnimation, // NEW FOR CARD 2
+            directionName: directionName, // NEW FOR CARD 2
+
+            directionOfRotation1: directionOfRotation1 // NEW FOR CARD 3
         })
     },
     changeValue (id, key, value) {

@@ -94,6 +94,9 @@ function SimpleSelect(props) {
     const [DirectionOfRotation, setDirectionOfRotation] = React.useState('toTheLeft');
 
     const [DirectionOfAnimation, setDirectionOfAnimation] = React.useState('topLeftBottomRight');
+    const [DirectionName, setDirectionName] = React.useState('FromRightHandToSinister');
+
+    const [DirectionOfRotation1, setDirectionOfRotation1] = React.useState('FromRightHandToSinister');
 
     const handleChangeCheckLimit = (event) => {
         setCheckLimit(event.target.value);
@@ -133,6 +136,15 @@ function SimpleSelect(props) {
     const handleDirectionOfAnimation = (event) => {
         setDirectionOfAnimation(event.target.value);
     }
+
+    const handleDirectionName = (event) => {
+        setDirectionName(event.target.value);
+    }
+
+    const handleDirectionOfRotation1 = (event) => {
+        setDirectionOfRotation1(event.target.value);
+    }
+
 /*    const handleColor = (event) => {
         setDirectionOfAnimation(event.target.value);
     }*/
@@ -149,7 +161,7 @@ function SimpleSelect(props) {
 
     const card1 = getCards('cardsprova')
 
-    console.log(getCheckboxes('checkboxprova3'))
+    //console.log(getCheckboxes('checkboxprova3'))
 
     console.log("CIAOOO")
 
@@ -408,20 +420,20 @@ function SimpleSelect(props) {
                     </FormControl>
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+                        <InputLabel id="demo-simple-select-label">Direction Name</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={ColorEnd2}
-                            onChange={handleColorEnd2}
+                            value={DirectionName}
+                            onChange={handleDirectionName}
                         >
-                            <MenuItem value={'red'}>red</MenuItem>
-                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                            <MenuItem value={'FromRightHandToSinister'}>From right hand to sinister</MenuItem>
+                            <MenuItem value={'FromLeftToRight'}>From left to right</MenuItem>
                         </Select>
 
                     </FormControl>
 
-                    <imp.cards id='cardsprova02' {...props}>
+                    <imp.cards id='cardsprova02' {...props} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}>
 
                         <ImageArea>
                             <ImageWrapper>
@@ -467,38 +479,21 @@ function SimpleSelect(props) {
                 <div>
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label"></InputLabel>
+                        <InputLabel id="demo-simple-select-label">Transition direction</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={ColorStart2}
-                            onChange={handleColorStart2}
+                            value={DirectionOfRotation1}
+                            onChange={handleDirectionOfRotation1}
                         >
-                            <MenuItem value={'red'}>red</MenuItem>
-                            <MenuItem value={'yellow'}>yellow</MenuItem>
+                            <MenuItem value={'FromRightHandToSinister'}>From right hand to sinister</MenuItem>
+                            <MenuItem value={'FromLeftToRight'}>From left to right</MenuItem>
+                            <MenuItem value={'FromTopToBottom'}>From top to bottom</MenuItem>
+                            <MenuItem value={'FromBottomToTop'}>From bottom to top</MenuItem>
                         </Select>
                     </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={ColorEnd2}
-                            onChange={handleColorEnd2}
-                        >
-                            <MenuItem value={'red'}>red</MenuItem>
-                            <MenuItem value={'yellow'}>yellow</MenuItem>
-                        </Select>
-
-                    </FormControl>
-
-                    <imp.cards id='cardsprova03' textAlign='center' display='flex' flexDirection='column' colorCard='#fff' colorCard2='#f8f8f8'
-                               backfaceVisibility='hidden' borderDim='2px' borderType='solid' borderColor='#0d0d0d' height='250px'
-                               width='450px' timeAnim='1s' buttonFontSize='1em' buttonMargin='1em' buttonBorder='2px' buttonBorderRadius='3px'
-                               buttonBackColor='white' marginCard='1.5rem' colorCardTrans1='#dE685E' fontSizeLCentral='0.75em'
-                               fontSizePointsCenter='0.75em'
-                               {...props}>
+                    <imp.cards id='cardsprova03' directionOfRotation1={DirectionOfRotation1} {...props}>
 
                         <CardCenter>
 
@@ -507,7 +502,7 @@ function SimpleSelect(props) {
                                     <MoreInfo>
 
                                         <a href={""} ><i className={"fa fa-link fa-1x"}></i></a>
-{/*                                           <MoreInfoName>Jane Doe</MoreInfoName>
+                                        {/*  <MoreInfoName>Jane Doe</MoreInfoName>
                                         <Coords>
                                             <span>Group Name</span>
                                             <span>Joined January 2019</span>

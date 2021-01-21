@@ -389,12 +389,12 @@ const CardInner = getCardInner('cardsprova')*/
 
         // CARD 2 -- START
 
-const ImageArea = getImageArea()
+/*const ImageArea = getImageArea()
 const ImageWrapper = getImageWrapper()
 const HeaderImage = getHeaderImage()
 const NameCard = getName()
 const IconUL = getIconUL()
-const IconLI = getIconLi()
+const IconLI = getIconLi()*/
 
         // CARD 2 -- END
 

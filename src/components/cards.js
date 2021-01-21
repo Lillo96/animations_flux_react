@@ -14,20 +14,13 @@ function cards({
     borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
     buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
     colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
-    directionOfRotation,
+    directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
     duration, timing, delay, iterations,direction, fillMode, playState, ...rest
 }) {
 
     let animation, flipped
     let getAnimationCSS, getAnimationCSS_1
     let CardContainer, CardFront, CardBack, CardInner, CardButton
-
-    const variableArray = [checkLimit, typeInput, animationCSS, textInput, textValue,
-        textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
-        borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
-        buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
-        colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
-        directionOfRotation]
 
     if (!rest.cards.state.has(id)) {
 
@@ -40,6 +33,7 @@ function cards({
             borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
             buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
             colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
+            directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
             duration, timing, delay,iterations, direction, fillMode, playState
         )
             // NON DOVREBBE SERVIRE
@@ -51,17 +45,17 @@ function cards({
         tmp_CardID = id
     } else {
 
-        const variableArray = {checkLimit, typeInput, animationCSS, textInput, textValue,
+        const variableArray = [checkLimit, typeInput, textInput, textValue,
             textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
             borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
             buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
             colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
-            directionOfRotation}
+            directionOfRotation, directionOfAnimation, directionName, directionOfRotation1]
 /*        for (let i=0; i<variableArray.length; i++) {
             checkValueRest(variableArray[i], rest.cards.state.get(id))
         }*/
 
-        checkValue( variableArray, rest.checkboxes.state.get(id))
+        checkValue(variableArray, rest.cards.state.get(id))
 
         //checkValueRest(variableArray[0], rest.cards.state.get(id))
 
@@ -303,12 +297,7 @@ export function getCardBack(Card) {
 
 export function getCardInner(Card) {
 
-    const tmp = keyframes`
-                      
-                      to {
-                       transform: rotateY(180deg);
-                      }
-    `;
+    let tmp
 
     let CardInner
 
@@ -320,6 +309,7 @@ export function getCardInner(Card) {
             transform-style: preserve-3d;
     
             &:hover {
+                // animation: ${tmp} 1s both;
                 transform: rotateX(180deg);
             }
         `;
@@ -331,8 +321,9 @@ export function getCardInner(Card) {
             transform-style: preserve-3d;
     
             &:hover {
+                // animation: ${tmp} 1s both; 
                 transform: rotateY(180deg);
-                
+                            
             }
         `;
     }
@@ -358,7 +349,7 @@ export function getCardButton(Card) {
 
 // CARD 2
 
-export function getImageArea() {
+export function getImageArea(Card) {
 
     const tmp = keyframes`  
                       
@@ -386,7 +377,7 @@ export function getImageArea() {
     return ImageAreaFinal
 }
 
-export function getImageWrapper() {
+export function getImageWrapper(Card) {
 
     /*const ImageWrapper = styled.div`
           width: 300px;
@@ -438,74 +429,166 @@ export function getImageWrapper() {
          }
     `;
 
-    // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
+    let ImageWrapper
 
-/*&:before {
-        // -webkit-animation: ${tmp} .5s both;
+    console.log(Card.directionOfAnimation)
 
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 180%;
-        height: 100%;
-        width: 100%;
-        background: rgba(255,255,255,.3);
-        z-index: 1;
-        transform: skew(45deg);
-        transition: .5s;
-    }*/
+    //switch (Card.directionOfAnimation) {
+    //    case "topLeftBottomRight":
+            console.log("ciao")
 
-    // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA
 
-/*&:before {
-        // -webkit-animation: ${tmp} .5s both;
+            // DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
+    if (Card.directionOfAnimation === "topLeftBottomRight") {
 
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -170%;
-        height: 100%;
-        width: 100%;
-        background: rgba(255,255,255,.3);
-        z-index: 1;
-        transform: skew(45deg);
-        transition: .5s;
-    }*/
+        const ImageWrapper = styled.div`
+                          width: 300px;
+                          height: 400px;
+                          position: relative;
+                          overflow: hidden;
+                          
+                          &:before {
+                                // -webkit-animation: ${tmp} .5s both;
+                        
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: -160%;
+                                height: 100%;
+                                width: 100%;
+                                background: rgba(255,255,255,.3);
+                                z-index: 1;
+                                transform: skew(140deg);
+                                transition: .5s;
+                            }
+                          
+                          &:hover:before {
+                            // -webkit-animation: ${tmp1} 1s forwards;
+                            
+                            left: 180%;
+                          }
+                           
+                       `;
 
-    // DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
+        return ImageWrapper
 
-/*&:before {
-        // -webkit-animation: ${tmp} .5s both;
+    }
+            //break;
 
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -160%;
-        height: 100%;
-        width: 100%;
-        background: rgba(255,255,255,.3);
-        z-index: 1;
-        transform: skew(140deg);
-        transition: .5s;
-    }*/
+        //case "topRightBottomLeft":
+    if (Card.directionOfAnimation === "topRightBottomLeft") {
+        // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
 
-    // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
+        const ImageWrapper1 = styled.div`
+                          width: 300px;
+                          height: 400px;
+                          position: relative;
+                          overflow: hidden;
+                          
+                          &:before {
+                            // -webkit-animation: ${tmp} .5s both;
+                    
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 180%;
+                            height: 100%;
+                            width: 100%;
+                            background: rgba(255,255,255,.3);
+                            z-index: 1;
+                            transform: skew(45deg);
+                            transition: .5s;
+                          }
+                          
+                          &:hover:before {
+                            // -webkit-animation: ${tmp1} 1s forwards;
+                            
+                            left: -160%;
+                          }
+                           
+                       `;
 
-/*&:before {
-        // -webkit-animation: ${tmp} .5s both;
+        return ImageWrapper1
+    }
+            //break;
 
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 160%;
-        height: 100%;
-        width: 100%;
-        background: rgba(255,255,255,.3);
-        z-index: 1;
-        transform: skew(140deg);
-        transition: .5s;
-    }*/
+        //case "lowRightToHighLeft":
 
+            // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
+    if (Card.directionOfAnimation === "lowRightToHighLeft") {
+        const ImageWrapper2 = styled.div`
+                          width: 300px;
+                          height: 400px;
+                          position: relative;
+                          overflow: hidden;
+                          
+                          &:before {
+                                // -webkit-animation: ${tmp} .5s both;
+                        
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 160%;
+                                height: 100%;
+                                width: 100%;
+                                background: rgba(255,255,255,.3);
+                                z-index: 1;
+                                transform: skew(140deg);
+                                transition: .5s;
+                            }
+                          
+                          &:hover:before {
+                            // -webkit-animation: ${tmp1} 1s forwards;
+                            
+                            left: -160%;
+                          }
+                           
+                       `;
+
+        return ImageWrapper2
+    }
+           // break;
+
+       //  case "lowLeftToHighRight":
+
+            // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA
+    if (Card.directionOfAnimation === "lowLeftToHighRight") {
+        const ImageWrapper3 = styled.div`
+                          width: 300px;
+                          height: 400px;
+                          position: relative;
+                          overflow: hidden;
+                          
+                          &:before {
+                                // -webkit-animation: ${tmp} .5s both;
+                        
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: -170%;
+                                height: 100%;
+                                width: 100%;
+                                background: rgba(255,255,255,.3);
+                                z-index: 1;
+                                transform: skew(45deg);
+                                transition: .5s;
+                            }
+                          
+                          &:hover:before {
+                            // -webkit-animation: ${tmp1} 1s forwards;
+                            
+                            left: 180%;
+                          }
+                           
+                       `;
+        return ImageWrapper3
+    }
+           // break;
+
+    //}
+
+
+/*
     const ImageWrapper = styled.div`
           width: 300px;
           height: 400px;
@@ -535,6 +618,8 @@ export function getImageWrapper() {
            
        `;
 
+    */
+
     // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
 
 /*&:hover:before {
@@ -555,10 +640,10 @@ export function getImageWrapper() {
         left: -160%;
     }*/
 
-    return ImageWrapper
+    //return ImageWrapper
 }
 
-export function getHeaderImage() {
+export function getHeaderImage(Card) {
 
     const tmp = keyframes`
 
@@ -587,7 +672,7 @@ export function getHeaderImage() {
 
 }
 
-export function getName() {
+export function getName(Card) {
 
     const tmp = keyframes`
 
@@ -597,54 +682,62 @@ export function getName() {
     `;
 
     // SINISTRA IN BASSO
+    if (Card.directionName === "FromLeftToRight") {
 
-/*    const Name = styled.h2`
-        background: tomato;
-        font-family: Poppins;
-        color: #fff;
-        text-align: center;
-        text-transform: uppercase;
-        margin: 0;
-        padding: 50px 0;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        transform: perspective(400px) rotateY(90deg);
-        transform-origin: left;
-        transition: 1s;
-        
-        &:hover {
-            animation: ${tmp} 1s both; 
-        }
-    `;*/
+            const Name = styled.h2`
+                background: tomato;
+                font-family: Poppins;
+                color: #fff;
+                text-align: center;
+                text-transform: uppercase;
+                margin: 0;
+                padding: 50px 0;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                transform: perspective(400px) rotateY(90deg);
+                transform-origin: left;
+                transition: 1s;
+                
+                &:hover {
+                    animation: ${tmp} 1s both; 
+                }
+            `;
+
+            return Name
+
+    }
 
     // DESTRA IN BASSO
+    if(Card.directionName === "FromRightHandToSinister") {
 
-    const Name = styled.h2`
-        background: tomato;
-        font-family: Poppins;
-        color: #fff;
-        text-align: center;
-        text-transform: uppercase;
-        margin: 0;
-        padding: 50px 0;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        transform: perspective(400px) rotateY(90deg);
-        transform-origin: right;
-        transition: 1s;
-        
-        &:hover {
-            animation: ${tmp} 1s both; 
-        }
-    `;
+        const Name1 = styled.h2`
+            background: tomato;
+            font-family: Poppins;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 50px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transform: perspective(400px) rotateY(90deg);
+            transform-origin: right;
+            transition: 1s;
+            
+            &:hover {
+                animation: ${tmp} 1s both; 
+            }
+        `;
 
+        return Name1
 
-    return Name
+    }
+
 }
 
-export function getIconUL() {
+export function getIconUL(Card) {
 
     const IconUL = styled.ul`
         position: absolute;
@@ -659,7 +752,7 @@ export function getIconUL() {
     return IconUL
 }
 
-export function getIconLi() {
+export function getIconLi(Card) {
 
     const IconLI = styled.li`
         background: #333;
@@ -756,85 +849,104 @@ export function getAdditional(Card) {
 
         // DA DESTRA VERSO SINITRA
 
-/*    const Additional = styled.div`
+    if (Card.directionOfRotation1 === "FromRightHandToSinister") {
+
+        const Additional = styled.div`
        
-        position: absolute;
-        width: 150px;
-        height: 100%;
-        background: linear-gradient(#dE685E, #EE786E);
-        transition: width 0.4s;
-        overflow: hidden;
-        z-index: 2;
-        
-        &:hover {
-            width: 100%;
-            border-radius: 0 5px 5px 0;
-          }
-       `;*/
+                position: absolute;
+                width: 150px;
+                height: 100%;
+                background: linear-gradient(#dE685E, #EE786E);
+                transition: width 0.4s;
+                overflow: hidden;
+                z-index: 2;
+                
+                &:hover {
+                    width: 100%;
+                    border-radius: 0 5px 5px 0;
+                  }
+        `;
+
+        return Additional
+
+    }
 
         // DALL ALTO VERSO IL BASSO
 
-/*    const Additional = styled.div`
+    if (Card.directionOfRotation1 === "FromTopToBottom") {
+
+        const Additional1 = styled.div`
        
-        position: absolute;
-        width: 100%;
-        height: 10%;
-        background: linear-gradient(#dE685E, #EE786E);
-        transition: height 0.4s;
-        overflow: hidden;
-        z-index: 2;
-        
-        &:hover {
-            width: 100%;
-            height: 100%;
-            border-radius: 0 5px 5px 0;
-          }
-       `;*/
+                position: absolute;
+                width: 100%;
+                height: 10%;
+                background: linear-gradient(#dE685E, #EE786E);
+                transition: height 0.4s;
+                overflow: hidden;
+                z-index: 2;
+                
+                &:hover {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0 5px 5px 0;
+                  }
+       `;
+
+        return Additional1
+
+    }
 
         // DAL BASSO VERSO L ALTO
 
-/*    const Additional = styled.div`
+    if (Card.directionOfRotation1 === "FromBottomToTop") {
+        const Additional2 = styled.div`
        
-        position: absolute;
-        width: 100%;
-        top: 90%
-        height: 100%;
-        background: linear-gradient(#dE685E, #EE786E);
-        transition: top 0.4s;
-        overflow: hidden;
-        z-index: 2;
-        
-        &:hover {
+            position: absolute;
             width: 100%;
-            height: 100%
-            top: 0%;
-            border-radius: 0 5px 5px 0;
-          }
-       `;*/
+            top: 90%
+            height: 100%;
+            background: linear-gradient(#dE685E, #EE786E);
+            transition: top 0.4s;
+            overflow: hidden;
+            z-index: 2;
+            
+            &:hover {
+                width: 100%;
+                height: 100%
+                top: 0%;
+                border-radius: 0 5px 5px 0;
+              }
+           `;
 
+        return Additional2
+    }
 
         // DA DESTRA VERSO SINISTRA
 
-    const Additional = styled.div`
-       
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 75%;
-        background: linear-gradient(#dE685E, #EE786E);
-        transition: left 0.4s;
-        overflow: hidden;
-        z-index: 2;
-        
-        &:hover {
+    if (Card.directionOfRotation1 === "FromLeftToRight") {
+
+        const Additional3 = styled.div`
+           
+            position: absolute;
             width: 100%;
             height: 100%;
-            left: 0%;
-            border-radius: 0 5px 5px 0;
-          }
-       `;
+            left: 75%;
+            background: linear-gradient(#dE685E, #EE786E);
+            transition: left 0.4s;
+            overflow: hidden;
+            z-index: 2;
+            
+            &:hover {
+                width: 100%;
+                height: 100%;
+                left: 0%;
+                border-radius: 0 5px 5px 0;
+              }
+           `;
 
-    return Additional
+        return Additional3
+
+    }
 }
 
 export function getUserCard(Card) {
@@ -1400,7 +1512,7 @@ function checkValue (variableArray, rest) {
         "borderDim", "borderType", "borderColor", "height", "width", "timeAnim", "buttonFontSize",
         "buttonMargin", "buttonBorder", "buttonBorderRadius", "buttonBackColor",
         "colorCard2", "marginCard", "colorCardTrans1", "colorCardTrans2", "fontSizeLCentral", "fontSizePointsCenter",
-        "directionOfRotation"]
+        "directionOfRotation", "directionOfAnimation", "directionName", "directionOfRotation1"]
 
     /*
         0: checkLimit,
@@ -1430,14 +1542,21 @@ function checkValue (variableArray, rest) {
         24: "colorCardTrans2",
         25: "fontSizeLCentral",
         26: "fontSizePointsCenter",
-        27: "directionOfRotation"
+        27: "directionOfRotation",
+        28: "directionOfAnimation",
+        29: "directionName"
     */
+    console.log(variableArray)
+    console.log(rest.get('id'), tmp[7], variableArray[7])
 
+/*    if(variableArray[7] != rest.get(tmp[7])){
+        cardsActions.changeValue(rest.get('id'), tmp[7], variableArray[7])
+    }*/
 
-    for (let i = 0; i < variableArray.length; i++) {
+    for (let i = 0; i < tmp.length; i++) {
 
         if (variableArray[i] != rest.get(tmp[i])) {
-            checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+            cardsActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
         }
 
     }
@@ -1482,7 +1601,12 @@ cards.propType = {
     colorCardTrans2: PropTypes.string,
     fontSizeLCentral: PropTypes.string,
     fontSizePointsCenter: PropTypes.string,
-    directionOfRotation: PropTypes.string
+    directionOfRotation: PropTypes.string,
+
+    directionOfAnimation: PropTypes.string, // NEW FOR CARD 2
+    directionName: PropTypes.string, // NEW FOR CARD 2
+
+    directionOfRotation1: PropTypes.string // NEW FOR CARD 3
 }
 
 export default cards
