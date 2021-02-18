@@ -1,8 +1,8 @@
 import animationDispatcher from "../animationDispatcher"
-import tabsActionTypes from "./tabsActionTypes";
+import itemsActionTypes from "./itemsActionTypes";
 
-const tabsActions = {
-    newTabs (
+const itemsActions = {
+    newItems (
         id, checkLimit, typeInput, animationCSS, textInput, textValue,
 
         borderDim_ContItem, borderType_ContItem, borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
@@ -20,7 +20,7 @@ const tabsActions = {
 
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
-            type: tabsActionTypes.NEW_TABS,
+            type: itemsActionTypes.NEW_ITEMS,
             id: id,
             checkLimit: checkLimit,
             typeInput: typeInput,
@@ -106,7 +106,7 @@ const tabsActions = {
         //console.log("VALUE", value)
 
         animationDispatcher.dispatch({
-            type: tabsActionTypes.CHANGE_TABS_VALUE,
+            type: itemsActionTypes.CHANGE_ITEMS_VALUE,
             id: id,
             key: key,
             value: value
@@ -114,4 +114,4 @@ const tabsActions = {
     }
 }
 
-export default tabsActions
+export default itemsActions

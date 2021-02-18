@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tabsActions from "../data/tabs/tabsActions";
+import itemsActions from "../data/items/itemsActions";
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css} from "styled-components"
-import checkboxesActions from "../data/checkboxes/checkboxesActions";
 
-function tabs({
+function items({
                   id, checkLimit, typeInput, animationCSS, textInput, textValue, borderDim_ContItem, borderType_ContItem,
                   borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
                   paddingX_DivItemsHeadFinal,paddingY_DivItemsHeadFinal, paddingX_DivItemsHeadFinal_p, paddingY_DivItemsHeadFinal_p,
@@ -25,12 +24,12 @@ function tabs({
     let animation
     let getAnimationCSS, getAnimationCSS_1
 
-    if (!rest.tabs.state.has(id)) {
+    if (!rest.items.state.has(id)) {
 
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
         //console.log(animation)
 
-        tabsActions.newTabs(
+        itemsActions.newItems(
             id, checkLimit, typeInput, animationCSS, textInput, textValue, borderDim_ContItem, borderType_ContItem,
             borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
             paddingX_DivItemsHeadFinal,paddingY_DivItemsHeadFinal, paddingX_DivItemsHeadFinal_p, paddingY_DivItemsHeadFinal_p,
@@ -51,7 +50,7 @@ function tabs({
 
     } else {
 
-        const variableArray = {borderDim_ContItem, borderType_ContItem,
+        const variableArray = [borderDim_ContItem, borderType_ContItem,
             borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
             paddingX_DivItemsHeadFinal,paddingY_DivItemsHeadFinal, paddingX_DivItemsHeadFinal_p, paddingY_DivItemsHeadFinal_p,
             margin_DivItemsHeadFinal_p, color_DivItemsHeadFinal_p, fontWeigh_DivItemsHeadFinal_p, fontSize_DivItemsHeadFinal_p,
@@ -62,13 +61,13 @@ function tabs({
             borderColor_hover_ItemsBodyContent, fontSize_ItemsBodyContentIcon, color_ItemsBodyContentIcon, fontWeight_ItemsBodyContentIcon,
             width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
             backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
-            fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p}
+            fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p]
 
-        checkValue( variableArray, rest.checkboxes.state.get(id))
+        checkValue( variableArray, rest.items.state.get(id))
 
         //console.log("Dentro else di !rest")
 
-        const itemObj = rest.tabs.state.get(id)
+        const itemObj = rest.items.state.get(id)
 
         animation = getAnimation(id, {}, itemObj.style)
         //console.log(animation)
@@ -690,14 +689,14 @@ function checkValue (variableArray, rest) {
     for (let i = 0; i < variableArray.length; i++) {
 
         if (variableArray[i] != rest.get(tmp[i])) {
-            checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+            itemsActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
         }
 
     }
 
 }
 
-tabs.propType = {
+items.propType = {
     anim: PropTypes.object,
     id: PropTypes.string,
     typeInput: PropTypes.number,
@@ -777,4 +776,4 @@ tabs.propType = {
     color_TilesWrap_p: PropTypes.string
 }
 
-export default tabs
+export default items

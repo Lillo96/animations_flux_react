@@ -7,10 +7,11 @@ const cardsActions = {
         id, checkLimit, typeInput, animationCSS, textInput, textValue,
         textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
         borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
-        buttonMargin, buttonPadding, buttonBorder, buttonBorderRadius, buttonBackColor,
+        buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
         colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
         directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
         duration, timing, delay, iterations, direction, fillMode, playState) {
+
         animationDispatcher.dispatch ({
             type: cardsActionTypes.NEW_CARDS,
             id: id,
@@ -30,10 +31,9 @@ const cardsActions = {
             borderColor: borderColor,
             height: height,
             width: width,
-            timeAnim: timeAnim,
+            timeAnim: timeAnim, // ANIM
             buttonFontSize: buttonFontSize,
             buttonMargin: buttonMargin,
-            buttonPadding: buttonPadding,
             buttonBorder: buttonBorder,
             buttonBorderRadius: buttonBorderRadius,
             buttonBackColor: buttonBackColor,
@@ -42,7 +42,7 @@ const cardsActions = {
             delay: delay,
             iterations: iterations,
             direction: direction,
-            fillMode: direction,
+            fillMode: fillMode,
             playState: playState,
             colorCard2: colorCard2,
             marginCard: marginCard,
@@ -56,6 +56,7 @@ const cardsActions = {
             directionName: directionName, // NEW FOR CARD 2
 
             directionOfRotation1: directionOfRotation1 // NEW FOR CARD 3
+
         })
     },
     changeValue (id, key, value) {

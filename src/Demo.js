@@ -1,5 +1,5 @@
 import React from 'react'
-import imp, {getCards, getCheckboxes, getTabs} from './imp'
+import imp, {getCards, getCheckboxes, getItems} from './imp'
 
 import checkboxes, {} from "./components/checkboxes";
 
@@ -45,7 +45,8 @@ import {
     getName,
     getIconUL,
     getIconLi,
-    setValueVariable
+    setValueVariable,
+    provaFunction_CheckValue
 } from "./components/cards";
 import {
     getContainerItems,
@@ -59,7 +60,7 @@ import {
     getTilesWrap, getTilesWrap_button,
     getTilesWrap_h2, getTilesWrap_h3,
     getTilesWrap_li, getTilesWrap_p
-} from "./components/tabs";
+} from "./components/items";
 
 let num
 
@@ -94,7 +95,7 @@ function SimpleSelect(props) {
     const [DirectionOfRotation, setDirectionOfRotation] = React.useState('toTheLeft');
 
     const [DirectionOfAnimation, setDirectionOfAnimation] = React.useState('topLeftBottomRight');
-    const [DirectionName, setDirectionName] = React.useState('FromRightHandToSinister');
+    const [DirectionName, setDirectionName] = React.useState('FromLeftToRight');
 
     const [DirectionOfRotation1, setDirectionOfRotation1] = React.useState('FromRightHandToSinister');
 
@@ -161,9 +162,25 @@ function SimpleSelect(props) {
 
     const card1 = getCards('cardsprova')
 
+    const handlePress = (event) => {
+        console.log('ok')
+        console.log(event.key)
+
+    }
+
+    const handleKeyDown = (event) => {
+        console.log('handling a key press')
+    }
+
     //console.log(getCheckboxes('checkboxprova3'))
 
-    console.log("CIAOOO")
+    const onKeyPressed = (e) => {
+        console.log(e.key);
+        setPressed(e.key)
+    }
+
+    const [pressed, setPressed] = React.useState(null);
+
 
     switch (props.num) {
 
@@ -336,9 +353,12 @@ function SimpleSelect(props) {
             const CardFront = getCardFront(getCards('cardsprova'))
             const CardBack = getCardBack(getCards('cardsprova'))
             const CardInner = getCardInner(getCards('cardsprova'))
-            const CardButton = getCardButton(getCards('cardsprova'))
+            //const CardButton = getCardButton(getCards('cardsprova'))
+
+
 
             return (
+
                 <div>
 
                     <FormControl className={classes.formControl}>
@@ -368,11 +388,13 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    <imp.cards id='cardsprova' colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
-                       {...props}>
-                        {/*onClick={ () => {card1.setValueVariable(card1.id, 'colorCard', BackfaceColor)}}*/}
-                       <CardContainer >
-                            <CardInner className={flipped ? "flipped" : ""}>
+                    <imp.cards id='cardsprova' typeInput={1} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation} textInput="i"
+                               duration='1s' fillMode="both" {...props}>
+
+                        <CardContainer>
+                            <CardInner>
+                            {/*<CardInner onClick={ () => {card1.provaFunction_CheckValue(false)}}>*/}
+                            {/*<CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>*/}
                                 <CardFront>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
@@ -390,6 +412,7 @@ function SimpleSelect(props) {
                      </imp.cards>
                 </div>
                 );
+
             break;
 
         case '5':
@@ -433,7 +456,7 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    <imp.cards id='cardsprova02' {...props} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}>
+                    <imp.cards id='cardsprova02' directionOfAnimation={DirectionOfAnimation}  {...props}>
 
                         <ImageArea>
                             <ImageWrapper>
@@ -530,14 +553,14 @@ function SimpleSelect(props) {
 
         case '7':
 
-            const ContainerItems = getContainerItems(getTabs('tabsprova'))
-            const DivItems = getDivItems(getTabs('tabsprova'))
-            const DivItemsHead = getDivItemsHead(getTabs('tabsprova'))
-            const DivItemsHead_p = getDivItemsHead_p(getTabs('tabsprova'))
-            const DivItemsHead_hr = getDivItemsHead_hr(getTabs('tabsprova'))
-            const ItemsBody = getItemsBody(getTabs('tabsprova'))
-            const ItemsBodyContent = getItemsBodyContent(getTabs('tabsprova'))
-            const ItemsBodyContentIcon = getItemsBodyContent_icon(getTabs('tabsprova'))
+            const ContainerItems = getContainerItems(getItems('tabsprova'))
+            const DivItems = getDivItems(getItems('tabsprova'))
+            const DivItemsHead = getDivItemsHead(getItems('tabsprova'))
+            const DivItemsHead_p = getDivItemsHead_p(getItems('tabsprova'))
+            const DivItemsHead_hr = getDivItemsHead_hr(getItems('tabsprova'))
+            const ItemsBody = getItemsBody(getItems('tabsprova'))
+            const ItemsBodyContent = getItemsBodyContent(getItems('tabsprova'))
+            const ItemsBodyContentIcon = getItemsBodyContent_icon(getItems('tabsprova'))
 
             return (
               <div>
@@ -568,7 +591,7 @@ function SimpleSelect(props) {
 
                   </FormControl>
 
-                <imp.tabs id='tabsprova' {...props}>
+                <imp.items id='tabsprova' {...props}>
                       <ContainerItems>
                           <DivItems>
                               <DivItemsHead>
@@ -596,19 +619,19 @@ function SimpleSelect(props) {
                               </ItemsBody>
                           </DivItems>
                       </ContainerItems>
-                  </imp.tabs>
+                  </imp.items>
               </div>
             );
             break;
 
         case '8':
 
-            const TilesWrap = getTilesWrap(getTabs('tabsprova'))
-            const TilesWrap_li = getTilesWrap_li(getTabs('tabsprova'))
-            const TilesWrap_h2 = getTilesWrap_h2(getTabs('tabsprova'))
-            const TilesWrap_h3 = getTilesWrap_h3(getTabs('tabsprova'))
-            const TilesWrap_p = getTilesWrap_p(getTabs('tabsprova'))
-            const TilesWrap_button = getTilesWrap_button(getTabs('tabsprova'))
+            const TilesWrap = getTilesWrap(getItems('tabsprova'))
+            const TilesWrap_li = getTilesWrap_li(getItems('tabsprova'))
+            const TilesWrap_h2 = getTilesWrap_h2(getItems('tabsprova'))
+            const TilesWrap_h3 = getTilesWrap_h3(getItems('tabsprova'))
+            const TilesWrap_p = getTilesWrap_p(getItems('tabsprova'))
+            const TilesWrap_button = getTilesWrap_button(getItems('tabsprova'))
 
             return (
               <div>
@@ -639,7 +662,7 @@ function SimpleSelect(props) {
 
                   </FormControl>
 
-                  <imp.tabs id='tabsprova01' {...props}>
+                  <imp.items id='tabsprova01' {...props}>
 
                      <TilesWrap>
                           <TilesWrap_li>
@@ -664,7 +687,7 @@ function SimpleSelect(props) {
 
                       </TilesWrap>
 
-                  </imp.tabs>
+                  </imp.items>
 
               </div>
             );
@@ -998,8 +1021,6 @@ const CardInner = getCardInner(getCards('cardsprova'))
 const CardButton = getCardButton(getCards('cardsprova'))
 */
 
-console.log("CONST")
-
 // CARD 2 - START
 
 /*const ImageArea = getImageArea(getCards('cardsprova02'))
@@ -1042,9 +1063,9 @@ const ItemsBodyContentIcon = getItemsBodyContent_icon(getTabs('tabsprova'))*/
 
 // ITEM 2 - START
 
-const TilesWrap = getTilesWrap(getTabs('tabsprova'))
-const TilesWrap_li = getTilesWrap_li(getTabs('tabsprova'))
-const TilesWrap_h2 = getTilesWrap_h2(getTabs('tabsprova'))
-const TilesWrap_h3 = getTilesWrap_h3(getTabs('tabsprova'))
-const TilesWrap_p = getTilesWrap_p(getTabs('tabsprova'))
-const TilesWrap_button = getTilesWrap_button(getTabs('tabsprova'))
+const TilesWrap = getTilesWrap(getItems('tabsprova'))
+const TilesWrap_li = getTilesWrap_li(getItems('tabsprova'))
+const TilesWrap_h2 = getTilesWrap_h2(getItems('tabsprova'))
+const TilesWrap_h3 = getTilesWrap_h3(getItems('tabsprova'))
+const TilesWrap_p = getTilesWrap_p(getItems('tabsprova'))
+const TilesWrap_button = getTilesWrap_button(getItems('tabsprova'))

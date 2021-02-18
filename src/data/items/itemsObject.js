@@ -1,8 +1,8 @@
 import Immutable from 'immutable'
 
-const tabs = Immutable.Record({
+const items = Immutable.Record({
     id: '',
-    type: 'tabs',
+    type: 'items',
     typeInput: null,
     checkLimit: true,
     style: null,
@@ -76,4 +76,4 @@ const tabs = Immutable.Record({
     color_TilesWrap_p: '#b7b7b7',
 })
 
-export default tabs
+export default items

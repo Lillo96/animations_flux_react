@@ -1,7 +1,7 @@
 import Immutable from 'immutable'
 
 const style = Immutable.Record({
-    duration: '1s',
+    duration: '5s',
     timing: 'ease',
     delay: '1s',
     iterations: '1',
@@ -11,3 +11,4 @@ const style = Immutable.Record({
 })
 
 export default style
+

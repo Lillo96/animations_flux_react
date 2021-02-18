@@ -3,7 +3,7 @@ import { Container } from 'flux/utils'
 
 import checkboxesStore from "../data/checkboxes/checkboxesStore"
 import cardsStore from "../data/cards/cardsStore"
-import tabsStore from "../data/tabs/tabsStore";
+import itemsStore from "../data/items/itemsStore";
 
 //import '../impAnimation.css'
 
@@ -11,7 +11,7 @@ function getStores () {
     return [
         checkboxesStore,
         cardsStore,
-        tabsStore
+        itemsStore
     ]
 }
 
@@ -23,8 +23,8 @@ function getState() {
         cards: {
             state: cardsStore.getState()
         },
-        tabs: {
-            state: tabsStore.getState()
+        items: {
+            state: itemsStore.getState()
         }
     }
 }

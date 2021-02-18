@@ -48,7 +48,7 @@ import tabs, {
     getTilesWrap_h3,
     getTilesWrap_p,
     getTilesWrap_button
-} from "./components/tabs";
+} from "./components/items";
 import styled, {css} from "styled-components";
 
 

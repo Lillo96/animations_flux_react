@@ -60,8 +60,6 @@ function checkboxes({
         animation = getAnimation(id, {}, checkboxObj.style)
         //console.log(animation)
 
-       console.log(rest.checkboxes.state.get(id).get('checkLimit'))
-
         setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'),
                                                rest.checkboxes.state.get(id).get('typeInput'),
                                                rest.checkboxes.state.get(id).get('colorStart'),

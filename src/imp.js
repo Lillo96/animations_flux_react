@@ -33,9 +33,10 @@ import cards, {
     getCardGeneralMore,
     getCardGeneralTitle,
     getCardGeneralText,
-    setValueVariable
+    setValueVariable,
+    provaFunction_CheckValue ///////
 } from "./components/cards"
-import tabs,{
+import items ,{
     getContainerItems,
     getDivItems,
     getDivItemsHead,
@@ -50,27 +51,17 @@ import tabs,{
     getTilesWrap_h3,
     getTilesWrap_p,
     getTilesWrap_button
-} from "./components/tabs"
+} from "./components/items"
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
 import cardsObject from "./data/cards/cardsObject"
-import tabsObject from "./data/tabs/tabsObject"
+import itemsObject from "./data/items/itemsObject"
 
 const imp = {
     checkboxes: checkboxes,
     cards: cards,
-    tabs: tabs
+    items: items
 }
-
-/*export function getHTMLCards(nameFunction) {
-    switch (nameFunction) {
-        case 'CardContainer':
-            return {
-                setCheckLimitCards,
-            }
-            break;
-    }
-}*/
 
 export function getCheckboxes(id) {
     return {
@@ -112,13 +103,14 @@ export function getCards(id) {
         getCardGeneralMore,
         getCardGeneralTitle,
         getCardGeneralText,
-        setValueVariable
+        setValueVariable,
+        provaFunction_CheckValue
     }
 }
 
-export function getTabs(id) {
+export function getItems(id) {
     return {
-        ...getDataAnimation('tabs', id, tabsObject),
+        ...getDataAnimation('items', id, itemsObject),
         getContainerItems,
         getDivItems,
         getDivItemsHead,

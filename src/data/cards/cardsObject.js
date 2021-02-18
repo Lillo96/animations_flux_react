@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 const cards = Immutable.Record({
     id: '',
     type: 'cards',
-    typeInput: null,
-    checkLimit: true,
+    typeInput: 1,
+    checkLimit: null,
     style: null,
     animationCSS: '',
-    textInput: '',
+    textInput: null,
     textValue: '',
     textAlign: 'center',
     display: 'flex',
@@ -21,7 +21,7 @@ const cards = Immutable.Record({
     borderColor: '#0d0d0d',
     height: '100%',
     width: '100%',
-    timeAnim: '1s',
+    timeAnim: '1s', // ANIM
     buttonFontSize: '1em',
     buttonMargin: '1em',
     buttonBorder: '2px',
@@ -36,10 +36,9 @@ const cards = Immutable.Record({
     directionOfRotation: 'toTheRight',
 
     directionOfAnimation: 'topLeftBottomRight', // NEW FOR CARD 2
-    directionName: 'FromRightHandToSinister', // NEW FOR CARD 2
+    directionName: 'FromLeftToRight', // NEW FOR CARD 2
 
     directionOfRotation1: 'FromRightHandToSinister', // NEW FOR CARD 3
-
 })
 
 export default cards

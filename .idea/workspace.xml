@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4130bfb-4d06-4066-810c-d720df1820b4" name="Default Changelist" comment="">
+    <list default="true" id="c4130bfb-4d06-4066-810c-d720df1820b4" name="Default Changelist" comment="new function import css style (UP with keyframes)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/checkboxes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkboxes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/items.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/AppContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AppContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/animation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/cards/cardsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/cards/cardsActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/cards/cardsObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/cards/cardsObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/styleObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/styleObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsActionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/imp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +39,12 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1jmom6szumxgaxUlef4a7tC7Jmf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -53,6 +74,12 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -92,28 +119,101 @@
       <workItem from="1605115093192" duration="166000" />
       <workItem from="1605117161956" duration="2619000" />
       <workItem from="1605172192965" duration="5339000" />
-      <workItem from="1605190128124" duration="695000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial proj">
-      <created>1604429842750</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1604429842750</updated>
-    </task>
-    <task id="LOCAL-00002" summary="up">
-      <created>1604603918595</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1604603918595</updated>
-    </task>
-    <task id="LOCAL-00003" summary=".">
-      <created>1605177914871</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1605177914871</updated>
+      <workItem from="1605190128124" duration="4937000" />
+      <workItem from="1605202289219" duration="1839000" />
+      <workItem from="1605278231220" duration="9073000" />
+      <workItem from="1605522601421" duration="10642000" />
+      <workItem from="1605600547366" duration="6362000" />
+      <workItem from="1605621749208" duration="5048000" />
+      <workItem from="1605686341426" duration="6206000" />
+      <workItem from="1605712171345" duration="6578000" />
+      <workItem from="1605773620767" duration="4966000" />
+      <workItem from="1605860315705" duration="4310000" />
+      <workItem from="1605882214186" duration="6045000" />
+      <workItem from="1606121225505" duration="8695000" />
+      <workItem from="1606240264516" duration="2062000" />
+      <workItem from="1606244958185" duration="313000" />
+      <workItem from="1606295345481" duration="913000" />
+      <workItem from="1606382768395" duration="806000" />
+      <workItem from="1606384476783" duration="311000" />
+      <workItem from="1606384795430" duration="3413000" />
+      <workItem from="1606391089364" duration="7408000" />
+      <workItem from="1606495372082" duration="2734000" />
+      <workItem from="1606580354671" duration="2529000" />
+      <workItem from="1606660216894" duration="58000" />
+      <workItem from="1606819224029" duration="343000" />
+      <workItem from="1606901665890" duration="16513000" />
+      <workItem from="1606987062246" duration="4059000" />
+      <workItem from="1607014010022" duration="2784000" />
+      <workItem from="1607068925254" duration="9485000" />
+      <workItem from="1607093574283" duration="4754000" />
+      <workItem from="1607103550533" duration="517000" />
+      <workItem from="1607331922465" duration="18666000" />
+      <workItem from="1607436745210" duration="10901000" />
+      <workItem from="1607610469793" duration="6838000" />
+      <workItem from="1607619190036" duration="8042000" />
+      <workItem from="1608056240746" duration="509000" />
+      <workItem from="1608131358032" duration="8758000" />
+      <workItem from="1608166202948" duration="499000" />
+      <workItem from="1608561916230" duration="398000" />
+      <workItem from="1608562605380" duration="181000" />
+      <workItem from="1608714650738" duration="1180000" />
+      <workItem from="1608833696126" duration="1453000" />
+      <workItem from="1609001411451" duration="3643000" />
+      <workItem from="1609079529529" duration="4993000" />
+      <workItem from="1609514621582" duration="5985000" />
+      <workItem from="1609581612453" duration="301000" />
+      <workItem from="1609599617230" duration="9919000" />
+      <workItem from="1609769450968" duration="7852000" />
+      <workItem from="1609857197427" duration="9982000" />
+      <workItem from="1609886265781" duration="3690000" />
+      <workItem from="1609945114229" duration="7452000" />
+      <workItem from="1609977363377" duration="1495000" />
+      <workItem from="1610029841106" duration="6478000" />
+      <workItem from="1610115556619" duration="23791000" />
+      <workItem from="1610182022042" duration="19417000" />
+      <workItem from="1610228819907" duration="6730000" />
+      <workItem from="1610268968239" duration="9600000" />
+      <workItem from="1610289775953" duration="6856000" />
+      <workItem from="1610297539594" duration="4248000" />
+      <workItem from="1610352855539" duration="5012000" />
+      <workItem from="1610392273677" duration="260000" />
+      <workItem from="1610396294387" duration="2323000" />
+      <workItem from="1610405516420" duration="51000" />
+      <workItem from="1610445344828" duration="8586000" />
+      <workItem from="1610484148262" duration="3325000" />
+      <workItem from="1610528301644" duration="5655000" />
+      <workItem from="1610535797651" duration="442000" />
+      <workItem from="1610559965633" duration="7574000" />
+      <workItem from="1610567639704" duration="9833000" />
+      <workItem from="1610615043472" duration="7491000" />
+      <workItem from="1610653746414" duration="2276000" />
+      <workItem from="1610701021610" duration="4081000" />
+      <workItem from="1610879191573" duration="1006000" />
+      <workItem from="1610959372526" duration="3830000" />
+      <workItem from="1610992289615" duration="612000" />
+      <workItem from="1611010836182" duration="3231000" />
+      <workItem from="1611049273079" duration="3094000" />
+      <workItem from="1611092695080" duration="2445000" />
+      <workItem from="1611097147435" duration="77000" />
+      <workItem from="1611219606232" duration="5889000" />
+      <workItem from="1611261938712" duration="376000" />
+      <workItem from="1611263557184" duration="3417000" />
+      <workItem from="1611270644329" duration="6000" />
+      <workItem from="1611302656185" duration="7676000" />
+      <workItem from="1611823079570" duration="507000" />
+      <workItem from="1611823753801" duration="8183000" />
+      <workItem from="1611847274557" duration="1714000" />
+      <workItem from="1611912400862" duration="254000" />
+      <workItem from="1612736690057" duration="311000" />
+      <workItem from="1612776235334" duration="1081000" />
+      <workItem from="1613057732799" duration="5629000" />
+      <workItem from="1613382344029" duration="5372000" />
+      <workItem from="1613401154182" duration="10358000" />
+      <workItem from="1613464370020" duration="1375000" />
+      <workItem from="1613467761375" duration="488000" />
+      <workItem from="1613571228047" duration="9976000" />
+      <workItem from="1613635069628" duration="4864000" />
     </task>
     <task id="LOCAL-00004" summary=".">
       <created>1605179582727</created>
@@ -122,7 +222,343 @@
       <option name="project" value="LOCAL" />
       <updated>1605179582727</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".">
+      <created>1605190879920</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605190879920</updated>
+    </task>
+    <task id="LOCAL-00006" summary="initial state &quot;checkboxes&quot;">
+      <created>1605607646459</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605607646459</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update state &quot;checkboxes&quot;, work with check value change">
+      <created>1605627771471</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605627771471</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update state &quot;checkboxes&quot;, work with check value change end insert rule">
+      <created>1605693871863</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605693871863</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update task &quot;checkboxes&quot;, work with insert rule">
+      <created>1605719567571</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605719567571</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update task &quot;checkboxes&quot;, work with insert rule and start idea about keyframes">
+      <created>1605781464586</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605781464586</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update task &quot;checkboxes&quot;, work with insert and get keyframes">
+      <created>1605869055554</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605869055554</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update task &quot;checkboxes&quot;">
+      <created>1605894519696</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605894519697</updated>
+    </task>
+    <task id="LOCAL-00013" summary="open task fix bug">
+      <created>1606387574846</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606387574846</updated>
+    </task>
+    <task id="LOCAL-00014" summary="up fix problem with checkboxes task">
+      <created>1606991360904</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606991360904</updated>
+    </task>
+    <task id="LOCAL-00015" summary="new type checkbox">
+      <created>1607081416150</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1607081416150</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add Demo">
+      <created>1607103302370</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1607103302371</updated>
+    </task>
+    <task id="LOCAL-00017" summary="new function import css style">
+      <created>1607361151467</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1607361151467</updated>
+    </task>
+    <task id="LOCAL-00018" summary="new function import css style (UP with keyframes)">
+      <created>1607368861141</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1607368861141</updated>
+    </task>
+    <task id="LOCAL-00019" summary="up keyframes, new function end new checkboxes type">
+      <created>1607444503737</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607444503737</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix bug">
+      <created>1607446866572</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1607446866572</updated>
+    </task>
+    <task id="LOCAL-00021" summary="up keyframes">
+      <created>1607452289889</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1607452289889</updated>
+    </task>
+    <task id="LOCAL-00022" summary="UP keyframes and fix">
+      <created>1608562274899</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1608562274899</updated>
+    </task>
+    <task id="LOCAL-00023" summary="start new components &quot;cards&quot;">
+      <created>1608836834916</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1608836834916</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update cards and start items">
+      <created>1609007332514</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1609007332514</updated>
+    </task>
+    <task id="LOCAL-00025" summary="up task about cards (first card rotate)">
+      <created>1609602017502</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1609602017502</updated>
+    </task>
+    <task id="LOCAL-00026" summary="start second cards task">
+      <created>1609612943157</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1609612943157</updated>
+    </task>
+    <task id="LOCAL-00027" summary="up">
+      <created>1609802721148</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1609802721148</updated>
+    </task>
+    <task id="LOCAL-00028" summary="start card 3">
+      <created>1609863843131</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1609863843131</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fix card 3">
+      <created>1609870228921</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1609870228921</updated>
+    </task>
+    <task id="LOCAL-00030" summary="start task item 1">
+      <created>1609890098235</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1609890098236</updated>
+    </task>
+    <task id="LOCAL-00031" summary="up task item 1">
+      <created>1609949066510</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1609949066510</updated>
+    </task>
+    <task id="LOCAL-00032" summary="start task item 2">
+      <created>1609953660262</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1609953660262</updated>
+    </task>
+    <task id="LOCAL-00033" summary="up and end task 2 about items">
+      <created>1609978881508</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1609978881509</updated>
+    </task>
+    <task id="LOCAL-00034" summary="up">
+      <created>1609978955217</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1609978955217</updated>
+    </task>
+    <task id="LOCAL-00035" summary="up">
+      <created>1610053993097</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1610053993097</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Up Demo finale e start Up chooses Card">
+      <created>1610147179747</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1610147179747</updated>
+    </task>
+    <task id="LOCAL-00037" summary="up task card">
+      <created>1610237118715</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1610237118715</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Up demo tast item 1">
+      <created>1610278801534</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1610278801534</updated>
+    </task>
+    <task id="LOCAL-00039" summary="up">
+      <created>1610294797081</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1610294797081</updated>
+    </task>
+    <task id="LOCAL-00040" summary="up demo checkboxes">
+      <created>1610301248759</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1610301248759</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Up and Fix Demo Checkboxes 1-2-3">
+      <created>1610358260431</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1610358260431</updated>
+    </task>
+    <task id="LOCAL-00042" summary="commit and push">
+      <created>1610392328925</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1610392328925</updated>
+    </task>
+    <task id="LOCAL-00043" summary="up">
+      <created>1610405548903</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1610405548903</updated>
+    </task>
+    <task id="LOCAL-00044" summary="start fix card 1">
+      <created>1610454800270</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1610454800270</updated>
+    </task>
+    <task id="LOCAL-00045" summary="up">
+      <created>1610493336247</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1610493336247</updated>
+    </task>
+    <task id="LOCAL-00046" summary="up card 2">
+      <created>1610538273688</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1610538273688</updated>
+    </task>
+    <task id="LOCAL-00047" summary="up and fix">
+      <created>1610584130345</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1610584130345</updated>
+    </task>
+    <task id="LOCAL-00048" summary="up and fix card 3">
+      <created>1610623337393</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1610623337393</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Up and fix item 1 and 2">
+      <created>1610705776237</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1610705776237</updated>
+    </task>
+    <task id="LOCAL-00050" summary="up and fix Checkboxes">
+      <created>1610963607614</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1610963607614</updated>
+    </task>
+    <task id="LOCAL-00051" summary="commit notturno">
+      <created>1611014199716</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1611014199716</updated>
+    </task>
+    <task id="LOCAL-00052" summary="up card 2 e 3 choose">
+      <created>1611225508193</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1611225508193</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,41 +566,186 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Initial proj" />
+    <MESSAGE value="update cards and start items" />
+    <MESSAGE value="up task about cards (first card rotate)" />
+    <MESSAGE value="start second cards task" />
+    <MESSAGE value="start card 3" />
+    <MESSAGE value="fix card 3" />
+    <MESSAGE value="start task item 1" />
+    <MESSAGE value="up task item 1" />
+    <MESSAGE value="start task item 2" />
+    <MESSAGE value="up and end task 2 about items" />
+    <MESSAGE value="Up Demo finale e start Up chooses Card" />
+    <MESSAGE value="up task card" />
+    <MESSAGE value="Up demo tast item 1" />
+    <MESSAGE value="up demo checkboxes" />
+    <MESSAGE value="Up and Fix Demo Checkboxes 1-2-3" />
+    <MESSAGE value="commit and push" />
+    <MESSAGE value="start fix card 1" />
     <MESSAGE value="up" />
-    <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="up card 2" />
+    <MESSAGE value="up and fix" />
+    <MESSAGE value="up and fix card 3" />
+    <MESSAGE value="new function import css style (UP with keyframes)" />
+    <MESSAGE value="Up and fix item 1 and 2" />
+    <MESSAGE value="up and fix Checkboxes" />
+    <MESSAGE value="commit notturno" />
+    <MESSAGE value="up card 2 e 3 choose" />
+    <option name="LAST_COMMIT_MESSAGE" value="up card 2 e 3 choose" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1028" y="205" key="#ESLint" timestamp="1604996189530">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="1028" y="205" key="#ESLint/0.0.1920.1080@0.0.1920.1080" timestamp="1604996189530" />
-    <state x="-1787" y="308" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604938747586">
+    <state x="-739" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605281828870">
       <screen x="-1920" y="-42" width="1920" height="1080" />
     </state>
-    <state x="-1787" y="308" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1604938747586" />
-    <state x="-1540" y="20" key="CommitChangelistDialog2" timestamp="1605179582504">
-      <screen x="-1920" y="-42" width="1920" height="1080" />
-    </state>
-    <state x="-1540" y="20" key="CommitChangelistDialog2/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1605177914583" />
-    <state x="285" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1604429842488" />
-    <state x="-1540" y="20" key="CommitChangelistDialog2/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1605179582504" />
-    <state x="804" y="440" key="Github.ShareDialog" timestamp="1604420124569">
+    <state x="-739" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1605281828870" />
+    <state x="1020" y="175" key="CommitChangelistDialog2" timestamp="1611225507848">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="804" y="440" key="Github.ShareDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604420124569" />
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1604419695679">
+    <state x="-1488" y="-27" key="CommitChangelistDialog2/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963607132" />
+    <state x="285" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1611014199268" />
+    <state x="1020" y="175" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1611225507848" />
+    <state x="-1540" y="20" key="CommitChangelistDialog2/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1605627771229" />
+    <state x="815" y="123" key="CommitChangelistDialog2/0.25.1920.992@0.25.1920.992" timestamp="1610405548462" />
+    <state width="1899" height="193" key="GridCell.Tab.0.bottom" timestamp="1613602995180">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1604419695679" />
-    <state x="1110" y="297" width="639" height="486" key="find.popup" timestamp="1604997250578">
+    <state width="1899" height="197" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644625" />
+    <state width="1419" height="155" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1611270637535" />
+    <state width="933" height="143" key="GridCell.Tab.0.bottom/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722228" />
+    <state width="1899" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995180" />
+    <state width="691" height="375" key="GridCell.Tab.0.bottom/0.23.1440.820@0.23.1440.820" timestamp="1606413894146" />
+    <state width="1071" height="105" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787366" />
+    <state width="1899" height="143" key="GridCell.Tab.0.bottom/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796736" />
+    <state width="1899" height="195" key="GridCell.Tab.0.bottom/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228453" />
+    <state width="905" height="193" key="GridCell.Tab.0.bottom/0.25.1920.996@0.25.1920.996" timestamp="1612793088982" />
+    <state width="1899" height="193" key="GridCell.Tab.0.center" timestamp="1613602995179">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="1110" y="297" width="639" height="486" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604997250578" />
-    <state x="-1295" y="199" width="670" height="676" key="search.everywhere.popup" timestamp="1604423802527">
-      <screen x="-1920" y="-42" width="1920" height="1080" />
+    <state width="1899" height="197" key="GridCell.Tab.0.center/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644623" />
+    <state width="1419" height="155" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1611270637528" />
+    <state width="933" height="143" key="GridCell.Tab.0.center/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722227" />
+    <state width="1899" height="193" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995179" />
+    <state width="691" height="375" key="GridCell.Tab.0.center/0.23.1440.820@0.23.1440.820" timestamp="1606413894144" />
+    <state width="1071" height="105" key="GridCell.Tab.0.center/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787365" />
+    <state width="1899" height="143" key="GridCell.Tab.0.center/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796735" />
+    <state width="1899" height="195" key="GridCell.Tab.0.center/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228451" />
+    <state width="905" height="193" key="GridCell.Tab.0.center/0.25.1920.996@0.25.1920.996" timestamp="1612793088980" />
+    <state width="1899" height="193" key="GridCell.Tab.0.left" timestamp="1613602995178">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1295" y="199" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1604423802527" />
+    <state width="1899" height="197" key="GridCell.Tab.0.left/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644622" />
+    <state width="1419" height="155" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1611270637526" />
+    <state width="933" height="143" key="GridCell.Tab.0.left/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722227" />
+    <state width="1899" height="193" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995178" />
+    <state width="691" height="375" key="GridCell.Tab.0.left/0.23.1440.820@0.23.1440.820" timestamp="1606413894144" />
+    <state width="1071" height="105" key="GridCell.Tab.0.left/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787364" />
+    <state width="1899" height="143" key="GridCell.Tab.0.left/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796735" />
+    <state width="1899" height="195" key="GridCell.Tab.0.left/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228451" />
+    <state width="905" height="193" key="GridCell.Tab.0.left/0.25.1920.996@0.25.1920.996" timestamp="1612793088979" />
+    <state width="1899" height="193" key="GridCell.Tab.0.right" timestamp="1613602995179">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="197" key="GridCell.Tab.0.right/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644624" />
+    <state width="1419" height="155" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1611270637531" />
+    <state width="933" height="143" key="GridCell.Tab.0.right/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722228" />
+    <state width="1899" height="193" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995179" />
+    <state width="691" height="375" key="GridCell.Tab.0.right/0.23.1440.820@0.23.1440.820" timestamp="1606413894145" />
+    <state width="1071" height="105" key="GridCell.Tab.0.right/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787365" />
+    <state width="1899" height="143" key="GridCell.Tab.0.right/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796736" />
+    <state width="1899" height="195" key="GridCell.Tab.0.right/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228452" />
+    <state width="905" height="193" key="GridCell.Tab.0.right/0.25.1920.996@0.25.1920.996" timestamp="1612793088981" />
+    <state width="691" height="375" key="GridCell.Tab.1.bottom" timestamp="1606413894148">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032181" />
+    <state width="691" height="375" key="GridCell.Tab.1.bottom/0.23.1440.820@0.23.1440.820" timestamp="1606413894148" />
+    <state width="691" height="375" key="GridCell.Tab.1.center" timestamp="1606413894147">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032180" />
+    <state width="691" height="375" key="GridCell.Tab.1.center/0.23.1440.820@0.23.1440.820" timestamp="1606413894147" />
+    <state width="691" height="375" key="GridCell.Tab.1.left" timestamp="1606413894146">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032180" />
+    <state width="691" height="375" key="GridCell.Tab.1.left/0.23.1440.820@0.23.1440.820" timestamp="1606413894146" />
+    <state width="691" height="375" key="GridCell.Tab.1.right" timestamp="1606413894148">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032180" />
+    <state width="691" height="375" key="GridCell.Tab.1.right/0.23.1440.820@0.23.1440.820" timestamp="1606413894148" />
+    <state width="691" height="375" key="GridCell.Tab.2.bottom" timestamp="1606413894150">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032183" />
+    <state width="691" height="375" key="GridCell.Tab.2.bottom/0.23.1440.820@0.23.1440.820" timestamp="1606413894150" />
+    <state width="691" height="375" key="GridCell.Tab.2.center" timestamp="1606413894149">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032182" />
+    <state width="691" height="375" key="GridCell.Tab.2.center/0.23.1440.820@0.23.1440.820" timestamp="1606413894149" />
+    <state width="691" height="375" key="GridCell.Tab.2.left" timestamp="1606413894149">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032181" />
+    <state width="691" height="375" key="GridCell.Tab.2.left/0.23.1440.820@0.23.1440.820" timestamp="1606413894149" />
+    <state width="691" height="375" key="GridCell.Tab.2.right" timestamp="1606413894150">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032182" />
+    <state width="691" height="375" key="GridCell.Tab.2.right/0.23.1440.820@0.23.1440.820" timestamp="1606413894150" />
+    <state width="691" height="375" key="GridCell.Tab.3.bottom" timestamp="1606413894152">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.3.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032185" />
+    <state width="691" height="375" key="GridCell.Tab.3.bottom/0.23.1440.820@0.23.1440.820" timestamp="1606413894152" />
+    <state width="691" height="375" key="GridCell.Tab.3.center" timestamp="1606413894151">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.3.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032184" />
+    <state width="691" height="375" key="GridCell.Tab.3.center/0.23.1440.820@0.23.1440.820" timestamp="1606413894151" />
+    <state width="691" height="375" key="GridCell.Tab.3.left" timestamp="1606413894151">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.3.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032183" />
+    <state width="691" height="375" key="GridCell.Tab.3.left/0.23.1440.820@0.23.1440.820" timestamp="1606413894151" />
+    <state width="691" height="375" key="GridCell.Tab.3.right" timestamp="1606413894152">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="933" height="375" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606409032184" />
+    <state width="691" height="375" key="GridCell.Tab.3.right/0.23.1440.820@0.23.1440.820" timestamp="1606413894152" />
+    <state x="959" y="255" key="RollbackChangesDialog" timestamp="1610567731215">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="959" y="255" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610567731215" />
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1610392334194">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1360" y="238" key="Vcs.Push.Dialog.v2/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1607452319064" />
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1610392334194" />
+    <state x="1064" y="162" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1613638828334">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1064" y="162" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1613638828334" />
+    <state x="1032" y="150" width="667" height="486" key="find.popup" timestamp="1611305962726">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-947" y="180" width="667" height="486" key="find.popup/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610583034685" />
+    <state x="633" y="121" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1609087048127" />
+    <state x="1032" y="150" width="667" height="486" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1611305962726" />
+    <state x="1113" y="438" key="git4idea.ui.GitResetDialog" timestamp="1610567629089">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1113" y="438" key="git4idea.ui.GitResetDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610567629089" />
+    <state x="625" y="276" width="670" height="675" key="run.anything.popup" timestamp="1610290884312">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1295" y="234" width="670" height="675" key="run.anything.popup/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1607364927917" />
+    <state x="625" y="276" width="670" height="675" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1610290884312" />
+    <state x="625" y="241" width="894" height="677" key="search.everywhere.popup" timestamp="1610276109607">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="469" y="201" width="670" height="564" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1609088738176" />
+    <state x="625" y="241" width="894" height="677" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1610276109607" />
   </component>
 </project>
