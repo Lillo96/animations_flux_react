@@ -39,6 +39,10 @@ const cards = Immutable.Record({
     directionName: 'FromLeftToRight', // NEW FOR CARD 2
 
     directionOfRotation1: 'FromRightHandToSinister', // NEW FOR CARD 3
+
+    backgroundCard: null,
+    backgroundCard1: null,
+    backgroundCard2: null,
 })
 
 export default cards

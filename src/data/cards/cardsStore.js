@@ -57,6 +57,10 @@ class CardsStore extends ReduceStore {
 
                         directionOfRotation1: action.directionOfRotation1, //NEW FOR CARD 3
 
+                        backgroundCard: action.backgroundCard,
+                        backgroundCard1: action.backgroundCard1,
+                        backgroundCard2: action.backgroundCard2,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

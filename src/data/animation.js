@@ -7,7 +7,7 @@ function getAnimation(id, valueDefault, style) {
 
         const { duration, timing, delay, iterations, direction, fillMode, playState } = valueDefault
 
-        console.log("DENTRO STYLE ESISTE", duration)
+        // console.log("DENTRO STYLE ESISTE")
         animation.animationDuration = duration || style.duration
         animation.animationTimingFunction = timing || style.timing
         animation.animationDelay = delay || style.delay
@@ -17,9 +17,8 @@ function getAnimation(id, valueDefault, style) {
         animation.animationPlayState = playState || style.playState
 
     } else {
-        console.log("DENTRO STYLE NON ESISTE")
+        // console.log("DENTRO STYLE NON ESISTE")
         const { duration, timing, delay, iterations, direction, fillMode, playState } = valueDefault
-        console.log(duration)
         animation.animationDuration = duration || '1s'
         animation.animationTimingFunction = timing || 'ease'
         animation.animationDelay = delay || '1s'

@@ -10,6 +10,7 @@ const cardsActions = {
         buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
         colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
         directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
+        backgroundCard, backgroundCard1, backgroundCard2,
         duration, timing, delay, iterations, direction, fillMode, playState) {
 
         animationDispatcher.dispatch ({
@@ -55,7 +56,11 @@ const cardsActions = {
             directionOfAnimation: directionOfAnimation, // NEW FOR CARD 2
             directionName: directionName, // NEW FOR CARD 2
 
-            directionOfRotation1: directionOfRotation1 // NEW FOR CARD 3
+            directionOfRotation1: directionOfRotation1, // NEW FOR CARD 3
+
+            backgroundCard: backgroundCard,
+            backgroundCard1: backgroundCard1,
+            backgroundCard2: backgroundCard2,
 
         })
     },

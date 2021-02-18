@@ -14,6 +14,7 @@ function cards({
     buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
     colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
     directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
+    backgroundCard, backgroundCard1, backgroundCard2,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
@@ -30,6 +31,7 @@ function cards({
             buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
             colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
             directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
+            backgroundCard, backgroundCard1, backgroundCard2,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -41,7 +43,8 @@ function cards({
             borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
             buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
             colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
-            directionOfRotation, directionOfAnimation, directionName, directionOfRotation1]
+            directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
+            backgroundCard, backgroundCard1, backgroundCard2]
 
         checkValue(variableArray, rest.cards.state.get(id))
 
@@ -81,8 +84,6 @@ export function getCardContainer (Card) {
                       }
                   `;
 
-    console.log(Card)
-
     const CardContainerFinal = styled.div`
           animation: ${duration} ${tmp} ${fillMode};
        `;
@@ -110,8 +111,8 @@ export function getCardFront(Card) {
                       }
                   `;
 
-    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
-    let duration = (Card.style === null) ? '1s' : Card.style.duration
+   let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+   let duration = (Card.style === null) ? '1s' : Card.style.duration
 
    const CardFrontFinal = styled.div`
           animation: ${duration} ${tmp} ${fillMode};
@@ -138,7 +139,7 @@ export function getCardBack(Card) {
                         justify-content: space-between;
                         -webkit-backface-visibility: ${Card.backfaceVisibility};
                         border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
-                      
+                       
                         transform: rotateY(180deg) translate(100%, 0) rotate(180deg);
                         background: ${Card.colorCard};
                         z-index: 0;
@@ -308,6 +309,38 @@ export function getCardInner(Card) {
 
             break;
 
+        case 4:
+
+            if (Card.directionOfRotation === 'toTheLeft') {
+                CardInner = styled.div`
+                    flex: 1;
+                    display: ${Card.display};
+                    text-align: ${Card.textAlign};
+                    transition: ${duration};
+                    transform-style: preserve-3d;
+            
+                   ${Card.checkLimit ?
+                    `animation: ${tmp1} ${duration} ${fillMode};` :
+                    Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`}
+                
+                `;
+
+            } else {
+                CardInner = styled.div`
+                            flex: 1;
+                            display: ${Card.display};
+                            transition: transform ${duration};
+                            transform-style: preserve-3d;
+                    
+                            ${Card.checkLimit ?
+                    `animation: ${tmp1_1} ${duration} ${fillMode};` :
+                    Card.checkLimit === null ? '' :  `animation: ${tmp_1} ${duration} ${fillMode};`}
+                            
+                `;
+            }
+
+            break;
+
         default:
             return
     }
@@ -317,16 +350,35 @@ export function getCardInner(Card) {
 
 export function getCardButton(Card) {
 
-    const Button = styled.button`
-              font-size: ${Card.buttonFontSize};
-              margin: ${Card.buttonMargin};
-              padding: 0.25em 1em;
-              border: ${Card.buttonBorder}; solid palevioletred;
-              border-radius: ${Card.buttonBorderRadius};
-              background-color: ${Card.buttonBackColor};
-        `;
+    const ItemsBodyContentIcon = styled.button`
+      align-self: center;
+      font-size: 15px;
+      color: #0B5AA2;
+      font-weight: bold;
+      
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+      
+      // animation: icon 1.5s infinite forwards;
+      
+      @keyframes icon {
+          0%,100%{
+            transform: translate(0px);
+          }
+          50% {
+            transform: translate(3px);
+          }
+        }
 
-    return Button
+      `;
+
+    return ItemsBodyContentIcon
 }
 
 // CARD 2
@@ -1557,7 +1609,8 @@ function checkValue (variableArray, rest) {
         "borderDim", "borderType", "borderColor", "height", "width", "timeAnim", "buttonFontSize",
         "buttonMargin", "buttonBorder", "buttonBorderRadius", "buttonBackColor",
         "colorCard2", "marginCard", "colorCardTrans1", "colorCardTrans2", "fontSizeLCentral", "fontSizePointsCenter",
-        "directionOfRotation", "directionOfAnimation", "directionName", "directionOfRotation1"]
+        "directionOfRotation", "directionOfAnimation", "directionName", "directionOfRotation1",
+        "backgroundCard", "backgroundCard1", "backgroundCard2"]
 
     /*
         0: checkLimit,
@@ -1590,7 +1643,10 @@ function checkValue (variableArray, rest) {
         27: "directionOfRotation",
         28: "directionOfAnimation",
         29: "directionName",
-        30: "directionOfRotation1"
+        30: "directionOfRotation1",
+        31: "backgroundCard",
+        32: "backgroundCard1",
+        33: "backgroundCard2",
     */
 
 
@@ -1620,11 +1676,19 @@ export function provaFunction_CheckValue(value) {
             result = (value === this.checkLimit) ? !value : value
             cardsActions.changeValue(this.id, 'checkLimit', result)
             break;
-        case  3:
+        case 3:
+        case 4:
             if (this.textInput === null) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
-            if (value.key === this.textInput) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+
+            if (value.key === this.textInput) {
+                if (this.checkLimit === null)
+                    cardsActions.changeValue(this.id, 'checkLimit', false)
+                    else
+                         cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+            }
 
             break;
+
         default:
             return;
     }
@@ -1674,7 +1738,11 @@ cards.propType = {
     directionOfAnimation: PropTypes.string, // NEW FOR CARD 2
     directionName: PropTypes.string, // NEW FOR CARD 2
 
-    directionOfRotation1: PropTypes.string // NEW FOR CARD 3
+    directionOfRotation1: PropTypes.string, // NEW FOR CARD 3
+
+    backgroundCard: PropTypes.string,
+    backgroundCard1: PropTypes.string,
+    backgroundCard2: PropTypes.string
 }
 
 export default cards
