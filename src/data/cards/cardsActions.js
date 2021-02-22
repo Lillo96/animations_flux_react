@@ -11,6 +11,8 @@ const cardsActions = {
         colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
         directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
         backgroundCard, backgroundCard1, backgroundCard2,
+        backgroundColorButton, borderButton, colorButton, paddingButtonTopBottom, paddingButtonRightLeft,
+        textAlignButton, textDecorationButton, displayButton, fontSizeButton,
         duration, timing, delay, iterations, direction, fillMode, playState) {
 
         animationDispatcher.dispatch ({
@@ -61,6 +63,16 @@ const cardsActions = {
             backgroundCard: backgroundCard,
             backgroundCard1: backgroundCard1,
             backgroundCard2: backgroundCard2,
+
+            backgroundColorButton: backgroundColorButton,
+            borderButton: borderButton,
+            colorButton: colorButton,
+            paddingButtonTopBottom: paddingButtonTopBottom,
+            paddingButtonRightLeft: paddingButtonRightLeft,
+            textAlignButton: textAlignButton,
+            textDecorationButton: textDecorationButton,
+            displayButton: displayButton,
+            fontSizeButton: fontSizeButton
 
         })
     },

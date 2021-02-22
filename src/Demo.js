@@ -61,6 +61,7 @@ import {
     getTilesWrap_h2, getTilesWrap_h3,
     getTilesWrap_li, getTilesWrap_p
 } from "./components/items";
+import img from '../src/paper.jpg'
 
 let num
 
@@ -412,11 +413,12 @@ function SimpleSelect(props) {
                     <imp.cards id='cardsprova' typeInput={1} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" {...props}>
 
+
                         <CardContainer>
                             <CardInner>
                             {/*<CardInner onClick={ () => {card1.provaFunction_CheckValue(false)}}>*/}
                             {/*<CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>*/}
-                                <CardFront>
+                                <CardFront style={{backgroundImage: `url(${img})` }} >
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
                                     {/* <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}

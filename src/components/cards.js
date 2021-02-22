@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cardsActions from "../data/cards/cardsActions"
 import getAnimation from "../data/animation"
+// import img from '../paper.jpg'
 
 import styled, {keyframes, css} from "styled-components"
 
@@ -15,6 +16,8 @@ function cards({
     colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
     directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
     backgroundCard, backgroundCard1, backgroundCard2,
+    backgroundColorButton, borderButton, colorButton, paddingButtonTopBottom, paddingButtonRightLeft,
+    textAlignButton, textDecorationButton, displayButton, fontSizeButton,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
@@ -32,6 +35,8 @@ function cards({
             colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
             directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
             backgroundCard, backgroundCard1, backgroundCard2,
+            backgroundColorButton, borderButton, colorButton, paddingButtonTopBottom, paddingButtonRightLeft,
+            textAlignButton, textDecorationButton, displayButton, fontSizeButton,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -44,7 +49,8 @@ function cards({
             buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
             colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
             directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
-            backgroundCard, backgroundCard1, backgroundCard2]
+            backgroundCard, backgroundCard1, backgroundCard2, backgroundColorButton, borderButton, colorButton, paddingButtonTopBottom, paddingButtonRightLeft,
+            textAlignButton, textDecorationButton, displayButton, fontSizeButton]
 
         checkValue(variableArray, rest.cards.state.get(id))
 
@@ -96,7 +102,7 @@ export function getCardFront(Card) {
    const tmp = keyframes`
                       
                       from, to {
-                            width: ${Card.width};
+                            width: ${Card.width} ;
                             height: ${Card.height};
                             min-width: 100%;
                             min-height: 100%;
@@ -107,7 +113,10 @@ export function getCardFront(Card) {
                             border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                           
                             z-index: 0;
-                            background: ${Card.colorCard};
+                            // background: ${Card.colorCard};
+                            // background-image: ${Card.backgroundCard1};
+                            // background-color: ${Card.colorCard};
+                          
                       }
                   `;
 
@@ -351,30 +360,26 @@ export function getCardInner(Card) {
 export function getCardButton(Card) {
 
     const ItemsBodyContentIcon = styled.button`
-      align-self: center;
-      font-size: 15px;
-      color: #0B5AA2;
-      font-weight: bold;
-      
-      background-color: #4CAF50; /* Green */
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 10px;
-      
-      // animation: icon 1.5s infinite forwards;
-      
-      @keyframes icon {
-          0%,100%{
-            transform: translate(0px);
-          }
-          50% {
-            transform: translate(3px);
-          }
-        }
+
+          background-color: ${Card.backgroundColorButton};
+          border: ${Card.borderButton};
+          color: ${Card.colorButton};
+          padding: ${Card.paddingButtonTopBottom} ${Card.paddingButtonRightLeft};;
+          text-align: ${Card.textAlignButton};
+          text-decoration: ${Card.textDecorationButton};
+          display: ${Card.displayButton};
+          font-size: ${Card.fontSizeButton};
+
+          // animation: icon 1.5s infinite forwards;
+          
+          @keyframes icon {
+              0%,100%{
+                transform: translate(0px);
+              }
+              50% {
+                transform: translate(3px);
+              }
+            }
 
       `;
 
@@ -1610,7 +1615,8 @@ function checkValue (variableArray, rest) {
         "buttonMargin", "buttonBorder", "buttonBorderRadius", "buttonBackColor",
         "colorCard2", "marginCard", "colorCardTrans1", "colorCardTrans2", "fontSizeLCentral", "fontSizePointsCenter",
         "directionOfRotation", "directionOfAnimation", "directionName", "directionOfRotation1",
-        "backgroundCard", "backgroundCard1", "backgroundCard2"]
+        "backgroundCard", "backgroundCard1", "backgroundCard2", "backgroundColorButton", "borderButton", "colorButton", "paddingButtonTopBottom", "paddingButtonRightLeft",
+        "textAlignButton", "textDecorationButton", "displayButton", "fontSizeButton"]
 
     /*
         0: checkLimit,
@@ -1647,6 +1653,15 @@ function checkValue (variableArray, rest) {
         31: "backgroundCard",
         32: "backgroundCard1",
         33: "backgroundCard2",
+        34: "backgroundColorButton",
+        35: "borderButton",
+        36: "colorButton",
+        37: "paddingButtonTopBottom",
+        38: "paddingButtonRightLeft",
+        39: "textAlignButton",
+        40: "textDecorationButton",
+        41: "displayButton",
+        42: "fontSizeButton"
     */
 
 
@@ -1742,7 +1757,18 @@ cards.propType = {
 
     backgroundCard: PropTypes.string,
     backgroundCard1: PropTypes.string,
-    backgroundCard2: PropTypes.string
+    backgroundCard2: PropTypes.string,
+
+    backgroundColorButton: PropTypes.string,
+    borderButton: PropTypes.string,
+    colorButton: PropTypes.string,
+    paddingButtonTopBottom: PropTypes.string,
+    paddingButtonRightLeft: PropTypes.string,
+    textAlignButton: PropTypes.string,
+    textDecorationButton: PropTypes.string,
+    displayButton: PropTypes.string,
+    fontSizeButton: PropTypes.string,
+
 }
 
 export default cards

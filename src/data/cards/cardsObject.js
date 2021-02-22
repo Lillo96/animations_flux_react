@@ -43,6 +43,16 @@ const cards = Immutable.Record({
     backgroundCard: null,
     backgroundCard1: null,
     backgroundCard2: null,
+
+    backgroundColorButton: '#4CAF50',
+    borderButton: 'none',
+    colorButton: 'white',
+    paddingButtonTopBottom: '15px',
+    paddingButtonRightLeft: '32px',
+    textAlignButton: 'center',
+    textDecorationButton: 'none',
+    displayButton: 'inline-block',
+    fontSizeButton: '10px'
 })
 
 export default cards

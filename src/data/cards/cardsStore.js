@@ -61,6 +61,16 @@ class CardsStore extends ReduceStore {
                         backgroundCard1: action.backgroundCard1,
                         backgroundCard2: action.backgroundCard2,
 
+                        backgroundColorButton: action.backgroundColorButton,
+                        borderButton: action.borderButton,
+                        colorButton:  action.colorButton,
+                        paddingButtonTopBottom:  action.paddingButtonTopBottom,
+                        paddingButtonRightLeft:  action.paddingButtonRightLeft,
+                        textAlignButton:  action.textAlignButton,
+                        textDecorationButton:  action.textDecorationButton,
+                        displayButton:  action.displayButton,
+                        fontSizeButton:  action.fontSizeButton,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
