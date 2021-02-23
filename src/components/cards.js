@@ -28,6 +28,7 @@ function cards({
     widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
     rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
     frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
+    widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
@@ -56,6 +57,7 @@ function cards({
             widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
             rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
             frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
+            widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -78,7 +80,8 @@ function cards({
             transitionAdditionalCard3_2, overflowAdditionalCard3, widthHoverAdditionalCard3, borderRadiusAdditionalCard3_1, textAlignMoreInfoCard3,
             widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
             rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
-            frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3
+            frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
+            widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3
         ]
 
         checkValue(variableArray, rest.cards.state.get(id))
@@ -995,7 +998,6 @@ export function getCard(Card) {
                       }
     `;
 
-
     const CardFinal = styled.div`
           animation: ${duration} ${tmp} ${fillMode};
     `;
@@ -1004,6 +1006,9 @@ export function getCard(Card) {
 }
 
 export function getAdditional(Card) {
+
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
     switch (Card.typeInput) {
         case 1:
@@ -1121,9 +1126,6 @@ export function getAdditional(Card) {
             break;
 
         case 2:
-
-            let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
-            let duration = (Card.style === null) ? '1s' : Card.style.duration
 
             // DA DESTRA VERSO SINITRA
 
@@ -1324,6 +1326,24 @@ export function getAdditional(Card) {
 
             if (Card.directionOfRotation1 === "FromRightHandToSinister") {
 
+                const tmp = keyframes`
+            
+                     to {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+            
+                     from {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
 
                 const Additional = styled.div`
@@ -1336,10 +1356,11 @@ export function getAdditional(Card) {
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2; 
                         
-                        &:hover {
-                            width: ${Card.widthHoverAdditionalCard3};
-                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        ${Card.checkLimit ?
+                            `animation: ${tmp1} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                         }
+                        
                 `;
 
                 return Additional
@@ -1349,6 +1370,26 @@ export function getAdditional(Card) {
             // DALL ALTO VERSO IL BASSO
 
             if (Card.directionOfRotation1 === "FromTopToBottom") {
+
+                const tmp = keyframes`
+
+                     to {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
 
@@ -1362,11 +1403,11 @@ export function getAdditional(Card) {
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2;
                         
-                        &:hover {
-                            width: ${Card.widthHoverAdditionalCard3};
-                            height: 100%;
-                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        ${Card.checkLimit ?
+                            `animation: ${tmp1} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                         }
+
                `;
 
                 return Additional1
@@ -1376,6 +1417,28 @@ export function getAdditional(Card) {
             // DAL BASSO VERSO L ALTO
 
             if (Card.directionOfRotation1 === "FromBottomToTop") {
+
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
 
@@ -1390,12 +1453,11 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    &:hover {
-                        width: ${Card.widthHoverAdditionalCard3};
-                        height: 100%
-                        top: 0%;
-                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    ${Card.checkLimit ?
+                      `animation: ${tmp1} ${duration} ${fillMode};` :
+                      Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                     }
+                    
                `;
 
                 return Additional2
@@ -1404,6 +1466,28 @@ export function getAdditional(Card) {
             // DA DESTRA VERSO SINISTRA
 
             if (Card.directionOfRotation1 === "FromLeftToRight") {
+
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
 
@@ -1417,13 +1501,12 @@ export function getAdditional(Card) {
                     transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
-                    
-                    &:hover {
-                        width: ${Card.widthHoverAdditionalCard3};
-                        height: 100%;
-                        left: 0%;
-                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                   
+                    ${Card.checkLimit ?
+                          `animation: ${tmp1} ${duration} ${fillMode};` :
+                           Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                     }
+                    
                `;
 
                 return Additional3
@@ -1438,6 +1521,24 @@ export function getAdditional(Card) {
 
             if (Card.directionOfRotation1 === "FromRightHandToSinister") {
 
+                const tmp = keyframes`
+            
+                     to {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+            
+                     from {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
 
                 const Additional = styled.div`
@@ -1450,10 +1551,11 @@ export function getAdditional(Card) {
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2; 
                         
-                        &:hover {
-                            width: ${Card.widthHoverAdditionalCard3};
-                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        ${Card.checkLimit ?
+                              `animation: ${tmp1} ${duration} ${fillMode};` :
+                               Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                         }
+                        
                 `;
 
                 return Additional
@@ -1463,6 +1565,26 @@ export function getAdditional(Card) {
             // DALL ALTO VERSO IL BASSO
 
             if (Card.directionOfRotation1 === "FromTopToBottom") {
+
+                const tmp = keyframes`
+
+                     to {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
 
@@ -1475,12 +1597,12 @@ export function getAdditional(Card) {
                         transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2;
-                        
-                        &:hover {
-                            width: ${Card.widthHoverAdditionalCard3};
-                            height: 100%;
-                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                      
+                        ${Card.checkLimit ?
+                            `animation: ${tmp1} ${duration} ${fillMode};` :
+                             Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                         }
+                        
                `;
 
                 return Additional1
@@ -1490,6 +1612,28 @@ export function getAdditional(Card) {
             // DAL BASSO VERSO L ALTO
 
             if (Card.directionOfRotation1 === "FromBottomToTop") {
+
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
 
@@ -1504,12 +1648,12 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    &:hover {
-                        width: ${Card.widthHoverAdditionalCard3};
-                        height: 100%
-                        top: 0%;
-                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    
+                    ${Card.checkLimit ?
+                        `animation: ${tmp1} ${duration} ${fillMode};` :
+                         Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                     }
+                    
                `;
 
                 return Additional2
@@ -1518,6 +1662,28 @@ export function getAdditional(Card) {
             // DA DESTRA VERSO SINISTRA
 
             if (Card.directionOfRotation1 === "FromLeftToRight") {
+
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
 
@@ -1532,11 +1698,9 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    &:hover {
-                        width: ${Card.widthHoverAdditionalCard3};
-                        height: 100%;
-                        left: 0%;
-                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    ${Card.checkLimit ?
+                       `animation: ${tmp1} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                     }
                `;
 
@@ -1772,24 +1936,115 @@ export function getMoreInfoName(Card) {
     return NameFinal
 }
 
-// NO
+
 export function getCoords(Card) {
 
-    const Coords = styled.div`
-        margin: 0 1rem;
-        color: #fff;
-        font-size: 1rem;
-       `;
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
-    const tmp = keyframes`  
-              from,to {
-                    margin: 0 1rem;
-                    color: #fff;
-                    font-size: 1rem;
-    `;
+    let tmp
 
-    const CoordsFinal = styled.div`
-          animation: 1s ${tmp} both;
+    switch (Card.directionOfRotation1) {
+
+        case "FromRightHandToSinister":
+
+            let width = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
+            let height = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
+            let color = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
+            let position = (Card.positionButtonCard3 === null) ? 'absolute' : Card.positionButtonCard3
+            let top = (Card.topButtonCard3 === null) ? '45%' : Card.topButtonCard3
+
+            tmp = keyframes`  
+                  from,to {
+                        width: ${width};
+                        height: ${height};
+                        color: ${color};
+                        
+                        position: ${position};
+                        top: ${top};
+                  }
+            `;
+
+            break;
+
+        case "FromTopToBottom":
+
+            let width1 = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
+            let height1 = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
+            let color1 = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
+            let position1 = (Card.positionButtonCard3 === null) ? 'fixed' : Card.positionButtonCard3
+            let top1 = (Card.topButtonCard3 === null) ? '1%' : Card.topButtonCard3
+            let left1 = (Card.leftButtonCard3 === null) ? '45%' : Card.leftButtonCard3
+
+            tmp = keyframes`  
+                  from,to {
+                        width: ${width1};
+                        height: ${height1};
+                        color: ${color1};
+                        
+                        position: ${position1}; 
+                        top: ${top1};
+                        left: ${left1};
+                  }
+            `;
+
+            break;
+
+        case "FromBottomToTop":
+
+            let width2 = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
+            let height2 = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
+            let color2 = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
+            let position2 = (Card.positionButtonCard3 === null) ? 'fixed' : Card.positionButtonCard3
+            let top2 = (Card.topButtonCard3 === null) ? '90%' : Card.topButtonCard3
+            let left2 = (Card.leftButtonCard3 === null) ? '45%' : Card.leftButtonCard3
+
+            tmp = keyframes`  
+                  from,to {
+                        width: ${width2};
+                        height: ${height2};
+                        color: ${color2};
+                        
+                        position: ${position2};
+                        top: ${top2};
+                        left: ${left2};
+                  }
+            `;
+
+            break;
+
+        case "FromLeftToRight":
+
+            let width3 = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
+            let height3 = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
+            let color3 = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
+            let position3 = (Card.positionButtonCard3 === null) ? 'fixed' : Card.positionButtonCard3
+            let top3 = (Card.topButtonCard3 === null) ? '45%' : Card.topButtonCard3
+            let left3 = (Card.leftButtonCard3 === null) ? '85%' : Card.leftButtonCard3
+
+             tmp = keyframes`  
+                  from,to {
+                        width: ${width3};
+                        height: ${height3};
+                        color: ${color3};
+                        
+                        position: ${position3};
+                        top: ${top3};
+                        left: ${left3};
+                  }    
+            `;
+
+            break;
+
+        default:
+            return
+
+    }
+
+    const CoordsFinal = styled.button`
+          animation: ${duration} ${tmp} ${fillMode};
+          background: rgba(255, 255, 255,0);
+          border: none;
     `;
 
     return CoordsFinal
@@ -2243,7 +2498,13 @@ function checkValue (variableArray, rest) {
         85: "frontSizeGeneralTextCard3",
         86: "positionGeneralMoreCard3",
         87: "rightGeneralMoreCard3",
-        88: "fontSizeGeneralMoreCard3"
+        88: "fontSizeGeneralMoreCard3",
+            widthButtonCard3,
+    heightButtonCard3,
+    colorButtonCard3,
+    positionButtonCard3,
+    topButtonCard3,
+    leftButtonCard3,
     */
 
 
@@ -2273,19 +2534,26 @@ export function provaFunction_CheckValue(value) {
             result = (value === this.checkLimit) ? !value : value
             cardsActions.changeValue(this.id, 'checkLimit', result)
             break;
-        case 3:
-        case 4:
 
-            if (this.typeInput === 3) {
-                if (this.textInput === null) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
-            }
+        case 3:
+
+            if (this.textInput === null) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
 
             if (value.key === this.textInput) {
                 if (this.checkLimit === null)
                     cardsActions.changeValue(this.id, 'checkLimit', false)
-                   else
-                         cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+                else
+                    cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
             }
+
+            break;
+
+        case 4:
+
+             if (this.checkLimit === null)
+                 cardsActions.changeValue(this.id, 'checkLimit', false)
+             else
+                 cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
 
             break;
 
@@ -2400,7 +2668,14 @@ cards.propType = {
     frontSizeGeneralTextCard3: PropTypes.string, // CARD 3
     positionGeneralMoreCard3: PropTypes.string, // CARD 3
     rightGeneralMoreCard3: PropTypes.string, // CARD 3
-    fontSizeGeneralMoreCard3: PropTypes.string // CARD 3
+    fontSizeGeneralMoreCard3: PropTypes.string, // CARD 3
+
+    widthButtonCard3: PropTypes.string, // CARD 3
+    heightButtonCard3: PropTypes.string, // CARD 3
+    colorButtonCard3: PropTypes.string, // CARD 3
+    positionButtonCard3: PropTypes.string, // CARD 3
+    topButtonCard3: PropTypes.string, // CARD 3
+    leftButtonCard3: PropTypes.string // CARD 3
 }
 
 export default cards

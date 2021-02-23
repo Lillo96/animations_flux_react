@@ -101,6 +101,13 @@ const cards = Immutable.Record({
     positionGeneralMoreCard3: 'absolute',
     rightGeneralMoreCard3: '1rem',
     fontSizeGeneralMoreCard3: '0.8em',
+
+    widthButtonCard3: null,
+    heightButtonCard3: null,
+    colorButtonCard3: null,
+    positionButtonCard3: null,
+    topButtonCard3: null,
+    leftButtonCard3: null
 })
 
 export default cards

@@ -22,6 +22,7 @@ const cardsActions = {
         widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
         rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
         frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
+        widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
         duration, timing, delay, iterations, direction, fillMode, playState) {
 
         animationDispatcher.dispatch ({
@@ -129,7 +130,14 @@ const cardsActions = {
             frontSizeGeneralTextCard3: frontSizeGeneralTextCard3,
             positionGeneralMoreCard3: positionGeneralMoreCard3,
             rightGeneralMoreCard3: rightGeneralMoreCard3,
-            fontSizeGeneralMoreCard3: fontSizeGeneralMoreCard3
+            fontSizeGeneralMoreCard3: fontSizeGeneralMoreCard3,
+
+            widthButtonCard3: widthButtonCard3,
+            heightButtonCard3: heightButtonCard3,
+            colorButtonCard3: colorButtonCard3,
+            positionButtonCard3: positionButtonCard3,
+            topButtonCard3: topButtonCard3,
+            leftButtonCard3: leftButtonCard3
 
         })
     },

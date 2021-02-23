@@ -172,6 +172,8 @@ function SimpleSelect(props) {
 
     const card5 = getCards('cardsprova03_01')
     const card5_1 = getCards('cardsprova03_02')
+    const card5_2 = getCards('cardsprova03_03')
+
 
 
     const handlePress = (event) => {
@@ -685,6 +687,16 @@ function SimpleSelect(props) {
             const GeneralMoreTitle2 = getCardGeneralTitle(getCards('cardsprova03_02'))
             const GeneralMoreText2 = getCardGeneralText(getCards('cardsprova03_02'))
 
+            const CardCenter3 = getCardCenter(getCards('cardsprova03_03'))
+            const Card3 = getCard(getCards('cardsprova03_03'))
+            const Additional3 = getAdditional(getCards('cardsprova03_03'))
+            const MoreInfo3 = getMoreInfo(getCards('cardsprova03_03'))
+            const General3 = getCardGeneral(getCards('cardsprova03_03'))
+            const GeneralMore3 = getCardGeneralMore(getCards('cardsprova03_03'))
+            const GeneralMoreTitle3 = getCardGeneralTitle(getCards('cardsprova03_03'))
+            const GeneralMoreText3 = getCardGeneralText(getCards('cardsprova03_03'))
+            const Coords3 = getCoords(getCards('cardsprova03_03'))
+
             return (
                 <div>
 
@@ -765,7 +777,7 @@ function SimpleSelect(props) {
 
                     {/* CARD TASTO */}
 
-                    <imp.cards id='cardsprova03_02' typeInput={3} directionOfRotation1={DirectionOfRotation1} textInput="i" {...props}>
+                    {/*<imp.cards id='cardsprova03_02' typeInput={3} directionOfRotation1={DirectionOfRotation1} textInput="i" {...props}>
 
                         <CardCenter2 tabIndex="0" onKeyDown={ (e) => {card5_1.provaFunction_CheckValue(e)}}>
 
@@ -783,6 +795,33 @@ function SimpleSelect(props) {
                             </Card2>
 
                         </CardCenter2>
+
+                    </imp.cards>*/}
+
+                    <br/>
+
+                    {/* CARD BOTTONE */}
+
+                    <imp.cards id='cardsprova03_03' typeInput={4} directionOfRotation1={DirectionOfRotation1} {...props}>
+
+                        <CardCenter3>
+
+                            <Card3>
+                                <Additional3>
+                                    <Coords3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {card5_2.provaFunction_CheckValue(false)}}></Coords3>
+                                    <MoreInfo3>
+                                        <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
+                                    </MoreInfo3>
+                                </Additional3>
+
+                                <General3>
+                                    <GeneralMoreTitle3>Jane Doe</GeneralMoreTitle3>
+                                    <GeneralMoreText3>Lorem ipsum dolor sit amet</GeneralMoreText3>
+                                    <GeneralMore3>Mouse over the card for more info</GeneralMore3>
+                                </General3>
+                            </Card3>
+
+                        </CardCenter3>
 
                     </imp.cards>
 

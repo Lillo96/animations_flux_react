@@ -119,6 +119,13 @@ class CardsStore extends ReduceStore {
                         rightGeneralMoreCard3: action.rightGeneralMoreCard3,
                         fontSizeGeneralMoreCard3: action.fontSizeGeneralMoreCard3,
 
+                        widthButtonCard3: action.widthButtonCard3,
+                        heightButtonCard3: action.heightButtonCard3,
+                        colorButtonCard3: action.colorButtonCard3,
+                        positionButtonCard3: action.positionButtonCard3,
+                        topButtonCard3: action.topButtonCard3,
+                        leftButtonCard3: action.leftButtonCard3,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
