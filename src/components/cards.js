@@ -5,6 +5,7 @@ import getAnimation from "../data/animation"
 // import img from '../paper.jpg'
 
 import styled, {keyframes, css} from "styled-components"
+import transitions from "@material-ui/core/styles/transitions";
 
 let tmp_CardID
 
@@ -18,6 +19,15 @@ function cards({
     backgroundCard, backgroundCard1, backgroundCard2,
     backgroundColorButton, borderButton, colorButton, paddingButtonTopBottom, paddingButtonRightLeft,
     textAlignButton, textDecorationButton, displayButton, fontSizeButton,
+    widthCard2, heightCard2, positionCard2, overflowCard2, backgroundRGBACard2, transitionRGBACard2,
+    backgroundNameCard2, fontFamilyNameCard2, colorNameCard2, textAlignNameCard2, textTransformNameCard2,
+    marginNameCard2, paddingTopBottomNameCard2, paddingRightLeftNameCard2, positionNameCard2,
+    bottomNameCard2, widthNameCard2, transitionNameCard2,
+    positionCard3, topCard3, leftCard3, positionAdditionalCard3, backgroundAdditionalCard3, transitionAdditionalCard3_1,
+    transitionAdditionalCard3_2, overflowAdditionalCard3, widthHoverAdditionalCard3, borderRadiusAdditionalCard3_1, textAlignMoreInfoCard3,
+    widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
+    rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
+    frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
@@ -37,6 +47,15 @@ function cards({
             backgroundCard, backgroundCard1, backgroundCard2,
             backgroundColorButton, borderButton, colorButton, paddingButtonTopBottom, paddingButtonRightLeft,
             textAlignButton, textDecorationButton, displayButton, fontSizeButton,
+            widthCard2, heightCard2, positionCard2, overflowCard2, backgroundRGBACard2, transitionRGBACard2,
+            backgroundNameCard2, fontFamilyNameCard2, colorNameCard2, textAlignNameCard2, textTransformNameCard2,
+            marginNameCard2, paddingTopBottomNameCard2, paddingRightLeftNameCard2, positionNameCard2,
+            bottomNameCard2, widthNameCard2, transitionNameCard2,
+            positionCard3, topCard3, leftCard3, positionAdditionalCard3, backgroundAdditionalCard3, transitionAdditionalCard3_1,
+            transitionAdditionalCard3_2, overflowAdditionalCard3, widthHoverAdditionalCard3, borderRadiusAdditionalCard3_1, textAlignMoreInfoCard3,
+            widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
+            rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
+            frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -50,7 +69,17 @@ function cards({
             colorCard2, marginCard, colorCardTrans1, colorCardTrans2, fontSizeLCentral, fontSizePointsCenter,
             directionOfRotation, directionOfAnimation, directionName, directionOfRotation1,
             backgroundCard, backgroundCard1, backgroundCard2, backgroundColorButton, borderButton, colorButton, paddingButtonTopBottom, paddingButtonRightLeft,
-            textAlignButton, textDecorationButton, displayButton, fontSizeButton]
+            textAlignButton, textDecorationButton, displayButton, fontSizeButton,
+            widthCard2, heightCard2, positionCard2, overflowCard2, backgroundRGBACard2, transitionRGBACard2,
+            backgroundNameCard2, fontFamilyNameCard2, colorNameCard2, textAlignNameCard2, textTransformNameCard2,
+            marginNameCard2, paddingTopBottomNameCard2, paddingRightLeftNameCard2, positionNameCard2,
+            bottomNameCard2, widthNameCard2, transitionNameCard2,
+            positionCard3, topCard3, leftCard3, positionAdditionalCard3, backgroundAdditionalCard3, transitionAdditionalCard3_1,
+            transitionAdditionalCard3_2, overflowAdditionalCard3, widthHoverAdditionalCard3, borderRadiusAdditionalCard3_1, textAlignMoreInfoCard3,
+            widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
+            rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
+            frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3
+        ]
 
         checkValue(variableArray, rest.cards.state.get(id))
 
@@ -390,6 +419,9 @@ export function getCardButton(Card) {
 
 export function getImageArea(Card) {
 
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
+
     const tmp = keyframes`  
                       
                       from, to {
@@ -401,49 +433,13 @@ export function getImageArea(Card) {
                   `;
 
     const ImageAreaFinal = styled.div`
-          animation: 1s ${tmp} both;
+          animation: ${duration} ${tmp} ${fillMode};
        `;
-
-
-/*    const ImageArea = styled.div`
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          position: absolute;
-          
-       `;*/
 
     return ImageAreaFinal
 }
 
 export function getImageWrapper(Card) {
-
-    /*const ImageWrapper = styled.div`
-          width: 300px;
-          height: 400px;
-          position: relative;
-          overflow: hidden;
-       `;*/
-
-
-    /*const HeaderImg = styled.img.attrs({
-        src: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-    })`
-        height: 400px;
-        width: 300px;
-        filter: grayscale(100%);
-        transition: 2s;
-     `;*/
-
-
-    /*const Img = styled.img`
-        height: 400px;
-        width: 300px;
-        filter: grayscale(100%);
-        transition: 2s;
-    `;
-*/
-
 
     const tmp = keyframes`
 
@@ -470,37 +466,30 @@ export function getImageWrapper(Card) {
 
     let ImageWrapper
 
-    //console.log(Card.directionOfAnimation)
-
-
             // DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
     if (Card.directionOfAnimation === "topLeftBottomRight") {
 
          ImageWrapper = styled.div`
-                          width: 300px;
-                          height: 400px;
-                          position: relative;
-                          overflow: hidden;
+                          width: ${Card.widthCard2};
+                          height: ${Card.heightCard2};
+                          position: ${Card.positionCard2};
+                          overflow: ${Card.overflowCard2};
                           
                           &:before {
-                                // -webkit-animation: ${tmp} .5s both;
-                        
                                 content: '';
                                 position: absolute;
                                 top: 0;
                                 left: -160%;
                                 height: 100%;
                                 width: 100%;
-                                background: rgba(255,255,255,.3);
+                                background: ${Card.backgroundRGBACard2};
                                 z-index: 1;
                                 transform: skew(140deg);
-                                transition: .5s;
-                            }
+                                transition: ${Card.transitionRGBACard2};
+                          }
                           
                           &:hover:before {
-                            // -webkit-animation: ${tmp1} 1s forwards;
-                            
-                            left: 180%;
+                                left: 180%;
                           }
                            
         `;
@@ -515,33 +504,29 @@ export function getImageWrapper(Card) {
 
 
         const ImageWrapper1 = styled.div`
-                          width: 300px;
-                          height: 400px;
-                          position: relative;
-                          overflow: hidden;
+                          width: ${Card.widthCard2};
+                          height: ${Card.heightCard2};
+                          position: ${Card.positionCard2};
+                          overflow: ${Card.overflowCard2};
                           
                           &:before {
-                            // -webkit-animation: ${tmp} .5s both;
-                    
                             content: '';
                             position: absolute;
                             top: 0;
                             left: 180%;
                             height: 100%;
                             width: 100%;
-                            background: rgba(255,255,255,.3);
+                            background: ${Card.backgroundRGBACard2};
                             z-index: 1;
                             transform: skew(45deg);
-                            transition: .5s;
+                            transition: ${Card.transitionRGBACard2};
                           }
                           
                           &:hover:before {
-                            // -webkit-animation: ${tmp1} 1s forwards;
-                            
                             left: -160%;
                           }
                            
-                       `;
+        `;
 
         return ImageWrapper1
     }
@@ -550,29 +535,25 @@ export function getImageWrapper(Card) {
             // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
     if (Card.directionOfAnimation === "lowRightToHighLeft") {
         const ImageWrapper2 = styled.div`
-                          width: 300px;
-                          height: 400px;
-                          position: relative;
-                          overflow: hidden;
+                          width: ${Card.widthCard2};
+                          height: ${Card.heightCard2};
+                          position: ${Card.positionCard2};
+                          overflow: ${Card.overflowCard2};
                           
                           &:before {
-                                // -webkit-animation: ${tmp} .5s both;
-                        
                                 content: '';
                                 position: absolute;
                                 top: 0;
                                 left: 160%;
                                 height: 100%;
                                 width: 100%;
-                                background: rgba(255,255,255,.3);
+                                background: ${Card.backgroundRGBACard2};
                                 z-index: 1;
                                 transform: skew(140deg);
-                                transition: .5s;
+                                transition: ${Card.transitionRGBACard2};
                             }
                           
-                          &:hover:before {
-                            // -webkit-animation: ${tmp1} 1s forwards;
-                            
+                          &:hover:before { 
                             left: -160%;
                           }
                            
@@ -585,29 +566,25 @@ export function getImageWrapper(Card) {
             // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA
     if (Card.directionOfAnimation === "lowLeftToHighRight") {
         const ImageWrapper3 = styled.div`
-                          width: 300px;
-                          height: 400px;
-                          position: relative;
-                          overflow: hidden;
+                          width: ${Card.widthCard2};
+                          height: ${Card.heightCard2};
+                          position: ${Card.positionCard2};
+                          overflow: ${Card.overflowCard2};
                           
                           &:before {
-                                // -webkit-animation: ${tmp} .5s both;
-                        
                                 content: '';
                                 position: absolute;
                                 top: 0;
                                 left: -170%;
                                 height: 100%;
                                 width: 100%;
-                                background: rgba(255,255,255,.3);
+                                background: ${Card.backgroundRGBACard2};
                                 z-index: 1;
                                 transform: skew(45deg);
-                                transition: .5s;
+                                transition: ${Card.transitionRGBACard2};
                             }
                           
                           &:hover:before {
-                            // -webkit-animation: ${tmp1} 1s forwards;
-                            
                             left: 180%;
                           }
                            
@@ -615,64 +592,12 @@ export function getImageWrapper(Card) {
         return ImageWrapper3
     }
 
-
-
-/*
-    const ImageWrapper = styled.div`
-          width: 300px;
-          height: 400px;
-          position: relative;
-          overflow: hidden;
-          
-          &:before {
-                // -webkit-animation: ${tmp} .5s both;
-        
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 160%;
-                height: 100%;
-                width: 100%;
-                background: rgba(255,255,255,.3);
-                z-index: 1;
-                transform: skew(140deg);
-                transition: .5s;
-            }          
-          
-          &:hover:before {
-            // -webkit-animation: ${tmp1} 1s forwards;
-            
-            left: -160%;
-          }
-           
-       `;
-
-    */
-
-    // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
-
-/*&:hover:before {
-        left: 180%;
-    }*/
-
-    // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA - DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
-
-/*&:hover:before {
-        left: 180%;
-    }*/
-
-    // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
-
-/*&:hover:before {
-        // -webkit-animation: ${tmp1} 1s forwards;
-
-        left: -160%;
-    }*/
-
-    //return ImageWrapper
 }
 
 export function getHeaderImage(Card) {
+
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
     const tmp = keyframes`
 
@@ -686,13 +611,13 @@ export function getHeaderImage(Card) {
     const HeaderImg = styled.img.attrs({
         src: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
     })`
-        height: 400px;
-        width: 300px;
+        width: ${Card.widthCard2};
+        height: ${Card.heightCard2};
         filter: grayscale(100%);
-        transition: 2s;
+        transition: ${Card.transitionRGBACard2};
         
         &:hover {
-             animation: ${tmp} 1s both; 
+             animation: ${tmp} ${duration} ${fillMode}; 
         }
   
     `;
@@ -713,7 +638,7 @@ export function getName(Card) {
 
     const tmp1 = keyframes`
 
-         to {
+         from {
             transform: perspective(400px) rotateY(0deg);
          }
          
@@ -721,89 +646,249 @@ export function getName(Card) {
 
     let name
 
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
-        // SINISTRA IN BASSO
-   if (Card.directionName === "FromLeftToRight") {
+            switch (Card.typeInput) {
+                case 1:
 
-        console.log('AHVSFHJVAKJHASZ')
+                    // SINISTRA IN BASSO
+                    if (Card.directionName === "FromLeftToRight") {
 
-        name = styled.h2`
-                background: tomato;
-                font-family: Poppins;
-                color: #fff;
-                text-align: center;
-                text-transform: uppercase;
-                margin: 0;
-                padding: 50px 0;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                transform: perspective(400px) rotateY(90deg);
-                transform-origin: left;
-                transition: 1s;
-                
-                &:hover {
-                    animation: ${tmp} 1s both; 
-                }
-                
-/*                &:hover:before {
-                    animation: ${tmp1} 1s both;
-                }*/
-                
-            `;
+                        name = styled.h2`
+                        background: ${Card.backgroundNameCard2};
+                        font-family: ${Card.fontFamilyNameCard2};
+                        color: ${Card.colorNameCard2};
+                        text-align: ${Card.textAlignNameCard2};
+                        text-transform: ${Card.textTransformNameCard2};
+                        margin: ${Card.marginNameCard2};
+                        padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                        position: ${Card.positionNameCard2};
+                        bottom: ${Card.bottomNameCard2};
+                        width: ${Card.widthNameCard2};
+                        transform: perspective(400px) rotateY(90deg);
+                        transform-origin: left; 
+                        transition: ${Card.transitionNameCard2};
+                        
+                        &:hover {
+                            animation: ${tmp} ${duration} ${fillMode}; 
+                        }
+                       
+                    `;
 
-    }
+                    }
 
 
-        // DESTRA IN BASSO
-    if(Card.directionName === "FromRightHandToSinister") {
+                    // DESTRA IN BASSO
+                    if(Card.directionName === "FromRightHandToSinister") {
 
-        console.log("hvhvhvsfvk")
+                        // console.log("hvhvhvsfvk")
 
-        name = styled.h2`
-            background: tomato;
-            font-family: Poppins;
-            color: #fff;
-            text-align: center;
-            text-transform: uppercase;
-            margin: 0;
-            padding: 50px 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            transform: perspective(400px) rotateY(90deg);
-            transform-origin: right;
-            transition: 1s;
-            
-            &:hover {
-                animation: ${tmp} 1s both; 
+                        name = styled.h2`
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform:${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: right;
+                            transition: ${Card.transitionNameCard2};
+                            
+                            &:hover {
+                                animation: ${tmp} ${duration} ${fillMode}; 
+                            }
+                        `;
+                    }
+
+                    break;
+
+                case 2:
+
+                    // SINISTRA IN BASSO
+                    if (Card.directionName === "FromLeftToRight") {
+
+                        name = styled.h2`
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform: ${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: left; 
+                            transition: ${Card.transitionNameCard2};
+                            
+                            ${Card.checkLimit ?
+                                `animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            }
+                            
+                        `;
+
+                    }
+
+
+                    // DESTRA IN BASSO
+                    if(Card.directionName === "FromRightHandToSinister") {
+
+                        // console.log("hvhvhvsfvk")
+
+                        name = styled.h2`
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform:${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: right;
+                            transition: ${Card.transitionNameCard2};
+                            
+                            
+                            ${Card.checkLimit ?
+                                `animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            }
+                            
+                        `;
+                    }
+
+
+                    break;
+
+                case 3:
+
+                    // SINISTRA IN BASSO
+                    if (Card.directionName === "FromLeftToRight") {
+
+                        name = styled.h2`
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform: ${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: left; 
+                            transition: ${Card.transitionNameCard2};
+                            
+                            ${Card.checkLimit ?
+                                `animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            }
+
+                        `;
+
+                    }
+
+
+                    // DESTRA IN BASSO
+                    if(Card.directionName === "FromRightHandToSinister") {
+
+                        name = styled.h2`
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform:${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: right;
+                            transition: ${Card.transitionNameCard2};
+                            
+                           ${Card.checkLimit ?
+                                `animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            }
+
+                        `;
+                    }
+
+
+                    break;
+
+                case 4:
+
+                    // SINISTRA IN BASSO
+                    if (Card.directionName === "FromLeftToRight") {
+
+                        name = styled.h2`
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform: ${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: left; 
+                            transition: ${Card.transitionNameCard2};
+                            
+                           ${Card.checkLimit ?
+                                    `animation: ${tmp1} ${duration} ${fillMode};` :
+                                    Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                           }
+                           
+                        `;
+
+                    }
+
+
+                    // DESTRA IN BASSO
+                    if(Card.directionName === "FromRightHandToSinister") {
+
+                        name = styled.h2`
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform:${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: right;
+                            transition: ${Card.transitionNameCard2};
+                            
+                             ${Card.checkLimit ?
+                                     `animation: ${tmp1} ${duration} ${fillMode};` :
+                                      Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                             }
+                        `;
+                    }
+
+
+                    break;
+
+                default:
+                    return
             }
-        `;
-    }
-
-
-
-/*       const Name = styled.h2`
-        background: tomato;
-        font-family: Poppins;
-        color: #fff;
-        text-align: center;
-        text-transform: uppercase;
-        margin: 0;
-        padding: 10px 0;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        transform: perspective(400px) rotateY(90deg);
-        transform-origin: right;
-        transition: 1s;
-        
-        &:hover {
-            transform: perspective(400px) rotateY(0deg);
-        }
-    `;
-
-    return Name*/
 
 
     return name
@@ -812,17 +897,33 @@ export function getName(Card) {
 
 export function getIconUL(Card) {
 
-    const IconUL = styled.ul`
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        background: rgba(255,255,255,0);
-    `;
+    console.log('WE')
 
-    return IconUL
+    const ItemsBodyContentIcon = styled.button`
+
+          background-color: ${Card.backgroundColorButton};
+          border: ${Card.borderButton};
+          color: ${Card.colorButton};
+          padding: ${Card.paddingButtonTopBottom} ${Card.paddingButtonRightLeft};
+          text-align: ${Card.textAlignButton};
+          text-decoration: ${Card.textDecorationButton};
+          display: ${Card.displayButton};
+          font-size: ${Card.fontSizeButton};
+
+          // animation: icon 1.5s infinite forwards;
+          
+          @keyframes icon {
+              0%,100%{
+                transform: translate(0px);
+              }
+              50% {
+                transform: translate(3px);
+              }
+            }
+
+      `;
+
+    return ItemsBodyContentIcon
 }
 
 export function getIconLi(Card) {
@@ -850,26 +951,22 @@ export function getIconLi(Card) {
 
 export function getCardCenter(Card) {
 
-    const CardCenter = styled.div`
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-       `;
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
     const tmp = keyframes`
                       
                       from,to {
-                      position: absolute;
-                      top: 50%;
-                      left: 50%;
-                      -webkit-transform: translate(-50%, -50%);
+                          position: ${Card.positionCard3};
+                          top: ${Card.topCard3};
+                          left: ${Card.leftCard3};
+                          -webkit-transform: translate(-50%, -50%);
                       }
     `;
 
 
     const CardCenterFinal = styled.div`
-          animation: 1s ${tmp} both;
+          animation: ${duration} ${tmp} ${fillMode};
     `;
 
     return CardCenterFinal
@@ -877,22 +974,11 @@ export function getCardCenter(Card) {
 
 export function getCard(Card) {
 
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
+
     if (Card.width === '100%') Card.width = '450px';
     if (Card.height === '100%') Card.height = '250px';
-
-    const CardF = styled.div`
-       
-        width: ${Card.width};
-        height: ${Card.height};
-        background-color: ${Card.colorCard};
-        background: linear-gradient(${Card.colorCard2}, ${Card.colorCard});
-        box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
-        border-radius: 6px;
-        overflow: hidden;
-        position: relative;
-        margin: ${Card.marginCard}; 
-      
-    `;
 
     const tmp = keyframes`
                       
@@ -911,117 +997,563 @@ export function getCard(Card) {
 
 
     const CardFinal = styled.div`
-          animation: 1s ${tmp} both;
+          animation: ${duration} ${tmp} ${fillMode};
     `;
-
 
     return CardFinal
 }
 
 export function getAdditional(Card) {
 
-        // DA DESTRA VERSO SINITRA
+    switch (Card.typeInput) {
+        case 1:
 
-    if (Card.directionOfRotation1 === "FromRightHandToSinister") {
+            // DA DESTRA VERSO SINITRA
 
-        const Additional = styled.div`
+            if (Card.directionOfRotation1 === "FromRightHandToSinister") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
+
+                const Additional = styled.div`
        
-                position: absolute;
-                width: 150px;
-                height: 100%;
-                background: linear-gradient(#dE685E, #EE786E);
-                transition: width 0.4s;
-                overflow: hidden;
-                z-index: 2;
-                
-                &:hover {
+                        position: ${Card.positionAdditionalCard3};
+                        width: 150px;
+                        height: 100%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2; 
+                        
+                        &:hover {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        }
+                `;
+
+                return Additional
+
+            }
+
+            // DALL ALTO VERSO IL BASSO
+
+            if (Card.directionOfRotation1 === "FromTopToBottom") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
+
+                const Additional1 = styled.div`
+       
+                        position:  ${Card.positionAdditionalCard3};
+                        width: 100%;
+                        height: 10%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2;
+                        
+                        &:hover {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        }
+               `;
+
+                return Additional1
+
+            }
+
+            // DAL BASSO VERSO L ALTO
+
+            if (Card.directionOfRotation1 === "FromBottomToTop") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
+
+                const Additional2 = styled.div`
+       
+                    position: ${Card.positionAdditionalCard3};
                     width: 100%;
-                    border-radius: 0 5px 5px 0;
-                  }
-        `;
+                    top: 90%
+                    height: 100%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    &:hover {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    }
+               `;
 
-        return Additional
+                return Additional2
+            }
 
-    }
+            // DA DESTRA VERSO SINISTRA
 
-        // DALL ALTO VERSO IL BASSO
+            if (Card.directionOfRotation1 === "FromLeftToRight") {
 
-    if (Card.directionOfRotation1 === "FromTopToBottom") {
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
 
-        const Additional1 = styled.div`
-       
-                position: absolute;
-                width: 100%;
-                height: 10%;
-                background: linear-gradient(#dE685E, #EE786E);
-                transition: height 0.4s;
-                overflow: hidden;
-                z-index: 2;
-                
-                &:hover {
+                const Additional3 = styled.div`
+           
+                    position: ${Card.positionAdditionalCard3};
                     width: 100%;
                     height: 100%;
-                    border-radius: 0 5px 5px 0;
-                  }
-       `;
+                    left: 75%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    &:hover {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    }
+               `;
 
-        return Additional1
+                return Additional3
 
-    }
+            }
 
-        // DAL BASSO VERSO L ALTO
+            break;
 
-    if (Card.directionOfRotation1 === "FromBottomToTop") {
-        const Additional2 = styled.div`
+        case 2:
+
+            let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+            let duration = (Card.style === null) ? '1s' : Card.style.duration
+
+            // DA DESTRA VERSO SINITRA
+
+            if (Card.directionOfRotation1 === "FromRightHandToSinister") {
+
+                const tmp = keyframes`
+            
+                     to {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+            
+                     from {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
+
+                const Additional = styled.div`
        
-            position: absolute;
-            width: 100%;
-            top: 90%
-            height: 100%;
-            background: linear-gradient(#dE685E, #EE786E);
-            transition: top 0.4s;
-            overflow: hidden;
-            z-index: 2;
-            
-            &:hover {
-                width: 100%;
-                height: 100%
-                top: 0%;
-                border-radius: 0 5px 5px 0;
-              }
-           `;
+                        position: ${Card.positionAdditionalCard3};
+                        width: 150px;
+                        height: 100%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2; 
+                        
+                        ${Card.checkLimit ? 
+                            `animation: ${tmp1} ${duration} ${fillMode};` :
+                             Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                        }
 
-        return Additional2
-    }
+                `;
 
-        // DA DESTRA VERSO SINISTRA
+                return Additional
 
-    if (Card.directionOfRotation1 === "FromLeftToRight") {
+            }
 
-        const Additional3 = styled.div`
+            // DALL ALTO VERSO IL BASSO
+
+            if (Card.directionOfRotation1 === "FromTopToBottom") {
+
+                const tmp = keyframes`
+
+                     to {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
+
+                const Additional1 = styled.div`
+       
+                        position:  ${Card.positionAdditionalCard3};
+                        width: 100%;
+                        height: 10%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2;
+                        
+                        ${Card.checkLimit ?
+                             `animation: ${tmp1} ${duration} ${fillMode};` :
+                             Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                        }
+
+               `;
+
+                return Additional1
+
+            }
+
+            // DAL BASSO VERSO L ALTO
+
+            if (Card.directionOfRotation1 === "FromBottomToTop") {
+
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
+
+                const Additional2 = styled.div`
+       
+                    position: ${Card.positionAdditionalCard3};
+                    width: 100%;
+                    top: 90%
+                    height: 100%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    ${Card.checkLimit ?
+                        `animation: ${tmp1} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                    }
+
+               `;
+
+                return Additional2
+            }
+
+            // DA DESTRA VERSO SINISTRA
+
+            if (Card.directionOfRotation1 === "FromLeftToRight") {
+
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
+
+                const Additional3 = styled.div`
            
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 75%;
-            background: linear-gradient(#dE685E, #EE786E);
-            transition: left 0.4s;
-            overflow: hidden;
-            z-index: 2;
-            
-            &:hover {
-                width: 100%;
-                height: 100%;
-                left: 0%;
-                border-radius: 0 5px 5px 0;
-              }
-           `;
+                    position: ${Card.positionAdditionalCard3};
+                    width: 100%;
+                    height: 100%;
+                    left: 75%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    ${Card.checkLimit ?
+                        `animation: ${tmp1} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                    }
 
-        return Additional3
+               `;
+
+                return Additional3
+
+            }
+
+            break;
+
+        case 3:
+
+            // DA DESTRA VERSO SINITRA
+
+            if (Card.directionOfRotation1 === "FromRightHandToSinister") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
+
+                const Additional = styled.div`
+       
+                        position: ${Card.positionAdditionalCard3};
+                        width: 150px;
+                        height: 100%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2; 
+                        
+                        &:hover {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        }
+                `;
+
+                return Additional
+
+            }
+
+            // DALL ALTO VERSO IL BASSO
+
+            if (Card.directionOfRotation1 === "FromTopToBottom") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
+
+                const Additional1 = styled.div`
+       
+                        position:  ${Card.positionAdditionalCard3};
+                        width: 100%;
+                        height: 10%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2;
+                        
+                        &:hover {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        }
+               `;
+
+                return Additional1
+
+            }
+
+            // DAL BASSO VERSO L ALTO
+
+            if (Card.directionOfRotation1 === "FromBottomToTop") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
+
+                const Additional2 = styled.div`
+       
+                    position: ${Card.positionAdditionalCard3};
+                    width: 100%;
+                    top: 90%
+                    height: 100%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    &:hover {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    }
+               `;
+
+                return Additional2
+            }
+
+            // DA DESTRA VERSO SINISTRA
+
+            if (Card.directionOfRotation1 === "FromLeftToRight") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
+
+                const Additional3 = styled.div`
+           
+                    position: ${Card.positionAdditionalCard3};
+                    width: 100%;
+                    height: 100%;
+                    left: 75%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    &:hover {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    }
+               `;
+
+                return Additional3
+
+            }
+
+            break;
+
+        case 4:
+
+            // DA DESTRA VERSO SINITRA
+
+            if (Card.directionOfRotation1 === "FromRightHandToSinister") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
+
+                const Additional = styled.div`
+       
+                        position: ${Card.positionAdditionalCard3};
+                        width: 150px;
+                        height: 100%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2; 
+                        
+                        &:hover {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        }
+                `;
+
+                return Additional
+
+            }
+
+            // DALL ALTO VERSO IL BASSO
+
+            if (Card.directionOfRotation1 === "FromTopToBottom") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
+
+                const Additional1 = styled.div`
+       
+                        position:  ${Card.positionAdditionalCard3};
+                        width: 100%;
+                        height: 10%;
+                        background: ${Card.backgroundAdditionalCard3};
+                        transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                        overflow: ${Card.overflowAdditionalCard3};
+                        z-index: 2;
+                        
+                        &:hover {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        }
+               `;
+
+                return Additional1
+
+            }
+
+            // DAL BASSO VERSO L ALTO
+
+            if (Card.directionOfRotation1 === "FromBottomToTop") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
+
+                const Additional2 = styled.div`
+       
+                    position: ${Card.positionAdditionalCard3};
+                    width: 100%;
+                    top: 90%
+                    height: 100%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    &:hover {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    }
+               `;
+
+                return Additional2
+            }
+
+            // DA DESTRA VERSO SINISTRA
+
+            if (Card.directionOfRotation1 === "FromLeftToRight") {
+
+                let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
+
+                const Additional3 = styled.div`
+           
+                    position: ${Card.positionAdditionalCard3};
+                    width: 100%;
+                    height: 100%;
+                    left: 75%;
+                    background: ${Card.backgroundAdditionalCard3};
+                    transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
+                    overflow: ${Card.overflowAdditionalCard3};
+                    z-index: 2;
+                    
+                    &:hover {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    }
+               `;
+
+                return Additional3
+
+            }
+
+            break;
+
+        default:
+            return
 
     }
+
 }
 
+// NO
 export function getUserCard(Card) {
 
     const UserCard = styled.div`
@@ -1056,6 +1588,7 @@ export function getUserCard(Card) {
     return UserCardFinal
 }
 
+// NO
 export function getLevelCenter(Card) {
 
     const LevelCenter = styled.div`
@@ -1091,6 +1624,7 @@ export function getLevelCenter(Card) {
     return LevelCenterFinal
 }
 
+// NO
 export function getPointsCenter(Card) {
 
     const PointsCenter = styled.div`
@@ -1130,6 +1664,7 @@ export function getPointsCenter(Card) {
     return PointsCenterFinal
 }
 
+// NO
 export function getSvg(Card) {
 
     const cssSvg = css`
@@ -1163,14 +1698,10 @@ export function getSvg(Card) {
 
 export function getMoreInfo(Card) {
 
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
+
     let tmp
-    const MoreInfo = styled.div`
-         width: 300px;
-         float: left;
-         position: absolute;
-         left: 150px;
-         height: 100%;
-       `;
 
     // DA SINISTRA VERSO DESTRA
     // DAL ALTO VERSO IL BASSO
@@ -1180,11 +1711,11 @@ export function getMoreInfo(Card) {
 
          tmp = keyframes`
               from,to {
-                 text-align: center;
-                 width: 300px;
-                 height: 50%;
-                 float: central;
-                 justify-content: center;
+                 text-align: ${Card.textAlignMoreInfoCard3};
+                 width: ${Card.widthMoreInfoCard3};
+                 height: ${Card.heightMoreInfoCard3};
+                 float: ${Card.floatMoreInfoCard3};
+                 justify-content: ${Card.justifyContentMoreInfoCard3};
 
                  position: absolute;
                  left: 150px;
@@ -1198,11 +1729,11 @@ export function getMoreInfo(Card) {
 
          tmp = keyframes`
               from,to {
-                 text-align: center;
-                 width: 300px;
-                 height: 50%;
-                 float: central;
-                 justify-content: center;
+                 text-align: ${Card.textAlignMoreInfoCard3};
+                 width: ${Card.widthMoreInfoCard3};
+                 height: ${Card.heightMoreInfoCard3};
+                 float: ${Card.floatMoreInfoCard3};
+                 justify-content: ${Card.justifyContentMoreInfoCard3};
 
                  position: absolute;
                  left: 40px;
@@ -1213,16 +1744,14 @@ export function getMoreInfo(Card) {
     }
 
 
-
-
-
     const MoreInfoFinal = styled.div`
-          animation: 1s ${tmp} both;
+          animation: ${duration} ${tmp} ${fillMode};
     `;
 
     return MoreInfoFinal
 }
 
+// NO
 export function getMoreInfoName(Card) {
 
     const Name = styled.h1`
@@ -1243,6 +1772,7 @@ export function getMoreInfoName(Card) {
     return NameFinal
 }
 
+// NO
 export function getCoords(Card) {
 
     const Coords = styled.div`
@@ -1265,6 +1795,7 @@ export function getCoords(Card) {
     return CoordsFinal
 }
 
+// NO
 export function getStats(Card) {
 
     const Stats = styled.div`
@@ -1285,6 +1816,7 @@ export function getStats(Card) {
     return Stats
 }
 
+// NO
 export function getStatsTitle(Card) {
 
     const Title = styled.div`
@@ -1307,6 +1839,7 @@ export function getStatsTitle(Card) {
     return TitleFinal
 }
 
+// NO
 export function getStatsValue(Card) {
 
     const Value = styled.div`
@@ -1341,17 +1874,17 @@ export function getCardGeneral(Card) {
          General = styled.div`
             width: 300px;
             height: 100%;
-            position: absolute;
-            top: 0;
-            right: 0;
+            position: ${Card.positionGeneralCard3};
+            top: ${Card.topGeneralCard3};
+            right: ${Card.rightGeneralCard3};
             z-index: 1;
-            box-sizing: border-box;
-            padding: 1rem;
-            padding-top: 0;
-            background-color: white;
+            box-sizing: ${Card.boxSizingGeneralCard3};
+            padding: ${Card.paddingGeneralCard3};
+            padding-top: ${Card.paddingTopGeneralCard3};
+            background-color: ${Card.backgroundColorGeneralCard3};
             
             h1 {
-                front-size: 0.4rem;
+                front-size: ${Card.frontSizeGeneralCard3};
             }
        `;
 
@@ -1362,17 +1895,17 @@ export function getCardGeneral(Card) {
          General = styled.div`
             width: 450px;
             height: 100%;
-            position: absolute;
-            top: 0;
-            right: 0;
+            position: ${Card.positionGeneralCard3};
+            top: ${Card.topGeneralCard3};
+            right: ${Card.rightGeneralCard3};
             z-index: 1;
-            box-sizing: border-box;
-            padding: 1rem;
-            padding-top: 0;
-            background-color: white;
+            box-sizing: ${Card.boxSizingGeneralCard3};
+            padding: ${Card.paddingGeneralCard3};
+            padding-top: ${Card.paddingTopGeneralCard3};
+            background-color: ${Card.backgroundColorGeneralCard3};
             
             h1 {
-                front-size: 0.4rem;
+                front-size: ${Card.frontSizeGeneralCard3};
             }
        `;
 
@@ -1383,18 +1916,16 @@ export function getCardGeneral(Card) {
 
 export function getCardGeneralTitle(Card) {
 
-    const General = styled.h1`
-            front-size: 4em;
-       `;
-
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
     const tmp = keyframes`  
               from,to {
-                    front-size: 4em;
+                    front-size: ${Card.frontSizeGeneralTitleCard3};
     `;
 
     const GeneralFinal = styled.h1`
-          animation: 1s ${tmp} both;
+          animation: ${duration} ${tmp} ${fillMode};
     `;
 
     return GeneralFinal
@@ -1402,17 +1933,16 @@ export function getCardGeneralTitle(Card) {
 
 export function getCardGeneralText(Card) {
 
-    const General = styled.p`
-            front-size: 0.4em;
-       `;
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
     const tmp = keyframes`  
               from,to {
-                    front-size: 0.4em;
+                    front-size: ${Card.frontSizeGeneralTextCard3};
     `;
 
     const GeneralFinal = styled.p`
-          animation: 1s ${tmp} both;
+          animation: ${duration} ${tmp} ${fillMode};
     `;
 
 
@@ -1423,12 +1953,10 @@ export function getCardGeneralMore(Card) {
 
     let tmp, tmpBotton
 
-    const GeneralMore = styled.span`
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        font-size: 0.8em;
-       `;
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
+
+    tmpBotton =  ( (Card.directionOfRotation1 === "FromBottomToTop") ? 2 : 1 )
 
     // DA SINISTRA VERSO DESTRA
     // DAL BASSO VERSO L ALTO
@@ -1436,14 +1964,12 @@ export function getCardGeneralMore(Card) {
 
     if(Card.directionOfRotation1 != "FromLeftToRight") {
 
-        tmpBotton =  ( (Card.directionOfRotation1 === "FromBottomToTop") ? 2 : 1 )
-
          tmp = keyframes`
               from,to {
-                     position: absolute;
+                     position: ${Card.positionGeneralMoreCard3};
                      bottom: ${tmpBotton}rem;
-                     right: 1rem;
-                     font-size: 0.8em;
+                     right: ${Card.rightGeneralMoreCard3};
+                     font-size: ${Card.fontSizeGeneralMoreCard3};
               }
         `;
 
@@ -1453,10 +1979,10 @@ export function getCardGeneralMore(Card) {
 
          tmp = keyframes`  
               from,to {
-                     position: absolute;
-                     bottom: 1rem;
-                     right: 8rem;
-                     font-size: 0.8em;
+                     position: ${Card.positionGeneralMoreCard3};
+                     bottom: ${tmpBotton}rem;
+                     right: ${Card.rightGeneralMoreCard3};
+                     font-size: ${Card.fontSizeGeneralMoreCard3};
               }
         `;
 
@@ -1466,7 +1992,7 @@ export function getCardGeneralMore(Card) {
 
 
     const GeneralMoreFinal = styled.span`
-          animation: 1s ${tmp} both;
+          animation: ${duration} ${tmp} ${fillMode};
     `;
 
     return GeneralMoreFinal
@@ -1616,7 +2142,17 @@ function checkValue (variableArray, rest) {
         "colorCard2", "marginCard", "colorCardTrans1", "colorCardTrans2", "fontSizeLCentral", "fontSizePointsCenter",
         "directionOfRotation", "directionOfAnimation", "directionName", "directionOfRotation1",
         "backgroundCard", "backgroundCard1", "backgroundCard2", "backgroundColorButton", "borderButton", "colorButton", "paddingButtonTopBottom", "paddingButtonRightLeft",
-        "textAlignButton", "textDecorationButton", "displayButton", "fontSizeButton"]
+        "textAlignButton", "textDecorationButton", "displayButton", "fontSizeButton",
+        "widthCard2", "heightCard2", "positionCard2", "overflowCard2", "backgroundRGBACard2", "transitionRGBACard2",
+        "backgroundNameCard2", "fontFamilyNameCard2", "colorNameCard2", "textAlignNameCard2", "textTransformNameCard2",
+        "marginNameCard2", "paddingTopBottomNameCard2", "paddingRightLeftNameCard2", "positionNameCard2",
+        "bottomNameCard2", "widthNameCard2", "transitionNameCard2",
+        "positionCard3", "topCard3", "leftCard3", "positionAdditionalCard3", "backgroundAdditionalCard3", "transitionAdditionalCard3_1",
+        "transitionAdditionalCard3_2", "overflowAdditionalCard3", "widthHoverAdditionalCard3", "borderRadiusAdditionalCard3_1", "textAlignMoreInfoCard3",
+        "widthMoreInfoCard3", "heightMoreInfoCard3", "floatMoreInfoCard3", "justifyContentMoreInfoCard3", "positionGeneralCard3", "topGeneralCard3",
+        "rightGeneralCard3", "boxSizingGeneralCard3", "paddingGeneralCard3", "paddingTopGeneralCard3", "backgroundColorGeneralCard3", "frontSizeGeneralCard3",
+        "frontSizeGeneralTitleCard3", "frontSizeGeneralTextCard3", "positionGeneralMoreCard3", "rightGeneralMoreCard3", "fontSizeGeneralMoreCard3",
+    ]
 
     /*
         0: checkLimit,
@@ -1661,7 +2197,53 @@ function checkValue (variableArray, rest) {
         39: "textAlignButton",
         40: "textDecorationButton",
         41: "displayButton",
-        42: "fontSizeButton"
+        42: "fontSizeButton",
+        43: "widthCard2",
+        44: "heightCard2",
+        45: "positionCard2",
+        46: "overflowCard2",
+        47: "backgroundRGBACard2",
+        48: "transitionRGBACard2",
+        49: "backgroundNameCard2",
+        50: "fontFamilyNameCard2",
+        51: "colorNameCard2",
+        52: "textAlignNameCard2",
+        53: "textTransformNameCard2",
+        54: "marginNameCard2",
+        55: "paddingTopBottomNameCard2",
+        56: "paddingRightLeftNameCard2",
+        57: "positionNameCard2",
+        58: "bottomNameCard2",
+        59: "widthNameCard2",
+        60: "transitionNameCard2"
+        61: "positionCard3",
+        62: "topCard3",
+        63: "leftCard3",
+        64: "positionAdditionalCard3",
+        65: "backgroundAdditionalCard3",
+        66: "transitionAdditionalCard3_1",
+        67: "transitionAdditionalCard3_2",
+        68: "overflowAdditionalCard3",
+        69: "widthHoverAdditionalCard3",
+        70: "borderRadiusAdditionalCard3_1",
+        71: "textAlignMoreInfoCard3",
+        72: "widthMoreInfoCard3",
+        73: "heightMoreInfoCard3",
+        74: "floatMoreInfoCard3",
+        75: "justifyContentMoreInfoCard3",
+        76: "positionGeneralCard3",
+        77: "topGeneralCard3",
+        78: "rightGeneralCard3",
+        79: "boxSizingGeneralCard3",
+        80: "paddingGeneralCard3",
+        81: "paddingTopGeneralCard3",
+        82: "backgroundColorGeneralCard3",
+        83: "frontSizeGeneralCard3",
+        84: "frontSizeGeneralTitleCard3",
+        85: "frontSizeGeneralTextCard3",
+        86: "positionGeneralMoreCard3",
+        87: "rightGeneralMoreCard3",
+        88: "fontSizeGeneralMoreCard3"
     */
 
 
@@ -1693,12 +2275,15 @@ export function provaFunction_CheckValue(value) {
             break;
         case 3:
         case 4:
-            if (this.textInput === null) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+
+            if (this.typeInput === 3) {
+                if (this.textInput === null) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+            }
 
             if (value.key === this.textInput) {
                 if (this.checkLimit === null)
                     cardsActions.changeValue(this.id, 'checkLimit', false)
-                    else
+                   else
                          cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
             }
 
@@ -1759,16 +2344,63 @@ cards.propType = {
     backgroundCard1: PropTypes.string,
     backgroundCard2: PropTypes.string,
 
-    backgroundColorButton: PropTypes.string,
-    borderButton: PropTypes.string,
-    colorButton: PropTypes.string,
-    paddingButtonTopBottom: PropTypes.string,
-    paddingButtonRightLeft: PropTypes.string,
-    textAlignButton: PropTypes.string,
-    textDecorationButton: PropTypes.string,
-    displayButton: PropTypes.string,
-    fontSizeButton: PropTypes.string,
+    backgroundColorButton: PropTypes.string,    // CARD 1
+    borderButton: PropTypes.string, // CARD 1
+    colorButton: PropTypes.string,  // CARD 1
+    paddingButtonTopBottom: PropTypes.string,   // CARD 1
+    paddingButtonRightLeft: PropTypes.string,   // CARD 1
+    textAlignButton: PropTypes.string,  // CARD 1
+    textDecorationButton: PropTypes.string, // CARD 1
+    displayButton: PropTypes.string,    // CARD 1
+    fontSizeButton: PropTypes.string, // CARD 1
 
+    widthCard2: PropTypes.string, // CARD 2
+    heightCard2: PropTypes.string, // CARD 2
+    positionCard2: PropTypes.string, // CARD 2
+    overflowCard2: PropTypes.string, // CARD 2
+    backgroundRGBACard2: PropTypes.string, // CARD 2
+    transitionRGBACard2: PropTypes.string, // CARD 2
+    backgroundNameCard2: PropTypes.string, // CARD 2
+    fontFamilyNameCard2: PropTypes.string, // CARD 2
+    colorNameCard2: PropTypes.string, // CARD 2
+    textAlignNameCard2: PropTypes.string, // CARD 2
+    textTransformNameCard2: PropTypes.string,   // CARD 2
+    marginNameCard2: PropTypes.string, // CARD 2
+    paddingTopBottomNameCard2: PropTypes.string, // CARD 2
+    paddingRightLeftNameCard2: PropTypes.string, // CARD 2
+    positionNameCard2: PropTypes.string, // CARD 2
+    bottomNameCard2: PropTypes.string, // CARD 2
+    widthNameCard2: PropTypes.string, // CARD 2
+    transitionNameCard2: PropTypes.string, // CARD 2
+
+    positionCard3: PropTypes.string, // CARD 3
+    topCard3: PropTypes.string, // CARD 3
+    leftCard3: PropTypes.string, // CARD 3
+    positionAdditionalCard3: PropTypes.string, // CARD 3
+    backgroundAdditionalCard3: PropTypes.string, // CARD 3
+    transitionAdditionalCard3_1: PropTypes.string, // CARD 3
+    transitionAdditionalCard3_2: PropTypes.string, // CARD 3
+    overflowAdditionalCard3: PropTypes.string, // CARD 3
+    widthHoverAdditionalCard3: PropTypes.string, // CARD 3
+    borderRadiusAdditionalCard3_1: PropTypes.string, // CARD 3
+    textAlignMoreInfoCard3: PropTypes.string, // CARD 3
+    widthMoreInfoCard3: PropTypes.string, // CARD 3
+    heightMoreInfoCard3: PropTypes.string, // CARD 3
+    floatMoreInfoCard3: PropTypes.string, // CARD 3
+    justifyContentMoreInfoCard3: PropTypes.string, // CARD 3
+    positionGeneralCard3: PropTypes.string, // CARD 3
+    topGeneralCard3: PropTypes.string, // CARD 3
+    rightGeneralCard3: PropTypes.string, // CARD 3
+    boxSizingGeneralCard3: PropTypes.string, // CARD 3
+    paddingGeneralCard3: PropTypes.string, // CARD 3
+    paddingTopGeneralCard3: PropTypes.string, // CARD 3
+    backgroundColorGeneralCard3: PropTypes.string, // CARD 3
+    frontSizeGeneralCard3: PropTypes.string, // CARD 3
+    frontSizeGeneralTitleCard3: PropTypes.string, // CARD 3
+    frontSizeGeneralTextCard3: PropTypes.string, // CARD 3
+    positionGeneralMoreCard3: PropTypes.string, // CARD 3
+    rightGeneralMoreCard3: PropTypes.string, // CARD 3
+    fontSizeGeneralMoreCard3: PropTypes.string // CARD 3
 }
 
 export default cards

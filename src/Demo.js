@@ -166,6 +166,14 @@ function SimpleSelect(props) {
     const card3 = getCards('cardsprova2')
     const card4 = getCards('cardsprova3')
 
+    const card1_1 = getCards('cardsprova02_1')
+    const card1_2 = getCards('cardsprova02_2')
+    const card1_3 = getCards('cardsprova02_3')
+
+    const card5 = getCards('cardsprova03_01')
+    const card5_1 = getCards('cardsprova03_02')
+
+
     const handlePress = (event) => {
         console.log('ok')
         console.log(event.key)
@@ -184,7 +192,6 @@ function SimpleSelect(props) {
     }
 
     const [pressed, setPressed] = React.useState(null);
-
 
     switch (props.num) {
 
@@ -528,6 +535,28 @@ function SimpleSelect(props) {
             const IconUL = getIconUL(getCards('cardsprova02'))
             const IconLI = getIconLi(getCards('cardsprova02'))
 
+
+            const ImageArea1 = getImageArea(getCards('cardsprova02_1'))
+            const ImageWrapper1 = getImageWrapper(getCards('cardsprova02_1'))
+            const HeaderImage1 = getHeaderImage(getCards('cardsprova02_1'))
+            const NameCard1 = getName(getCards('cardsprova02_1'))
+            const IconUL1 = getIconUL(getCards('cardsprova02_1'))
+            const IconLI1 = getIconLi(getCards('cardsprova02_1'))
+
+            const ImageArea2 = getImageArea(getCards('cardsprova02_2'))
+            const ImageWrapper2 = getImageWrapper(getCards('cardsprova02_2'))
+            const HeaderImage2 = getHeaderImage(getCards('cardsprova02_2'))
+            const NameCard2 = getName(getCards('cardsprova02_2'))
+            const IconUL2 = getIconUL(getCards('cardsprova02_2'))
+            const IconLI2 = getIconLi(getCards('cardsprova02_2'))
+
+            const ImageArea3 = getImageArea(getCards('cardsprova02_3'))
+            const ImageWrapper3 = getImageWrapper(getCards('cardsprova02_3'))
+            const HeaderImage3 = getHeaderImage(getCards('cardsprova02_3'))
+            const NameCard3 = getName(getCards('cardsprova02_3'))
+            const IconUL3 = getIconUL(getCards('cardsprova02_3'))
+            const IconLI3 = getIconLi(getCards('cardsprova02_3'))
+
             return (
                 <div>
 
@@ -560,21 +589,66 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    <imp.cards id='cardsprova02' directionOfAnimation={DirectionOfAnimation}  {...props}>
+                    {/* CARD HOVER */}
+
+{/*                    <imp.cards id='cardsprova02' typeInput={1} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName} {...props}>
 
                         <ImageArea>
                             <ImageWrapper>
-                                <HeaderImage alt="Atul Prajapati"/>
+                                <HeaderImage/>
                                 <NameCard>David James</NameCard>
-                                {/* <IconUL> */}
 
-{/*                                    <IconLI><a href={""}><i className={"fab-fa-instagram"}/></a></IconLI>
-                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>
-                                    <li><a href={""}><i className={"fab-fa-instagram"}/></a></li>*/}
-                                {/* </IconUL> */}
                             </ImageWrapper>
                         </ImageArea>
+
+                    </imp.cards>*/}
+
+                    <br/>
+
+                    {/* CARD CLICK */}
+
+{/*                    <imp.cards id='cardsprova02_1' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
+                               typeInput={2} {...props}>
+
+                        <ImageArea1 onClick={ () => {card1_1.provaFunction_CheckValue(false)}}>
+                            <ImageWrapper1>
+                                <HeaderImage1/>
+                                <NameCard1>David</NameCard1>
+                            </ImageWrapper1>
+                        </ImageArea1>
+
+                    </imp.cards>*/}
+
+                    <br/>
+
+                    {/* CARD TASTO */}
+
+{/*                    <imp.cards id='cardsprova02_2' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
+                               typeInput={3} textInput="i" {...props}>
+
+                        <ImageArea2 tabIndex="0" onKeyDown={(e) => {card1_2.provaFunction_CheckValue(e)}}>
+                            <ImageWrapper2>
+                                <HeaderImage2/>
+                                <NameCard2>Marco</NameCard2>
+                            </ImageWrapper2>
+                        </ImageArea2>
+
+                    </imp.cards>*/}
+
+                    <br/>
+
+                    {/* CARD BOTTONE */}
+
+                    <imp.cards id='cardsprova02_3' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
+                               typeInput={4} {...props}>
+
+                        <ImageArea3>
+                            <ImageWrapper3>
+                                <HeaderImage3/>
+                                <NameCard3>Lillo</NameCard3>
+                                <IconUL3 onClick={() => {card1_3.provaFunction_CheckValue(false)}}>On</IconUL3>
+                            </ImageWrapper3>
+                        </ImageArea3>
 
                     </imp.cards>
 
@@ -587,20 +661,29 @@ function SimpleSelect(props) {
             const CardCenter = getCardCenter(getCards('cardsprova03'))
             const Card = getCard(getCards('cardsprova03'))
             const Additional = getAdditional(getCards('cardsprova03'))
-            const UserCard = getUserCard(getCards('cardsprova03'))
-            const LevelCenter = getLevelCenter(getCards('cardsprova03'))
-            const PointsCenter = getPointsCenter(getCards('cardsprova03'))
-            const Svg = getSvg(getCards('cardsprova03'))
             const MoreInfo = getMoreInfo(getCards('cardsprova03'))
-            const MoreInfoName = getMoreInfoName(getCards('cardsprova03'))
-            const Coords = getCoords(getCards('cardsprova03'))
-            const Stats = getStats(getCards('cardsprova03'))
-            const StatsTitle = getStatsTitle(getCards('cardsprova03'))
-            const StatsValue = getStatsValue(getCards('cardsprova03'))
             const General = getCardGeneral(getCards('cardsprova03'))
             const GeneralMore = getCardGeneralMore(getCards('cardsprova03'))
             const GeneralMoreTitle = getCardGeneralTitle(getCards('cardsprova03'))
             const GeneralMoreText = getCardGeneralText(getCards('cardsprova03'))
+
+            const CardCenter1 = getCardCenter(getCards('cardsprova03_01'))
+            const Card1 = getCard(getCards('cardsprova03_01'))
+            const Additional1 = getAdditional(getCards('cardsprova03_01'))
+            const MoreInfo1 = getMoreInfo(getCards('cardsprova03_01'))
+            const General1 = getCardGeneral(getCards('cardsprova03_01'))
+            const GeneralMore1 = getCardGeneralMore(getCards('cardsprova03_01'))
+            const GeneralMoreTitle1 = getCardGeneralTitle(getCards('cardsprova03_01'))
+            const GeneralMoreText1 = getCardGeneralText(getCards('cardsprova03_01'))
+
+            const CardCenter2 = getCardCenter(getCards('cardsprova03_02'))
+            const Card2 = getCard(getCards('cardsprova03_02'))
+            const Additional2 = getAdditional(getCards('cardsprova03_02'))
+            const MoreInfo2 = getMoreInfo(getCards('cardsprova03_02'))
+            const General2 = getCardGeneral(getCards('cardsprova03_02'))
+            const GeneralMore2 = getCardGeneralMore(getCards('cardsprova03_02'))
+            const GeneralMoreTitle2 = getCardGeneralTitle(getCards('cardsprova03_02'))
+            const GeneralMoreText2 = getCardGeneralText(getCards('cardsprova03_02'))
 
             return (
                 <div>
@@ -620,7 +703,9 @@ function SimpleSelect(props) {
                         </Select>
                     </FormControl>
 
-                    <imp.cards id='cardsprova03' directionOfRotation1={DirectionOfRotation1} {...props}>
+                    {/* CARD HOVER */}
+
+{/*                    <imp.cards id='cardsprova03' typeInput={1} directionOfRotation1={DirectionOfRotation1} {...props}>
 
                         <CardCenter>
 
@@ -629,7 +714,7 @@ function SimpleSelect(props) {
                                     <MoreInfo>
 
                                         <a href={""} ><i className={"fa fa-link fa-1x"}></i></a>
-                                        {/*  <MoreInfoName>Jane Doe</MoreInfoName>
+                                          <MoreInfoName>Jane Doe</MoreInfoName>
                                         <Coords>
                                             <span>Group Name</span>
                                             <span>Joined January 2019</span>
@@ -637,7 +722,7 @@ function SimpleSelect(props) {
                                         <Coords>
                                             <span>Position/Role</span>
                                             <span>City, Country</span>
-                                        </Coords>*/}
+                                        </Coords>
                                     </MoreInfo>
                                 </Additional>
                                 <General>
@@ -648,6 +733,56 @@ function SimpleSelect(props) {
                             </Card>
 
                         </CardCenter>
+
+                    </imp.cards>*/}
+
+                    <br/>
+
+                    {/* CARD CLICK */}
+
+                    {/*<imp.cards id='cardsprova03_01' typeInput={2} directionOfRotation1={DirectionOfRotation1} {...props}>
+
+                        <CardCenter1 onClick={ () => {card5.provaFunction_CheckValue(false)}}>
+
+                            <Card1>
+                                <Additional1>
+                                    <MoreInfo1>
+                                        <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
+                                    </MoreInfo1>
+                                </Additional1>
+                                <General1>
+                                    <GeneralMoreTitle1>Jane Doe</GeneralMoreTitle1>
+                                    <GeneralMoreText1>Lorem ipsum dolor sit amet</GeneralMoreText1>
+                                    <GeneralMore1>Mouse over the card for more info</GeneralMore1>
+                                </General1>
+                            </Card1>
+
+                        </CardCenter1>
+
+                    </imp.cards>*/}
+
+                    <br/>
+
+                    {/* CARD TASTO */}
+
+                    <imp.cards id='cardsprova03_02' typeInput={3} directionOfRotation1={DirectionOfRotation1} textInput="i" {...props}>
+
+                        <CardCenter2 tabIndex="0" onKeyDown={ (e) => {card5_1.provaFunction_CheckValue(e)}}>
+
+                            <Card2>
+                                <Additional2>
+                                    <MoreInfo2>
+                                        <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
+                                    </MoreInfo2>
+                                </Additional2>
+                                <General2>
+                                    <GeneralMoreTitle2>Jane Doe</GeneralMoreTitle2>
+                                    <GeneralMoreText2>Lorem ipsum dolor sit amet</GeneralMoreText2>
+                                    <GeneralMore2>Mouse over the card for more info</GeneralMore2>
+                                </General2>
+                            </Card2>
+
+                        </CardCenter2>
 
                     </imp.cards>
 
