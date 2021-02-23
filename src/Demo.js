@@ -648,7 +648,8 @@ function SimpleSelect(props) {
                             <ImageWrapper3>
                                 <HeaderImage3/>
                                 <NameCard3>Lillo</NameCard3>
-                                <IconUL3 onClick={() => {card1_3.provaFunction_CheckValue(false)}}>On</IconUL3>
+                                <IconUL3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {card1_3.provaFunction_CheckValue(false)}}></IconUL3>
+                                {/*<IconUL3 onClick={() => {card1_3.provaFunction_CheckValue(false)}}>On</IconUL3>*/}
                             </ImageWrapper3>
                         </ImageArea3>
 

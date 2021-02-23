@@ -29,6 +29,7 @@ function cards({
     rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
     frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
     widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
+    widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
@@ -58,6 +59,7 @@ function cards({
             rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
             frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
             widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
+            widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -81,7 +83,8 @@ function cards({
             widthMoreInfoCard3, heightMoreInfoCard3, floatMoreInfoCard3, justifyContentMoreInfoCard3, positionGeneralCard3, topGeneralCard3,
             rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
             frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
-            widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3
+            widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
+            widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2
         ]
 
         checkValue(variableArray, rest.cards.state.get(id))
@@ -900,9 +903,55 @@ export function getName(Card) {
 
 export function getIconUL(Card) {
 
-    console.log('WE')
+    let tmp
 
-    const ItemsBodyContentIcon = styled.button`
+    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
+    let duration = (Card.style === null) ? '1s' : Card.style.duration
+
+    if (Card.directionName === "FromLeftToRight") {
+
+        let width = (Card.widthButtonCard2 === null) ? '30px' : Card.widthButtonCard2
+        let height = (Card.heightButtonCard2 === null) ? '80px' : Card.heightButtonCard2
+        let color = (Card.colorButtonCard2 === null) ? '#fff' : Card.colorButtonCard2
+        let position = (Card.positionButtonCard2 === null) ? 'relative' : Card.positionButtonCard2
+        let bottom = (Card.topButtonCard2 === null) ? '20%' : Card.topButtonCard2
+
+            tmp = keyframes`  
+                      from,to {
+                            width: ${width};
+                            height: ${height};
+                            color: ${color};
+                            
+                            position: ${position};
+                            bottom: ${bottom};
+                      }
+                `;
+    }
+
+    if (Card.directionName === "FromRightHandToSinister") {
+
+        let width1 = (Card.widthButtonCard2 === null) ? '30px' : Card.widthButtonCard2
+        let height1 = (Card.heightButtonCard2 === null) ? '80px' : Card.heightButtonCard2
+        let color1 = (Card.colorButtonCard2 === null) ? '#fff' : Card.colorButtonCard2
+        let position1 = (Card.positionButtonCard2 === null) ? 'relative' : Card.positionButtonCard2
+        let bottom1 = (Card.topButtonCard2 === null) ? '20%' : Card.topButtonCard2
+        let left1 = (Card.leftButtonCard2 === null) ? '85%' : Card.leftButtonCard2
+
+        tmp = keyframes`  
+                  from,to {
+                        width: ${width1};
+                        height: ${height1};
+                        color: ${color1};
+                            
+                        position: ${position1};
+                        bottom: ${bottom1};
+                        left: ${left1}; 
+                  }
+        `;
+
+    }
+
+/*    const ItemsBodyContentIcon = styled.button`
 
           background-color: ${Card.backgroundColorButton};
           border: ${Card.borderButton};
@@ -924,7 +973,13 @@ export function getIconUL(Card) {
               }
             }
 
-      `;
+      `;*/
+
+    const ItemsBodyContentIcon = styled.button`
+                  animation: ${duration} ${tmp} ${fillMode};
+                  background: rgba(255, 255, 255,0);
+                  border: none;
+    `;
 
     return ItemsBodyContentIcon
 }
@@ -2407,6 +2462,8 @@ function checkValue (variableArray, rest) {
         "widthMoreInfoCard3", "heightMoreInfoCard3", "floatMoreInfoCard3", "justifyContentMoreInfoCard3", "positionGeneralCard3", "topGeneralCard3",
         "rightGeneralCard3", "boxSizingGeneralCard3", "paddingGeneralCard3", "paddingTopGeneralCard3", "backgroundColorGeneralCard3", "frontSizeGeneralCard3",
         "frontSizeGeneralTitleCard3", "frontSizeGeneralTextCard3", "positionGeneralMoreCard3", "rightGeneralMoreCard3", "fontSizeGeneralMoreCard3",
+        "widthButtonCard3", "heightButtonCard3", "colorButtonCard3", "positionButtonCard3", "topButtonCard3", "leftButtonCard3",
+        "widthButtonCard2", "heightButtonCard2", "colorButtonCard2", "positionButtonCard2", "topButtonCard2", "leftButtonCard2"
     ]
 
     /*
@@ -2499,12 +2556,18 @@ function checkValue (variableArray, rest) {
         86: "positionGeneralMoreCard3",
         87: "rightGeneralMoreCard3",
         88: "fontSizeGeneralMoreCard3",
-            widthButtonCard3,
-    heightButtonCard3,
-    colorButtonCard3,
-    positionButtonCard3,
-    topButtonCard3,
-    leftButtonCard3,
+        89: "widthButtonCard3",
+        90: "heightButtonCard3",
+        91: "colorButtonCard3",
+        92: "positionButtonCard3",
+        93: "topButtonCard3",
+        94: "leftButtonCard3",
+        95: "widthButtonCard2",
+        96: "heightButtonCard2",
+        97: "colorButtonCard2",
+        98: "positionButtonCard2",
+        99: "topButtonCard2",
+        100: "leftButtonCard2"
     */
 
 
@@ -2675,7 +2738,14 @@ cards.propType = {
     colorButtonCard3: PropTypes.string, // CARD 3
     positionButtonCard3: PropTypes.string, // CARD 3
     topButtonCard3: PropTypes.string, // CARD 3
-    leftButtonCard3: PropTypes.string // CARD 3
+    leftButtonCard3: PropTypes.string, // CARD 3
+
+    widthButtonCard2: PropTypes.string, // CARD 2
+    heightButtonCard2: PropTypes.string, // CARD 2
+    colorButtonCard2: PropTypes.string, // CARD 2
+    positionButtonCard2: PropTypes.string, // CARD 2
+    topButtonCard2: PropTypes.string, // CARD 2
+    leftButtonCard2: PropTypes.string // CARD 2
 }
 
 export default cards
