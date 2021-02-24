@@ -276,9 +276,11 @@ export function getCardInner(Card) {
                     transition: ${duration};
                     transform-style: preserve-3d;
             
-                    &:hover {
-                       transform: rotateX(180deg);  
-                    }     
+                    ${Card.checkLimit ?
+                        `animation: ${tmp} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                    }  
+                         
                 `;
 
                     } else {
@@ -287,9 +289,10 @@ export function getCardInner(Card) {
                             display: ${Card.display};
                             transition: ${duration};
                             transform-style: preserve-3d;
-                    
-                            &:hover {
-                               transform: rotateY(180deg);                        
+                            
+                            ${Card.checkLimit ?
+                                `animation: ${tmp_1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  `animation: ${tmp1_1} ${duration} ${fillMode};`
                             }
                         `;
             }
@@ -315,7 +318,7 @@ export function getCardInner(Card) {
                   
                 `;
 
-                setFlagCheckLimit(Card)
+                // setFlagCheckLimit(Card)
 
             } else {
                 CardInner = styled.div`
@@ -330,7 +333,7 @@ export function getCardInner(Card) {
                             }            
                 `;
 
-                setFlagCheckLimit(Card)
+               // setFlagCheckLimit(Card)
             }
             break;
 
@@ -415,7 +418,7 @@ export function getCardButton(Card) {
           background-color: ${Card.backgroundColorButton};
           border: ${Card.borderButton};
           color: ${Card.colorButton};
-          padding: ${Card.paddingButtonTopBottom} ${Card.paddingButtonRightLeft};;
+          padding: ${Card.paddingButtonTopBottom} ${Card.paddingButtonRightLeft};
           text-align: ${Card.textAlignButton};
           text-decoration: ${Card.textDecorationButton};
           display: ${Card.displayButton};
@@ -511,7 +514,7 @@ export function getImageWrapper(Card) {
                                     transform: skew(140deg);
                                     transition: ${Card.transitionRGBACard2};
                               }
-                              
+                             
                               &:hover:before {
                                     left: 180%;
                               }
@@ -712,10 +715,11 @@ export function getName(Card) {
                         transform-origin: left; 
                         transition: ${Card.transitionNameCard2};
                         
-                        &:hover {
-                            animation: ${tmp} ${duration} ${fillMode}; 
-                        }
-                       
+                        ${Card.checkLimit ?
+                            `animation: ${tmp} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                        }  
+                                              
                     `;
 
                     }
@@ -741,9 +745,11 @@ export function getName(Card) {
                             transform-origin: right;
                             transition: ${Card.transitionNameCard2};
                             
-                            &:hover {
-                                animation: ${tmp} ${duration} ${fillMode}; 
-                            }
+                            ${Card.checkLimit ?
+                                `animation: ${tmp} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                            }  
+              
                         `;
                     }
 
@@ -1011,9 +1017,24 @@ export function getIconUL(Card) {
 
       `;*/
 
+    let width = (Card.widthButtonCard2 === null) ? '30px' : Card.widthButtonCard2
+    let height = (Card.heightButtonCard2 === null) ? '80px' : Card.heightButtonCard2
+    let color = (Card.colorButtonCard2 === null) ? '#fff' : Card.colorButtonCard2
+    let position = (Card.positionButtonCard2 === null) ? 'relative' : Card.positionButtonCard2
+    let bottom = (Card.topButtonCard2 === null) ? '20%' : Card.topButtonCard2
+    let left = (Card.leftButtonCard2 === null) ? (Card.directionName === "FromRightHandToSinister") ? '85%' : '0%' : Card.leftButtonCard2
+
     const ItemsBodyContentIcon = styled.button`
-    
+ 
           animation: ${duration} ${tmp} ${fillMode};
+          
+          width: ${Card.toEnableAnimationButton ? width : null}
+          height: ${Card.toEnableAnimationButton ? height : null}
+          color: ${Card.toEnableAnimationButton ? color : null}
+          position: ${Card.toEnableAnimationButton ? position : null} 
+          bottom: ${Card.toEnableAnimationButton ? bottom : null}
+          left: ${Card.toEnableAnimationButton ? left : null}
+          
           background: rgba(255, 255, 255,0); 
           border: none;
                 
@@ -1027,7 +1048,7 @@ export function getIconUL(Card) {
                 transform: translate(3px);
               }
           }
-                 
+  
     `;
 
     return ItemsBodyContentIcon
@@ -1121,6 +1142,24 @@ export function getAdditional(Card) {
 
             if (Card.directionOfRotation1 === "FromRightHandToSinister") {
 
+                const tmp = keyframes`
+            
+                     to {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+            
+                     from {
+                         width: ${Card.widthHoverAdditionalCard3};
+                         border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
 
                 const Additional = styled.div`
@@ -1133,10 +1172,11 @@ export function getAdditional(Card) {
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2; 
                         
-                        &:hover {
-                            width: ${Card.widthHoverAdditionalCard3};
-                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        ${Card.checkLimit ?
+                            `animation: ${tmp} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
                         }
+                        
                 `;
 
                 return Additional
@@ -1149,6 +1189,26 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
 
+                const tmp = keyframes`
+
+                     to {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                            width: ${Card.widthHoverAdditionalCard3};
+                            height: 100%;
+                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
                 const Additional1 = styled.div`
        
                         position:  ${Card.positionAdditionalCard3};
@@ -1159,11 +1219,11 @@ export function getAdditional(Card) {
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2;
                         
-                        &:hover {
-                            width: ${Card.widthHoverAdditionalCard3};
-                            height: 100%;
-                            border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                        ${Card.checkLimit ?
+                            `animation: ${tmp} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
                         }
+                        
                `;
 
                 return Additional1
@@ -1176,6 +1236,28 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
 
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%
+                        top: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
                 const Additional2 = styled.div`
        
                     position: ${Card.positionAdditionalCard3};
@@ -1187,12 +1269,11 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    &:hover {
-                        width: ${Card.widthHoverAdditionalCard3};
-                        height: 100%
-                        top: 0%;
-                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    ${Card.checkLimit ?
+                        `animation: ${tmp} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
                     }
+                    
                `;
 
                 return Additional2
@@ -1203,6 +1284,28 @@ export function getAdditional(Card) {
             if (Card.directionOfRotation1 === "FromLeftToRight") {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
+
+                const tmp = keyframes`
+
+                     to {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
+
+                const tmp1 = keyframes`
+
+                     from {
+                        width: ${Card.widthHoverAdditionalCard3};
+                        height: 100%;
+                        left: 0%;
+                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                     }
+                     
+                `;
 
                 const Additional3 = styled.div`
            
@@ -1215,11 +1318,9 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    &:hover {
-                        width: ${Card.widthHoverAdditionalCard3};
-                        height: 100%;
-                        left: 0%;
-                        border-radius: ${Card.borderRadiusAdditionalCard3_1};
+                    ${Card.checkLimit ?
+                        `animation: ${tmp} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
                     }
                `;
 
@@ -2014,6 +2115,7 @@ export function getMoreInfo(Card) {
 
     const MoreInfoFinal = styled.div`
           animation: ${duration} ${tmp} ${fillMode};
+          
     `;
 
     return MoreInfoFinal
@@ -2048,13 +2150,19 @@ export function getCoords(Card) {
 
     let tmp
 
+    let width = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
+    let height = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
+    let color = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
+
+    let position = (Card.positionButtonCard3 === null) ?
+            (Card.directionOfRotation1 === "FromRightHandToSinister") ? 'absolute' : 'fixed' : Card.positionButtonCard3
+    let bottom = (Card.topButtonCard3 === null) ? '20%' : Card.topButtonCard3
+    let left = (Card.leftButtonCard3 === null) ? (Card.directionName === "FromRightHandToSinister") ? '85%' : '0%' : Card.leftButtonCard2
+
     switch (Card.directionOfRotation1) {
 
         case "FromRightHandToSinister":
 
-            let width = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
-            let height = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
-            let color = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
             let position = (Card.positionButtonCard3 === null) ? 'absolute' : Card.positionButtonCard3
             let top = (Card.topButtonCard3 === null) ? '45%' : Card.topButtonCard3
 
@@ -2073,18 +2181,15 @@ export function getCoords(Card) {
 
         case "FromTopToBottom":
 
-            let width1 = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
-            let height1 = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
-            let color1 = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
             let position1 = (Card.positionButtonCard3 === null) ? 'fixed' : Card.positionButtonCard3
             let top1 = (Card.topButtonCard3 === null) ? '1%' : Card.topButtonCard3
             let left1 = (Card.leftButtonCard3 === null) ? '45%' : Card.leftButtonCard3
 
             tmp = keyframes`  
                   from,to {
-                        width: ${width1};
-                        height: ${height1};
-                        color: ${color1};
+                        width: ${width};
+                        height: ${height};
+                        color: ${color};
                         
                         position: ${position1}; 
                         top: ${top1};
@@ -2096,18 +2201,15 @@ export function getCoords(Card) {
 
         case "FromBottomToTop":
 
-            let width2 = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
-            let height2 = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
-            let color2 = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
             let position2 = (Card.positionButtonCard3 === null) ? 'fixed' : Card.positionButtonCard3
             let top2 = (Card.topButtonCard3 === null) ? '90%' : Card.topButtonCard3
             let left2 = (Card.leftButtonCard3 === null) ? '45%' : Card.leftButtonCard3
 
             tmp = keyframes`  
                   from,to {
-                        width: ${width2};
-                        height: ${height2};
-                        color: ${color2};
+                        width: ${width};
+                        height: ${height};
+                        color: ${color};
                         
                         position: ${position2};
                         top: ${top2};
@@ -2119,18 +2221,15 @@ export function getCoords(Card) {
 
         case "FromLeftToRight":
 
-            let width3 = (Card.widthButtonCard3 === null) ? '80px' : Card.widthButtonCard3
-            let height3 = (Card.heightButtonCard3 === null) ? '20px' : Card.heightButtonCard3
-            let color3 = (Card.colorButtonCard3 === null) ? '#fff' : Card.colorButtonCard3
             let position3 = (Card.positionButtonCard3 === null) ? 'fixed' : Card.positionButtonCard3
             let top3 = (Card.topButtonCard3 === null) ? '45%' : Card.topButtonCard3
             let left3 = (Card.leftButtonCard3 === null) ? '85%' : Card.leftButtonCard3
 
              tmp = keyframes`  
                   from,to {
-                        width: ${width3};
-                        height: ${height3};
-                        color: ${color3};
+                        width: ${width};
+                        height: ${height};
+                        color: ${color};
                         
                         position: ${position3};
                         top: ${top3};
@@ -2149,6 +2248,24 @@ export function getCoords(Card) {
           animation: ${duration} ${tmp} ${fillMode};
           background: rgba(255, 255, 255,0);
           border: none;
+          
+          width: ${Card.toEnableAnimationButton ? width : null}
+          height: ${Card.toEnableAnimationButton ? height : null}
+          color: ${Card.toEnableAnimationButton ? color : null}
+          position: ${Card.toEnableAnimationButton ? position : null}
+          bottom: ${Card.toEnableAnimationButton ? bottom : null}
+          left: ${Card.toEnableAnimationButton ? left : null}
+          
+          ${Card.toEnableAnimationButton ? `animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
+     
+          @keyframes icon {
+              0%,100%{
+                transform: translate(0px);
+              }
+              50% {
+                transform: translate(3px);
+              }
+          }
     `;
 
     return CoordsFinal
@@ -2653,10 +2770,19 @@ export function provaFunction_CheckValue(value) {
     let result
 
     switch (this.typeInput) {
+
+        case 1:
+            console.log(value)
+            cardsActions.changeValue(this.id, 'checkLimit', value)
+
+            break;
+
         case 2:
 
-            console.log('2')
+            result = (value === this.checkLimit) ? !value : value
+            cardsActions.changeValue(this.id, 'checkLimit', result)
 
+            /*
             // PRIMA ITERAZIONE
             if ((this.checkLimit === null) && (this.checkLimitFlag === null)) {
                 console.log('2', value)
@@ -2668,12 +2794,11 @@ export function provaFunction_CheckValue(value) {
                 result = (value === this.checkLimitFlag) ? !value : value
                 cardsActions.changeValue(this.id, 'checkLimit', result)
             }
+            */
 
             break;
 
         case 3:
-
-            console.log('3')
 
             if (this.textInput === null) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
 
@@ -2687,8 +2812,6 @@ export function provaFunction_CheckValue(value) {
             break;
 
         case 4:
-
-            console.log('4')
 
              if (this.checkLimit === null)
                  cardsActions.changeValue(this.id, 'checkLimit', false)

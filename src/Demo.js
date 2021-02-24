@@ -166,10 +166,12 @@ function SimpleSelect(props) {
     const card3 = getCards('cardsprova2')
     const card4 = getCards('cardsprova3')
 
+    const card1_0 = getCards('cardsprova02')
     const card1_1 = getCards('cardsprova02_1')
     const card1_2 = getCards('cardsprova02_2')
     const card1_3 = getCards('cardsprova02_3')
 
+    const card5_0 = getCards('cardsprova03')
     const card5 = getCards('cardsprova03_01')
     const card5_1 = getCards('cardsprova03_02')
     const card5_2 = getCards('cardsprova03_03')
@@ -417,13 +419,13 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    {/* CARD HOVER */}
+                    {/* CARD MOUSE ENTER / LEAVE */}
 
                     <imp.cards id='cardsprova' typeInput={1} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" {...props}>
 
                         <CardContainer>
-                            <CardInner>
+                            <CardInner onMouseEnter={() => card1.provaFunction_CheckValue(true)} onMouseLeave={() => card1.provaFunction_CheckValue(false)}>
                             {/*<CardInner onClick={ () => {card1.provaFunction_CheckValue(false)}}>*/}
                             {/*<CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>*/}
                                 <CardFront style={{backgroundImage: `url(${img})` }} >
@@ -590,12 +592,13 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    {/* CARD HOVER */}
+                    {/* CARD MOUSE ENTER / LEAVE */}
 
                     <imp.cards id='cardsprova02' toEnableAnimationWrapper={false} typeInput={1} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName} {...props}>
 
                         {/* <ImageArea> */}
-                            <ImageWrapper style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
+                            <ImageWrapper onMouseEnter={() => card1_0.provaFunction_CheckValue(true)} onMouseLeave={() => card1_0.provaFunction_CheckValue(false)}
+                                style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
                                 <HeaderImage/>
                                 <NameCard>David James</NameCard>
 
@@ -643,7 +646,7 @@ function SimpleSelect(props) {
                     {/* CARD BOTTONE */}
 
                     <imp.cards id='cardsprova02_3' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
-                               typeInput={4} toEnableAnimationButton={false} {...props}>
+                               typeInput={4} toEnableAnimationButton={true} {...props}>
 
                         {/* <ImageArea3> */}
                             <ImageWrapper3 style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
@@ -717,13 +720,13 @@ function SimpleSelect(props) {
                         </Select>
                     </FormControl>
 
-                    {/* CARD HOVER */}
+                    {/* CARD MOUSE ENTER / LEAVE */}
 
                     <imp.cards id='cardsprova03' typeInput={1} directionOfRotation1={DirectionOfRotation1} {...props}>
 
                         {/* <CardCenter> */}
 
-                            <Card>
+                            <Card onMouseEnter={() => card5_0.provaFunction_CheckValue(true)} onMouseLeave={() => card5_0.provaFunction_CheckValue(false)} >
                                 <Additional>
                                     <MoreInfo>
                                         <a href={""} ><i className={"fa fa-link fa-1x"}></i></a>
