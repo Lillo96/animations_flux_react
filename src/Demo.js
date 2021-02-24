@@ -643,7 +643,7 @@ function SimpleSelect(props) {
                     {/* CARD BOTTONE */}
 
                     <imp.cards id='cardsprova02_3' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
-                               typeInput={4} {...props}>
+                               typeInput={4} toEnableAnimationButton={false} {...props}>
 
                         {/* <ImageArea3> */}
                             <ImageWrapper3 style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
