@@ -24,6 +24,8 @@ const cardsActions = {
         frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
         widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
         widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
+        checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
+        toEnableAnimationWrapper, imgCard2,
         duration, timing, delay, iterations, direction, fillMode, playState) {
 
         animationDispatcher.dispatch ({
@@ -145,7 +147,19 @@ const cardsActions = {
             colorButtonCard2: colorButtonCard2,
             positionButtonCard2: positionButtonCard2,
             topButtonCard2: topButtonCard2,
-            leftButtonCard2: leftButtonCard2
+            leftButtonCard2: leftButtonCard2,
+
+            checkLimitFlag: checkLimitFlag,
+
+            colorCardFront: colorCardFront,
+            colorCardBack: colorCardBack,
+            toEnableAnimationButton: toEnableAnimationButton,
+            durationAnimationButton: durationAnimationButton,
+            duration1AnimationButton: duration1AnimationButton,
+            fillModeAnimationButton: fillModeAnimationButton,
+
+            toEnableAnimationWrapper: toEnableAnimationWrapper,
+            imgCard2: imgCard2
 
         })
     },

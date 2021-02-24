@@ -419,9 +419,8 @@ function SimpleSelect(props) {
 
                     {/* CARD HOVER */}
 
-                    <imp.cards id='cardsprova' typeInput={1} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
+                    <imp.cards id='cardsprova' typeInput={1} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" {...props}>
-
 
                         <CardContainer>
                             <CardInner>
@@ -499,7 +498,7 @@ function SimpleSelect(props) {
                     {/* CARD BOTTONE */}
 
                     <imp.cards id='cardsprova3' typeInput={4} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
-                               duration='1s' fillMode="both" {...props}>
+                               duration='1s' fillMode="both" toEnableAnimationButton={true} {...props}>
 
                         <CardContainer3>
                             <CardInner3 >
@@ -593,49 +592,51 @@ function SimpleSelect(props) {
 
                     {/* CARD HOVER */}
 
-{/*                    <imp.cards id='cardsprova02' typeInput={1} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName} {...props}>
+                    <imp.cards id='cardsprova02' toEnableAnimationWrapper={false} typeInput={1} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName} {...props}>
 
-                        <ImageArea>
-                            <ImageWrapper>
+                        {/* <ImageArea> */}
+                            <ImageWrapper style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
                                 <HeaderImage/>
                                 <NameCard>David James</NameCard>
 
                             </ImageWrapper>
-                        </ImageArea>
+                        {/* </ImageArea> */}
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
                     {/* CARD CLICK */}
 
-{/*                    <imp.cards id='cardsprova02_1' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
+                    <imp.cards id='cardsprova02_1' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
                                typeInput={2} {...props}>
 
-                        <ImageArea1 onClick={ () => {card1_1.provaFunction_CheckValue(false)}}>
-                            <ImageWrapper1>
+                        {/* <ImageArea1> */}
+                            <ImageWrapper1 onClick={ () => {card1_1.provaFunction_CheckValue(false)}}
+                            style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
                                 <HeaderImage1/>
                                 <NameCard1>David</NameCard1>
                             </ImageWrapper1>
-                        </ImageArea1>
+                        {/* </ImageArea1> */}
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
                     {/* CARD TASTO */}
 
-{/*                    <imp.cards id='cardsprova02_2' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
+                    <imp.cards id='cardsprova02_2' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
                                typeInput={3} textInput="i" {...props}>
 
-                        <ImageArea2 tabIndex="0" onKeyDown={(e) => {card1_2.provaFunction_CheckValue(e)}}>
-                            <ImageWrapper2>
+                        {/* <ImageArea2> */}
+                            <ImageWrapper2 tabIndex="0" onKeyDown={(e) => {card1_2.provaFunction_CheckValue(e)}}
+                            style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
                                 <HeaderImage2/>
                                 <NameCard2>Marco</NameCard2>
                             </ImageWrapper2>
-                        </ImageArea2>
+                        {/* </ImageArea2> */}
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
@@ -644,14 +645,14 @@ function SimpleSelect(props) {
                     <imp.cards id='cardsprova02_3' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
                                typeInput={4} {...props}>
 
-                        <ImageArea3>
-                            <ImageWrapper3>
+                        {/* <ImageArea3> */}
+                            <ImageWrapper3 style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
                                 <HeaderImage3/>
                                 <NameCard3>Lillo</NameCard3>
                                 <IconUL3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {card1_3.provaFunction_CheckValue(false)}}></IconUL3>
                                 {/*<IconUL3 onClick={() => {card1_3.provaFunction_CheckValue(false)}}>On</IconUL3>*/}
                             </ImageWrapper3>
-                        </ImageArea3>
+                        {/* </ImageArea3> */}
 
                     </imp.cards>
 
@@ -718,24 +719,14 @@ function SimpleSelect(props) {
 
                     {/* CARD HOVER */}
 
-{/*                    <imp.cards id='cardsprova03' typeInput={1} directionOfRotation1={DirectionOfRotation1} {...props}>
+                    <imp.cards id='cardsprova03' typeInput={1} directionOfRotation1={DirectionOfRotation1} {...props}>
 
-                        <CardCenter>
+                        {/* <CardCenter> */}
 
                             <Card>
                                 <Additional>
                                     <MoreInfo>
-
                                         <a href={""} ><i className={"fa fa-link fa-1x"}></i></a>
-                                          <MoreInfoName>Jane Doe</MoreInfoName>
-                                        <Coords>
-                                            <span>Group Name</span>
-                                            <span>Joined January 2019</span>
-                                        </Coords>
-                                        <Coords>
-                                            <span>Position/Role</span>
-                                            <span>City, Country</span>
-                                        </Coords>
                                     </MoreInfo>
                                 </Additional>
                                 <General>
@@ -745,19 +736,19 @@ function SimpleSelect(props) {
                                 </General>
                             </Card>
 
-                        </CardCenter>
+                        {/* </CardCenter> */}
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
                     {/* CARD CLICK */}
 
-                    {/*<imp.cards id='cardsprova03_01' typeInput={2} directionOfRotation1={DirectionOfRotation1} {...props}>
+                    <imp.cards id='cardsprova03_01' typeInput={2} directionOfRotation1={DirectionOfRotation1} {...props}>
 
-                        <CardCenter1 onClick={ () => {card5.provaFunction_CheckValue(false)}}>
+                        {/* <CardCenter1 > */}
 
-                            <Card1>
+                            <Card1 onClick={ () => {card5.provaFunction_CheckValue(false)}} >
                                 <Additional1>
                                     <MoreInfo1>
                                         <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
@@ -770,19 +761,19 @@ function SimpleSelect(props) {
                                 </General1>
                             </Card1>
 
-                        </CardCenter1>
+                            {/* </CardCenter1> */}
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
                     {/* CARD TASTO */}
 
-                    {/*<imp.cards id='cardsprova03_02' typeInput={3} directionOfRotation1={DirectionOfRotation1} textInput="i" {...props}>
+                    <imp.cards id='cardsprova03_02' typeInput={3} directionOfRotation1={DirectionOfRotation1} textInput="i" {...props}>
 
-                        <CardCenter2 tabIndex="0" onKeyDown={ (e) => {card5_1.provaFunction_CheckValue(e)}}>
+                        {/* <CardCenter2> */}
 
-                            <Card2>
+                            <Card2 tabIndex="0" onKeyDown={ (e) => {card5_1.provaFunction_CheckValue(e)}}>
                                 <Additional2>
                                     <MoreInfo2>
                                         <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
@@ -795,9 +786,9 @@ function SimpleSelect(props) {
                                 </General2>
                             </Card2>
 
-                        </CardCenter2>
+                            {/* </CardCenter2> */}
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
@@ -805,7 +796,7 @@ function SimpleSelect(props) {
 
                     <imp.cards id='cardsprova03_03' typeInput={4} directionOfRotation1={DirectionOfRotation1} {...props}>
 
-                        <CardCenter3>
+                        {/* <CardCenter3> */}
 
                             <Card3>
                                 <Additional3>
@@ -822,7 +813,7 @@ function SimpleSelect(props) {
                                 </General3>
                             </Card3>
 
-                        </CardCenter3>
+                        {/* </CardCenter3> */}
 
                     </imp.cards>
 

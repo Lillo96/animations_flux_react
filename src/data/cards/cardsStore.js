@@ -133,6 +133,18 @@ class CardsStore extends ReduceStore {
                         topButtonCard2: action.topButtonCard2,
                         leftButtonCard2: action.leftButtonCard2,
 
+                        checkLimitFlag: action.checkLimitFlag,
+
+                        colorCardFront: action.colorCardFront,
+                        colorCardBack: action.colorCardBack,
+                        toEnableAnimationButton: action.toEnableAnimationButton,
+                        durationAnimationButton: action.durationAnimationButton,
+                        duration1AnimationButton: action.duration1AnimationButton,
+                        fillModeAnimationButton: action.fillModeAnimationButton,
+
+                        toEnableAnimationWrapper: action.toEnableAnimationWrapper,
+                        imgCard2: action.imgCard2,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

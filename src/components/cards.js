@@ -30,6 +30,8 @@ function cards({
     frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
     widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
     widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
+    checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
+    toEnableAnimationWrapper, imgCard2,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
@@ -60,13 +62,15 @@ function cards({
             frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
             widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
             widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
+            checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
+            toEnableAnimationWrapper, imgCard2,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
         tmp_CardID = id
     } else {
 
-        const variableArray = [checkLimit, typeInput, textInput, textValue,
+        const variableArray = [ checkLimit, typeInput, textInput, textValue,
             textAlign, display, flexDirection, colorCard, perspective, backfaceVisibility,
             borderDim, borderType, borderColor, height, width, timeAnim, buttonFontSize,
             buttonMargin, buttonBorder, buttonBorderRadius, buttonBackColor,
@@ -84,7 +88,9 @@ function cards({
             rightGeneralCard3, boxSizingGeneralCard3, paddingGeneralCard3, paddingTopGeneralCard3, backgroundColorGeneralCard3, frontSizeGeneralCard3,
             frontSizeGeneralTitleCard3, frontSizeGeneralTextCard3, positionGeneralMoreCard3, rightGeneralMoreCard3, fontSizeGeneralMoreCard3,
             widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
-            widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2
+            widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
+            checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
+            toEnableAnimationWrapper, imgCard2
         ]
 
         checkValue(variableArray, rest.cards.state.get(id))
@@ -148,7 +154,7 @@ export function getCardFront(Card) {
                             border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                           
                             z-index: 0;
-                            // background: ${Card.colorCard};
+                            background: ${Card.colorCardFront};
                             // background-image: ${Card.backgroundCard1};
                             // background-color: ${Card.colorCard};
                           
@@ -185,7 +191,7 @@ export function getCardBack(Card) {
                         border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                        
                         transform: rotateY(180deg) translate(100%, 0) rotate(180deg);
-                        background: ${Card.colorCard};
+                        background: ${Card.colorCardBack};
                         z-index: 0;
                       }
                 `;
@@ -204,7 +210,7 @@ export function getCardBack(Card) {
                         border: ${Card.borderDim} ${Card.borderType} ${Card.borderColor};
                       
                         transform: rotateY(180deg) translate(100%, 0);
-                        background: ${Card.colorCard};
+                        background: ${Card.colorCardBack};
                         z-index: 0;
                       }
                 `;
@@ -287,9 +293,12 @@ export function getCardInner(Card) {
                             }
                         `;
             }
+
             break;
 
         case 2:
+
+            console.log('inner 2', Card.checkLimit )
 
             if(Card.directionOfRotation === 'toTheLeft') {
                 CardInner = styled.div`
@@ -303,8 +312,10 @@ export function getCardInner(Card) {
                          `animation: ${tmp1} ${duration} ${fillMode};` :
                          Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
                    }
-   
+                  
                 `;
+
+                setFlagCheckLimit(Card)
 
             } else {
                 CardInner = styled.div`
@@ -318,11 +329,14 @@ export function getCardInner(Card) {
                                  Card.checkLimit === null ? '' :  `animation: ${tmp_1} ${duration} ${fillMode};`
                             }            
                 `;
+
+                setFlagCheckLimit(Card)
             }
             break;
 
         case 3:
 
+            console.log('inner 3', Card.checkLimit)
             if(Card.directionOfRotation === 'toTheLeft') {
                 CardInner = styled.div`
                     flex: 1;
@@ -354,6 +368,8 @@ export function getCardInner(Card) {
             break;
 
         case 4:
+
+            console.log('inner 4', Card.checkLimit)
 
             if (Card.directionOfRotation === 'toTheLeft') {
                 CardInner = styled.div`
@@ -405,8 +421,8 @@ export function getCardButton(Card) {
           display: ${Card.displayButton};
           font-size: ${Card.fontSizeButton};
 
-          // animation: icon 1.5s infinite forwards;
-          
+          ${Card.toEnableAnimationButton ? `animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
+     
           @keyframes icon {
               0%,100%{
                 transform: translate(0px);
@@ -414,7 +430,7 @@ export function getCardButton(Card) {
               50% {
                 transform: translate(3px);
               }
-            }
+          }
 
       `;
 
@@ -472,131 +488,151 @@ export function getImageWrapper(Card) {
 
     let ImageWrapper
 
-            // DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
+        // DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
     if (Card.directionOfAnimation === "topLeftBottomRight") {
 
-         ImageWrapper = styled.div`
+            ImageWrapper = styled.div`
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
                           overflow: ${Card.overflowCard2};
                           
-                          &:before {
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: -160%;
-                                height: 100%;
-                                width: 100%;
-                                background: ${Card.backgroundRGBACard2};
-                                z-index: 1;
-                                transform: skew(140deg);
-                                transition: ${Card.transitionRGBACard2};
-                          }
-                          
-                          &:hover:before {
-                                left: 180%;
-                          }
+                          ${Card.toEnableAnimationWrapper ? `
+                              
+                              &:before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: -160%;
+                                    height: 100%;
+                                    width: 100%;
+                                    background: ${Card.backgroundRGBACard2};
+                                    z-index: 1;
+                                    transform: skew(140deg);
+                                    transition: ${Card.transitionRGBACard2};
+                              }
+                              
+                              &:hover:before {
+                                    left: 180%;
+                              }
+                              
+                          ` : '' 
+                        }
                            
         `;
 
-        return ImageWrapper
+            return ImageWrapper
 
     }
 
 
-            // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
+        // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
     if (Card.directionOfAnimation === "topRightBottomLeft") {
 
 
-        const ImageWrapper1 = styled.div`
+            const ImageWrapper1 = styled.div`
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
                           overflow: ${Card.overflowCard2};
                           
-                          &:before {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 180%;
-                            height: 100%;
-                            width: 100%;
-                            background: ${Card.backgroundRGBACard2};
-                            z-index: 1;
-                            transform: skew(45deg);
-                            transition: ${Card.transitionRGBACard2};
-                          }
-                          
-                          &:hover:before {
-                            left: -160%;
-                          }
+                          ${Card.toEnableAnimationWrapper ? `
+                                  
+                                  &:before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 180%;
+                                    height: 100%;
+                                    width: 100%;
+                                    background: ${Card.backgroundRGBACard2};
+                                    z-index: 1;
+                                    transform: skew(45deg);
+                                    transition: ${Card.transitionRGBACard2};
+                                  }
+                                  
+                                  &:hover:before {
+                                    left: -160%;
+                                  }
+                                  
+                                   ` : '' 
+                        }
                            
         `;
 
-        return ImageWrapper1
-    }
+            return ImageWrapper1
+        }
 
 
-            // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
+        // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
     if (Card.directionOfAnimation === "lowRightToHighLeft") {
-        const ImageWrapper2 = styled.div`
+            const ImageWrapper2 = styled.div`
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
                           overflow: ${Card.overflowCard2};
                           
-                          &:before {
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: 160%;
-                                height: 100%;
-                                width: 100%;
-                                background: ${Card.backgroundRGBACard2};
-                                z-index: 1;
-                                transform: skew(140deg);
-                                transition: ${Card.transitionRGBACard2};
-                            }
-                          
-                          &:hover:before { 
-                            left: -160%;
-                          }
+                          ${Card.toEnableAnimationWrapper ? `
+                                  
+                                  &:before {
+                                        content: '';
+                                        position: absolute;
+                                        top: 0;
+                                        left: 160%;
+                                        height: 100%;
+                                        width: 100%;
+                                        background: ${Card.backgroundRGBACard2};
+                                        z-index: 1;
+                                        transform: skew(140deg);
+                                        transition: ${Card.transitionRGBACard2};
+                                    }
+                                  
+                                  &:hover:before { 
+                                    left: -160%;
+                                  }
                            
+                           ` : '' 
+                          }
+                        
                        `;
 
-        return ImageWrapper2
-    }
+            return ImageWrapper2
+        }
 
 
-            // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA
+        // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA
     if (Card.directionOfAnimation === "lowLeftToHighRight") {
-        const ImageWrapper3 = styled.div`
+            const ImageWrapper3 = styled.div`
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
                           overflow: ${Card.overflowCard2};
                           
-                          &:before {
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: -170%;
-                                height: 100%;
-                                width: 100%;
-                                background: ${Card.backgroundRGBACard2};
-                                z-index: 1;
-                                transform: skew(45deg);
-                                transition: ${Card.transitionRGBACard2};
-                            }
+                          ${Card.toEnableAnimationWrapper ? `
+                                  
+                                  &:before {
+                                        content: '';
+                                        position: absolute;
+                                        top: 0;
+                                        left: -170%;
+                                        height: 100%;
+                                        width: 100%;
+                                        background: ${Card.backgroundRGBACard2};
+                                        z-index: 1;
+                                        transform: skew(45deg);
+                                        transition: ${Card.transitionRGBACard2};
+                                    }
+                                  
+                                  &:hover:before {
+                                    left: 180%;
+                                  }
                           
-                          &:hover:before {
-                            left: 180%;
-                          }
-                           
+                           ` : '' 
+                          } 
                        `;
-        return ImageWrapper3
-    }
+
+            return ImageWrapper3
+        }
 
 }
 
@@ -613,17 +649,17 @@ export function getHeaderImage(Card) {
          }
     `;
 
-
-    const HeaderImg = styled.img.attrs({
-        src: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-    })`
+    const HeaderImg = styled.img`
         width: ${Card.widthCard2};
         height: ${Card.heightCard2};
         filter: grayscale(100%);
         transition: ${Card.transitionRGBACard2};
         
-        &:hover {
-             animation: ${tmp} ${duration} ${fillMode}; 
+        ${Card.toEnableAnimationWrapper ? `       
+            &:hover {
+                 animation: ${tmp} ${duration} ${fillMode}; 
+            }
+        ` : null
         }
   
     `;
@@ -976,9 +1012,22 @@ export function getIconUL(Card) {
       `;*/
 
     const ItemsBodyContentIcon = styled.button`
-                  animation: ${duration} ${tmp} ${fillMode};
-                  background: rgba(255, 255, 255,0);
-                  border: none;
+    
+          animation: ${duration} ${tmp} ${fillMode};
+          background: rgba(255, 255, 255,0); 
+          border: none;
+                
+          ${Card.toEnableAnimationButton ? `animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
+     
+          @keyframes icon {
+              0%,100%{
+                transform: translate(0px);
+              }
+              50% {
+                transform: translate(3px);
+              }
+          }
+                 
     `;
 
     return ItemsBodyContentIcon
@@ -2463,7 +2512,9 @@ function checkValue (variableArray, rest) {
         "rightGeneralCard3", "boxSizingGeneralCard3", "paddingGeneralCard3", "paddingTopGeneralCard3", "backgroundColorGeneralCard3", "frontSizeGeneralCard3",
         "frontSizeGeneralTitleCard3", "frontSizeGeneralTextCard3", "positionGeneralMoreCard3", "rightGeneralMoreCard3", "fontSizeGeneralMoreCard3",
         "widthButtonCard3", "heightButtonCard3", "colorButtonCard3", "positionButtonCard3", "topButtonCard3", "leftButtonCard3",
-        "widthButtonCard2", "heightButtonCard2", "colorButtonCard2", "positionButtonCard2", "topButtonCard2", "leftButtonCard2"
+        "widthButtonCard2", "heightButtonCard2", "colorButtonCard2", "positionButtonCard2", "topButtonCard2", "leftButtonCard2",
+        "checkLimitFlag", "colorCardFront", "colorCardBack", "toEnableAnimationButton", "durationAnimationButton", "duration1AnimationButton", "fillModeAnimationButton",
+        "toEnableAnimationWrapper", "imgCard2"
     ]
 
     /*
@@ -2567,7 +2618,16 @@ function checkValue (variableArray, rest) {
         97: "colorButtonCard2",
         98: "positionButtonCard2",
         99: "topButtonCard2",
-        100: "leftButtonCard2"
+        100: "leftButtonCard2",
+        101: "checkLimitFlag",
+        102: "colorCardFront",
+        103: "colorCardBack",
+        104: "toEnableAnimationButton",
+        105: "durationAnimationButton",
+        106: "duration1AnimationButton",
+        107: "fillModeAnimationButton",
+        108: "toEnableAnimationWrapper",
+        109: "imgCard2"
     */
 
 
@@ -2594,11 +2654,26 @@ export function provaFunction_CheckValue(value) {
 
     switch (this.typeInput) {
         case 2:
-            result = (value === this.checkLimit) ? !value : value
-            cardsActions.changeValue(this.id, 'checkLimit', result)
+
+            console.log('2')
+
+            // PRIMA ITERAZIONE
+            if ((this.checkLimit === null) && (this.checkLimitFlag === null)) {
+                console.log('2', value)
+                cardsActions.changeValue(this.id, 'checkLimit', value)
+            }
+
+            // N+1 ITERAZIONI
+            if ((this.checkLimit === null) && (this.checkLimitFlag != null)) {
+                result = (value === this.checkLimitFlag) ? !value : value
+                cardsActions.changeValue(this.id, 'checkLimit', result)
+            }
+
             break;
 
         case 3:
+
+            console.log('3')
 
             if (this.textInput === null) cardsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
 
@@ -2613,6 +2688,8 @@ export function provaFunction_CheckValue(value) {
 
         case 4:
 
+            console.log('4')
+
              if (this.checkLimit === null)
                  cardsActions.changeValue(this.id, 'checkLimit', false)
              else
@@ -2623,6 +2700,16 @@ export function provaFunction_CheckValue(value) {
         default:
             return;
     }
+
+}
+
+function setFlagCheckLimit(Card) {
+
+    // SALVATAGGIO VALUE "checkLimit" IN "checkLimitFlag"
+    cardsActions.changeValue(Card.id, 'checkLimitFlag', Card.checkLimit)
+
+    //SET VALUE "checkLimit" a NULL
+    cardsActions.changeValue(Card.id, 'checkLimit', null)
 
 }
 
@@ -2745,7 +2832,19 @@ cards.propType = {
     colorButtonCard2: PropTypes.string, // CARD 2
     positionButtonCard2: PropTypes.string, // CARD 2
     topButtonCard2: PropTypes.string, // CARD 2
-    leftButtonCard2: PropTypes.string // CARD 2
+    leftButtonCard2: PropTypes.string, // CARD 2
+
+    checkLimitFlag: PropTypes.bool,
+
+    colorCardFront: PropTypes.string, // CARD 1
+    colorCardBack: PropTypes.string, // CARD 1
+    toEnableAnimationButton: PropTypes.bool, // CARD 1
+    durationAnimationButton: PropTypes.string, // CARD 1
+    duration1AnimationButton: PropTypes.string, // CARD 1
+    fillModeAnimationButton: PropTypes.string, //CARD 1
+
+    toEnableAnimationWrapper: PropTypes.bool, // CARD 2
+    imgCard2: PropTypes.string // CARD 2
 }
 
 export default cards

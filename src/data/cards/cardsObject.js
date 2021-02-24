@@ -13,7 +13,7 @@ const cards = Immutable.Record({
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
-    colorCard: '#white',
+    colorCard: null,
     perspective: '',
     backfaceVisibility: 'hidden',
     borderDim: '2px',
@@ -114,7 +114,19 @@ const cards = Immutable.Record({
     colorButtonCard2: null,
     positionButtonCard2: null,
     topButtonCard2: null,
-    leftButtonCard2: null
+    leftButtonCard2: null,
+
+    checkLimitFlag: null,
+
+    colorCardFront: null,
+    colorCardBack: null,
+    toEnableAnimationButton: true,
+    durationAnimationButton: '1.5s',
+    duration1AnimationButton: 'infinite',
+    fillModeAnimationButton: 'forwards',
+
+    toEnableAnimationWrapper: true,
+    imgCard2: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
 })
 
 export default cards
