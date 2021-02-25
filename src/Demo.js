@@ -198,7 +198,7 @@ function SimpleSelect(props) {
     switch (props.num) {
 
         case '1':
-            console.log(getCheckboxes('checkbox1'))
+
             const CheckBoxLabel = getLabelCheck(getCheckboxes('checkbox1'))
 
                     return (
@@ -234,9 +234,9 @@ function SimpleSelect(props) {
                             <imp.checkboxes id='checkbox1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
                                             opacityCheck='2' duration='2s' fillMode="both" {...props}>
 
-                                <label>
-                                    <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true) }}/>
-                                    <p>MARCO</p>
+                                <label >
+                                    <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(false) }}/>
+                                    <CheckBoxLabel>MARCO</CheckBoxLabel>
                                 </label>
 
                             </imp.checkboxes>
@@ -246,7 +246,10 @@ function SimpleSelect(props) {
         break;
 
         case '2':
-                return (
+
+            const CheckBoxLabel2 = getLabelCheck(getCheckboxes('checkboxprova2'))
+
+            return (
                         <div>
 
                             <FormControl className={classes.formControl}>
@@ -295,22 +298,21 @@ function SimpleSelect(props) {
                             <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true }
                                             colorStart={ColorStart1} colorEnd={ColorEnd1} colorLine={ColorLine} {...props}>
 
-                                <label>
-                                    <input type="checkbox"
-                                           checked={!checked1}
-                                           onChange={() => setChecked1(!checked1)}
-                                           onClick={() => { checkbox2.setCheckLimit(!checked1) }}
-                                    />
-                                    Checkbox
+                                <label >
+                                    <input type="checkbox" onClick={() => { checkbox2.setCheckLimit(!checked1) }}/>
+                                    <CheckBoxLabel2>Lillo</CheckBoxLabel2>
                                 </label>
 
                             </imp.checkboxes>
 
                         </div>
-                    );
+                );
         break;
 
         case '3':
+
+            const CheckBoxLabel3 = getLabelCheck(getCheckboxes('checkboxprova3'))
+
             return (
                 <div>
 
@@ -343,15 +345,11 @@ function SimpleSelect(props) {
 
                     <imp.checkboxes id='checkboxprova3' typeInput={3} checkLimit={ true } textInput='Checkbox off'
                                     colorStart={ColorStart2} colorEnd={ColorEnd2} opacityNotCheck='1'
-                                    opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both' {...props}>
+                                    opacityCheck='2' duration='2s' fillMode="both" {...props}>
 
                         <label>
-                            <input type="checkbox"
-                                   checked={!checked2}
-                                   onChange={() => setChecked2(!checked2)}
-                                   onClick={() => { checkbox3.setTextValue(!checked2, 'Checkbox on'); checkbox3.setCheckLimit(!checked2);}}
-                            />
-                            {getCheckboxes('checkboxprova3').textValue}
+                            <input type="checkbox" onClick={() => { checkbox3.setTextValue(true, 'Checkbox on'); checkbox3.setCheckLimit(false);}} />
+                            <CheckBoxLabel3>{getCheckboxes('checkboxprova3').textValue}</CheckBoxLabel3>
                         </label>
 
                     </imp.checkboxes>

@@ -636,23 +636,18 @@ export function setCheckLimit (value) {
 
     switch (this.typeInput) {
         case 1:
+        case 2:
+        case 3:
 
             result = (value === this.checkLimit) ? !value : value
             checkboxesActions.changeValue(this.id, 'checkLimit', result)
 
             break;
 
-        case 2:
-            break;
-
-        case 3:
-            break;
-
         default:
             return;
     }
 
-    checkboxesActions.changeValue(this.id, 'checkLimit', value)
 }
 
 export function setAnimationCSS (id, value) {
@@ -661,8 +656,8 @@ export function setAnimationCSS (id, value) {
 }
 
 export function setTextValue (valueCheck, valueText) {
-    console.log(valueCheck)
-    switch (valueCheck) {
+
+    switch (!this.checkLimit) {
         case true:
             checkboxesActions.changeValue(this.id, 'textValue', this.textInput)
             break;
@@ -735,86 +730,168 @@ function checkValue (variableArray, rest) {
 
 export function getLabelCheck (Check) {
 
-    let CheckLabel
-
-    console.log(Check)
+    let CheckLabel, tmp, tmp1, duration, fillMode
 
     switch (Check.typeInput) {
 
         case 1:
 
-            let tmp = keyframes`  
-                      0% {
-                        opacity: 0;
-                        color: ${Check.colorStart};
+            /*            let tmp = keyframes`
+                          0% {
+                            opacity: 0;
+                            color: ${Check.colorStart};
+                          }
+
+                          25% {
+                            opacity: ${Check.opacityNotCheck/4};
+                            color: ${Check.colorStart};
+                          }
+
+                          50% {
+                            opacity: ${Check.opacityNotCheck/2};
+                            color: ${Check.colorStart};
+                          }
+
+                          75% {
+                            opacity: ${Check.opacityNotCheck/4 + Check.opacityNotCheck/2};
+                            color: ${Check.colorStart};
+                          }
+
+                          100% {
+                             opacity: ${Check.opacityNotCheck};
+                             color: ${Check.colorStart};
+                          }
+                      `;
+
+                let tmp1 = keyframes`
+                          0% {
+                            opacity: 0;
+                            color: ${Check.colorStart};
+                          }
+
+                          25% {
+                            opacity: ${Check.opacityCheck/4};
+                            color: ${Check.colorStart};
+                          }
+
+                          50% {
+                            opacity: ${Check.opacityCheck/2};
+                            color: ${Check.colorEnd};
+                          }
+
+                          75% {
+                            opacity: ${Check.opacityCheck/4 + Check.opacityCheck/2};
+                            color: ${Check.colorEnd};
+                          }
+
+                          100% {
+                            opacity: ${Check.opacityCheck};
+                            color: ${Check.colorEnd};
+                          }
+                      `;*/
+
+            tmp = keyframes`  
+                          from, to {
+                              opacity: 1;
+                              color: yellow;
+                          }
+                      `;
+
+            tmp1 = keyframes`  
+                          from, to {
+                            opacity: 1;
+                            color: red;
+                          }
+                          
+                      `;
+
+            duration = (Check.style === null) ? '1s' : Check.style.duration
+            fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
+
+            CheckLabel = styled.p`
+                
+                display: inline-block;
+                
+                ${Check.checkLimit ?
+                   `animation: ${tmp} ${duration} ${fillMode};` :
+                    Check.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                }  
+                             
+            `;
+
+        break;
+
+        case 2:
+
+            tmp = keyframes`  
+                      
+                      from, to {                           
+                            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                            text-decoration: line-through;
+                            text-decoration-thickness: 3px;
+                            text-decoration-color: #363839;
+                            transition-timing-function: clip-path 1s cubic-bezier(.25,.77,.74,.24);
                       }
                       
-                      25% {
-                        opacity: ${Check.opacityNotCheck/4};
-                        color: ${Check.colorStart};
-                      }
-                      
-                      50% {
-                        opacity: ${Check.opacityNotCheck/2};
-                        color: ${Check.colorStart};
-                      }
-                      
-                      75% {
-                        opacity: ${Check.opacityNotCheck/4 + Check.opacityNotCheck/2};
-                        color: ${Check.colorStart};
-                      }
-                    
-                      100% {
-                         opacity: ${Check.opacityNotCheck};
-                         color: ${Check.colorStart};
-                      }
                   `;
 
-            let tmp1 = keyframes`  
-                      0% {
-                        opacity: 0;
-                        color: ${Check.colorStart};
+            tmp1 = keyframes`  
+                      
+                      from, to {
+                        opacity: 1;
+                        color: brown;
+                        transition: 0s;
                       }
                       
-                      25% {
-                        opacity: ${Check.opacityCheck/4};
-                        color: ${Check.colorStart};
-                      }
-                      
-                      50% {
-                        opacity: ${Check.opacityCheck/2};
-                        color: ${Check.colorEnd};
-                      }
-                      
-                      75% {
-                        opacity: ${Check.opacityCheck/4 + Check.opacityCheck/2};
-                        color: ${Check.colorEnd};
-                      }
-                    
-                      100% {
-                        opacity: ${Check.opacityCheck};
-                        color: ${Check.colorEnd};
-                      }
                   `;
 
-            let duration = (Check.style === null) ? '1s' : Check.style.duration
-            let fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
+            duration = (Check.style === null) ? '1s' : Check.style.duration
+            fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
 
-            CheckLabel = styled.input`
-
-                    ${Check.checkLimit ?
-                        `animation: ${tmp} ${duration} ${fillMode};` :
-                        Check.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
-                    }  
-                         
+            CheckLabel = styled.p`
+                
+                display: inline-block;
+                
+                ${Check.checkLimit ?
+                `animation: ${tmp1} ${duration} ${fillMode};` :
+                Check.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+            }  
+                             
             `;
 
             break;
 
-        case 2:
-            break;
-
         case 3:
+
+            tmp = keyframes`  
+                          from, to {
+                            opacity: 1;
+                            color: red;
+                          }
+                      `;
+
+            tmp1 = keyframes`  
+                          from, to {
+                            opacity: 1;
+                            color: black;
+                          }
+                          
+                      `;
+
+            duration = (Check.style === null) ? '1s' : Check.style.duration
+            fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
+
+            CheckLabel = styled.p`
+    
+                display: inline-block;
+    
+                ${Check.checkLimit ?
+                `animation: ${tmp} ${duration} ${fillMode};` :
+                Check.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                }  
+                             
+            `;
+
             break;
 
         default:
