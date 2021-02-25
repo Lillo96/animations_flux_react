@@ -10,120 +10,132 @@ let tmp_CardID
 
 function checkboxes({
     id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
-    opacityCheck, timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay, iterations, direction, fillMode, playState, ...rest
+    opacityCheck, timeAnimation, typeAnimFillMode, colorLine,
+    displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
+    duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
-    let getAnimationCSS, getAnimationCSS_1
-    let timeAnim, fillAnim, timeAnim2
 
+       // NO
+       let getAnimationCSS, getAnimationCSS_1, timeAnim, fillAnim, timeAnim2
 
-   if (!rest.checkboxes.state.has(id)) {
+       if (!rest.checkboxes.state.has(id)) {
 
-       animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
+           animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
 
-       checkboxesActions.newCheckboxes(
-           id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
-           opacityCheck, timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay, iterations, direction, fillMode, playState
-        )
-
-       // setAnimationCSS(id, cssStylesKeyFrames(true,1, colorStart))
-
-       tmp_CardID = id // NEW
-       // console.log(duration, animation)
-   } else {
-        /*
-
-       const variableArray = [checkLimit, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
-           opacityCheck, timeAnimation, typeAnimFillMode, colorLine]
-        //console.log("Dentro else di !rest", colorEnd)
-
-        checkValue(
-/!*            rest.checkboxes.state.get(id).get('id'),
-            checkLimit,
-            rest.checkboxes.state.get(id).get('checkLimit'),
-            colorStart,
-            rest.checkboxes.state.get(id).get('colorStart'),
-            colorEnd,
-            rest.checkboxes.state.get(id).get('colorEnd'),
-            opacityNotCheck,
-            rest.checkboxes.state.get(id).get('opacityNotCheck'),
-            opacityCheck,
-            rest.checkboxes.state.get(id).get('opacityCheck'),
-            colorLine,
-            rest.checkboxes.state.get(id).get('colorLine'),*!/
-            variableArray, rest.checkboxes.state.get(id)
+           checkboxesActions.newCheckboxes(
+               id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+               opacityCheck, timeAnimation, typeAnimFillMode, colorLine,
+               displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
+               duration, timing, delay, iterations, direction, fillMode, playState
             )
 
-        //console.log(rest.checkboxes.state.get(id).get('colorEnd'))
-        const checkboxObj = rest.checkboxes.state.get(id)
-        //console.log("checkOBJ",checkboxObj)
+           // NO
+           // setAnimationCSS(id, cssStylesKeyFrames(true,1, colorStart))
 
-        animation = getAnimation(id, {}, checkboxObj.style)
-        //console.log(animation)
+           tmp_CardID = id // NEW
+           // console.log(duration, animation)
+       } else {
 
-        setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'),
-                                               rest.checkboxes.state.get(id).get('typeInput'),
-                                               rest.checkboxes.state.get(id).get('colorStart'),
-                                               rest.checkboxes.state.get(id).get('colorEnd'),
-                                               rest.checkboxes.state.get(id).get('opacityNotCheck'),
-                                               rest.checkboxes.state.get(id).get('opacityCheck')
-                            ))
+            // NO
+            /*
 
-        getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
-        getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'),
-                                          rest.checkboxes.state.get(id).get('typeInput'),
-                                          rest.checkboxes.state.get(id).get('colorLine')
-                                        )
+           const variableArray = [checkLimit, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+               opacityCheck, timeAnimation, typeAnimFillMode, colorLine]
+            //console.log("Dentro else di !rest", colorEnd)
 
-        timeAnim = rest.checkboxes.state.get(id).get('timeAnimation')
-        fillAnim = rest.checkboxes.state.get(id).get('typeAnimFillMode')
+            checkValue(
+    /!*            rest.checkboxes.state.get(id).get('id'),
+                checkLimit,
+                rest.checkboxes.state.get(id).get('checkLimit'),
+                colorStart,
+                rest.checkboxes.state.get(id).get('colorStart'),
+                colorEnd,
+                rest.checkboxes.state.get(id).get('colorEnd'),
+                opacityNotCheck,
+                rest.checkboxes.state.get(id).get('opacityNotCheck'),
+                opacityCheck,
+                rest.checkboxes.state.get(id).get('opacityCheck'),
+                colorLine,
+                rest.checkboxes.state.get(id).get('colorLine'),*!/
+                variableArray, rest.checkboxes.state.get(id)
+                )
 
-        if (rest.checkboxes.state.get(id).get('typeInput') == 2) {
-            timeAnim2 = rest.checkboxes.state.get(id).get('timeAnimation')
-            timeAnim = '0s'
-        }*/
+            //console.log(rest.checkboxes.state.get(id).get('colorEnd'))
+            const checkboxObj = rest.checkboxes.state.get(id)
+            //console.log("checkOBJ",checkboxObj)
 
-       const variableArray = [ checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
-           opacityCheck, timeAnimation, typeAnimFillMode, colorLine ] // NEW
+            animation = getAnimation(id, {}, checkboxObj.style)
+            //console.log(animation)
 
-       checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
+            setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'),
+                                                   rest.checkboxes.state.get(id).get('typeInput'),
+                                                   rest.checkboxes.state.get(id).get('colorStart'),
+                                                   rest.checkboxes.state.get(id).get('colorEnd'),
+                                                   rest.checkboxes.state.get(id).get('opacityNotCheck'),
+                                                   rest.checkboxes.state.get(id).get('opacityCheck')
+                                ))
 
-       const cardObj = rest.checkboxes.state.get(id) // NEW
+            getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
+            getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'),
+                                              rest.checkboxes.state.get(id).get('typeInput'),
+                                              rest.checkboxes.state.get(id).get('colorLine')
+                                            )
 
-       animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState }, cardObj.style) // NEW
+            timeAnim = rest.checkboxes.state.get(id).get('timeAnimation')
+            fillAnim = rest.checkboxes.state.get(id).get('typeAnimFillMode')
 
-       tmp_CardID = rest.checkboxes.state.get(id).get('id') // NEW
+            if (rest.checkboxes.state.get(id).get('typeInput') == 2) {
+                timeAnim2 = rest.checkboxes.state.get(id).get('timeAnimation')
+                timeAnim = '0s'
+            }*/
 
-   }
-    /*
-   const KeyFrames = styled.div`
-          animation: ${timeAnim} ${getAnimationCSS} ${fillAnim};
-       `;
+           const variableArray = [ checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+               opacityCheck, timeAnimation, typeAnimFillMode, colorLine, displayCheck, textDecoration, textDecorationThickness,
+               textDecorationColor, transitionTimingFunction, ] // NEW
 
-   const KeyFrame2 = styled.div`
-          animation: ${timeAnim2} ${getAnimationCSS_1} both;
-       `;
-*/
+           checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
 
-   // NEW
-   return (
-        <div id={id} style={animation} {...rest}>
-            {rest.children }
-        </div>
-   )
+           const cardObj = rest.checkboxes.state.get(id) // NEW
 
-    /*   return (
-       <div id={id} style={animation} {...rest}>
-          <KeyFrame2>
-               <KeyFrames>
-                   { rest.children }
-               </KeyFrames>
-          </KeyFrame2>
+           animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState }, cardObj.style) // NEW
 
-       </div>
-   )*/
+           tmp_CardID = rest.checkboxes.state.get(id).get('id') // NEW
+
+       }
+
+       // NO
+       /*
+       const KeyFrames = styled.div`
+              animation: ${timeAnim} ${getAnimationCSS} ${fillAnim};
+           `;
+
+       const KeyFrame2 = styled.div`
+              animation: ${timeAnim2} ${getAnimationCSS_1} both;
+           `;
+    */
+
+       // NEW
+       return (
+            <div id={id} style={animation} {...rest}>
+                {rest.children }
+            </div>
+       )
+
+       // NO
+       /*   return (
+           <div id={id} style={animation} {...rest}>
+              <KeyFrame2>
+                   <KeyFrames>
+                       { rest.children }
+                   </KeyFrames>
+              </KeyFrame2>
+
+           </div>
+       )*/
 }
 
+// NO
 function setKeyframes2(checkLimit, typeInput, colorLine) {
 
     let tmp
@@ -219,6 +231,7 @@ function setKeyframes2(checkLimit, typeInput, colorLine) {
 
 }
 
+// NO
 function cssStylesKeyFrames(checkLimit, typeInput, colorStart, colorEnd, opacityNotCheck, opacityCheck) {
 
    // console.log('Cagliari', colorEnd)
@@ -527,6 +540,7 @@ function cssStylesKeyFrames(checkLimit, typeInput, colorStart, colorEnd, opacity
     return tmp
 }
 
+// NO
 function cssStyles(checkLimit, typeInput) {
 
     //console.log(state)
@@ -650,6 +664,7 @@ export function setCheckLimit (value) {
 
 }
 
+// NO
 export function setAnimationCSS (id, value) {
     //console.log(value)
     checkboxesActions.changeValue(id, 'animationCSS', value)
@@ -674,7 +689,8 @@ export function setTextValue (valueCheck, valueText) {
 function checkValue (variableArray, rest) {
 
     const tmp = ["checkLimit", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
-        "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine"]
+        "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine", "displayCheck", "textDecoration", "textDecorationThickness",
+        "textDecorationColor", "transitionTimingFunction"]
 
     /*
         0: checkLimit,
@@ -728,7 +744,7 @@ function checkValue (variableArray, rest) {
     }*/
 }
 
-export function getLabelCheck (Check) {
+export function getPCheck (Check) {
 
     let CheckLabel, tmp, tmp1, duration, fillMode
 
@@ -792,15 +808,15 @@ export function getLabelCheck (Check) {
 
             tmp = keyframes`  
                           from, to {
-                              opacity: 1;
-                              color: yellow;
+                              opacity: ${Check.opacityNotCheck};
+                              color: ${Check.colorStart};
                           }
                       `;
 
             tmp1 = keyframes`  
                           from, to {
-                            opacity: 1;
-                            color: red;
+                            opacity: ${Check.opacityCheck};
+                            color: ${Check.colorEnd};
                           }
                           
                       `;
@@ -810,7 +826,7 @@ export function getLabelCheck (Check) {
 
             CheckLabel = styled.p`
                 
-                display: inline-block;
+                display: ${Check.displayCheck};
                 
                 ${Check.checkLimit ?
                    `animation: ${tmp} ${duration} ${fillMode};` :
@@ -827,10 +843,10 @@ export function getLabelCheck (Check) {
                       
                       from, to {                           
                             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                            text-decoration: line-through;
-                            text-decoration-thickness: 3px;
-                            text-decoration-color: #363839;
-                            transition-timing-function: clip-path 1s cubic-bezier(.25,.77,.74,.24);
+                            text-decoration: ${Check.textDecoration};
+                            text-decoration-thickness: ${Check.textDecorationThickness};
+                            text-decoration-color: ${Check.textDecorationColor};
+                            transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
                       }
                       
                   `;
@@ -838,9 +854,8 @@ export function getLabelCheck (Check) {
             tmp1 = keyframes`  
                       
                       from, to {
-                        opacity: 1;
-                        color: brown;
-                        transition: 0s;
+                        opacity: ${Check.opacityNotCheck};
+                        color: ${Check.colorStart};
                       }
                       
                   `;
@@ -850,7 +865,7 @@ export function getLabelCheck (Check) {
 
             CheckLabel = styled.p`
                 
-                display: inline-block;
+                display: ${Check.displayCheck};
                 
                 ${Check.checkLimit ?
                 `animation: ${tmp1} ${duration} ${fillMode};` :
@@ -865,15 +880,15 @@ export function getLabelCheck (Check) {
 
             tmp = keyframes`  
                           from, to {
-                            opacity: 1;
-                            color: red;
+                            opacity: ${Check.opacityNotCheck};
+                            color: ${Check.colorStart};
                           }
                       `;
 
             tmp1 = keyframes`  
                           from, to {
-                            opacity: 1;
-                            color: black;
+                            opacity: ${Check.opacityCheck};
+                            color: ${Check.colorEnd};
                           }
                           
                       `;
@@ -883,7 +898,7 @@ export function getLabelCheck (Check) {
 
             CheckLabel = styled.p`
     
-                display: inline-block;
+                display: ${Check.displayCheck};
     
                 ${Check.checkLimit ?
                 `animation: ${tmp} ${duration} ${fillMode};` :
@@ -892,6 +907,119 @@ export function getLabelCheck (Check) {
                              
             `;
 
+            break;
+
+        default:
+            return;
+    }
+
+    return CheckLabel
+}
+
+export function getIMGCheck (Check) {
+
+    let CheckLabel, tmp, tmp1, duration, fillMode
+
+    switch (Check.typeInput) {
+
+        case 1:
+
+            /*            let tmp = keyframes`
+                          0% {
+                            opacity: 0;
+                            color: ${Check.colorStart};
+                          }
+
+                          25% {
+                            opacity: ${Check.opacityNotCheck/4};
+                            color: ${Check.colorStart};
+                          }
+
+                          50% {
+                            opacity: ${Check.opacityNotCheck/2};
+                            color: ${Check.colorStart};
+                          }
+
+                          75% {
+                            opacity: ${Check.opacityNotCheck/4 + Check.opacityNotCheck/2};
+                            color: ${Check.colorStart};
+                          }
+
+                          100% {
+                             opacity: ${Check.opacityNotCheck};
+                             color: ${Check.colorStart};
+                          }
+                      `;
+
+                let tmp1 = keyframes`
+                          0% {
+                            opacity: 0;
+                            color: ${Check.colorStart};
+                          }
+
+                          25% {
+                            opacity: ${Check.opacityCheck/4};
+                            color: ${Check.colorStart};
+                          }
+
+                          50% {
+                            opacity: ${Check.opacityCheck/2};
+                            color: ${Check.colorEnd};
+                          }
+
+                          75% {
+                            opacity: ${Check.opacityCheck/4 + Check.opacityCheck/2};
+                            color: ${Check.colorEnd};
+                          }
+
+                          100% {
+                            opacity: ${Check.opacityCheck};
+                            color: ${Check.colorEnd};
+                          }
+                      `;*/
+
+            const tmp = keyframes`
+
+                 to {
+                    filter: grayscale(0%);
+                    // transform: scale(1.1);
+                 }
+                 
+            `;
+
+            const tmp1 = keyframes`
+
+                 from {
+                    filter: grayscale(0%);
+                    // transform: scale(1.1);
+                 }
+                 
+            `;
+
+            duration = (Check.style === null) ? '1s' : Check.style.duration
+            fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
+
+            CheckLabel = styled.img`
+
+                display: ${Check.displayCheck};
+                width: 300px;
+                height: 40px;
+                filter: grayscale(100%);
+                transition: .5s;
+                 
+                ${Check.checkLimit ?
+                    `animation: ${tmp1} ${duration} ${fillMode};` :
+                    Check.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                }  
+                                             
+            `;
+
+            break;
+
+        case 2:
+            break;
+
+        case 3:
             break;
 
         default:
@@ -922,7 +1050,14 @@ checkboxes.propType = {
     opacityCheck: PropTypes.string,
     timeAnimation: PropTypes.string,
     typeAnimFillMode: PropTypes.string,
-    colorLine: PropTypes.string
+    colorLine: PropTypes.string,
+
+    displayCheck: PropTypes.string,
+    textDecoration: PropTypes.string,
+    textDecorationThickness: PropTypes.string,
+    textDecorationColor: PropTypes.string,
+    transitionTimingFunction: PropTypes.string
+
 }
 
 export default checkboxes

@@ -1,6 +1,7 @@
 import getDataAnimation from "./view"
 import checkboxes, {
-    getLabelCheck,
+    getIMGCheck,
+    getPCheck,
     setCheckLimit,
     setTextValue,
 } from "./components/checkboxes";
@@ -67,7 +68,8 @@ const imp = {
 export function getCheckboxes(id) {
     return {
         ...getDataAnimation('checkboxes', id, checkboxesObject),
-        getLabelCheck,
+        getIMGCheck,
+        getPCheck,
         setCheckLimit,
         setTextValue,
     }

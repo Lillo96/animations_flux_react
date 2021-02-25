@@ -1,7 +1,7 @@
 import React from 'react'
 import imp, {getCards, getCheckboxes, getItems} from './imp'
 
-import checkboxes, {getLabelCheck} from "./components/checkboxes";
+import checkboxes, {getPCheck, getIMGCheck} from "./components/checkboxes";
 
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -199,7 +199,8 @@ function SimpleSelect(props) {
 
         case '1':
 
-            const CheckBoxLabel = getLabelCheck(getCheckboxes('checkbox1'))
+            const CheckBoxLabelP = getPCheck(getCheckboxes('checkbox1'))
+            const CheckBoxLabelIMG = getIMGCheck(getCheckboxes('checkbox1'))
 
                     return (
                         <div>
@@ -236,7 +237,9 @@ function SimpleSelect(props) {
 
                                 <label >
                                     <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(false) }}/>
-                                    <CheckBoxLabel>MARCO</CheckBoxLabel>
+                                    {/*<CheckBoxLabelP>MARCO</CheckBoxLabelP>*/}
+                                    <CheckBoxLabelIMG style={{backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
+                                    </CheckBoxLabelIMG>
                                 </label>
 
                             </imp.checkboxes>
@@ -247,7 +250,7 @@ function SimpleSelect(props) {
 
         case '2':
 
-            const CheckBoxLabel2 = getLabelCheck(getCheckboxes('checkboxprova2'))
+            const CheckBoxLabel2P = getPCheck(getCheckboxes('checkboxprova2'))
 
             return (
                         <div>
@@ -300,7 +303,7 @@ function SimpleSelect(props) {
 
                                 <label >
                                     <input type="checkbox" onClick={() => { checkbox2.setCheckLimit(!checked1) }}/>
-                                    <CheckBoxLabel2>Lillo</CheckBoxLabel2>
+                                    <CheckBoxLabel2P>Lillo</CheckBoxLabel2P>
                                 </label>
 
                             </imp.checkboxes>
@@ -311,7 +314,7 @@ function SimpleSelect(props) {
 
         case '3':
 
-            const CheckBoxLabel3 = getLabelCheck(getCheckboxes('checkboxprova3'))
+            const CheckBoxLabel3P = getPCheck(getCheckboxes('checkboxprova3'))
 
             return (
                 <div>
@@ -349,7 +352,7 @@ function SimpleSelect(props) {
 
                         <label>
                             <input type="checkbox" onClick={() => { checkbox3.setTextValue(true, 'Checkbox on'); checkbox3.setCheckLimit(false);}} />
-                            <CheckBoxLabel3>{getCheckboxes('checkboxprova3').textValue}</CheckBoxLabel3>
+                            <CheckBoxLabel3P>{getCheckboxes('checkboxprova3').textValue}</CheckBoxLabel3P>
                         </label>
 
                     </imp.checkboxes>
