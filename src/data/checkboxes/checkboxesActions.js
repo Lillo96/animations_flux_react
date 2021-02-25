@@ -3,8 +3,9 @@ import checkboxesActionTypes from "./checkboxesActionTypes"
 
 const checkboxesActions = {
     newCheckboxes (
-      id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck, opacityCheck,
-      timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay, iterations, direction, fillMode, playState) {
+        id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+        opacityCheck, timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay, iterations, direction, fillMode, playState) {
+
          animationDispatcher.dispatch ({
             type: checkboxesActionTypes.NEW_CHECKBOXES,
             id: id,

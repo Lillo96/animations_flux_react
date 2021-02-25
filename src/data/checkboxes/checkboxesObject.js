@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 const checkboxes = Immutable.Record({
     id: '',
     type: 'checkboxes',
-    typeInput: null,
+    typeInput: 1,
     checkLimit: true,
     style: null,
     animationCSS: '',

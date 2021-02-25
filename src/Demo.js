@@ -1,7 +1,7 @@
 import React from 'react'
 import imp, {getCards, getCheckboxes, getItems} from './imp'
 
-import checkboxes, {} from "./components/checkboxes";
+import checkboxes, {getLabelCheck} from "./components/checkboxes";
 
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -151,7 +151,7 @@ function SimpleSelect(props) {
         setDirectionOfAnimation(event.target.value);
     }*/
 
-    const checkbox1 = getCheckboxes('checkboxprova')
+    const checkbox1 = getCheckboxes('checkbox1')
     const checkbox2 = getCheckboxes('checkboxprova2')
     const checkbox3 = getCheckboxes('checkboxprova3')
 
@@ -176,8 +176,6 @@ function SimpleSelect(props) {
     const card5_1 = getCards('cardsprova03_02')
     const card5_2 = getCards('cardsprova03_03')
 
-
-
     const handlePress = (event) => {
         console.log('ok')
         console.log(event.key)
@@ -200,6 +198,9 @@ function SimpleSelect(props) {
     switch (props.num) {
 
         case '1':
+            console.log(getCheckboxes('checkbox1'))
+            const CheckBoxLabel = getLabelCheck(getCheckboxes('checkbox1'))
+
                     return (
                         <div>
 
@@ -230,15 +231,12 @@ function SimpleSelect(props) {
 
                             </FormControl>
 
-                            <imp.checkboxes id='checkboxprova' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
-                                            opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both'{...props}>
+                            <imp.checkboxes id='checkbox1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                                            opacityCheck='2' duration='2s' fillMode="both" {...props}>
+
                                 <label>
-                                    <input type="checkbox"
-                                           checked={!checked}
-                                           onChange={() => setChecked(!checked)}
-                                           onClick={() => { checkbox1.setCheckLimit(!checked) }}
-                                    />
-                                    Checkbox
+                                    <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true) }}/>
+                                    <p>MARCO</p>
                                 </label>
 
                             </imp.checkboxes>
@@ -363,7 +361,6 @@ function SimpleSelect(props) {
             break;
 
         case '4':
-
             const CardContainer = getCardContainer(getCards('cardsprova'))
             const CardFront = getCardFront(getCards('cardsprova'))
             const CardBack = getCardBack(getCards('cardsprova'))

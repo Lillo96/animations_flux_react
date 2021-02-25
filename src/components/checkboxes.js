@@ -4,6 +4,9 @@ import checkboxesActions from "../data/checkboxes/checkboxesActions"
 import getAnimation from "../data/animation"
 
 import styled, {keyframes} from "styled-components"
+import cardsActions from "../data/cards/cardsActions";
+
+let tmp_CardID
 
 function checkboxes({
     id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
@@ -17,27 +20,25 @@ function checkboxes({
    if (!rest.checkboxes.state.has(id)) {
 
        animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
-       //console.log(animation)
-
-       //console.log("Dentro di !rest", colorEnd)
 
        checkboxesActions.newCheckboxes(
-            id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck, opacityCheck,
-            timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay,iterations, direction, fillMode, playState
+           id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+           opacityCheck, timeAnimation, typeAnimFillMode, colorLine, duration, timing, delay, iterations, direction, fillMode, playState
         )
 
+       // setAnimationCSS(id, cssStylesKeyFrames(true,1, colorStart))
 
-       setAnimationCSS(id, cssStylesKeyFrames(true,1, colorStart))
-
+       tmp_CardID = id // NEW
+       // console.log(duration, animation)
    } else {
-
+        /*
 
        const variableArray = [checkLimit, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
            opacityCheck, timeAnimation, typeAnimFillMode, colorLine]
         //console.log("Dentro else di !rest", colorEnd)
 
         checkValue(
-/*            rest.checkboxes.state.get(id).get('id'),
+/!*            rest.checkboxes.state.get(id).get('id'),
             checkLimit,
             rest.checkboxes.state.get(id).get('checkLimit'),
             colorStart,
@@ -49,7 +50,7 @@ function checkboxes({
             opacityCheck,
             rest.checkboxes.state.get(id).get('opacityCheck'),
             colorLine,
-            rest.checkboxes.state.get(id).get('colorLine'),*/
+            rest.checkboxes.state.get(id).get('colorLine'),*!/
             variableArray, rest.checkboxes.state.get(id)
             )
 
@@ -80,9 +81,21 @@ function checkboxes({
         if (rest.checkboxes.state.get(id).get('typeInput') == 2) {
             timeAnim2 = rest.checkboxes.state.get(id).get('timeAnimation')
             timeAnim = '0s'
-        }
-   }
+        }*/
 
+       const variableArray = [ checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
+           opacityCheck, timeAnimation, typeAnimFillMode, colorLine ] // NEW
+
+       checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
+
+       const cardObj = rest.checkboxes.state.get(id) // NEW
+
+       animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState }, cardObj.style) // NEW
+
+       tmp_CardID = rest.checkboxes.state.get(id).get('id') // NEW
+
+   }
+    /*
    const KeyFrames = styled.div`
           animation: ${timeAnim} ${getAnimationCSS} ${fillAnim};
        `;
@@ -90,8 +103,16 @@ function checkboxes({
    const KeyFrame2 = styled.div`
           animation: ${timeAnim2} ${getAnimationCSS_1} both;
        `;
+*/
 
+   // NEW
    return (
+        <div id={id} style={animation} {...rest}>
+            {rest.children }
+        </div>
+   )
+
+    /*   return (
        <div id={id} style={animation} {...rest}>
           <KeyFrame2>
                <KeyFrames>
@@ -100,8 +121,7 @@ function checkboxes({
           </KeyFrame2>
 
        </div>
-
-   )
+   )*/
 }
 
 function setKeyframes2(checkLimit, typeInput, colorLine) {
@@ -611,7 +631,27 @@ function cssStyles(checkLimit, typeInput) {
 }
 
 export function setCheckLimit (value) {
-    console.log(value)
+
+    let result
+
+    switch (this.typeInput) {
+        case 1:
+
+            result = (value === this.checkLimit) ? !value : value
+            checkboxesActions.changeValue(this.id, 'checkLimit', result)
+
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        default:
+            return;
+    }
+
     checkboxesActions.changeValue(this.id, 'checkLimit', value)
 }
 
@@ -638,9 +678,6 @@ export function setTextValue (valueCheck, valueText) {
 
 function checkValue (variableArray, rest) {
 
-    //console.log(variableArray, rest)
-    //console.log(colorEnd, restcolorEnd)
-
     const tmp = ["checkLimit", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
         "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine"]
 
@@ -657,6 +694,7 @@ function checkValue (variableArray, rest) {
         9: colorLine
     */
 
+    /*
     // Parte da 3 perchè non devo modificare "checkLimit", "textInput" e "textValue"
     for (let i = 3; i < variableArray.length; i++) {
         //if (variableArray[i] != rest.)
@@ -667,11 +705,22 @@ function checkValue (variableArray, rest) {
             checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
         }
 
+
+    }
+    */
+
+
+    for (let i = 3; i < tmp.length; i++) {
+
+        if (variableArray[i] != rest.get(tmp[i])) {
+            if (i != 0) {
+                checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+            }
+        }
+
     }
 
-
-
-/*    if (colorEnd != restcolorEnd) {
+    /*    if (colorEnd != restcolorEnd) {
         checkboxesActions.changeValue(id, 'colorEnd', colorEnd)
     }
 
@@ -682,6 +731,97 @@ function checkValue (variableArray, rest) {
     if (colorLine != restcolorLine) {
         checkboxesActions.changeValue(id, 'colorLine', colorLine)
     }*/
+}
+
+export function getLabelCheck (Check) {
+
+    let CheckLabel
+
+    console.log(Check)
+
+    switch (Check.typeInput) {
+
+        case 1:
+
+            let tmp = keyframes`  
+                      0% {
+                        opacity: 0;
+                        color: ${Check.colorStart};
+                      }
+                      
+                      25% {
+                        opacity: ${Check.opacityNotCheck/4};
+                        color: ${Check.colorStart};
+                      }
+                      
+                      50% {
+                        opacity: ${Check.opacityNotCheck/2};
+                        color: ${Check.colorStart};
+                      }
+                      
+                      75% {
+                        opacity: ${Check.opacityNotCheck/4 + Check.opacityNotCheck/2};
+                        color: ${Check.colorStart};
+                      }
+                    
+                      100% {
+                         opacity: ${Check.opacityNotCheck};
+                         color: ${Check.colorStart};
+                      }
+                  `;
+
+            let tmp1 = keyframes`  
+                      0% {
+                        opacity: 0;
+                        color: ${Check.colorStart};
+                      }
+                      
+                      25% {
+                        opacity: ${Check.opacityCheck/4};
+                        color: ${Check.colorStart};
+                      }
+                      
+                      50% {
+                        opacity: ${Check.opacityCheck/2};
+                        color: ${Check.colorEnd};
+                      }
+                      
+                      75% {
+                        opacity: ${Check.opacityCheck/4 + Check.opacityCheck/2};
+                        color: ${Check.colorEnd};
+                      }
+                    
+                      100% {
+                        opacity: ${Check.opacityCheck};
+                        color: ${Check.colorEnd};
+                      }
+                  `;
+
+            let duration = (Check.style === null) ? '1s' : Check.style.duration
+            let fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
+
+            CheckLabel = styled.input`
+
+                    ${Check.checkLimit ?
+                        `animation: ${tmp} ${duration} ${fillMode};` :
+                        Check.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                    }  
+                         
+            `;
+
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        default:
+            return;
+    }
+
+    return CheckLabel
 }
 
 checkboxes.propType = {
