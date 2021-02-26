@@ -657,18 +657,20 @@ export function setCheckLimit (value, flag) {
 
     let result
 
-    switch (this.typeInput) {
-        case 1:
-        case 2:
-        case 3:
+    if (value != null) {
+        switch (this.typeInput) {
+            case 1:
+            case 2:
+            case 3:
 
-            result = (value === this.checkLimit) ? !value : value
-            checkboxesActions.changeValue(this.id, 'checkLimit', result)
+                result = (value === this.checkLimit) ? !value : value
+                checkboxesActions.changeValue(this.id, 'checkLimit', result)
 
-            break;
+                break;
 
-        default:
-            return;
+            default:
+                return;
+        }
     }
 
     if (flag != null) {
@@ -837,6 +839,8 @@ export function getPCheck (Check) {
 
             if (Check.checkAnimationTransition) {
 
+                console.log('1')
+
                 let tmp = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
 
                 /* GESTIONE SE SI VUOLE L'ANIM CON:
@@ -937,6 +941,8 @@ export function getPCheck (Check) {
 
             } else {
 
+                console.log('2')
+
                 /* GESTIONE SE SI VUOLE L'ANIM CON:
                     1: CHECKLIMIT TRUE
                     2: CHECKLIMIT FALSE
@@ -944,6 +950,7 @@ export function getPCheck (Check) {
                  */
 
                 switch (Check.setFlagAnimTransitionCheckLimit) {
+
                     case 1:
 
                         CheckLabel = styled.p`
@@ -1032,10 +1039,7 @@ export function getPCheck (Check) {
                         break;
                 }
 
-
             }
-
-
 
         break;
 
@@ -1229,6 +1233,17 @@ export function getIMGCheck (Check) {
     }
 
     return CheckLabel
+}
+
+// NO
+export function getInputCheck (Check) {
+
+    let InputCheck = styled.input`
+
+                             
+            `;
+
+    return InputCheck
 }
 
 checkboxes.propType = {

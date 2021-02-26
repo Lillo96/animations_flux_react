@@ -1,7 +1,7 @@
 import React from 'react'
 import imp, {getCards, getCheckboxes, getItems} from './imp'
 
-import checkboxes, {getPCheck, getIMGCheck} from "./components/checkboxes";
+import checkboxes, {getPCheck, getIMGCheck, getInputCheck} from "./components/checkboxes";
 
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -152,6 +152,8 @@ function SimpleSelect(props) {
     }*/
 
     const checkbox1 = getCheckboxes('checkbox1')
+    const checkbox1_1 = getCheckboxes('checkbox1_1')
+    const checkbox1_2 = getCheckboxes('checkbox1_2')
     const checkbox2 = getCheckboxes('checkboxprova2')
     const checkbox3 = getCheckboxes('checkboxprova3')
 
@@ -201,6 +203,10 @@ function SimpleSelect(props) {
 
             const CheckBoxLabelP = getPCheck(getCheckboxes('checkbox1'))
             const CheckBoxLabelIMG = getIMGCheck(getCheckboxes('checkbox1'))
+            const CheckBoxInput = getInputCheck(getCheckboxes('checkbox1'))
+            const CheckBoxLabelP1 = getPCheck(getCheckboxes('checkbox1_1'))
+            const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_2'))
+
 
                     return (
                         <div>
@@ -232,18 +238,58 @@ function SimpleSelect(props) {
 
                             </FormControl>
 
-                            <imp.checkboxes id='checkbox1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+{/*                            <imp.checkboxes id='checkbox1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
                                             opacityCheck='2' duration='2s' fillMode="both" {...props}>
 
                                 <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(false, null) }}/>
                                 <label>
 
                                     <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP>
-                                    {/*<CheckBoxLabelIMG style={{backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
-                                    </CheckBoxLabelIMG>*/}
+                                    <CheckBoxLabelIMG style={{backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
+                                    </CheckBoxLabelIMG>
                                 </label>
 
-                            </imp.checkboxes>
+                            </imp.checkboxes>*/}
+                            <div style={{display: 'columns'}}>
+
+                                {/* CHECK 1 */}
+
+                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                                                opacityCheck='2' duration='2s' fillMode="both" {...props}>
+
+                                    <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(false, null) }}/>
+                                    <label>
+                                        <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP>
+                                    </label>
+
+                                </imp.checkboxes>
+
+{/*                                 CHECK 2
+
+                                <imp.checkboxes id='checkbox1_1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                                                opacityCheck='2' duration='2s' fillMode="both" {...props}>
+
+                                     CHECK 1
+                                    <input type="checkbox" onClick={() => { checkbox1_1.setCheckLimit(false, null) }}/>
+                                    <label>
+                                        <CheckBoxLabelP1 onMouseEnter={() => checkbox1_1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP1>
+                                    </label>
+
+                                </imp.checkboxes>
+
+                                 CHECK 3
+
+                                <imp.checkboxes id='checkbox1_2' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                                                opacityCheck='2' duration='2s' fillMode="both" {...props}>
+
+                                     CHECK 1
+                                    <input type="checkbox" onClick={() => { checkbox1_2.setCheckLimit(false, null) }}/>
+                                    <label>
+                                        <CheckBoxLabelP2 onMouseEnter={() => checkbox1_2.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_2.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP2>
+                                    </label>
+
+                                </imp.checkboxes>*/}
+                            </div>
 
                         </div>
                     );

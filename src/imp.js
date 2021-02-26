@@ -4,6 +4,7 @@ import checkboxes, {
     getPCheck,
     setCheckLimit,
     setTextValue,
+    getInputCheck
 } from "./components/checkboxes";
 import cards, {
     setCheckLimitCards,
@@ -72,6 +73,7 @@ export function getCheckboxes(id) {
         getPCheck,
         setCheckLimit,
         setTextValue,
+        getInputCheck
     }
 }
 
