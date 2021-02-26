@@ -22,7 +22,20 @@ const checkboxes = Immutable.Record({
     textDecoration: 'line-through',
     textDecorationThickness: '3px',
     textDecorationColor: '#363839',
-    transitionTimingFunction: '1s'
+    transitionTimingFunction: '1s',
+
+    toEnableAnimationP: true,
+    durationAnimationP: '1.5s',
+    duration1AnimationP: 'infinite',
+    fillModeAnimationP: 'forwards',
+
+    transitionYEnable: false,
+    transitionYEnable1: false,
+    transitionXEnable: false,
+    transitionXEnable1: false,
+
+    checkAnimationTransition: true,
+    setFlagAnimTransitionCheckLimit: 1
 })
 
 export default checkboxes

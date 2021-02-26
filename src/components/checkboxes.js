@@ -5,6 +5,7 @@ import getAnimation from "../data/animation"
 
 import styled, {keyframes} from "styled-components"
 import cardsActions from "../data/cards/cardsActions";
+import transitions from "@material-ui/core/styles/transitions";
 
 let tmp_CardID
 
@@ -12,6 +13,9 @@ function checkboxes({
     id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
     opacityCheck, timeAnimation, typeAnimFillMode, colorLine,
     displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
+    toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
+    transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
+    checkAnimationTransition, setFlagAnimTransitionCheckLimit,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
@@ -27,6 +31,9 @@ function checkboxes({
                id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
                opacityCheck, timeAnimation, typeAnimFillMode, colorLine,
                displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
+               toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
+               transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
+               checkAnimationTransition, setFlagAnimTransitionCheckLimit,
                duration, timing, delay, iterations, direction, fillMode, playState
             )
 
@@ -92,7 +99,9 @@ function checkboxes({
 
            const variableArray = [ checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
                opacityCheck, timeAnimation, typeAnimFillMode, colorLine, displayCheck, textDecoration, textDecorationThickness,
-               textDecorationColor, transitionTimingFunction, ] // NEW
+               textDecorationColor, transitionTimingFunction, toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
+               transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, checkAnimationTransition, setFlagAnimTransitionCheckLimit
+           ] // NEW
 
            checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
 
@@ -644,7 +653,7 @@ function cssStyles(checkLimit, typeInput) {
 
 }
 
-export function setCheckLimit (value) {
+export function setCheckLimit (value, flag) {
 
     let result
 
@@ -660,6 +669,23 @@ export function setCheckLimit (value) {
 
         default:
             return;
+    }
+
+    if (flag != null) {
+
+        switch (flag) {
+            case true:
+                checkboxesActions.changeValue(this.id, 'checkAnimationTransition', flag)
+                break;
+
+            case false:
+                checkboxesActions.changeValue(this.id, 'checkAnimationTransition', flag)
+                break;
+
+            default:
+                return;
+        }
+
     }
 
 }
@@ -690,7 +716,8 @@ function checkValue (variableArray, rest) {
 
     const tmp = ["checkLimit", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
         "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine", "displayCheck", "textDecoration", "textDecorationThickness",
-        "textDecorationColor", "transitionTimingFunction"]
+        "textDecorationColor", "transitionTimingFunction", "toEnableAnimationP", "durationAnimationP", "duration1AnimationP", "fillModeAnimationP",
+        "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1", "checkAnimationTransition", "setFlagAnimTransitionCheckLimit"]
 
     /*
         0: checkLimit,
@@ -806,34 +833,209 @@ export function getPCheck (Check) {
                           }
                       `;*/
 
-            tmp = keyframes`  
-                          from, to {
-                              opacity: ${Check.opacityNotCheck};
-                              color: ${Check.colorStart};
-                          }
-                      `;
+            // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
 
-            tmp1 = keyframes`  
-                          from, to {
-                            opacity: ${Check.opacityCheck};
-                            color: ${Check.colorEnd};
-                          }
+            if (Check.checkAnimationTransition) {
+
+                let tmp = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
+
+                /* GESTIONE SE SI VUOLE L'ANIM CON:
+                    1: CHECKLIMIT TRUE
+                    2: CHECKLIMIT FALSE
+                    3: ENTRAMBI
+                 */
+
+                switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                    case 1:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
+                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
                           
-                      `;
+                            animation: ${(Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+              
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
 
-            duration = (Check.style === null) ? '1s' : Check.style.duration
-            fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
+                        break;
 
-            CheckLabel = styled.p`
+                    case 2:
+
+                        CheckLabel = styled.p`
                 
-                display: ${Check.displayCheck};
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
+                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                          
+                            animation: ${(!Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+              
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 3:
+
+                        CheckLabel = styled.p`
                 
-                ${Check.checkLimit ?
-                   `animation: ${tmp} ${duration} ${fillMode};` :
-                    Check.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
-                }  
-                             
-            `;
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
+                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                          
+                            animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+                }
+
+            } else {
+
+                /* GESTIONE SE SI VUOLE L'ANIM CON:
+                    1: CHECKLIMIT TRUE
+                    2: CHECKLIMIT FALSE
+                    3: ENTRAMBI
+                 */
+
+                switch (Check.setFlagAnimTransitionCheckLimit) {
+                    case 1:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
+                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                          
+                            animation: ${(Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform:${Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 2:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
+                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                          
+                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform:${Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 3:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
+                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                          
+                            animation: ${(Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform:${Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+                }
+
+
+            }
+
+
 
         break;
 
@@ -1056,7 +1258,20 @@ checkboxes.propType = {
     textDecoration: PropTypes.string,
     textDecorationThickness: PropTypes.string,
     textDecorationColor: PropTypes.string,
-    transitionTimingFunction: PropTypes.string
+    transitionTimingFunction: PropTypes.string,
+
+    toEnableAnimationP: PropTypes.bool,
+    durationAnimationP: PropTypes.string,
+    duration1AnimationP: PropTypes.string,
+    fillModeAnimationP: PropTypes.string,
+
+    transitionYEnable: PropTypes.bool,
+    transitionYEnable1: PropTypes.bool,
+    transitionXEnable: PropTypes.bool,
+    transitionXEnable1: PropTypes.bool,
+
+    checkAnimationTransition: PropTypes.bool,
+    setFlagAnimTransitionCheckLimit: PropTypes.number
 
 }
 

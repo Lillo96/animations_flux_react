@@ -39,6 +39,12 @@ class CheckboxesStore extends ReduceStore {
                         textDecorationThickness: action.textDecorationThickness,
                         textDecorationColor: action.textDecorationColor,
                         transitionTimingFunction: action.transitionTimingFunction,
+                        toEnableAnimationP: action.toEnableAnimationP,
+                        durationAnimationP: action.durationAnimationP,
+                        duration1AnimationP: action.duration1AnimationP,
+                        fillModeAnimationP: action.fillModeAnimationP,
+                        checkAnimationTransition: action.checkAnimationTransition,
+                        setFlagAnimTransitionCheckLimit: action.setFlagAnimTransitionCheckLimit,
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
