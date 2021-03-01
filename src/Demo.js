@@ -259,8 +259,8 @@ function SimpleSelect(props) {
 
                                     <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
                                     <label>
-                                        {/* <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP> */}
-                                        <CheckBoxLabelP>MARCO</CheckBoxLabelP>
+                                        <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, true)}>MARCO</CheckBoxLabelP>
+                                        {/* <CheckBoxLabelP>MARCO</CheckBoxLabelP> */}
                                     </label>
 
                                 </imp.checkboxes>
@@ -399,7 +399,7 @@ function SimpleSelect(props) {
 
                         <label>
                             <input type="checkbox" onClick={() => { checkbox3.setTextValue(true, 'Checkbox on'); checkbox3.setCheckLimit(false, null);}} />
-                            <CheckBoxLabel3P>{getCheckboxes('checkboxprova3').textValue}</CheckBoxLabel3P>
+                            {/*<CheckBoxLabel3P onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>{getCheckboxes('checkboxprova3').textValue}</CheckBoxLabel3P>*/}
                         </label>
 
                     </imp.checkboxes>

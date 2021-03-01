@@ -35,7 +35,8 @@ const checkboxes = Immutable.Record({
     transitionXEnable1: false,
 
     checkAnimationTransition: false,
-    setFlagAnimTransitionCheckLimit: 3
+    setFlagAnimTransitionCheckLimit: 1,
+    toEnableAnimationP_2: true
 
 })
 

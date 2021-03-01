@@ -15,7 +15,7 @@ function checkboxes({
     displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
     toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
     transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
-    checkAnimationTransition, setFlagAnimTransitionCheckLimit,
+    checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
@@ -33,7 +33,7 @@ function checkboxes({
                displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
                toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
                transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
-               checkAnimationTransition, setFlagAnimTransitionCheckLimit,
+               checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2,
                duration, timing, delay, iterations, direction, fillMode, playState
             )
 
@@ -100,7 +100,8 @@ function checkboxes({
            const variableArray = [ checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
                opacityCheck, timeAnimation, typeAnimFillMode, colorLine, displayCheck, textDecoration, textDecorationThickness,
                textDecorationColor, transitionTimingFunction, toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
-               transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, checkAnimationTransition, setFlagAnimTransitionCheckLimit
+               transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, checkAnimationTransition, setFlagAnimTransitionCheckLimit,
+               toEnableAnimationP_2
            ] // NEW
 
            checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
@@ -673,6 +674,7 @@ export function setCheckLimit (value, flag) {
         }
     }
 
+    console.log(flag, "FLAG")
     if (flag != null) {
 
         switch (flag) {
@@ -719,7 +721,8 @@ function checkValue (variableArray, rest) {
     const tmp = ["checkLimit", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
         "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine", "displayCheck", "textDecoration", "textDecorationThickness",
         "textDecorationColor", "transitionTimingFunction", "toEnableAnimationP", "durationAnimationP", "duration1AnimationP", "fillModeAnimationP",
-        "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1", "checkAnimationTransition", "setFlagAnimTransitionCheckLimit"]
+        "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1", "checkAnimationTransition", "setFlagAnimTransitionCheckLimit",
+        "toEnableAnimationP_2"]
 
     /*
         0: checkLimit,
@@ -837,7 +840,7 @@ export function getPCheck (Check) {
 
             // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
 
-            if (Check.checkAnimationTransition) {
+            if (Check.toEnableAnimationP) {
 
                 let tmp = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
 
@@ -850,6 +853,7 @@ export function getPCheck (Check) {
                 switch (Check.setFlagAnimTransitionCheckLimit) {
 
                     case 1:
+                        console.log(Check.checkAnimationTransition)
 
                         CheckLabel = styled.p`
                 
@@ -857,7 +861,7 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            animation: ${(Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
               
                             @keyframes icon {
                                       0%,100%{
@@ -869,7 +873,7 @@ export function getPCheck (Check) {
                                       50% {
                                              transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
                                              transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
                                              transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
                                       }
                             } 
@@ -886,7 +890,7 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(!Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            animation: ${(Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
               
                             @keyframes icon {
                                       0%,100%{
@@ -963,7 +967,7 @@ export function getPCheck (Check) {
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
                           
-                            animation: ${(Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
                           
                             @keyframes icon {
                                       0%,100%{
@@ -992,7 +996,7 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1021,7 +1025,7 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1357,7 +1361,272 @@ export function getPCheck (Check) {
 
         case 3:
 
-            tmp = keyframes`  
+            /*            let tmp = keyframes`
+              0% {
+                opacity: 0;
+                color: ${Check.colorStart};
+              }
+
+              25% {
+                opacity: ${Check.opacityNotCheck/4};
+                color: ${Check.colorStart};
+              }
+
+              50% {
+                opacity: ${Check.opacityNotCheck/2};
+                color: ${Check.colorStart};
+              }
+
+              75% {
+                opacity: ${Check.opacityNotCheck/4 + Check.opacityNotCheck/2};
+                color: ${Check.colorStart};
+              }
+
+              100% {
+                 opacity: ${Check.opacityNotCheck};
+                 color: ${Check.colorStart};
+              }
+          `;
+
+    let tmp1 = keyframes`
+              0% {
+                opacity: 0;
+                color: ${Check.colorStart};
+              }
+
+              25% {
+                opacity: ${Check.opacityCheck/4};
+                color: ${Check.colorStart};
+              }
+
+              50% {
+                opacity: ${Check.opacityCheck/2};
+                color: ${Check.colorEnd};
+              }
+
+              75% {
+                opacity: ${Check.opacityCheck/4 + Check.opacityCheck/2};
+                color: ${Check.colorEnd};
+              }
+
+              100% {
+                opacity: ${Check.opacityCheck};
+                color: ${Check.colorEnd};
+              }
+          `;*/
+
+            // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
+
+            if (Check.checkAnimationTransition) {
+
+                let tmp = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
+
+                /* GESTIONE SE SI VUOLE L'ANIM CON:
+                    1: CHECKLIMIT TRUE
+                    2: CHECKLIMIT FALSE
+                    3: ENTRAMBI
+                 */
+
+                switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                    case 1:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+              
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 2:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(!Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+              
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 3:
+
+                        console.log(Check.checkLimit)
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+                }
+
+            } else {
+
+                console.log('2')
+
+                /* GESTIONE SE SI VUOLE L'ANIM CON:
+                    1: CHECKLIMIT TRUE
+                    2: CHECKLIMIT FALSE
+                    3: ENTRAMBI
+                 */
+
+                let tmp = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
+
+
+                switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                    case 1:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                          
+                            animation: ${(Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 2:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 3:
+
+                        CheckLabel = styled.p`
+                      
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                        `;
+
+                        break;
+                }
+
+            }
+
+
+/*            tmp = keyframes`
                           from, to {
                             opacity: ${Check.opacityNotCheck};
                             color: ${Check.colorStart};
@@ -1385,7 +1654,7 @@ export function getPCheck (Check) {
                 }  
                              
             `;
-
+*/
             break;
 
         default:
@@ -1559,7 +1828,8 @@ checkboxes.propType = {
     transitionXEnable1: PropTypes.bool,
 
     checkAnimationTransition: PropTypes.bool,
-    setFlagAnimTransitionCheckLimit: PropTypes.number
+    setFlagAnimTransitionCheckLimit: PropTypes.number,
+    toEnableAnimationP_2: PropTypes.bool
 
 }
 

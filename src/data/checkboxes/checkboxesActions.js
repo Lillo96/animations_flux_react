@@ -8,7 +8,7 @@ const checkboxesActions = {
         displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
         toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
         transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, checkAnimationTransition,
-        setFlagAnimTransitionCheckLimit,
+        setFlagAnimTransitionCheckLimit, toEnableAnimationP_2,
         duration, timing, delay, iterations, direction, fillMode, playState) {
 
          animationDispatcher.dispatch ({
@@ -51,7 +51,8 @@ const checkboxesActions = {
                 transitionXEnable1: transitionXEnable1,
 
                 checkAnimationTransition: checkAnimationTransition,
-                setFlagAnimTransitionCheckLimit: setFlagAnimTransitionCheckLimit
+                setFlagAnimTransitionCheckLimit: setFlagAnimTransitionCheckLimit,
+                toEnableAnimationP_2: toEnableAnimationP_2
         })
     },
     changeValue (id, key, value) {
