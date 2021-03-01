@@ -202,10 +202,10 @@ function SimpleSelect(props) {
         case '1':
 
             const CheckBoxLabelP = getPCheck(getCheckboxes('checkbox1'))
-            const CheckBoxLabelIMG = getIMGCheck(getCheckboxes('checkbox1'))
-            const CheckBoxInput = getInputCheck(getCheckboxes('checkbox1'))
-            const CheckBoxLabelP1 = getPCheck(getCheckboxes('checkbox1_1'))
-            const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_2'))
+           // const CheckBoxLabelIMG = getIMGCheck(getCheckboxes('checkbox1'))
+           // const CheckBoxInput = getInputCheck(getCheckboxes('checkbox1'))
+           // const CheckBoxLabelP1 = getPCheck(getCheckboxes('checkbox1_1'))
+           // const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_2'))
 
 
                     return (
@@ -254,12 +254,13 @@ function SimpleSelect(props) {
 
                                 {/* CHECK 1 */}
 
-                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
+                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="yellow" opacityNotCheck='1'
                                                 opacityCheck='2' duration='2s' fillMode="both" {...props}>
 
-                                    <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(false, null) }}/>
+                                    <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
                                     <label>
-                                        <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP>
+                                        {/* <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP> */}
+                                        <CheckBoxLabelP>MARCO</CheckBoxLabelP>
                                     </label>
 
                                 </imp.checkboxes>
@@ -345,11 +346,10 @@ function SimpleSelect(props) {
 
                             </FormControl>
 
-                            <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true }
-                                            colorStart={ColorStart1} colorEnd={ColorEnd1} colorLine={ColorLine} {...props}>
+                            <imp.checkboxes id='checkboxprova2' typeInput={2} {...props}>
 
+                                <input type="checkbox" onClick={() => { checkbox2.setCheckLimit(true, null) }}/>
                                 <label >
-                                    <input type="checkbox" onClick={() => { checkbox2.setCheckLimit(true, null) }}/>
                                     <CheckBoxLabel2P>Lillo</CheckBoxLabel2P>
                                 </label>
 

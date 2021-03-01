@@ -839,8 +839,6 @@ export function getPCheck (Check) {
 
             if (Check.checkAnimationTransition) {
 
-                console.log('1')
-
                 let tmp = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
 
                 /* GESTIONE SE SI VUOLE L'ANIM CON:
@@ -856,8 +854,8 @@ export function getPCheck (Check) {
                         CheckLabel = styled.p`
                 
                             display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
-                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
                             animation: ${(Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
               
@@ -885,8 +883,8 @@ export function getPCheck (Check) {
                         CheckLabel = styled.p`
                 
                             display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
-                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
                             animation: ${(!Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
               
@@ -911,11 +909,13 @@ export function getPCheck (Check) {
 
                     case 3:
 
+                        console.log(Check.checkLimit)
+
                         CheckLabel = styled.p`
                 
                             display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
-                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
                             animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};
                           
@@ -949,6 +949,9 @@ export function getPCheck (Check) {
                     3: ENTRAMBI
                  */
 
+                let tmp = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
+
+
                 switch (Check.setFlagAnimTransitionCheckLimit) {
 
                     case 1:
@@ -956,20 +959,21 @@ export function getPCheck (Check) {
                         CheckLabel = styled.p`
                 
                             display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
-                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
                           
                             animation: ${(Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
                           
                             @keyframes icon {
                                       0%,100%{
-                                             transform: ${Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
                                              transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
                                              transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
                                              transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
                                       }
                                       50% {
-                                             transform:${Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
                                              transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
                                              transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
                                              transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
@@ -985,22 +989,22 @@ export function getPCheck (Check) {
                         CheckLabel = styled.p`
                 
                             display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
-                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
                             animation: ${(!Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
                           
                             @keyframes icon {
                                       0%,100%{
-                                             transform: ${Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
                                              transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
                                              transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
                                              transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
                                       }
                                       50% {
-                                             transform:${Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
                                              transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
                                              transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
                                       }
                             } 
@@ -1012,24 +1016,24 @@ export function getPCheck (Check) {
                     case 3:
 
                         CheckLabel = styled.p`
-                
+                      
                             display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityNotCheck : Check.checkLimit === null ? '' : Check.opacityCheck};
-                            color: ${Check.checkLimit ? Check.colorStart : Check.checkLimit === null ? '' : Check.colorEnd};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
                             animation: ${(Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
                           
                             @keyframes icon {
                                       0%,100%{
-                                             transform: ${Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
                                              transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
                                              transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
                                              transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
                                       }
                                       50% {
-                                             transform:${Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
                                              transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
                                              transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
                                       }
                             } 
@@ -1045,7 +1049,276 @@ export function getPCheck (Check) {
 
         case 2:
 
-            tmp = keyframes`  
+            // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
+
+            if (Check.checkAnimationTransition) {
+
+                let tmpT = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
+
+                /* GESTIONE SE SI VUOLE L'ANIM CON:
+                    1: CHECKLIMIT TRUE
+                    2: CHECKLIMIT FALSE
+                    3: ENTRAMBI
+                 */
+
+                switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                    case 1:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+              
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                   
+                            @keyframes line { 
+                              
+                                  from, to {                           
+                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                        text-decoration: ${Check.textDecoration};
+                                        text-decoration-thickness: ${Check.textDecorationThickness};
+                                        text-decoration-color: ${Check.textDecorationColor};
+                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                  }
+                            }
+                            
+                        `;
+
+                        break;
+
+                    case 2:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(!Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`};
+              
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            }
+                            
+                            @keyframes line {
+                                  from, to {                           
+                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                        text-decoration: ${Check.textDecoration};
+                                        text-decoration-thickness: ${Check.textDecorationThickness};
+                                        text-decoration-color: ${Check.textDecorationColor};
+                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                  }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 3:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';'}
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            }
+                            
+                            @keyframes line {
+                                  from, to {                           
+                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                        text-decoration: ${Check.textDecoration};
+                                        text-decoration-thickness: ${Check.textDecorationThickness};
+                                        text-decoration-color: ${Check.textDecorationColor};
+                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                  }
+                            }  
+                   
+                        `;
+
+                        break;
+                }
+
+            } else {
+
+                /* GESTIONE SE SI VUOLE L'ANIM CON:
+                    1: CHECKLIMIT TRUE
+                    2: CHECKLIMIT FALSE
+                    3: ENTRAMBI
+                 */
+
+                let tmpT = ( (!Check.transitionYEnable && !Check.transitionYEnable1) && (!Check.transitionXEnable && !Check.transitionXEnable1)) ? true : false
+
+                switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                    case 1:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                          
+                            animation: ${(Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            } 
+                            
+                            @keyframes line { 
+                                  from, to {                           
+                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                        text-decoration: ${Check.textDecoration};
+                                        text-decoration-thickness: ${Check.textDecorationThickness};
+                                        text-decoration-color: ${Check.textDecorationColor};
+                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                  }
+                            }
+                   
+                        `;
+
+                        break;
+
+                    case 2:
+
+                        CheckLabel = styled.p`
+                
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` };
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            }
+                            
+                            @keyframes line { 
+                                  from, to {                           
+                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                        text-decoration: ${Check.textDecoration};
+                                        text-decoration-thickness: ${Check.textDecorationThickness};
+                                        text-decoration-color: ${Check.textDecorationColor};
+                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                  }
+                            } 
+                   
+                        `;
+
+                        break;
+
+                    case 3:
+
+                        console.log('OKOKOKOK')
+
+                        CheckLabel = styled.p`
+                      
+                            display: ${Check.displayCheck};
+                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                          
+                            animation: ${(Check.toEnableAnimationP) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';' }` : ''};
+                          
+                            @keyframes icon {
+                                      0%,100%{
+                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                      }
+                                      50% {
+                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                      }
+                            }
+                            
+                            @keyframes line { 
+                                  from, to {                           
+                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                        text-decoration: ${Check.textDecoration};
+                                        text-decoration-thickness: ${Check.textDecorationThickness};
+                                        text-decoration-color: ${Check.textDecorationColor};
+                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                  }
+                            }  
+                   
+                        `;
+
+                        break;
+                }
+
+            }
+
+
+/*            tmp = keyframes`
                       
                       from, to {                           
                             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -1076,9 +1349,9 @@ export function getPCheck (Check) {
                 ${Check.checkLimit ?
                 `animation: ${tmp1} ${duration} ${fillMode};` :
                 Check.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
-            }  
+                 }  
                              
-            `;
+            `;*/
 
             break;
 

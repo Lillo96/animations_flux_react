@@ -5,7 +5,7 @@ const checkboxes = Immutable.Record({
     id: '',
     type: 'checkboxes',
     typeInput: 1,
-    checkLimit: true,
+    checkLimit: null,
     style: null,
     animationCSS: '',
     textInput: '',
@@ -31,11 +31,12 @@ const checkboxes = Immutable.Record({
 
     transitionYEnable: false,
     transitionYEnable1: false,
-    transitionXEnable: false,
+    transitionXEnable: true,
     transitionXEnable1: false,
 
     checkAnimationTransition: false,
-    setFlagAnimTransitionCheckLimit: 1
+    setFlagAnimTransitionCheckLimit: 3
+
 })
 
 export default checkboxes
