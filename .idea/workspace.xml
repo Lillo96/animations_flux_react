@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4130bfb-4d06-4066-810c-d720df1820b4" name="Default Changelist" comment="new function import css style (UP with keyframes)">
+    <list default="true" id="c4130bfb-4d06-4066-810c-d720df1820b4" name="Default Changelist" comment="Up and fix post call">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/checkboxes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/checkboxes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/AppContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AppContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/animation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/cards/cardsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/cards/cardsActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/cards/cardsObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/cards/cardsObject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/styleObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/styleObject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsActionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsObject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/tabs/tabsStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/items/itemsStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/imp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/checkboxes/checkboxesObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/checkboxes/checkboxesObject.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +23,7 @@
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="marcolilliu &lt;mash96@hotmail.it&gt;" />
+        <option value="ma" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,6 +67,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -213,105 +202,21 @@
       <workItem from="1613464370020" duration="1375000" />
       <workItem from="1613467761375" duration="488000" />
       <workItem from="1613571228047" duration="9976000" />
-      <workItem from="1613635069628" duration="4864000" />
-    </task>
-    <task id="LOCAL-00004" summary=".">
-      <created>1605179582727</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1605179582727</updated>
-    </task>
-    <task id="LOCAL-00005" summary=".">
-      <created>1605190879920</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1605190879920</updated>
-    </task>
-    <task id="LOCAL-00006" summary="initial state &quot;checkboxes&quot;">
-      <created>1605607646459</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1605607646459</updated>
-    </task>
-    <task id="LOCAL-00007" summary="update state &quot;checkboxes&quot;, work with check value change">
-      <created>1605627771471</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1605627771471</updated>
-    </task>
-    <task id="LOCAL-00008" summary="update state &quot;checkboxes&quot;, work with check value change end insert rule">
-      <created>1605693871863</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1605693871863</updated>
-    </task>
-    <task id="LOCAL-00009" summary="update task &quot;checkboxes&quot;, work with insert rule">
-      <created>1605719567571</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1605719567571</updated>
-    </task>
-    <task id="LOCAL-00010" summary="update task &quot;checkboxes&quot;, work with insert rule and start idea about keyframes">
-      <created>1605781464586</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1605781464586</updated>
-    </task>
-    <task id="LOCAL-00011" summary="update task &quot;checkboxes&quot;, work with insert and get keyframes">
-      <created>1605869055554</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1605869055554</updated>
-    </task>
-    <task id="LOCAL-00012" summary="update task &quot;checkboxes&quot;">
-      <created>1605894519696</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1605894519697</updated>
-    </task>
-    <task id="LOCAL-00013" summary="open task fix bug">
-      <created>1606387574846</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1606387574846</updated>
-    </task>
-    <task id="LOCAL-00014" summary="up fix problem with checkboxes task">
-      <created>1606991360904</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1606991360904</updated>
-    </task>
-    <task id="LOCAL-00015" summary="new type checkbox">
-      <created>1607081416150</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1607081416150</updated>
-    </task>
-    <task id="LOCAL-00016" summary="add Demo">
-      <created>1607103302370</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1607103302371</updated>
-    </task>
-    <task id="LOCAL-00017" summary="new function import css style">
-      <created>1607361151467</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1607361151467</updated>
+      <workItem from="1613635069628" duration="6092000" />
+      <workItem from="1613658720495" duration="6787000" />
+      <workItem from="1613749169198" duration="1868000" />
+      <workItem from="1613812270566" duration="1300000" />
+      <workItem from="1613983146812" duration="5047000" />
+      <workItem from="1613999757691" duration="13420000" />
+      <workItem from="1614067362039" duration="8620000" />
+      <workItem from="1614087412382" duration="16587000" />
+      <workItem from="1614152734383" duration="11343000" />
+      <workItem from="1614173320148" duration="8078000" />
+      <workItem from="1614239279127" duration="8029000" />
+      <workItem from="1614261405697" duration="11398000" />
+      <workItem from="1614327227034" duration="9474000" />
+      <workItem from="1614346948409" duration="5114000" />
+      <workItem from="1614586493610" duration="8197000" />
     </task>
     <task id="LOCAL-00018" summary="new function import css style (UP with keyframes)">
       <created>1607368861141</created>
@@ -558,7 +463,105 @@
       <option name="project" value="LOCAL" />
       <updated>1611225508193</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Up and fix post call">
+      <created>1613640961471</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1613640961471</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Up and fix post call">
+      <created>1613668369673</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1613668369673</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Card 1">
+      <created>1613989318788</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1613989318788</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Up and fix post call">
+      <created>1614077329080</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1614077329081</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Up and fix post call">
+      <created>1614103524758</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1614103524759</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Up and fix post call">
+      <created>1614107189842</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1614107189842</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Up and fix post call">
+      <created>1614165659847</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1614165659848</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Up and fix post call">
+      <created>1614165720899</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1614165720899</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Up and fix post call">
+      <created>1614186310499</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1614186310499</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Up and fix post call">
+      <created>1614250428884</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1614250428884</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Up and fix post call">
+      <created>1614269630943</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1614269630944</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Up and fix post call">
+      <created>1614276059431</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1614276059431</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Up and fix post call">
+      <created>1614338105116</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1614338105116</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Up and fix post call">
+      <created>1614354028894</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1614354028895</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,8 +569,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update cards and start items" />
-    <MESSAGE value="up task about cards (first card rotate)" />
     <MESSAGE value="start second cards task" />
     <MESSAGE value="start card 3" />
     <MESSAGE value="fix card 3" />
@@ -591,69 +592,70 @@
     <MESSAGE value="up and fix Checkboxes" />
     <MESSAGE value="commit notturno" />
     <MESSAGE value="up card 2 e 3 choose" />
-    <option name="LAST_COMMIT_MESSAGE" value="up card 2 e 3 choose" />
+    <MESSAGE value="Card 1" />
+    <MESSAGE value="Up and fix post call" />
+    <option name="LAST_COMMIT_MESSAGE" value="Up and fix post call" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-739" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605281828870">
-      <screen x="-1920" y="-42" width="1920" height="1080" />
-    </state>
-    <state x="-739" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1605281828870" />
-    <state x="1020" y="175" key="CommitChangelistDialog2" timestamp="1611225507848">
+    <state x="550" y="56" key="CommitChangelistDialog2" timestamp="1614598222784">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="-1488" y="-27" key="CommitChangelistDialog2/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963607132" />
     <state x="285" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1611014199268" />
-    <state x="1020" y="175" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1611225507848" />
-    <state x="-1540" y="20" key="CommitChangelistDialog2/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1605627771229" />
+    <state x="550" y="56" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1614598222784" />
     <state x="815" y="123" key="CommitChangelistDialog2/0.25.1920.992@0.25.1920.992" timestamp="1610405548462" />
-    <state width="1899" height="193" key="GridCell.Tab.0.bottom" timestamp="1613602995180">
+    <state width="1034" height="189" key="GridCell.Tab.0.bottom" timestamp="1614354055662">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1899" height="197" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644625" />
-    <state width="1419" height="155" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1611270637535" />
+    <state width="1419" height="153" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1613758263650" />
     <state width="933" height="143" key="GridCell.Tab.0.bottom/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722228" />
-    <state width="1899" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995180" />
+    <state width="1034" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1614354055662" />
     <state width="691" height="375" key="GridCell.Tab.0.bottom/0.23.1440.820@0.23.1440.820" timestamp="1606413894146" />
     <state width="1071" height="105" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787366" />
     <state width="1899" height="143" key="GridCell.Tab.0.bottom/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796736" />
+    <state width="1419" height="131" key="GridCell.Tab.0.bottom/0.25.1440.816@0.25.1440.816" timestamp="1613814975787" />
     <state width="1899" height="195" key="GridCell.Tab.0.bottom/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228453" />
-    <state width="905" height="193" key="GridCell.Tab.0.bottom/0.25.1920.996@0.25.1920.996" timestamp="1612793088982" />
-    <state width="1899" height="193" key="GridCell.Tab.0.center" timestamp="1613602995179">
+    <state width="1204" height="165" key="GridCell.Tab.0.bottom/0.25.1920.996@0.25.1920.996" timestamp="1614194275089" />
+    <state width="1034" height="189" key="GridCell.Tab.0.center" timestamp="1614354055661">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1899" height="197" key="GridCell.Tab.0.center/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644623" />
-    <state width="1419" height="155" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1611270637528" />
+    <state width="1419" height="153" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1613758263649" />
     <state width="933" height="143" key="GridCell.Tab.0.center/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722227" />
-    <state width="1899" height="193" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995179" />
+    <state width="1034" height="189" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1614354055661" />
     <state width="691" height="375" key="GridCell.Tab.0.center/0.23.1440.820@0.23.1440.820" timestamp="1606413894144" />
     <state width="1071" height="105" key="GridCell.Tab.0.center/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787365" />
     <state width="1899" height="143" key="GridCell.Tab.0.center/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796735" />
+    <state width="1419" height="131" key="GridCell.Tab.0.center/0.25.1440.816@0.25.1440.816" timestamp="1613814975786" />
     <state width="1899" height="195" key="GridCell.Tab.0.center/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228451" />
-    <state width="905" height="193" key="GridCell.Tab.0.center/0.25.1920.996@0.25.1920.996" timestamp="1612793088980" />
-    <state width="1899" height="193" key="GridCell.Tab.0.left" timestamp="1613602995178">
+    <state width="1204" height="165" key="GridCell.Tab.0.center/0.25.1920.996@0.25.1920.996" timestamp="1614194275089" />
+    <state width="1034" height="189" key="GridCell.Tab.0.left" timestamp="1614354055660">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1899" height="197" key="GridCell.Tab.0.left/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644622" />
-    <state width="1419" height="155" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1611270637526" />
+    <state width="1419" height="153" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1613758263649" />
     <state width="933" height="143" key="GridCell.Tab.0.left/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722227" />
-    <state width="1899" height="193" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995178" />
+    <state width="1034" height="189" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1614354055660" />
     <state width="691" height="375" key="GridCell.Tab.0.left/0.23.1440.820@0.23.1440.820" timestamp="1606413894144" />
     <state width="1071" height="105" key="GridCell.Tab.0.left/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787364" />
     <state width="1899" height="143" key="GridCell.Tab.0.left/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796735" />
+    <state width="1419" height="131" key="GridCell.Tab.0.left/0.25.1440.816@0.25.1440.816" timestamp="1613814975785" />
     <state width="1899" height="195" key="GridCell.Tab.0.left/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228451" />
-    <state width="905" height="193" key="GridCell.Tab.0.left/0.25.1920.996@0.25.1920.996" timestamp="1612793088979" />
-    <state width="1899" height="193" key="GridCell.Tab.0.right" timestamp="1613602995179">
+    <state width="1204" height="165" key="GridCell.Tab.0.left/0.25.1920.996@0.25.1920.996" timestamp="1614194275088" />
+    <state width="1034" height="189" key="GridCell.Tab.0.right" timestamp="1614354055661">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1899" height="197" key="GridCell.Tab.0.right/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610963644624" />
-    <state width="1419" height="155" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1611270637531" />
+    <state width="1419" height="153" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1613758263650" />
     <state width="933" height="143" key="GridCell.Tab.0.right/0.0.1920.1023@0.0.1920.1023" timestamp="1609974722228" />
-    <state width="1899" height="193" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1613602995179" />
+    <state width="1034" height="189" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1614354055661" />
     <state width="691" height="375" key="GridCell.Tab.0.right/0.23.1440.820@0.23.1440.820" timestamp="1606413894145" />
     <state width="1071" height="105" key="GridCell.Tab.0.right/0.23.1440.877/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1606384787365" />
     <state width="1899" height="143" key="GridCell.Tab.0.right/0.23.1920.1000@0.23.1920.1000" timestamp="1610058796736" />
+    <state width="1419" height="131" key="GridCell.Tab.0.right/0.25.1440.816@0.25.1440.816" timestamp="1613814975786" />
     <state width="1899" height="195" key="GridCell.Tab.0.right/0.25.1440.875/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1611095228452" />
-    <state width="905" height="193" key="GridCell.Tab.0.right/0.25.1920.996@0.25.1920.996" timestamp="1612793088981" />
+    <state width="1204" height="165" key="GridCell.Tab.0.right/0.25.1920.996@0.25.1920.996" timestamp="1614194275089" />
     <state width="691" height="375" key="GridCell.Tab.1.bottom" timestamp="1606413894148">
       <screen x="0" y="23" width="1440" height="820" />
     </state>
@@ -718,21 +720,21 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="959" y="255" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610567731215" />
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1610392334194">
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1614598225555">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="-1360" y="238" key="Vcs.Push.Dialog.v2/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1607452319064" />
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1610392334194" />
-    <state x="1064" y="162" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1613638828334">
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1614598225555" />
+    <state x="1064" y="162" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1614589399222">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="1064" y="162" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1613638828334" />
-    <state x="1032" y="150" width="667" height="486" key="find.popup" timestamp="1611305962726">
+    <state x="1064" y="162" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1614589399222" />
+    <state x="1032" y="150" width="667" height="486" key="find.popup" timestamp="1614249441137">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="-947" y="180" width="667" height="486" key="find.popup/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1610583034685" />
     <state x="633" y="121" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1609087048127" />
-    <state x="1032" y="150" width="667" height="486" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1611305962726" />
+    <state x="1032" y="150" width="667" height="486" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1614249441137" />
     <state x="1113" y="438" key="git4idea.ui.GitResetDialog" timestamp="1610567629089">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -742,10 +744,10 @@
     </state>
     <state x="-1295" y="234" width="670" height="675" key="run.anything.popup/0.0.1440.900/-1920.-42.1920.1080@-1920.-42.1920.1080" timestamp="1607364927917" />
     <state x="625" y="276" width="670" height="675" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1610290884312" />
-    <state x="625" y="241" width="894" height="677" key="search.everywhere.popup" timestamp="1610276109607">
+    <state x="625" y="241" width="894" height="677" key="search.everywhere.popup" timestamp="1614273342590">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="469" y="201" width="670" height="564" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1609088738176" />
-    <state x="625" y="241" width="894" height="677" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1610276109607" />
+    <state x="625" y="241" width="894" height="677" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1614273342590" />
   </component>
 </project>
