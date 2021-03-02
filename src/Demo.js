@@ -207,7 +207,6 @@ function SimpleSelect(props) {
            // const CheckBoxLabelP1 = getPCheck(getCheckboxes('checkbox1_1'))
            // const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_2'))
 
-
                     return (
                         <div>
 
@@ -363,8 +362,6 @@ function SimpleSelect(props) {
 
             const CheckBoxLabel3P = getPCheck(getCheckboxes('checkboxprova3'))
 
-            console.log(getCheckboxes('checkboxprova3'))
-
             return (
                 <div>
 
@@ -395,7 +392,7 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    <imp.checkboxes id='checkboxprova3' typeInput={3} textInput='Checkbox off' toEnableAnimationP={true} {...props}>
+                    <imp.checkboxes id='checkboxprova3' typeInput={3} textInput='Checkbox off' toEnableAnimationP={false} setFlagAnimTransitionCheckLimit={2} {...props}>
 
                         <input type="checkbox" onClick={() => { checkbox3.setTextValue(true, 'Checkbox on'); checkbox3.setCheckLimit(true, null); }} />
                         <label>

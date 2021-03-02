@@ -731,7 +731,6 @@ function checkValue (variableArray, rest) {
         "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1",
         "checkAnimationTransition", "setFlagAnimTransitionCheckLimit", "toEnableAnimationP_2"]
 
-
     /*
         0: "checkLimit",
         1: "typeInput",
@@ -778,10 +777,10 @@ function checkValue (variableArray, rest) {
     }
     */
 
-    for (let i = 4; i < tmp.length; i++) {
+    for (let i = 5; i < tmp.length; i++) {
 
         if (variableArray[i] != rest.get(tmp[i])) {
-            if (i != 0) {
+            if (i != 25) {
                 checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
             }
         }
@@ -1480,6 +1479,7 @@ export function getPCheck (Check) {
 
                     case 2:
 
+                        console.log('2', Check.checkLimit, Check.checkAnimationTransition)
                         CheckLabel = styled.p`
                 
                             display: ${Check.displayCheck};
