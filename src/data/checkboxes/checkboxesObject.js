@@ -24,7 +24,7 @@ const checkboxes = Immutable.Record({
     textDecorationColor: '#363839',
     transitionTimingFunction: '1s',
 
-    toEnableAnimationP: true,
+    toEnableAnimationP: false,
     durationAnimationP: '1.5s',
     duration1AnimationP: 'infinite',
     fillModeAnimationP: 'forwards',

@@ -254,12 +254,12 @@ function SimpleSelect(props) {
 
                                 {/* CHECK 1 */}
 
-                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="yellow" opacityNotCheck='1'
+                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
                                                 opacityCheck='2' duration='2s' fillMode="both" {...props}>
 
                                     <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
                                     <label>
-                                        <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, true)}>MARCO</CheckBoxLabelP>
+                                        <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP>
                                         {/* <CheckBoxLabelP>MARCO</CheckBoxLabelP> */}
                                     </label>
 
@@ -350,7 +350,7 @@ function SimpleSelect(props) {
 
                                 <input type="checkbox" onClick={() => { checkbox2.setCheckLimit(true, null) }}/>
                                 <label >
-                                    <CheckBoxLabel2P>Lillo</CheckBoxLabel2P>
+                                    <CheckBoxLabel2P onMouseEnter={() => checkbox2.setCheckLimit(null, true)} onMouseLeave={() => checkbox2.setCheckLimit(null, false)}>Lillo</CheckBoxLabel2P>
                                 </label>
 
                             </imp.checkboxes>
@@ -362,6 +362,8 @@ function SimpleSelect(props) {
         case '3':
 
             const CheckBoxLabel3P = getPCheck(getCheckboxes('checkboxprova3'))
+
+            console.log(getCheckboxes('checkboxprova3'))
 
             return (
                 <div>
@@ -393,13 +395,13 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    <imp.checkboxes id='checkboxprova3' typeInput={3} checkLimit={ true } textInput='Checkbox off'
-                                    colorStart={ColorStart2} colorEnd={ColorEnd2} opacityNotCheck='1'
-                                    opacityCheck='2' duration='2s' fillMode="both" {...props}>
+                    <imp.checkboxes id='checkboxprova3' typeInput={3} textInput='Checkbox off' toEnableAnimationP={true} {...props}>
 
+                        <input type="checkbox" onClick={() => { checkbox3.setTextValue(true, 'Checkbox on'); checkbox3.setCheckLimit(true, null); }} />
                         <label>
-                            <input type="checkbox" onClick={() => { checkbox3.setTextValue(true, 'Checkbox on'); checkbox3.setCheckLimit(false, null);}} />
-                            {/*<CheckBoxLabel3P onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>{getCheckboxes('checkboxprova3').textValue}</CheckBoxLabel3P>*/}
+                            <CheckBoxLabel3P onMouseEnter={() => checkbox3.setCheckLimit(null, true)} onMouseLeave={() => checkbox3.setCheckLimit(null, false)}>
+                                {getCheckboxes('checkboxprova3').textValue}
+                            </CheckBoxLabel3P>
                         </label>
 
                     </imp.checkboxes>
