@@ -56,10 +56,11 @@ import {
     getDivItemsHead_p,
     getItemsBody,
     getItemsBodyContent,
-    getItemsBodyContent_icon,
+    getItemsBodyContent_icon, getItemsBodySpan,
     getTilesWrap, getTilesWrap_button,
     getTilesWrap_h2, getTilesWrap_h3,
-    getTilesWrap_li, getTilesWrap_p
+    getTilesWrap_li, getTilesWrap_p,
+    setCheckLimit
 } from "./components/items";
 import img from '../src/paper.jpg'
 
@@ -177,6 +178,8 @@ function SimpleSelect(props) {
     const card5 = getCards('cardsprova03_01')
     const card5_1 = getCards('cardsprova03_02')
     const card5_2 = getCards('cardsprova03_03')
+
+    const item1 = getItems('tabsprova')
 
     const handlePress = (event) => {
         console.log('ok')
@@ -878,6 +881,7 @@ function SimpleSelect(props) {
             const ItemsBody = getItemsBody(getItems('tabsprova'))
             const ItemsBodyContent = getItemsBodyContent(getItems('tabsprova'))
             const ItemsBodyContentIcon = getItemsBodyContent_icon(getItems('tabsprova'))
+            const ItemBodySpan = getItemsBodySpan(getItems('tabsprova'))
 
             return (
               <div>
@@ -908,35 +912,45 @@ function SimpleSelect(props) {
 
                   </FormControl>
 
-                <imp.items id='tabsprova' {...props}>
-                      <ContainerItems>
-                          <DivItems>
-                              <DivItemsHead>
-                                  <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
-                                  <DivItemsHead_hr></DivItemsHead_hr>
-                              </DivItemsHead>
+                    <imp.items id='tabsprova' {...props}>
 
-                              <ItemsBody>
-                                  <ItemsBodyContent>
-                                      <span>Web Usabilty Testing</span>
-                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                  </ItemsBodyContent>
-                                  <ItemsBodyContent>
-                                      <span>Design of Everyday Things</span>
-                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                  </ItemsBodyContent>
-                                  <ItemsBodyContent>
-                                      <span>Practical Empathy: For Collaboration & Creativity in Your Work</span>
-                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                  </ItemsBodyContent>
-                                  <ItemsBodyContent>
-                                      <span>About Face: The Essentials of Interaction Design</span>
-                                      <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                  </ItemsBodyContent>
-                              </ItemsBody>
-                          </DivItems>
-                      </ContainerItems>
-                  </imp.items>
+                          {/*<ContainerItems>*/}
+                              <DivItems>
+                                  <DivItemsHead>
+                                      <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
+                                      <DivItemsHead_hr></DivItemsHead_hr>
+                                  </DivItemsHead>
+
+                                  <ItemsBody>
+                                      {/* ITEM CON TRANSIZIONE MOUSE */}
+{/*                                      <ItemsBodyContent>
+                                          <ItemBodySpan onMouseEnter={() => item1.setCheckLimitItems(true, 'transitionMouse')} onMouseLeave={() => item1.setCheckLimitItems(false, 'transitionMouse')}>
+                                              Web Usabilty Testing
+                                          </ItemBodySpan>
+                                          <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                      </ItemsBodyContent>*/}
+
+                                      {/* ITEM CON CLICK CON MOUSE */}
+{/*                                      <ItemsBodyContent>
+                                          <ItemBodySpan onClick={() => item1.setCheckLimitItems(true, 'clickMouse')}>
+                                              Design of Everyday Things
+                                          </ItemBodySpan>
+                                          <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                      </ItemsBodyContent>*/}
+
+                                      {/* ITEM CON PRESSIONE TASTO */}
+                                      <ItemsBodyContent>
+                                          <ItemBodySpan tabIndex="0" onKeyDown={(e) => {item1.setCheckLimitItems(e, 'keyDown')}}>
+                                              Practical Empathy: For Collaboration & Creativity in Your Work
+                                          </ItemBodySpan>
+                                          <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
+                                      </ItemsBodyContent>
+
+                                  </ItemsBody>
+                              </DivItems>
+                          {/*</ContainerItems>*/}
+
+                      </imp.items>
               </div>
             );
             break;

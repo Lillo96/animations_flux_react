@@ -4,6 +4,8 @@ import itemsActions from "../data/items/itemsActions";
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css} from "styled-components"
+import checkboxesActions from "../data/checkboxes/checkboxesActions";
+import cardsActions from "../data/cards/cardsActions";
 
 function items({
                   id, checkLimit, typeInput, animationCSS, textInput, textValue, borderDim_ContItem, borderType_ContItem,
@@ -22,6 +24,8 @@ function items({
                }) {
 
     let animation
+
+    // NO
     let getAnimationCSS, getAnimationCSS_1
 
     if (!rest.items.state.has(id)) {
@@ -45,7 +49,7 @@ function items({
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
-
+        // NO
         //setAnimationCSS(id, cssStylesKeyFrames(true,1))
 
     } else {
@@ -72,6 +76,7 @@ function items({
         animation = getAnimation(id, {}, itemObj.style)
         //console.log(animation)
 
+        // NO
         // setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
         // getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
         // getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
@@ -87,6 +92,7 @@ function items({
 
 //  ITEM 1
 
+// NO
 export function getContainerItems(Item) {
 
     const ContainerItem = styled.div`
@@ -117,7 +123,7 @@ export function getContainerItems(Item) {
 
     const ContainerItemFinal = styled.div`
           border: ${Item.borderDim_ContItem} ${Item.borderType_ContItem} ${Item.borderColor_ContItem};
-          animation: $1s ${tmp} both;
+          // animation: $1s ${tmp} both;
        `;
 
     return ContainerItemFinal
@@ -141,6 +147,7 @@ export function getDivItems(Item) {
                   `;
 
     const DivItemsFinal = styled.div`
+          border: ${Item.borderDim_ContItem} ${Item.borderType_ContItem} ${Item.borderColor_ContItem};
           width: ${Item.width_DivItem};
           border-top: ${Item.borderDim_DivItems} ${Item.borderType_DivItems} ${Item.borderColor_DivItems};
           animation: $1s ${tmp} both;
@@ -215,6 +222,26 @@ export function getItemsBody(Item) {
 
 export function getItemsBodyContent(Item) {
 
+    const tmp = keyframes`
+        
+         to {
+                border-radius: 15px 50px 30px; 
+                border: ${Item.borderDim_hover_ItemsBodyContent} ${Item.borderType_hover_ItemsBodyContent} ${Item.borderColor_hover_ItemsBodyContent};
+                            
+         }
+         
+    `;
+
+    const tmp1 = keyframes`
+        
+         from {
+                border-radius: 15px 50px 30px; 
+                border: ${Item.borderDim_hover_ItemsBodyContent} ${Item.borderType_hover_ItemsBodyContent} ${Item.borderColor_hover_ItemsBodyContent};
+                            
+         }
+         
+    `;
+
     const ItemsBodyContent = styled.div`
           padding: ${Item.padding_ItemsBodyContent};
           padding-right: ${Item.paddingRight_ItemsBodyContent};
@@ -226,18 +253,29 @@ export function getItemsBodyContent(Item) {
           border: ${Item.borderDim_ItemsBodyContent} ${Item.borderType_ItemsBodyContent} ${Item.borderColor_ItemsBodyContent};
           cursor: pointer;
           
-          &:hover {
-            border-radius: 15px 50px 30px;
-            // border-radius: ${Item.borderRadius_hover_ItemsBodyContent};
-            border: ${Item.borderDim_hover_ItemsBodyContent} ${Item.borderType_hover_ItemsBodyContent} ${Item.borderColor_hover_ItemsBodyContent};
-            // background-color: yellow;
-           
-          }
-         
+          ${Item.checkLimit ? `animation: ${tmp} 1s both;` : `animation: ${tmp1} 1s both;`}
           
       `;
 
     return ItemsBodyContent
+}
+
+export function getItemsBodySpan(Item) {
+
+    const ItemBodySpan = styled.span`
+        
+/*            &:hover {
+                border-radius: 15px 50px 30px;
+                // border-radius: ${Item.borderRadius_hover_ItemsBodyContent};
+                border: ${Item.borderDim_hover_ItemsBodyContent} ${Item.borderType_hover_ItemsBodyContent} ${Item.borderColor_hover_ItemsBodyContent};
+                // background-color: yellow;
+               
+            }*/
+        
+    `;
+
+    return ItemBodySpan
+
 }
 
 export function getItemsBodyContent_icon(Item) {
@@ -604,6 +642,8 @@ export function getTilesWrap_button(Item) {
     return TilesWrap_button
 }
 
+//
+
 function checkValue (variableArray, rest) {
 
     //console.log(variableArray, rest)
@@ -695,6 +735,41 @@ function checkValue (variableArray, rest) {
     }
 
 }
+
+export function setCheckLimitItems(value, type) {
+
+    switch (type) {
+
+        case 'transitionMouse':
+
+            itemsActions.changeValue(this.id, 'checkLimit', value)
+
+            break;
+
+        case 'clickMouse':
+
+            let result = (value === this.checkLimit) ? !value : value
+            itemsActions.changeValue(this.id, 'checkLimit', result)
+
+            break;
+
+        case 'keyDown':
+
+            if (this.textInput === null) itemsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+
+            if (value.key === this.textInput) {
+                let result = (value === this.checkLimit) ? !value : value
+                itemsActions.changeValue(this.id, 'checkLimit', result)
+            }
+
+            break;
+
+        default:
+            return;
+    }
+
+}
+
 
 items.propType = {
     anim: PropTypes.object,

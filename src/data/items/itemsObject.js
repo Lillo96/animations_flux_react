@@ -4,10 +4,10 @@ const items = Immutable.Record({
     id: '',
     type: 'items',
     typeInput: null,
-    checkLimit: true,
+    checkLimit: null,
     style: null,
     animationCSS: '',
-    textInput: '',
+    textInput: 'c',
     textValue: '',
 
     //
