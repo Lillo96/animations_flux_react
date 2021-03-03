@@ -60,7 +60,7 @@ import {
     getTilesWrap, getTilesWrap_button,
     getTilesWrap_h2, getTilesWrap_h3,
     getTilesWrap_li, getTilesWrap_p,
-    setCheckLimit
+    setCheckItems
 } from "./components/items";
 import img from '../src/paper.jpg'
 
@@ -939,8 +939,8 @@ function SimpleSelect(props) {
                                       </ItemsBodyContent>*/}
 
                                       {/* ITEM CON PRESSIONE TASTO */}
-                                      <ItemsBodyContent>
-                                          <ItemBodySpan tabIndex="0" onKeyDown={(e) => {item1.setCheckLimitItems(e, 'keyDown')}}>
+                                      <ItemsBodyContent tabIndex="0" onKeyDown={(e) => {item1.setCheckItems(e, 'ItemsBodyContent', 'keyDown')}}>
+                                          <ItemBodySpan onMouseEnter={() => item1.setCheckItems(true, 'ItemBodySpan', 'transitionMouse')} onMouseLeave={() => item1.setCheckItems(false, 'ItemBodySpan', 'transitionMouse')}>
                                               Practical Empathy: For Collaboration & Creativity in Your Work
                                           </ItemBodySpan>
                                           <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>

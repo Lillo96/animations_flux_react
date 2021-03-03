@@ -54,7 +54,7 @@ import items ,{
     getTilesWrap_h3,
     getTilesWrap_p,
     getTilesWrap_button,
-    setCheckLimitItems
+    setCheckItems
 } from "./components/items"
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
@@ -132,7 +132,7 @@ export function getItems(id) {
         getTilesWrap_h3,
         getTilesWrap_p,
         getTilesWrap_button,
-        setCheckLimitItems
+        setCheckItems
     }
 
 }

@@ -20,6 +20,7 @@ function items({
                   width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
                   backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
                   fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
+                  checkSpan,
                   duration, timing, delay, iterations, direction, fillMode, playState, ...rest
                }) {
 
@@ -46,6 +47,7 @@ function items({
             width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
             backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
             fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
+            checkSpan,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -65,7 +67,9 @@ function items({
             borderColor_hover_ItemsBodyContent, fontSize_ItemsBodyContentIcon, color_ItemsBodyContentIcon, fontWeight_ItemsBodyContentIcon,
             width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
             backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
-            fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p]
+            fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
+            checkSpan
+        ]
 
         checkValue( variableArray, rest.items.state.get(id))
 
@@ -660,7 +664,7 @@ function checkValue (variableArray, rest) {
         "borderColor_hover_ItemsBodyContent", "fontSize_ItemsBodyContentIcon", "color_ItemsBodyContentIcon", "fontWeight_ItemsBodyContentIcon",
         "width_TilesWrapLi1", "fontFamily_TilesWrapLi1","fontFamily_TilesWrapLi2","height_TilesWrapLi",
         "backgroundColor_TilesWrapLi", "borderDim_TilesWrapLi", "borderType_TilesWrapLi","borderColor_TilesWrapLi","fontSize_TilesWrap_h2",
-        "fontSize_getTilesWrap_h3", "color_getTilesWrap_h3", "marginBotton_getTilesWrap_h3", "fontSize_TilesWrap_p", "lineHeight_TilesWrap_p", "color_TilesWrap_p"]
+        "fontSize_getTilesWrap_h3", "color_getTilesWrap_h3", "marginBotton_getTilesWrap_h3", "fontSize_TilesWrap_p", "lineHeight_TilesWrap_p", "color_TilesWrap_p", "checkSpan"]
 
     /*
         0: "borderDim_ContItem",
@@ -722,7 +726,8 @@ function checkValue (variableArray, rest) {
         57: "marginBotton_getTilesWrap_h3",
         58: "fontSize_TilesWrap_p",
         59: "lineHeight_TilesWrap_p",
-        60: "color_TilesWrap_p"
+        60: "color_TilesWrap_p",
+        61: "checkSpan"
     */
 
 
@@ -736,13 +741,30 @@ function checkValue (variableArray, rest) {
 
 }
 
-export function setCheckLimitItems(value, type) {
+export function setCheckItems(value, typeTag, type) {
 
     switch (type) {
 
         case 'transitionMouse':
 
-            itemsActions.changeValue(this.id, 'checkLimit', value)
+            switch (typeTag) {
+
+                case 'ItemBodySpan':
+
+                    itemsActions.changeValue(this.id, 'checkSpan', value)
+
+                    break;
+
+                case 'ItemsBodyContent':
+
+                    itemsActions.changeValue(this.id, 'checkLimit', value)
+
+                    break;
+
+                default:
+                    return;
+            }
+
 
             break;
 
@@ -848,7 +870,9 @@ items.propType = {
     marginBotton_getTilesWrap_h3: PropTypes.string,
     fontSize_TilesWrap_p: PropTypes.string,
     lineHeight_TilesWrap_p: PropTypes.string,
-    color_TilesWrap_p: PropTypes.string
+    color_TilesWrap_p: PropTypes.string,
+
+    checkSpan: PropTypes.string
 }
 
 export default items

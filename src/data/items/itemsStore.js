@@ -91,6 +91,8 @@ class ItemsStore extends ReduceStore {
                         lineHeight_TilesWrap_p: action.lineHeight_TilesWrap_p,
                         color_TilesWrap_p: action.color_TilesWrap_p,
 
+                        checkSpan: action.checkSpan,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

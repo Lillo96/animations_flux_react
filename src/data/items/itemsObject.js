@@ -74,6 +74,8 @@ const items = Immutable.Record({
     fontSize_TilesWrap_p: '16px',
     lineHeight_TilesWrap_p: '18px',
     color_TilesWrap_p: '#b7b7b7',
+
+    checkSpan: null
 })
 
 export default items

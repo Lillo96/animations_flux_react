@@ -18,6 +18,8 @@ const itemsActions = {
         backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
         fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
 
+        checkSpan,
+
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
             type: itemsActionTypes.NEW_ITEMS,
@@ -97,6 +99,8 @@ const itemsActions = {
             direction: direction,
             fillMode: direction,
             playState: playState,
+
+            checkSpan: checkSpan
 
         })
     },
