@@ -1,5 +1,6 @@
 import animationDispatcher from "../animationDispatcher"
 import itemsActionTypes from "./itemsActionTypes";
+import PropTypes from "prop-types";
 
 const itemsActions = {
     newItems (
@@ -23,6 +24,14 @@ const itemsActions = {
         checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
         transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon, color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start,
         textInputIcon, checkButton,
+        minWidthLi, maxWidthLi, padding1Li, padding2Li, padding3Li, positionLi, verticalAlignLi, marginLi, textAlignLi, opacityButtonLiEnter, colorEndLi,
+        opacityButtonLiEnd, colorStartLi, topLiH2Enter, opacityLiH2Enter, topLiH2End, opacityLiH2End, marginTopP,
+        typeTransitionButton, typeTransitionButton1, typeTransitionButton2,
+
+        backgroundWrapButton, borderWrap1, borderWrap2, borderWrap3, paddingWrap1, paddingWrap2, colorButtonWrap, borderRadiusWrap,
+        positionWrap, transitionDurationWrap1, transitionFillModeWrap2, opacityWrap, cursorWrap, overflowWrap, marginWrap,
+        backgroundWrapButton_2, borderWrap1_2, borderWrap2_2, borderWrap3_2, paddingWrap1_2, paddingWrap2_2, colorButtonWrap_2, borderRadiusWrap_2,
+        positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2,
 
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
@@ -128,7 +137,62 @@ const itemsActions = {
             color_ItemsBodyContentIcon_end: color_ItemsBodyContentIcon_end,
             color_ItemsBodyContentIcon_start: color_ItemsBodyContentIcon_start,
             textInputIcon: textInputIcon,
-            checkButton: checkButton
+            checkButton: checkButton,
+
+            minWidthLi: minWidthLi,
+            maxWidthLi: maxWidthLi,
+            padding1Li: padding1Li,
+            padding2Li: padding2Li,
+            padding3Li: padding3Li,
+            positionLi: positionLi,
+            verticalAlignLi: verticalAlignLi,
+            marginLi: marginLi,
+            textAlignLi: textAlignLi,
+            opacityButtonLiEnter: opacityButtonLiEnter,
+            colorEndLi: colorEndLi,
+            opacityButtonLiEnd: opacityButtonLiEnd,
+            colorStartLi: colorStartLi,
+            topLiH2Enter: topLiH2End,
+            opacityLiH2Enter: opacityLiH2Enter,
+            topLiH2End: topLiH2End,
+            opacityLiH2End: opacityLiH2End,
+            marginTopP: marginTopP,
+
+            typeTransitionButton: typeTransitionButton,
+            typeTransitionButton1: typeTransitionButton1,
+            typeTransitionButton2: typeTransitionButton2,
+
+            backgroundWrapButton: backgroundWrapButton,
+            borderWrap1: borderWrap1,
+            borderWrap2: borderWrap2,
+            borderWrap3: borderWrap3,
+            paddingWrap1: paddingWrap1,
+            paddingWrap2: paddingWrap2,
+            colorButtonWrap: colorButtonWrap,
+            borderRadiusWrap: borderRadiusWrap,
+            positionWrap: positionWrap,
+            transitionDurationWrap1: transitionDurationWrap1,
+            transitionFillModeWrap2: transitionFillModeWrap2,
+            opacityWrap: opacityWrap,
+            cursorWrap: cursorWrap,
+            overflowWrap: overflowWrap,
+            marginWrap: marginWrap,
+
+            backgroundWrapButton_2: backgroundWrapButton_2,
+            borderWrap1_2: borderWrap1_2,
+            borderWrap2_2: borderWrap2_2,
+            borderWrap3_2: borderWrap3_2,
+            paddingWrap1_2: paddingWrap1_2,
+            paddingWrap2_2: paddingWrap2_2,
+            colorButtonWrap_2: colorButtonWrap_2,
+            borderRadiusWrap_2: borderRadiusWrap_2,
+            positionWrap_2: positionWrap_2,
+            transitionDurationWrap1_2: transitionDurationWrap1_2,
+            transitionFillModeWrap2_2: transitionFillModeWrap2_2,
+            opacityWrap_2: opacityWrap_2,
+            cursorWrap_2: cursorWrap_2,
+            overflowWrap_2: overflowWrap_2,
+            marginWrap_2: marginWrap_2
 
         })
     },

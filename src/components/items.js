@@ -25,6 +25,15 @@ function items({
                   checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
                   transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon,
                   color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon, checkButton,
+
+                  minWidthLi, maxWidthLi, padding1Li, padding2Li, padding3Li, positionLi, verticalAlignLi, marginLi, textAlignLi, opacityButtonLiEnter, colorEndLi,
+                  opacityButtonLiEnd, colorStartLi, topLiH2Enter, opacityLiH2Enter, topLiH2End, opacityLiH2End, marginTopP, typeTransitionButton, typeTransitionButton1, typeTransitionButton2,
+
+                  backgroundWrapButton, borderWrap1, borderWrap2, borderWrap3, paddingWrap1, paddingWrap2, colorButtonWrap, borderRadiusWrap,
+                  positionWrap, transitionDurationWrap1, transitionFillModeWrap2, opacityWrap, cursorWrap, overflowWrap, marginWrap,
+                  backgroundWrapButton_2, borderWrap1_2, borderWrap2_2, borderWrap3_2, paddingWrap1_2, paddingWrap2_2, colorButtonWrap_2, borderRadiusWrap_2,
+                  positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2,
+
                   duration, timing, delay, iterations, direction, fillMode, playState, ...rest
                }) {
 
@@ -56,6 +65,15 @@ function items({
             checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
             transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon,
             color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon, checkButton,
+
+            minWidthLi, maxWidthLi, padding1Li, padding2Li, padding3Li, positionLi, verticalAlignLi, marginLi, textAlignLi, opacityButtonLiEnter, colorEndLi,
+            opacityButtonLiEnd, colorStartLi, topLiH2Enter, opacityLiH2Enter, topLiH2End, opacityLiH2End, marginTopP, typeTransitionButton, typeTransitionButton1, typeTransitionButton2,
+
+            backgroundWrapButton, borderWrap1, borderWrap2, borderWrap3, paddingWrap1, paddingWrap2, colorButtonWrap, borderRadiusWrap,
+            positionWrap, transitionDurationWrap1, transitionFillModeWrap2, opacityWrap, cursorWrap, overflowWrap, marginWrap,
+            backgroundWrapButton_2, borderWrap1_2, borderWrap2_2, borderWrap3_2, paddingWrap1_2, paddingWrap2_2, colorButtonWrap_2, borderRadiusWrap_2,
+            positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2,
+
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -80,7 +98,13 @@ function items({
             fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan, toEnableAnimationSpan,
             checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
             transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon, color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon,
-            checkButton
+            checkButton,
+            minWidthLi, maxWidthLi, padding1Li, padding2Li, padding3Li, positionLi, verticalAlignLi, marginLi, textAlignLi, opacityButtonLiEnter, colorEndLi,
+            opacityButtonLiEnd, colorStartLi, topLiH2Enter, opacityLiH2Enter, topLiH2End, opacityLiH2End, marginTopP, typeTransitionButton, typeTransitionButton1, typeTransitionButton2,
+            backgroundWrapButton, borderWrap1, borderWrap2, borderWrap3, paddingWrap1, paddingWrap2, colorButtonWrap, borderRadiusWrap,
+            positionWrap, transitionDurationWrap1, transitionFillModeWrap2, opacityWrap, cursorWrap, overflowWrap, marginWrap,
+            backgroundWrapButton_2, borderWrap1_2, borderWrap2_2, borderWrap3_2, paddingWrap1_2, paddingWrap2_2, colorButtonWrap_2, borderRadiusWrap_2,
+            positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2
         ]
 
         // checkValue( variableArray, rest.items.state.get(id))
@@ -379,45 +403,43 @@ export function getTilesWrap(Item) {
 
 export function getTilesWrap_li(Item) {
 
-    //${Item.minWidth_TilesWrapLi}
-    //${Item.minHei_TilesWrapLi}
-
-    console.log(Item.checkLimit)
+    let fillMode = (Item.style === null) ? 'both' : Item.style.fillMode
+    let duration = (Item.style === null) ? '1s' : Item.style.duration
 
     const TilesWrap_li = styled.li`
       display: inline-block;
       width: ${Item.width_TilesWrapLi1};
-      min-width: 200px;
-      max-width: 230px;
-      padding: 80px 20px 40px;
-      position: relative;
-      vertical-align: top;
-      margin: 10px;
+      min-width: ${Item.minWidthLi};
+      max-width: ${Item.maxWidthLi};
+      padding: ${Item.padding1Li} ${Item.padding2Li} ${Item.padding3Li};
+      position: ${Item.positionLi};
+      vertical-align: ${Item.verticalAlignLi};
+      margin: ${Item.marginLi};
       font-family: ${Item.fontFamily_TilesWrapLi1}, ${Item.fontFamily_TilesWrapLi2};
       min-height:  ${Item.height_TilesWrapLi};
       background: ${Item.backgroundColor_TilesWrapLi};
       border: ${Item.borderDim_TilesWrapLi} ${Item.borderType_TilesWrapLi} ${Item.borderColor_TilesWrapLi};
-      text-align: center;
+      text-align: ${Item.textAlignLi};
       
       ${(Item.checkLimit == true) ? 
               ` 
               button {
-                  animation: buttonEnter 1s both; 
+                  animation: buttonEnter ${duration} ${fillMode}; 
               }
               
               h2 {
-                  animation: h2Enter 1s both;
+                  animation: h2Enter ${duration} ${fillMode};
               }
                
               `
                 : 
                     `
                     button {
-                        animation: buttonEnd 1s both; 
+                        animation: buttonEnd ${duration} ${fillMode};
                     }
                     
                     h2 {
-                        animation: h2End 1s both;
+                        animation: h2End ${duration} ${fillMode};
                     }
                     
                     `
@@ -425,47 +447,35 @@ export function getTilesWrap_li(Item) {
       
       @keyframes buttonEnter {
                 to {
-                    transform: translateY(5px);
-                    opacity: 1;
-                    color: red; 
+                    transform: translateX(5px);
+                    opacity: ${Item.opacityButtonLiEnter};
+                    color: ${Item.colorEndLi};
                 }  
       }
       
       @keyframes buttonEnd {
                 from {
-                    transform: translateY(5px);
-                    opacity: 1;
-                    color: red; 
+                    transform: translateX(5px); 
+                    opacity: ${Item.opacityButtonLiEnd};
+                    color: ${Item.colorStartLi};
                 }  
       }
       
       @keyframes h2Enter {
                 to {
-                    top: 0px;
-                    opacity: 0.6; 
+                    top: ${Item.topLiH2Enter};
+                    opacity: ${Item.opacityLiH2Enter};
                 }  
       }
       
       @keyframes h2End {
                 from {
-                    top: 0px;
-                    opacity: 0.6; 
+                    top: ${Item.topLiH2End};
+                    opacity: ${Item.opacityLiH2End};
                 }  
       }
      
     `;
-
-
-/*    const tmp = keyframes`
-
-                      from, to {
-
-                      }
-                  `;
-
-    const TilesWrap_liFinal = styled.ul`
-          animation: $1s ${tmp} both;
-       `;*/
 
     return TilesWrap_li
 }
@@ -530,7 +540,7 @@ export function getTilesWrap_h2(Item) {
       right: 10%;
       transition: all 0.3s ease-in-out;
             
-      `;
+    `;
 
     return TilesWrap_h2
 }
@@ -553,7 +563,7 @@ export function getTilesWrap_p(Item) {
           font-size: ${Item.fontSize_TilesWrap_p};
           line-height: ${Item.lineHeight_TilesWrap_p};
           color: ${Item.color_TilesWrap_p};
-          margin-top: 5px;
+          margin-top: ${Item.marginTopP};
       `;
 
     return TilesWrap_p
@@ -561,504 +571,546 @@ export function getTilesWrap_p(Item) {
 
 export function getTilesWrap_button(Item) {
 
-    // ENTRA DALL ALTO VERSO IL BASSO
+    let TilesWrap_button
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateY(-40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
-          
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
-          
-          &:hover {
-                color: #262a2b;
-          }
-          
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
+    switch (Item.typeTransitionButton) {
 
-    // ENTRA DAL BASSO VERSO L ALTO
+        // ENTRA DALL ALTO VERSO IL BASSO
+        case 'topToBottom':
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateY(40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
-          
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
-          
-          &:hover {
-                color: #262a2b;
-          }
-          
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateY(-40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-    // ENTRA DA DESTRA VERSO SINISTRA
+            break;
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateX(40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
-          
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
-          
-          &:hover {
-                color: #262a2b;
-          }
-          
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
+        // ENTRA DAL BASSO VERSO L ALTO
+        case 'bottonToTop':
 
-    // ENTRA DA SINISTRA VERSO DESTRA
+             TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateY(40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                           
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-    console.log(Item.checkButton)
+            break;
 
-    const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateX(-40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
-          margin: 5px;
-          
-         
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              // DA DESTRA A SINISTRA
-              // left: 140px;
-              // SINISTRA A DESTRA
-              left: -140px;
-               
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
+        // ENTRA DA DESTRA VERSO SINISTRA
+        case 'rightToLeft':
 
-          }
-          
-         &:hover {
-                color: #262a2b;
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateX(40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-          }
-          
-         &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;
+            break;
+
+        // ENTRA DA SINISTRA VERSO DESTRA
+        case 'leftToRight':
+
+             TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateX(-40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                           
+              `;
+
+            break;
+
+        default:
+            return;
+    }
 
     return TilesWrap_button
 }
 
 export function getTilesWrap_button_1(Item) {
 
-    // ENTRA DALL ALTO VERSO IL BASSO
+    let TilesWrap_button
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateY(-40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
+    switch (Item.typeTransitionButton1) {
 
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
+        // ENTRA DALL ALTO VERSO IL BASSO
+        case 'topToBottom':
 
-          &:hover {
-                color: #262a2b;
-          }
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateY(-40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
+            break;
 
-    // ENTRA DAL BASSO VERSO L ALTO
+        // ENTRA DAL BASSO VERSO L ALTO
+        case 'bottonToTop':
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateY(40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateY(40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
+            break;
 
-          &:hover {
-                color: #262a2b;
-          }
+        // ENTRA DA DESTRA VERSO SINISTRA
+        case 'rightToLeft':
 
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateX(40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-    // ENTRA DA DESTRA VERSO SINISTRA
+            break;
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateX(40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
+        // ENTRA DA SINISTRA VERSO DESTRA
+        case 'leftToRight':
 
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton};
+                  border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
+                  padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
+                  color: ${Item.colorButtonWrap};
+                  border-radius: ${Item.borderRadiusWrap};
+                  position: ${Item.positionWrap};
+                  transition: all ${Item.transitionDurationWrap1} ${Item.transitionFillModeWrap2};
+                  transform: translateX(-40px);
+                  opacity: ${Item.opacityWrap};
+                  cursor: ${Item.cursorWrap};
+                  overflow: ${Item.overflowWrap};
+                  margin: ${Item.marginWrap};
+                           
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      // DA DESTRA A SINISTRA
+                      // left: 140px;
+                      // SINISTRA A DESTRA
+                      left: -140px;
+                       
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+        
+                  }
+                  
+                 &:hover {
+                        color: #262a2b;
+        
+                  }
+                  
+                 &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-          &:hover {
-                color: #262a2b;
-          }
+            break;
 
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
-
-    // ENTRA DA SINISTRA VERSO DESTRA
-
-    const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateX(-40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
-          
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              // DA DESTRA A SINISTRA
-              // left: 140px;
-              // SINISTRA A DESTRA
-              left: -140px;
-               
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
-          
-          &:hover {
-                color: #262a2b;
-          }
-          
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;
+        default:
+            return;
+    }
 
     return TilesWrap_button
 }
 
 export function getTilesWrap_button_2(Item) {
 
-    // ENTRA DALL ALTO VERSO IL BASSO
+    let TilesWrap_button
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateY(-40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
+    switch (Item.typeTransitionButton2) {
 
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
+        // ENTRA DALL ALTO VERSO IL BASSO
+        case 'topToBottom':
 
-          &:hover {
-                color: #262a2b;
-          }
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton_2};
+                  border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
+                  padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
+                  color: ${Item.colorButtonWrap_2};
+                  border-radius: ${Item.borderRadiusWrap_2};
+                  position: ${Item.positionWrap_2};
+                  transition: all ${Item.transitionDurationWrap1_2} ${Item.transitionFillModeWrap2_2};
+                  transform: translateY(-40px);
+                  opacity: ${Item.opacityWrap_2};
+                  cursor: ${Item.cursorWrap_2};
+                  overflow: ${Item.overflowWrap_2};
+                  margin: ${Item.marginWrap_2};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
+            break;
 
-    // ENTRA DAL BASSO VERSO L ALTO
+        // ENTRA DAL BASSO VERSO L ALTO
+        case 'bottonToTop':
 
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateY(40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton_2};
+                  border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
+                  padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
+                  color: ${Item.colorButtonWrap_2};
+                  border-radius: ${Item.borderRadiusWrap_2};
+                  position: ${Item.positionWrap_2};
+                  transition: all ${Item.transitionDurationWrap1_2} ${Item.transitionFillModeWrap2_2};
+                  transform: translateY(40px);
+                  opacity: ${Item.opacityWrap_2};
+                  cursor: ${Item.cursorWrap_2};
+                  overflow: ${Item.overflowWrap_2};
+                  margin: ${Item.marginWrap_2};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
+            break;
 
-          &:hover {
-                color: #262a2b;
-          }
+        // ENTRA DA DESTRA VERSO SINISTRA
+        case 'rightToLeft':
 
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton_2};
+                  border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
+                  padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
+                  color: ${Item.colorButtonWrap_2};
+                  border-radius: ${Item.borderRadiusWrap_2};
+                  position: ${Item.positionWrap_2};
+                  transition: all ${Item.transitionDurationWrap1_2} ${Item.transitionFillModeWrap2_2};
+                  transform: translateX(40px);
+                  opacity: ${Item.opacityWrap_2};
+                  cursor: ${Item.cursorWrap_2};
+                  overflow: ${Item.overflowWrap_2};
+                  margin: ${Item.marginWrap_2};
+                  
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      left: -140px;
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+                  }
+                  
+                  &:hover {
+                        color: #262a2b;
+                  }
+                  
+                  &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-    // ENTRA DA DESTRA VERSO SINISTRA
+            break;
 
-    const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateX(40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
-          margin: 10px;
+        // ENTRA DA SINISTRA VERSO DESTRA
+        case 'leftToRight':
 
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 1;
-              opacity: 0;
-              left: -140px;
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
+            TilesWrap_button = styled.button`
+                  background: ${Item.backgroundWrapButton_2};
+                  border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
+                  padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
+                  color: ${Item.colorButtonWrap_2};
+                  border-radius: ${Item.borderRadiusWrap_2};
+                  position: ${Item.positionWrap_2};
+                  transition: all ${Item.transitionDurationWrap1_2} ${Item.transitionFillModeWrap2_2};
+                  transform: translateX(-40px);
+                  opacity: ${Item.opacityWrap_2};
+                  cursor: ${Item.cursorWrap_2};
+                  overflow: ${Item.overflowWrap_2};
+                  margin: ${Item.marginWrap_2};
+                           
+                  &:before {
+                      content: '';
+                      position: absolute;
+                      height: 100%;
+                      width: 120%;
+                      background: #b7b7b7;
+                      top: 0;
+                      opacity: 0;
+                      // DA DESTRA A SINISTRA
+                      // left: 140px;
+                      // SINISTRA A DESTRA
+                      left: -140px;
+                       
+                      border-radius: 0 20px 20px 0;
+                      z-index: -1;
+                      transition: all 0.3s ease-in-out;
+        
+                  }
+                  
+                 &:hover {
+                        color: #262a2b;
+        
+                  }
+                  
+                 &:hover:before {
+                       left: 0;
+                       opacity: 1;
+                  }
+              `;
 
-          &:hover {
-                color: #262a2b;
-          }
+            break;
 
-          &:hover:before {
-               // left: 0;
-               opacity: 1;
-          }
-      `;
-
-    // ENTRA DA SINISTRA VERSO DESTRA
-
-    /*const TilesWrap_button = styled.button`
-          background: transparent;
-          border: 1px solid #b7b7b7;
-          padding: 10px 20px;
-          color: #b7b7b7;
-          border-radius: 3px;
-          position: relative;
-          transition: all 0.3s ease-in-out;
-          transform: translateX(-40px);
-          opacity: 0;
-          cursor: pointer;
-          overflow: hidden;
-          
-          &:before {
-              content: '';
-              position: absolute;
-              height: 100%;
-              width: 120%;
-              background: #b7b7b7;
-              top: 0;
-              opacity: 0;
-              // DA DESTRA A SINISTRA
-              // left: 140px;
-              // SINISTRA A DESTRA
-              left: -140px;
-               
-              border-radius: 0 20px 20px 0;
-              z-index: -1;
-              transition: all 0.3s ease-in-out;
-          }
-          
-          &:hover {
-                color: #262a2b;
-          }
-          
-          &:hover:before {
-               left: 0;
-               opacity: 1;
-          }
-      `;*/
-
-    return TilesWrap_button
+        default:
+            return;
+    }
 }
 
 //
@@ -1084,7 +1136,10 @@ function checkValue (variableArray, rest) {
         "fillModeAnimationP", "colorEndSpan", "colorStartSpan", "textInputSpan", "toEnableAnimationSpan",
         "checkIcon", "toEnableAnimationIcon", "durationAnimationIcon", "duration1AnimationIcon", "fillModeAnimationIcon", "transitionYEnableIcon",
         "transitionYEnable1Icon", "transitionXEnableIcon", "transitionXEnable1Icon", "color_ItemsBodyContentIcon_end", "color_ItemsBodyContentIcon_start",
-        "textInputIcon", "checkButton"
+        "textInputIcon", "checkButton",
+        "minWidthLi", "maxWidthLi", "padding1Li", "padding2Li", "padding3Li", "positionLi", "verticalAlignLi", "marginLi", "textAlignLi", "opacityButtonLiEnter", "colorEndLi",
+        "opacityButtonLiEnd", "colorStartLi", "topLiH2Enter", "opacityLiH2Enter", "topLiH2End", "opacityLiH2End", "marginTopP",
+
     ]
 
     /*
@@ -1412,7 +1467,62 @@ items.propType = {
     color_ItemsBodyContentIcon_start: PropTypes.string,
     textInputIcon: PropTypes.string,
 
-    checkButton: PropTypes.bool
+    checkButton: PropTypes.bool,
+
+    minWidthLi: PropTypes.string,
+    maxWidthLi: PropTypes.string,
+    padding1Li: PropTypes.string,
+    padding2Li: PropTypes.string,
+    padding3Li: PropTypes.string,
+    positionLi: PropTypes.string,
+    verticalAlignLi: PropTypes.string,
+    marginLi: PropTypes.string,
+    textAlignLi: PropTypes.string,
+    opacityButtonLiEnter: PropTypes.string,
+    colorEndLi: PropTypes.string,
+    opacityButtonLiEnd: PropTypes.string,
+    colorStartLi: PropTypes.string,
+    topLiH2Enter: PropTypes.string,
+    opacityLiH2Enter: PropTypes.string,
+    topLiH2End: PropTypes.string,
+    opacityLiH2End: PropTypes.string,
+    marginTopP: PropTypes.string,
+
+    typeTransitionButton: PropTypes.string,
+    typeTransitionButton1: PropTypes.string,
+    typeTransitionButton2: PropTypes.string,
+
+    backgroundWrapButton: PropTypes.string,
+    borderWrap1: PropTypes.string,
+    borderWrap2: PropTypes.string,
+    borderWrap3: PropTypes.string,
+    paddingWrap1: PropTypes.string,
+    paddingWrap2: PropTypes.string,
+    colorButtonWrap: PropTypes.string,
+    borderRadiusWrap: PropTypes.string,
+    positionWrap: PropTypes.string,
+    transitionDurationWrap1: PropTypes.string,
+    transitionFillModeWrap2: PropTypes.string,
+    opacityWrap: PropTypes.string,
+    cursorWrap: PropTypes.string,
+    overflowWrap: PropTypes.string,
+    marginWrap: PropTypes.string,
+
+    backgroundWrapButton_2: PropTypes.string,
+    borderWrap1_2: PropTypes.string,
+    borderWrap2_2: PropTypes.string,
+    borderWrap3_2: PropTypes.string,
+    paddingWrap1_2: PropTypes.string,
+    paddingWrap2_2: PropTypes.string,
+    colorButtonWrap_2: PropTypes.string,
+    borderRadiusWrap_2: PropTypes.string,
+    positionWrap_2: PropTypes.string,
+    transitionDurationWrap1_2: PropTypes.string,
+    transitionFillModeWrap2_2: PropTypes.string,
+    opacityWrap_2: PropTypes.string,
+    cursorWrap_2: PropTypes.string,
+    overflowWrap_2: PropTypes.string,
+    marginWrap_2: PropTypes.string
 
 }
 
