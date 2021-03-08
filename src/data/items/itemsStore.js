@@ -119,6 +119,8 @@ class ItemsStore extends ReduceStore {
                         color_ItemsBodyContentIcon_start: action.color_ItemsBodyContentIcon_start,
                         textInputIcon: action.textInputIcon,
 
+                        checkButton: action.checkButton,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

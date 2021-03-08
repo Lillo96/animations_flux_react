@@ -60,7 +60,8 @@ import {
     getTilesWrap, getTilesWrap_button,
     getTilesWrap_h2, getTilesWrap_h3,
     getTilesWrap_li, getTilesWrap_p,
-    setCheckItems
+    setCheckItems, getTilesWrap_button_1,
+    getTilesWrap_button_2
 } from "./components/items";
 import img from '../src/paper.jpg'
 
@@ -963,7 +964,8 @@ function SimpleSelect(props) {
             const TilesWrap_h3 = getTilesWrap_h3(getItems('tabsprova'))
             const TilesWrap_p = getTilesWrap_p(getItems('tabsprova'))
             const TilesWrap_button = getTilesWrap_button(getItems('tabsprova'))
-
+            const TilesWrap_button1 = getTilesWrap_button_1(getItems('tabsprova'))
+            const TilesWrap_button2 = getTilesWrap_button_2(getItems('tabsprova'))
             return (
               <div>
                   <FormControl className={classes.formControl}>
@@ -995,28 +997,28 @@ function SimpleSelect(props) {
 
                   <imp.items id='tabsprova01' {...props}>
 
-                     <TilesWrap>
-                          <TilesWrap_li>
+                      {/* TUTTI NELLA STESSA DIREZIONE */}
+                          <TilesWrap_li onClick={() => item1.setCheckItems(true, 'ItemsWrap', 'clickMouse')}>
                               <TilesWrap_h2>01</TilesWrap_h2>
-                              <TilesWrap_h3>Title 1</TilesWrap_h3>
-                              <TilesWrap_p>
-                                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                                  industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                  since the 1500s.
-                              </TilesWrap_p>
-                              <TilesWrap_button>Read more</TilesWrap_button>
-                          </TilesWrap_li>
-                          <TilesWrap_li>
-                              <TilesWrap_h2>02</TilesWrap_h2>
-                              <TilesWrap_h3>Title 2</TilesWrap_h3>
-                              <TilesWrap_p>
-                                  When an unknown printer took a galley of type and scrambled it to make
-                                  a type specimen book. It has survived not only five centuries.
-                              </TilesWrap_p>
-                              <TilesWrap_button>Read more</TilesWrap_button>
+
+                              <TilesWrap_button>Read more 1</TilesWrap_button>
+                              <TilesWrap_button>Read more 2</TilesWrap_button>
+                              <TilesWrap_button>Read more 3</TilesWrap_button>
+                              <TilesWrap_button>Read more 4</TilesWrap_button>
+                              <TilesWrap_button>Read more 5</TilesWrap_button>
+                              {/* <TilesWrap_button>Read more 6</TilesWrap_button> */}
                           </TilesWrap_li>
 
-                      </TilesWrap>
+                      {/* DIVERSE DIREZIONI */}
+
+{/*                      <TilesWrap_li>
+                          <TilesWrap_button1>Read more</TilesWrap_button1>
+                          <TilesWrap_button2>Read more</TilesWrap_button2>
+                          <TilesWrap_button1>Read more</TilesWrap_button1>
+                          <TilesWrap_button2>Read more</TilesWrap_button2>
+                          <TilesWrap_button1>Read more</TilesWrap_button1>
+                          <TilesWrap_button2>Read more</TilesWrap_button2>
+                      </TilesWrap_li>*/}
 
                   </imp.items>
 

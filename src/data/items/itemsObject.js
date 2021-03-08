@@ -100,7 +100,9 @@ const items = Immutable.Record({
 
     color_ItemsBodyContentIcon_end: 'red',
     color_ItemsBodyContentIcon_start: 'black',
-    textInputIcon: 'a'
+    textInputIcon: 'a',
+
+    checkButton: null
 
 })
 

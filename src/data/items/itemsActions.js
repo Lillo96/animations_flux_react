@@ -22,7 +22,7 @@ const itemsActions = {
         fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan,
         checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
         transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon, color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start,
-        textInputIcon,
+        textInputIcon, checkButton,
 
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
@@ -127,7 +127,8 @@ const itemsActions = {
             transitionXEnable1Icon: transitionXEnable1Icon,
             color_ItemsBodyContentIcon_end: color_ItemsBodyContentIcon_end,
             color_ItemsBodyContentIcon_start: color_ItemsBodyContentIcon_start,
-            textInputIcon: textInputIcon
+            textInputIcon: textInputIcon,
+            checkButton: checkButton
 
         })
     },

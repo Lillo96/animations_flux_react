@@ -24,7 +24,7 @@ function items({
                   fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan,
                   checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
                   transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon,
-                  color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon,
+                  color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon, checkButton,
                   duration, timing, delay, iterations, direction, fillMode, playState, ...rest
                }) {
 
@@ -55,7 +55,7 @@ function items({
             fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan,
             checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
             transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon,
-            color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon,
+            color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon, checkButton,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -79,7 +79,8 @@ function items({
             checkSpan, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, durationAnimationP, duration1AnimationP,
             fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan, toEnableAnimationSpan,
             checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
-            transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon, color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon
+            transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon, color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon,
+            checkButton
         ]
 
         // checkValue( variableArray, rest.items.state.get(id))
@@ -347,6 +348,8 @@ export function getItemsBodyContent_icon(Item) {
 
 //  ITEM 2
 
+
+// NO
 export function getTilesWrap(Item) {
 
     const TilesWrap = styled.ul`
@@ -379,6 +382,8 @@ export function getTilesWrap_li(Item) {
     //${Item.minWidth_TilesWrapLi}
     //${Item.minHei_TilesWrapLi}
 
+    console.log(Item.checkLimit)
+
     const TilesWrap_li = styled.li`
       display: inline-block;
       width: ${Item.width_TilesWrapLi1};
@@ -392,32 +397,63 @@ export function getTilesWrap_li(Item) {
       min-height:  ${Item.height_TilesWrapLi};
       background: ${Item.backgroundColor_TilesWrapLi};
       border: ${Item.borderDim_TilesWrapLi} ${Item.borderType_TilesWrapLi} ${Item.borderColor_TilesWrapLi};
-      text-align: left;
+      text-align: center;
       
-      &:hover button {
-                transform: translateY(5px);
-                opacity: 1;
-                color: white; 
-          }
-      &:hover h2 {
-            top: 0px;
-            opacity: 0.6;
+      ${(Item.checkLimit == true) ? 
+              ` 
+              button {
+                  animation: buttonEnter 1s both; 
+              }
+              
+              h2 {
+                  animation: h2Enter 1s both;
+              }
+               
+              `
+                : 
+                    `
+                    button {
+                        animation: buttonEnd 1s both; 
+                    }
+                    
+                    h2 {
+                        animation: h2End 1s both;
+                    }
+                    
+                    `
       }
       
-      &:before {
-          content: '';
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          right: -2px;
-          bottom: -2px;
-          z-index: -1;
-          background: #fff;
-          transform: skew(2deg, 2deg);
+      @keyframes buttonEnter {
+                to {
+                    transform: translateY(5px);
+                    opacity: 1;
+                    color: red; 
+                }  
       }
       
-
-      `;
+      @keyframes buttonEnd {
+                from {
+                    transform: translateY(5px);
+                    opacity: 1;
+                    color: red; 
+                }  
+      }
+      
+      @keyframes h2Enter {
+                to {
+                    top: 0px;
+                    opacity: 0.6; 
+                }  
+      }
+      
+      @keyframes h2End {
+                from {
+                    top: 0px;
+                    opacity: 0.6; 
+                }  
+      }
+     
+    `;
 
 
 /*    const tmp = keyframes`
@@ -434,6 +470,7 @@ export function getTilesWrap_li(Item) {
     return TilesWrap_li
 }
 
+// NO
 export function getTilesWrap_h2(Item) {
 
     // NUMERI IN ALTO A SINISTRA
@@ -498,6 +535,7 @@ export function getTilesWrap_h2(Item) {
     return TilesWrap_h2
 }
 
+// NO
 export function getTilesWrap_h3(Item) {
 
     const TilesWrap_h3 = styled.h3`
@@ -642,6 +680,177 @@ export function getTilesWrap_button(Item) {
 
     // ENTRA DA SINISTRA VERSO DESTRA
 
+    console.log(Item.checkButton)
+
+    const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(-40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+          margin: 5px;
+          
+         
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              // DA DESTRA A SINISTRA
+              // left: 140px;
+              // SINISTRA A DESTRA
+              left: -140px;
+               
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+
+          }
+          
+         &:hover {
+                color: #262a2b;
+
+          }
+          
+         &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;
+
+    return TilesWrap_button
+}
+
+export function getTilesWrap_button_1(Item) {
+
+    // ENTRA DALL ALTO VERSO IL BASSO
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateY(-40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+                color: #262a2b;
+          }
+
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DAL BASSO VERSO L ALTO
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateY(40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+                color: #262a2b;
+          }
+
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DA DESTRA VERSO SINISTRA
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+                color: #262a2b;
+          }
+
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DA SINISTRA VERSO DESTRA
+
     const TilesWrap_button = styled.button`
           background: transparent;
           border: 1px solid #b7b7b7;
@@ -686,6 +895,172 @@ export function getTilesWrap_button(Item) {
     return TilesWrap_button
 }
 
+export function getTilesWrap_button_2(Item) {
+
+    // ENTRA DALL ALTO VERSO IL BASSO
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateY(-40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+                color: #262a2b;
+          }
+
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DAL BASSO VERSO L ALTO
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateY(40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+                color: #262a2b;
+          }
+
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    // ENTRA DA DESTRA VERSO SINISTRA
+
+    const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+          margin: 10px;
+
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 1;
+              opacity: 0;
+              left: -140px;
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+                color: #262a2b;
+          }
+
+          &:hover:before {
+               // left: 0;
+               opacity: 1;
+          }
+      `;
+
+    // ENTRA DA SINISTRA VERSO DESTRA
+
+    /*const TilesWrap_button = styled.button`
+          background: transparent;
+          border: 1px solid #b7b7b7;
+          padding: 10px 20px;
+          color: #b7b7b7;
+          border-radius: 3px;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(-40px);
+          opacity: 0;
+          cursor: pointer;
+          overflow: hidden;
+          
+          &:before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 120%;
+              background: #b7b7b7;
+              top: 0;
+              opacity: 0;
+              // DA DESTRA A SINISTRA
+              // left: 140px;
+              // SINISTRA A DESTRA
+              left: -140px;
+               
+              border-radius: 0 20px 20px 0;
+              z-index: -1;
+              transition: all 0.3s ease-in-out;
+          }
+          
+          &:hover {
+                color: #262a2b;
+          }
+          
+          &:hover:before {
+               left: 0;
+               opacity: 1;
+          }
+      `;*/
+
+    return TilesWrap_button
+}
+
 //
 
 function checkValue (variableArray, rest) {
@@ -709,7 +1084,7 @@ function checkValue (variableArray, rest) {
         "fillModeAnimationP", "colorEndSpan", "colorStartSpan", "textInputSpan", "toEnableAnimationSpan",
         "checkIcon", "toEnableAnimationIcon", "durationAnimationIcon", "duration1AnimationIcon", "fillModeAnimationIcon", "transitionYEnableIcon",
         "transitionYEnable1Icon", "transitionXEnableIcon", "transitionXEnable1Icon", "color_ItemsBodyContentIcon_end", "color_ItemsBodyContentIcon_start",
-        "textInputIcon"
+        "textInputIcon", "checkButton"
     ]
 
     /*
@@ -796,7 +1171,8 @@ function checkValue (variableArray, rest) {
         81: "transitionXEnable1Icon",
         82: "color_ItemsBodyContentIcon_end",
         83: "color_ItemsBodyContentIcon_start",
-        84: "textInputIcon"
+        84: "textInputIcon",
+        85: "checkButton"
     */
 
 
@@ -825,6 +1201,7 @@ export function setCheckItems(value, typeTag, type) {
                     break;
 
                 case 'ItemsBodyContent':
+                case 'ItemsWrap':
 
                     itemsActions.changeValue(this.id, 'checkLimit', value)
 
@@ -855,6 +1232,7 @@ export function setCheckItems(value, typeTag, type) {
                     break;
 
                 case 'ItemsBodyContent':
+                case 'ItemsWrap':
 
                     let result = (value === this.checkLimit) ? !value : value
                     itemsActions.changeValue(this.id, 'checkLimit', result)
@@ -891,6 +1269,7 @@ export function setCheckItems(value, typeTag, type) {
                     break;
 
                 case 'ItemsBodyContent':
+                case 'ItemsWrap':
 
                     if (this.textInput === null) itemsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
 
@@ -1031,7 +1410,9 @@ items.propType = {
 
     color_ItemsBodyContentIcon_end: PropTypes.string,
     color_ItemsBodyContentIcon_start: PropTypes.string,
-    textInputIcon: PropTypes.string
+    textInputIcon: PropTypes.string,
+
+    checkButton: PropTypes.bool
 
 }
 
