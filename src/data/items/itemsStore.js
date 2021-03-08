@@ -5,6 +5,7 @@ import style from '../styleObject'
 import tabsActionTypes from "./itemsActionTypes";
 import tabs from "./itemsObject"
 import PropTypes from "prop-types";
+import {act} from "@testing-library/react";
 
 class ItemsStore extends ReduceStore {
     constructor () {
@@ -92,6 +93,31 @@ class ItemsStore extends ReduceStore {
                         color_TilesWrap_p: action.color_TilesWrap_p,
 
                         checkSpan: action.checkSpan,
+                        transitionYEnable: action.transitionYEnable,
+                        transitionYEnable1: action.transitionYEnable1,
+                        transitionXEnable: action.transitionXEnable,
+                        transitionXEnable1: action.transitionXEnable1,
+                        durationAnimationP: action.durationAnimationP,
+                        duration1AnimationP: action.duration1AnimationP,
+                        fillModeAnimationP: action.fillModeAnimationP,
+                        colorEndSpan: action.colorEndSpan,
+                        colorStartSpan: action.colorStartSpan,
+                        textInputSpan: action.textInputSpan,
+                        toEnableAnimationSpan: action.toEnableAnimationSpan,
+
+                        checkIcon: action.checkIcon,
+                        toEnableAnimationIcon: action.toEnableAnimationIcon,
+                        durationAnimationIcon: action.durationAnimationIcon,
+                        duration1AnimationIcon: action.duration1AnimationIcon,
+                        fillModeAnimationIcon: action.fillModeAnimationIcon,
+                        transitionYEnableIcon: action.transitionYEnableIcon,
+                        transitionYEnable1Icon: action.transitionYEnable1Icon,
+                        transitionXEnableIcon: action.transitionXEnableIcon,
+                        transitionXEnable1Icon: action.transitionXEnable1Icon,
+
+                        color_ItemsBodyContentIcon_end: action.color_ItemsBodyContentIcon_end,
+                        color_ItemsBodyContentIcon_start: action.color_ItemsBodyContentIcon_start,
+                        textInputIcon: action.textInputIcon,
 
                         style: style({
                             duration: action.duration,

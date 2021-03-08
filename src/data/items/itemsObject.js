@@ -75,7 +75,33 @@ const items = Immutable.Record({
     lineHeight_TilesWrap_p: '18px',
     color_TilesWrap_p: '#b7b7b7',
 
-    checkSpan: null
+    checkSpan: null,
+    transitionYEnable: false,
+    transitionYEnable1: false,
+    transitionXEnable: true,
+    transitionXEnable1: false,
+    durationAnimationP: '1.5s',
+    duration1AnimationP: 'infinite',
+    fillModeAnimationP: 'forwards',
+    colorEndSpan: 'red',
+    colorStartSpan: 'black',
+    textInputSpan: 't',
+    toEnableAnimationSpan: false,
+
+    checkIcon: null,
+    toEnableAnimationIcon: true,
+    durationAnimationIcon: '1.5s',
+    duration1AnimationIcon: 'infinite',
+    fillModeAnimationIcon: 'forwards',
+    transitionYEnableIcon: false,
+    transitionYEnable1Icon: false,
+    transitionXEnableIcon: true,
+    transitionXEnable1Icon: false,
+
+    color_ItemsBodyContentIcon_end: 'red',
+    color_ItemsBodyContentIcon_start: 'black',
+    textInputIcon: 'a'
+
 })
 
 export default items

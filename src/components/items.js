@@ -20,7 +20,11 @@ function items({
                   width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
                   backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
                   fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
-                  checkSpan,
+                  checkSpan, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, durationAnimationP, duration1AnimationP,
+                  fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan,
+                  checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
+                  transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon,
+                  color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon,
                   duration, timing, delay, iterations, direction, fillMode, playState, ...rest
                }) {
 
@@ -47,7 +51,11 @@ function items({
             width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
             backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
             fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
-            checkSpan,
+            checkSpan, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, durationAnimationP, duration1AnimationP,
+            fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan,
+            checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
+            transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon,
+            color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -68,10 +76,13 @@ function items({
             width_TilesWrapLi1, fontFamily_TilesWrapLi1,fontFamily_TilesWrapLi2,height_TilesWrapLi,
             backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
             fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
-            checkSpan
+            checkSpan, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, durationAnimationP, duration1AnimationP,
+            fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan, toEnableAnimationSpan,
+            checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
+            transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon, color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start, textInputIcon
         ]
 
-        checkValue( variableArray, rest.items.state.get(id))
+        // checkValue( variableArray, rest.items.state.get(id))
 
         //console.log("Dentro else di !rest")
 
@@ -266,15 +277,36 @@ export function getItemsBodyContent(Item) {
 
 export function getItemsBodySpan(Item) {
 
+    let tmp = ( (!Item.transitionYEnable && !Item.transitionYEnable1) && (!Item.transitionXEnable && !Item.transitionXEnable1)) ? true : false
+
     const ItemBodySpan = styled.span`
         
-/*            &:hover {
+          color: ${Item.checkSpan ? Item.colorEndSpan : Item.colorStartSpan};
+          animation: ${(Item.checkSpan && Item.toEnableAnimationSpan) ? `icon ${Item.durationAnimationP} ${Item.duration1AnimationP} ${Item.fillModeAnimationP};` : '' };
+              
+          @keyframes icon {
+                0%,100%{
+                    transform: ${tmp ? 'translateY(0px)' : Item.transitionYEnable ? 'translateY(0px)' : ''};
+                    transform: ${Item.transitionYEnable1 ? 'translateY(0px)' : ''};
+                    transform: ${Item.transitionXEnable ? 'translateX(0px)' : ''};
+                    transform: ${Item.transitionXEnable1 ? 'translateX(0px)' : ''};
+                }
+                50% {
+                    transform: ${tmp ? 'translateY(3px)' : Item.transitionYEnable ? 'translateY(3px)' : ''};
+                    transform: ${Item.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                    transform:${Item.transitionXEnable ? 'translateX(3px)' : ''};
+                    transform: ${Item.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                }
+          } 
+          
+        /*            &:hover {
                 border-radius: 15px 50px 30px;
                 // border-radius: ${Item.borderRadius_hover_ItemsBodyContent};
                 border: ${Item.borderDim_hover_ItemsBodyContent} ${Item.borderType_hover_ItemsBodyContent} ${Item.borderColor_hover_ItemsBodyContent};
                 // background-color: yellow;
                
             }*/
+
         
     `;
 
@@ -284,20 +316,28 @@ export function getItemsBodySpan(Item) {
 
 export function getItemsBodyContent_icon(Item) {
 
+    let tmp = ( (!Item.transitionYEnable && !Item.transitionYEnable1) && (!Item.transitionXEnable && !Item.transitionXEnable1)) ? true : false
+
     const ItemsBodyContentIcon = styled.span`
       align-self: center;
       font-size: ${Item.fontSize_ItemsBodyContentIcon};
-      color: ${Item.color_ItemsBodyContentIcon};
+      color: ${Item.checkSpan ? Item.color_ItemsBodyContentIcon_end : Item.color_ItemsBodyContentIcon_start};
       font-weight: ${Item.fontWeight_ItemsBodyContentIcon};
-      animation: icon 1.5s infinite forwards;
-      
+      animation: ${(Item.checkIcon && Item.toEnableAnimationIcon) ? `icon ${Item.durationAnimationIcon} ${Item.duration1AnimationIcon} ${Item.fillModeAnimationIcon};` : ''}
+         
       @keyframes icon {
-          0%,100%{
-            transform: translate(0px);
-          }
-          50% {
-            transform: translate(3px);
-          }
+                0%,100%{
+                    transform: ${tmp ? 'translateY(0px)' : Item.transitionYEnableIcon ? 'translateY(0px)' : ''};
+                    transform: ${Item.transitionYEnable1Icon ? 'translateY(0px)' : ''};
+                    transform: ${Item.transitionXEnableIcon ? 'translateX(0px)' : ''};
+                    transform: ${Item.transitionXEnable1Icon ? 'translateX(0px)' : ''};
+                }
+                50% {
+                    transform: ${tmp ? 'translateY(3px)' : Item.transitionYEnableIcon ? 'translateY(3px)' : ''};
+                    transform: ${Item.transitionYEnable1Icon ? 'translateY(-3px)' : ''};
+                    transform:${Item.transitionXEnableIcon ? 'translateX(3px)' : ''};
+                    transform: ${Item.transitionXEnable1Icon ? 'translateX(-3px)' : ''};
+                }
         }
 
       `;
@@ -664,7 +704,13 @@ function checkValue (variableArray, rest) {
         "borderColor_hover_ItemsBodyContent", "fontSize_ItemsBodyContentIcon", "color_ItemsBodyContentIcon", "fontWeight_ItemsBodyContentIcon",
         "width_TilesWrapLi1", "fontFamily_TilesWrapLi1","fontFamily_TilesWrapLi2","height_TilesWrapLi",
         "backgroundColor_TilesWrapLi", "borderDim_TilesWrapLi", "borderType_TilesWrapLi","borderColor_TilesWrapLi","fontSize_TilesWrap_h2",
-        "fontSize_getTilesWrap_h3", "color_getTilesWrap_h3", "marginBotton_getTilesWrap_h3", "fontSize_TilesWrap_p", "lineHeight_TilesWrap_p", "color_TilesWrap_p", "checkSpan"]
+        "fontSize_getTilesWrap_h3", "color_getTilesWrap_h3", "marginBotton_getTilesWrap_h3", "fontSize_TilesWrap_p", "lineHeight_TilesWrap_p", "color_TilesWrap_p", "checkSpan",
+        "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1", "durationAnimationP", "duration1AnimationP",
+        "fillModeAnimationP", "colorEndSpan", "colorStartSpan", "textInputSpan", "toEnableAnimationSpan",
+        "checkIcon", "toEnableAnimationIcon", "durationAnimationIcon", "duration1AnimationIcon", "fillModeAnimationIcon", "transitionYEnableIcon",
+        "transitionYEnable1Icon", "transitionXEnableIcon", "transitionXEnable1Icon", "color_ItemsBodyContentIcon_end", "color_ItemsBodyContentIcon_start",
+        "textInputIcon"
+    ]
 
     /*
         0: "borderDim_ContItem",
@@ -727,13 +773,36 @@ function checkValue (variableArray, rest) {
         58: "fontSize_TilesWrap_p",
         59: "lineHeight_TilesWrap_p",
         60: "color_TilesWrap_p",
-        61: "checkSpan"
+        61: "checkSpan",
+        62: "transitionYEnable",
+        63: "transitionYEnable1",
+        64: "transitionXEnable",
+        65: "transitionXEnable1",
+        66: "durationAnimationP",
+        67: "duration1AnimationP",
+        68: "fillModeAnimationP",
+        69: "colorEndSpan",
+        70: "colorStartSpan",
+        71: "textInputSpan",
+        72: "toEnableAnimationSpan"
+        73: "checkIcon",
+        74: "toEnableAnimationIcon",
+        75: "durationAnimationIcon",
+        76: "duration1AnimationIcon",
+        77: "fillModeAnimationIcon",
+        78: "transitionYEnableIcon",
+        79: "transitionYEnable1Icon",
+        80: "transitionXEnableIcon",
+        81: "transitionXEnable1Icon",
+        82: "color_ItemsBodyContentIcon_end",
+        83: "color_ItemsBodyContentIcon_start",
+        84: "textInputIcon"
     */
 
 
     for (let i = 0; i < variableArray.length; i++) {
 
-        if (variableArray[i] != rest.get(tmp[i])) {
+        if ((variableArray[i] != rest.get(tmp[i])) && variableArray[i] != 61) {
             itemsActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
         }
 
@@ -761,6 +830,12 @@ export function setCheckItems(value, typeTag, type) {
 
                     break;
 
+                case 'ItemsBodyContentIcon':
+
+                    itemsActions.changeValue(this.id, 'checkIcon', value)
+
+                    break;
+
                 default:
                     return;
             }
@@ -770,19 +845,77 @@ export function setCheckItems(value, typeTag, type) {
 
         case 'clickMouse':
 
-            let result = (value === this.checkLimit) ? !value : value
-            itemsActions.changeValue(this.id, 'checkLimit', result)
+            switch (typeTag) {
+
+                case 'ItemBodySpan':
+
+                    let r = (value === this.checkSpan) ? !value : value
+                    itemsActions.changeValue(this.id, 'checkSpan', r)
+
+                    break;
+
+                case 'ItemsBodyContent':
+
+                    let result = (value === this.checkLimit) ? !value : value
+                    itemsActions.changeValue(this.id, 'checkLimit', result)
+
+                    break;
+
+                case 'ItemsBodyContentIcon':
+
+                    let re = (value === this.checkIcon) ? !value : value
+                    itemsActions.changeValue(this.id, 'checkIcon', re)
+
+                    break;
+
+                default:
+                    return;
+            }
+
 
             break;
 
         case 'keyDown':
 
-            if (this.textInput === null) itemsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+            switch (typeTag) {
 
-            if (value.key === this.textInput) {
-                let result = (value === this.checkLimit) ? !value : value
-                itemsActions.changeValue(this.id, 'checkLimit', result)
+                case 'ItemBodySpan':
+
+                    if (this.textInputSpan === null) itemsActions.changeValue(this.id, 'checkSpan', !this.checkSpan)
+
+                    if (value.key === this.textInputSpan) {
+                        let result = (value === this.checkSpan) ? !value : value
+                        itemsActions.changeValue(this.id, 'checkSpan', result)
+                    }
+
+                    break;
+
+                case 'ItemsBodyContent':
+
+                    if (this.textInput === null) itemsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
+
+                    if (value.key === this.textInput) {
+                        let result = (value === this.checkLimit) ? !value : value
+                        itemsActions.changeValue(this.id, 'checkLimit', result)
+                    }
+
+                    break;
+
+                case 'ItemsBodyContentIcon':
+
+                    if (this.textInputIcon === null) itemsActions.changeValue(this.id, 'checkIcon', !this.checkIcon)
+
+                    if (value.key === this.textInputIcon) {
+                        let result = (value === this.checkIcon) ? !value : value
+                        itemsActions.changeValue(this.id, 'checkIcon', result)
+                    }
+
+                    break;
+
+                default:
+                    return;
             }
+
 
             break;
 
@@ -791,7 +924,6 @@ export function setCheckItems(value, typeTag, type) {
     }
 
 }
-
 
 items.propType = {
     anim: PropTypes.object,
@@ -872,7 +1004,35 @@ items.propType = {
     lineHeight_TilesWrap_p: PropTypes.string,
     color_TilesWrap_p: PropTypes.string,
 
-    checkSpan: PropTypes.string
+    checkSpan: PropTypes.bool,
+
+    transitionYEnable: PropTypes.bool,
+    transitionYEnable1: PropTypes.bool,
+    transitionXEnable: PropTypes.bool,
+    transitionXEnable1: PropTypes.bool,
+    durationAnimationP: PropTypes.string,
+    duration1AnimationP: PropTypes.string,
+    fillModeAnimationP: PropTypes.string,
+    colorEndSpan: PropTypes.string,
+    colorStartSpan: PropTypes.string,
+
+    textInputSpan: PropTypes.string,
+    toEnableAnimationSpan: PropTypes.bool,
+
+    checkIcon: PropTypes.bool,
+    toEnableAnimationIcon: PropTypes.bool,
+    durationAnimationIcon: PropTypes.string,
+    duration1AnimationIcon: PropTypes.string,
+    fillModeAnimationIcon: PropTypes.string,
+    transitionYEnableIcon: PropTypes.bool,
+    transitionYEnable1Icon: PropTypes.bool,
+    transitionXEnableIcon: PropTypes.bool,
+    transitionXEnable1Icon: PropTypes.bool,
+
+    color_ItemsBodyContentIcon_end: PropTypes.string,
+    color_ItemsBodyContentIcon_start: PropTypes.string,
+    textInputIcon: PropTypes.string
+
 }
 
 export default items

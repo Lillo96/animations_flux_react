@@ -18,7 +18,11 @@ const itemsActions = {
         backgroundColor_TilesWrapLi, borderDim_TilesWrapLi, borderType_TilesWrapLi,borderColor_TilesWrapLi,fontSize_TilesWrap_h2,
         fontSize_getTilesWrap_h3, color_getTilesWrap_h3, marginBotton_getTilesWrap_h3, fontSize_TilesWrap_p, lineHeight_TilesWrap_p, color_TilesWrap_p,
 
-        checkSpan,
+        checkSpan, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, durationAnimationP, duration1AnimationP,
+        fillModeAnimationP, colorEndSpan, colorStartSpan, textInputSpan, toEnableAnimationSpan,
+        checkIcon, toEnableAnimationIcon, durationAnimationIcon, duration1AnimationIcon, fillModeAnimationIcon, transitionYEnableIcon,
+        transitionYEnable1Icon, transitionXEnableIcon, transitionXEnable1Icon, color_ItemsBodyContentIcon_end, color_ItemsBodyContentIcon_start,
+        textInputIcon,
 
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
@@ -100,7 +104,30 @@ const itemsActions = {
             fillMode: direction,
             playState: playState,
 
-            checkSpan: checkSpan
+            checkSpan: checkSpan,
+            transitionYEnable: transitionYEnable,
+            transitionYEnable1: transitionYEnable1,
+            transitionXEnable: transitionXEnable,
+            transitionXEnable1: transitionXEnable1,
+            durationAnimationP: durationAnimationP,
+            duration1AnimationP: duration1AnimationP,
+            fillModeAnimationP: fillModeAnimationP,
+            colorEndSpan: colorEndSpan,
+            colorStartSpan: colorStartSpan,
+            textInputSpan: textInputSpan,
+            toEnableAnimationSpan: toEnableAnimationSpan,
+            checkIcon: checkIcon,
+            toEnableAnimationIcon: toEnableAnimationIcon,
+            durationAnimationIcon: durationAnimationIcon,
+            duration1AnimationIcon: duration1AnimationIcon,
+            fillModeAnimationIcon: fillModeAnimationIcon,
+            transitionYEnableIcon: transitionYEnableIcon,
+            transitionYEnable1Icon: transitionYEnable1Icon,
+            transitionXEnableIcon: transitionXEnableIcon,
+            transitionXEnable1Icon: transitionXEnable1Icon,
+            color_ItemsBodyContentIcon_end: color_ItemsBodyContentIcon_end,
+            color_ItemsBodyContentIcon_start: color_ItemsBodyContentIcon_start,
+            textInputIcon: textInputIcon
 
         })
     },

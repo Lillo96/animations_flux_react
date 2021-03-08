@@ -931,20 +931,20 @@ function SimpleSelect(props) {
                                       </ItemsBodyContent>*/}
 
                                       {/* ITEM CON CLICK CON MOUSE */}
-{/*                                      <ItemsBodyContent>
-                                          <ItemBodySpan onClick={() => item1.setCheckLimitItems(true, 'clickMouse')}>
+                                      <ItemsBodyContent onClick={() => item1.setCheckItems(true, 'ItemsBodyContent', 'clickMouse')}>
+                                          <ItemBodySpan tabIndex="0" onKeyDown={(e) => {item1.setCheckItems(e, 'ItemBodySpan', 'keyDown')}}>
                                               Design of Everyday Things
                                           </ItemBodySpan>
                                           <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                      </ItemsBodyContent>*/}
+                                      </ItemsBodyContent>
 
                                       {/* ITEM CON PRESSIONE TASTO */}
-                                      <ItemsBodyContent tabIndex="0" onKeyDown={(e) => {item1.setCheckItems(e, 'ItemsBodyContent', 'keyDown')}}>
+{/*                                      <ItemsBodyContent tabIndex="0" onKeyDown={(e) => {item1.setCheckItems(e, 'ItemsBodyContent', 'keyDown')}}>
                                           <ItemBodySpan onMouseEnter={() => item1.setCheckItems(true, 'ItemBodySpan', 'transitionMouse')} onMouseLeave={() => item1.setCheckItems(false, 'ItemBodySpan', 'transitionMouse')}>
                                               Practical Empathy: For Collaboration & Creativity in Your Work
                                           </ItemBodySpan>
                                           <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                      </ItemsBodyContent>
+                                      </ItemsBodyContent>*/}
 
                                   </ItemsBody>
                               </DivItems>
