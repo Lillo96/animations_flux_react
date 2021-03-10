@@ -46,6 +46,10 @@ class CheckboxesStore extends ReduceStore {
                         checkAnimationTransition: action.checkAnimationTransition,
                         setFlagAnimTransitionCheckLimit: action.setFlagAnimTransitionCheckLimit,
                         toEnableAnimationP_2: action.toEnableAnimationP_2,
+                        setStopAnimation: action.setStopAnimation,
+                        onAnim: action.onAnim,
+                        widthImg: action.widthImg,
+                        heightImg: action.heightImg,
                         style: style({
                             duration: action.duration,
                             timing: action.timing,

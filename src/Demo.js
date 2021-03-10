@@ -206,7 +206,7 @@ function SimpleSelect(props) {
         case '1':
 
             const CheckBoxLabelP = getPCheck(getCheckboxes('checkbox1'))
-           // const CheckBoxLabelIMG = getIMGCheck(getCheckboxes('checkbox1'))
+            const CheckBoxLabelIMG = getIMGCheck(getCheckboxes('checkbox1'))
            // const CheckBoxInput = getInputCheck(getCheckboxes('checkbox1'))
            // const CheckBoxLabelP1 = getPCheck(getCheckboxes('checkbox1_1'))
            // const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_2'))
@@ -258,12 +258,15 @@ function SimpleSelect(props) {
                                 {/* CHECK 1 */}
 
                                 <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
-                                                opacityCheck='2' duration='2s' fillMode="both" {...props}>
+                                                opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={2}
+                                                setStopAnimation={false} onAnim={true} {...props}>
 
                                     <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
                                     <label>
                                         <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP>
                                         {/* <CheckBoxLabelP>MARCO</CheckBoxLabelP> */}
+                                        {/*<CheckBoxLabelIMG style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
+                                        </CheckBoxLabelIMG>*/}
                                     </label>
 
                                 </imp.checkboxes>
@@ -349,7 +352,8 @@ function SimpleSelect(props) {
 
                             </FormControl>
 
-                            <imp.checkboxes id='checkboxprova2' typeInput={2} {...props}>
+                            <imp.checkboxes id='checkboxprova2' typeInput={2} toEnableAnimationP={false} setFlagAnimTransitionCheckLimit={3}
+                                            setStopAnimation={false} onAnim={true} {...props}>
 
                                 <input type="checkbox" onClick={() => { checkbox2.setCheckLimit(true, null) }}/>
                                 <label >
@@ -365,6 +369,7 @@ function SimpleSelect(props) {
         case '3':
 
             const CheckBoxLabel3P = getPCheck(getCheckboxes('checkboxprova3'))
+            const CheckBoxLabelIMG3 = getIMGCheck(getCheckboxes('checkboxprova3'))
 
             return (
                 <div>
@@ -396,13 +401,16 @@ function SimpleSelect(props) {
 
                     </FormControl>
 
-                    <imp.checkboxes id='checkboxprova3' typeInput={3} textInput='Checkbox off' toEnableAnimationP={false} setFlagAnimTransitionCheckLimit={2} {...props}>
+                    <imp.checkboxes id='checkboxprova3' typeInput={3} textInput='Checkbox off' toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={3}
+                                    setStopAnimation={false} onAnim={true} {...props}>
 
                         <input type="checkbox" onClick={() => { checkbox3.setTextValue(true, 'Checkbox on'); checkbox3.setCheckLimit(true, null); }} />
                         <label>
-                            <CheckBoxLabel3P onMouseEnter={() => checkbox3.setCheckLimit(null, true)} onMouseLeave={() => checkbox3.setCheckLimit(null, false)}>
+                           <CheckBoxLabel3P onMouseEnter={() => checkbox3.setCheckLimit(null, true)} onMouseLeave={() => checkbox3.setCheckLimit(null, false)}>
                                 {getCheckboxes('checkboxprova3').textValue}
                             </CheckBoxLabel3P>
+{/*                            <CheckBoxLabelIMG3 style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
+                                        </CheckBoxLabelIMG3>*/}
                         </label>
 
                     </imp.checkboxes>

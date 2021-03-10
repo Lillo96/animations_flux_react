@@ -15,7 +15,8 @@ function checkboxes({
     displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
     toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
     transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
-    checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2,
+    checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim,
+    widthImg, heightImg,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
@@ -33,8 +34,9 @@ function checkboxes({
                displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
                toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
                transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
-               checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2,
-               duration, timing, delay, iterations, direction, fillMode, playState
+               checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim,
+               widthImg, heightImg,
+               duration, timing, delay, iterations, direction, fillMode, playState,
             )
 
            // NO
@@ -102,7 +104,8 @@ function checkboxes({
                displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
                toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
                transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
-               checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2 ] // NEW
+               checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim,
+               widthImg, heightImg] // NEW
 
            checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
 
@@ -729,7 +732,7 @@ function checkValue (variableArray, rest) {
         "displayCheck", "textDecoration", "textDecorationThickness", "textDecorationColor", "transitionTimingFunction",
         "toEnableAnimationP", "durationAnimationP", "duration1AnimationP", "fillModeAnimationP",
         "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1",
-        "checkAnimationTransition", "setFlagAnimTransitionCheckLimit", "toEnableAnimationP_2"]
+        "checkAnimationTransition", "setFlagAnimTransitionCheckLimit", "toEnableAnimationP_2", "setStopAnimation", "onAnim", "widthImg", "heightImg"]
 
     /*
         0: "checkLimit",
@@ -759,7 +762,12 @@ function checkValue (variableArray, rest) {
         24: "transitionXEnable1",
         25: "checkAnimationTransition",
         26: "setFlagAnimTransitionCheckLimit",
-        27: "toEnableAnimationP_2"
+        27: "toEnableAnimationP_2",
+        28: "setStopAnimation",
+        29: "onAnim",
+        30: "widthImg",
+        31: "heightImg"
+
     */
 
     /*
@@ -780,7 +788,7 @@ function checkValue (variableArray, rest) {
     for (let i = 5; i < tmp.length; i++) {
 
         if (variableArray[i] != rest.get(tmp[i])) {
-            if (i != 25) {
+            if ((i != 25 && i != 28) && i != 29) {
                 checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
             }
         }
@@ -874,95 +882,220 @@ export function getPCheck (Check) {
                     3: ENTRAMBI
                  */
 
-                switch (Check.setFlagAnimTransitionCheckLimit) {
+                // CASO IN CUI SI VOLESSE O MENO DISATTIVARE L'ANIMAZIONE ATTIVA CON LA TRANSIZIONE DEL MOUSE O CLICK
+                switch (Check.setStopAnimation){
 
-                    case 1:
+                    case false:
 
-                        CheckLabel = styled.p`
+                        switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                            case 1:
+
+                                CheckLabel = styled.p`
                 
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: ${(Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-              
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            } 
-                   
-                        `;
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 2:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                                    
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 3:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                                  
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            default:
+                                return;
+                        }
 
                         break;
 
-                    case 2:
+                    case true:
 
-                        CheckLabel = styled.p`
+                        switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                            case 1:
+
+                                CheckLabel = styled.p`
                 
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: ${(Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-              
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            } 
-                   
-                        `;
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(!Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 2:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(!Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 3:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(!Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                                  
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            default:
+                                return;
+                        }
 
                         break;
 
-                    case 3:
+                    default:
+                        return;
 
-                        CheckLabel = styled.p`
-                
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};
-                          
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            } 
-                   
-                        `;
-
-                        break;
                 }
+
 
             } else {
 
@@ -983,9 +1116,10 @@ export function getPCheck (Check) {
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                          
-                            animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                        
+                            ${Check.onAnim ? `    
+                                animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1014,7 +1148,9 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ${Check.onAnim ? `
+                                animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1043,8 +1179,10 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                          
+                            ${Check.onAnim ? `
+                                animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ` : ''}
+                            
                             @keyframes icon {
                                       0%,100%{
                                              transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -1084,125 +1222,281 @@ export function getPCheck (Check) {
                     3: ENTRAMBI
                  */
 
-                switch (Check.setFlagAnimTransitionCheckLimit) {
+                // CASO IN CUI SI VOLESSE O MENO DISATTIVARE L'ANIMAZIONE ATTIVA CON LA TRANSIZIONE DEL MOUSE O CLICK
+                switch (Check.setStopAnimation) {
 
-                    case 1:
+                    case true:
 
-                        CheckLabel = styled.p`
+                        switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                            case 1:
+
+                                CheckLabel = styled.p`
                 
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: ${(Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-              
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            } 
-                   
-                            @keyframes line { 
-                              
-                                  from, to {                           
-                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                                        text-decoration: ${Check.textDecoration};
-                                        text-decoration-thickness: ${Check.textDecorationThickness};
-                                        text-decoration-color: ${Check.textDecorationColor};
-                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
-                                  }
-                            }
-                            
-                        `;
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(!Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, 
+                                        line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`
+                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                    @keyframes line { 
+                                      
+                                          from, to {                           
+                                                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                                text-decoration: ${Check.textDecoration};
+                                                text-decoration-thickness: ${Check.textDecorationThickness};
+                                                text-decoration-color: ${Check.textDecorationColor};
+                                                transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                          }
+                                    }
+                                    
+                                `;
+
+                                break;
+
+                            case 2:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                    
+                                    ${Check.onAnim ? `
+                                        animation: ${(!Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` 
+                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`: ''};
+                                    ` : ''}
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    }
+                                    
+                                    @keyframes line {
+                                          from, to {                           
+                                                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                                text-decoration: ${Check.textDecoration};
+                                                text-decoration-thickness: ${Check.textDecorationThickness};
+                                                text-decoration-color: ${Check.textDecorationColor};
+                                                transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                          }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 3:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${!Check.checkAnimationTransition ?
+                                            `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` 
+                                                : ''}`
+                                    : ''} 
+                                    ` : ''}
+                                  
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    }
+                                    
+                                    @keyframes line {
+                                          from, to {                           
+                                                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                                text-decoration: ${Check.textDecoration};
+                                                text-decoration-thickness: ${Check.textDecorationThickness};
+                                                text-decoration-color: ${Check.textDecorationColor};
+                                                transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                          }
+                                    }  
+                           
+                                `;
+
+                                break;
+                        }
 
                         break;
 
-                    case 2:
+                    case false:
 
-                        CheckLabel = styled.p`
-                
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: ${(Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`};
-              
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            }
-                            
-                            @keyframes line {
-                                  from, to {                           
-                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                                        text-decoration: ${Check.textDecoration};
-                                        text-decoration-thickness: ${Check.textDecorationThickness};
-                                        text-decoration-color: ${Check.textDecorationColor};
-                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
-                                  }
-                            } 
-                   
-                        `;
+                        switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                            case 1:
+
+                                CheckLabel = styled.p`
+                        
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` 
+                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : ''}
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                    @keyframes line { 
+                                      
+                                          from, to {                           
+                                                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                                text-decoration: ${Check.textDecoration};
+                                                text-decoration-thickness: ${Check.textDecorationThickness};
+                                                text-decoration-color: ${Check.textDecorationColor};
+                                                transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                          }
+                                    }
+                                    
+                                `;
+
+                                break;
+
+                            case 2:
+
+                                CheckLabel = styled.p`
+                        
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`
+                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`: ''};
+                                    ` : ''}
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    }
+                                    
+                                    @keyframes line {
+                                          from, to {                           
+                                                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                                text-decoration: ${Check.textDecoration};
+                                                text-decoration-thickness: ${Check.textDecorationThickness};
+                                                text-decoration-color: ${Check.textDecorationColor};
+                                                transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                          }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 3:
+
+                                CheckLabel = styled.p`
+                        
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                    
+                                    ${Check.onAnim ? `
+                                        animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';'}
+                                    ` : ''}
+                                  
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    }
+                                    
+                                    @keyframes line {
+                                          from, to {                           
+                                                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                                                text-decoration: ${Check.textDecoration};
+                                                text-decoration-thickness: ${Check.textDecorationThickness};
+                                                text-decoration-color: ${Check.textDecorationColor};
+                                                transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
+                                          }
+                                    }  
+                           
+                                `;
+
+                                break;
+                        }
 
                         break;
 
-                    case 3:
-
-                        CheckLabel = styled.p`
-                
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';'}
-                          
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmpT ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            }
-                            
-                            @keyframes line {
-                                  from, to {                           
-                                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                                        text-decoration: ${Check.textDecoration};
-                                        text-decoration-thickness: ${Check.textDecorationThickness};
-                                        text-decoration-color: ${Check.textDecorationColor};
-                                        transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
-                                  }
-                            }  
-                   
-                        `;
-
-                        break;
+                    default:
+                        return;
                 }
 
             } else {
@@ -1225,8 +1519,9 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                          
-                            animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ${Check.onAnim ? `
+                                animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1265,8 +1560,10 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` };
-                          
+                            ${Check.onAnim ? `
+                                animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` };
+                            ` : ''}
+                            
                             @keyframes icon {
                                       0%,100%{
                                              transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -1306,7 +1603,9 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';' }` : ''};
+                            ${Check.onAnim ? `
+                                animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';' }` : ''};
+                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1446,95 +1745,212 @@ export function getPCheck (Check) {
                     3: ENTRAMBI
                  */
 
-                switch (Check.setFlagAnimTransitionCheckLimit) {
+                // CASO IN CUI SI VOLESSE O MENO DISATTIVARE L'ANIMAZIONE ATTIVA CON LA TRANSIZIONE DEL MOUSE O CLICK
+                switch (Check.setStopAnimation){
 
-                    case 1:
+                    case true:
 
-                        CheckLabel = styled.p`
+                        switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                            case 1:
+
+                                CheckLabel = styled.p`
                 
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: ${(Check.checkLimit && Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-              
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            } 
-                   
-                        `;
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(Check.checkLimit && !Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : '' }
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 2:
+
+                                console.log('2', Check.checkLimit, Check.checkAnimationTransition)
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(!Check.checkLimit && !Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : '' }
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 3:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim && !Check.checkAnimationTransition ? `
+                                        animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};                            
+                                    ` : '' }
+                                  
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+                        }
+                        break;
+
+                    case false:
+
+                        switch (Check.setFlagAnimTransitionCheckLimit) {
+
+                            case 1:
+
+                                CheckLabel = styled.p`
+                
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(Check.checkLimit && Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : '' }
+                      
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 2:
+
+                                console.log('2', Check.checkLimit, Check.checkAnimationTransition)
+                                CheckLabel = styled.p`
+                        
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim ? `
+                                        animation: ${(!Check.checkLimit && Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                                    ` : '' }
+                                    
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+
+                            case 3:
+
+                                CheckLabel = styled.p`
+                        
+                                    display: ${Check.displayCheck};
+                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                  
+                                    ${Check.onAnim && Check.checkAnimationTransition ? `
+                                        animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};
+                                    ` : '' }
+                                  
+                                    @keyframes icon {
+                                              0%,100%{
+                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                              }
+                                              50% {
+                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                     transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                              }
+                                    } 
+                           
+                                `;
+
+                                break;
+                        }
 
                         break;
 
-                    case 2:
-
-                        console.log('2', Check.checkLimit, Check.checkAnimationTransition)
-                        CheckLabel = styled.p`
-                
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: ${(!Check.checkLimit && Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-              
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            } 
-                   
-                        `;
-
-                        break;
-
-                    case 3:
-
-                        CheckLabel = styled.p`
-                
-                            display: ${Check.displayCheck};
-                            opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                            color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};
-                          
-                            @keyframes icon {
-                                      0%,100%{
-                                             transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                             transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                      }
-                                      50% {
-                                             transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                             transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                             transform:${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                             transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                      }
-                            } 
-                   
-                        `;
-
-                        break;
+                    default:
+                        return;
                 }
 
             } else {
@@ -1556,9 +1972,11 @@ export function getPCheck (Check) {
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                                 
-                            animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                          
+                                
+                            ${Check.onAnim ? `                     
+                                animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ` : ''}
+                            
                             @keyframes icon {
                                       0%,100%{
                                              transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -1586,7 +2004,9 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ${Check.onAnim ? ` 
+                                animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1615,7 +2035,9 @@ export function getPCheck (Check) {
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ${Check.onAnim ? `
+                                animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
+                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1639,35 +2061,6 @@ export function getPCheck (Check) {
 
             }
 
-/*            tmp = keyframes`
-                          from, to {
-                            opacity: ${Check.opacityNotCheck};
-                            color: ${Check.colorStart};
-                          }
-                      `;
-
-            tmp1 = keyframes`  
-                          from, to {
-                            opacity: ${Check.opacityCheck};
-                            color: ${Check.colorEnd};
-                          }
-                          
-                      `;
-
-            duration = (Check.style === null) ? '1s' : Check.style.duration
-            fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
-
-            CheckLabel = styled.p`
-    
-                display: ${Check.displayCheck};
-    
-                ${Check.checkLimit ?
-                `animation: ${tmp} ${duration} ${fillMode};` :
-                Check.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
-                }  
-                             
-            `;
-*/
             break;
 
         default:
@@ -1684,6 +2077,7 @@ export function getIMGCheck (Check) {
     switch (Check.typeInput) {
 
         case 1:
+        case 2:
 
             /*            let tmp = keyframes`
                           0% {
@@ -1763,8 +2157,8 @@ export function getIMGCheck (Check) {
             CheckLabel = styled.img`
 
                 display: ${Check.displayCheck};
-                width: 300px;
-                height: 40px;
+                width: ${Check.widthImg};
+                height: ${Check.heightImg};
                 filter: grayscale(100%);
                 transition: .5s;
                  
@@ -1777,10 +2171,16 @@ export function getIMGCheck (Check) {
 
             break;
 
-        case 2:
-            break;
-
         case 3:
+
+            CheckLabel = styled.img`
+                display: ${Check.displayCheck};
+                width: ${Check.widthImg};
+                height: ${Check.heightImg};
+                filter: grayscale(100%);
+                transition: .5s;
+            `;
+
             break;
 
         default:
@@ -1842,7 +2242,13 @@ checkboxes.propType = {
 
     checkAnimationTransition: PropTypes.bool,
     setFlagAnimTransitionCheckLimit: PropTypes.number,
-    toEnableAnimationP_2: PropTypes.bool
+    toEnableAnimationP_2: PropTypes.bool,
+
+    setStopAnimation: PropTypes.bool,
+    onAnim: PropTypes.bool,
+
+    widthImg: PropTypes.string,
+    heightImg: PropTypes.string
 
 }
 
