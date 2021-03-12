@@ -319,7 +319,7 @@ export function getItemsBodySpan(Item) {
                 50% {
                     transform: ${tmp ? 'translateY(3px)' : Item.transitionYEnable ? 'translateY(3px)' : ''};
                     transform: ${Item.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                    transform:${Item.transitionXEnable ? 'translateX(3px)' : ''};
+                    transform: ${Item.transitionXEnable ? 'translateX(3px)' : ''};
                     transform: ${Item.transitionXEnable1 ? 'translateX(-3px)' : ''};
                 }
           } 

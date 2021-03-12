@@ -25,7 +25,7 @@ const cardsActions = {
         widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
         widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
         checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
-        toEnableAnimationWrapper, imgCard2,
+        toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
         duration, timing, delay, iterations, direction, fillMode, playState) {
 
         animationDispatcher.dispatch ({
@@ -159,7 +159,12 @@ const cardsActions = {
             fillModeAnimationButton: fillModeAnimationButton,
 
             toEnableAnimationWrapper: toEnableAnimationWrapper,
-            imgCard2: imgCard2
+            imgCard2: imgCard2,
+
+            transitionYEnable: transitionYEnable,
+            transitionYEnable1: transitionYEnable1,
+            transitionXEnable: transitionXEnable,
+            transitionXEnable1: transitionXEnable1,
 
         })
     },

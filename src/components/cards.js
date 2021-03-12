@@ -31,7 +31,7 @@ function cards({
     widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
     widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
     checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
-    toEnableAnimationWrapper, imgCard2,
+    toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
@@ -63,7 +63,7 @@ function cards({
             widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
             widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
             checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
-            toEnableAnimationWrapper, imgCard2,
+            toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
@@ -90,7 +90,7 @@ function cards({
             widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
             widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
             checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
-            toEnableAnimationWrapper, imgCard2
+            toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1
         ]
 
         checkValue(variableArray, rest.cards.state.get(id))
@@ -413,6 +413,8 @@ export function getCardInner(Card) {
 
 export function getCardButton(Card) {
 
+    let tmp = ( (!Card.transitionYEnable && !Card.transitionYEnable1) && (!Card.transitionXEnable && !Card.transitionXEnable1)) ? true : false
+
     const ItemsBodyContentIcon = styled.button`
 
           background-color: ${Card.backgroundColorButton};
@@ -428,10 +430,16 @@ export function getCardButton(Card) {
      
           @keyframes icon {
               0%,100%{
-                transform: translate(0px);
+                    transform: ${tmp ? 'translateY(0px)' : Card.transitionYEnable ? 'translateY(0px)' : ''};
+                    transform: ${Card.transitionYEnable1 ? 'translateY(0px)' : ''};
+                    transform: ${Card.transitionXEnable ? 'translateX(0px)' : ''};
+                    transform: ${Card.transitionXEnable1 ? 'translateX(0px)' : ''};
               }
               50% {
-                transform: translate(3px);
+                    transform: ${tmp ? 'translateY(3px)' : Card.transitionYEnable ? 'translateY(3px)' : ''};
+                    transform: ${Card.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                    transform: ${Card.transitionXEnable ? 'translateX(3px)' : ''};
+                    transform: ${Card.transitionXEnable1 ? 'translateX(-3px)' : ''};
               }
           }
 
@@ -1024,6 +1032,10 @@ export function getIconUL(Card) {
     let bottom = (Card.topButtonCard2 === null) ? '20%' : Card.topButtonCard2
     let left = (Card.leftButtonCard2 === null) ? (Card.directionName === "FromRightHandToSinister") ? '85%' : '0%' : Card.leftButtonCard2
 
+
+    let tmp1 = ( (!Card.transitionYEnable && !Card.transitionYEnable1) && (!Card.transitionXEnable && !Card.transitionXEnable1)) ? true : false
+
+
     const ItemsBodyContentIcon = styled.button`
  
           animation: ${duration} ${tmp} ${fillMode};
@@ -1042,10 +1054,16 @@ export function getIconUL(Card) {
      
           @keyframes icon {
               0%,100%{
-                transform: translate(0px);
+                    transform: ${tmp1 ? 'translateY(0px)' : Card.transitionYEnable ? 'translateY(0px)' : ''};
+                    transform: ${Card.transitionYEnable1 ? 'translateY(0px)' : ''};
+                    transform: ${Card.transitionXEnable ? 'translateX(0px)' : ''};
+                    transform: ${Card.transitionXEnable1 ? 'translateX(0px)' : ''};
               }
               50% {
-                transform: translate(3px);
+                    transform: ${tmp1 ? 'translateY(3px)' : Card.transitionYEnable ? 'translateY(3px)' : ''};
+                    transform: ${Card.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                    transform: ${Card.transitionXEnable ? 'translateX(3px)' : ''};
+                    transform: ${Card.transitionXEnable1 ? 'translateX(-3px)' : ''};
               }
           }
   
@@ -2159,6 +2177,8 @@ export function getCoords(Card) {
     let bottom = (Card.topButtonCard3 === null) ? '20%' : Card.topButtonCard3
     let left = (Card.leftButtonCard3 === null) ? (Card.directionName === "FromRightHandToSinister") ? '85%' : '0%' : Card.leftButtonCard2
 
+    let tmp1 = ( (!Card.transitionYEnable && !Card.transitionYEnable1) && (!Card.transitionXEnable && !Card.transitionXEnable1)) ? true : false
+
     switch (Card.directionOfRotation1) {
 
         case "FromRightHandToSinister":
@@ -2260,10 +2280,16 @@ export function getCoords(Card) {
      
           @keyframes icon {
               0%,100%{
-                transform: translate(0px);
+                    transform: ${tmp1 ? 'translateY(0px)' : Card.transitionYEnable ? 'translateY(0px)' : ''};
+                    transform: ${Card.transitionYEnable1 ? 'translateY(0px)' : ''};
+                    transform: ${Card.transitionXEnable ? 'translateX(0px)' : ''};
+                    transform: ${Card.transitionXEnable1 ? 'translateX(0px)' : ''};
               }
               50% {
-                transform: translate(3px);
+                    transform: ${tmp1 ? 'translateY(3px)' : Card.transitionYEnable ? 'translateY(3px)' : ''};
+                    transform: ${Card.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                    transform: ${Card.transitionXEnable ? 'translateX(3px)' : ''};
+                    transform: ${Card.transitionXEnable1 ? 'translateX(-3px)' : ''};
               }
           }
     `;
@@ -2744,7 +2770,11 @@ function checkValue (variableArray, rest) {
         106: "duration1AnimationButton",
         107: "fillModeAnimationButton",
         108: "toEnableAnimationWrapper",
-        109: "imgCard2"
+        109: "imgCard2",
+        110: "transitionYEnable",
+        111: "transitionYEnable1",
+        112: "transitionXEnable",
+        113: "transitionXEnable1"
     */
 
 
@@ -2967,7 +2997,13 @@ cards.propType = {
     fillModeAnimationButton: PropTypes.string, //CARD 1
 
     toEnableAnimationWrapper: PropTypes.bool, // CARD 2
-    imgCard2: PropTypes.string // CARD 2
+    imgCard2: PropTypes.string, // CARD 2
+
+    transitionYEnable: PropTypes.bool,
+    transitionYEnable1: PropTypes.bool,
+    transitionXEnable: PropTypes.bool,
+    transitionXEnable1: PropTypes.bool
+
 }
 
 export default cards

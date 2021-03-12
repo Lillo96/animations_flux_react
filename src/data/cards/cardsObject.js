@@ -126,7 +126,11 @@ const cards = Immutable.Record({
     fillModeAnimationButton: 'forwards',
 
     toEnableAnimationWrapper: true,
-    imgCard2: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+    imgCard2: 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    transitionYEnable: false,
+    transitionYEnable1: false,
+    transitionXEnable: false,
+    transitionXEnable1: false
 })
 
 export default cards

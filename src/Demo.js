@@ -556,7 +556,7 @@ function SimpleSelect(props) {
                     {/* CARD BOTTONE */}
 
                     <imp.cards id='cardsprova3' typeInput={4} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
-                               duration='1s' fillMode="both" toEnableAnimationButton={true} {...props}>
+                               duration='1s' fillMode="both" toEnableAnimationButton={true} transitionYEnable={true} {...props}>
 
                         <CardContainer3>
                             <CardInner3 >

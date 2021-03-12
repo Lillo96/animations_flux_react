@@ -145,6 +145,11 @@ class CardsStore extends ReduceStore {
                         toEnableAnimationWrapper: action.toEnableAnimationWrapper,
                         imgCard2: action.imgCard2,
 
+                        transitionYEnable: action.transitionYEnable,
+                        transitionYEnable1: action.transitionYEnable1,
+                        transitionXEnable: action.transitionXEnable,
+                        transitionXEnable1: action.transitionXEnable1,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
