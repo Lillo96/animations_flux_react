@@ -20,6 +20,7 @@ function checkboxes({
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
+    console.log(typeInput)
 
        // NO
        let getAnimationCSS, getAnimationCSS_1, timeAnim, fillAnim, timeAnim2
@@ -42,6 +43,7 @@ function checkboxes({
            // NO
            // setAnimationCSS(id, cssStylesKeyFrames(true,1, colorStart))
 
+           console.log(typeInput)
            tmp_CardID = id // NEW
            // console.log(duration, animation)
        } else {
@@ -99,6 +101,7 @@ function checkboxes({
                 timeAnim = '0s'
             }*/
 
+           console.log(typeInput)
            const variableArray = [ checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
                opacityCheck, timeAnimation, typeAnimFillMode, colorLine,
                displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
@@ -106,6 +109,9 @@ function checkboxes({
                transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
                checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim,
                widthImg, heightImg] // NEW
+
+           //
+           console.log("dentro check PRE",rest.checkboxes.state.get(id).get('typeInput'))
 
            checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
 
@@ -115,6 +121,8 @@ function checkboxes({
 
            tmp_CardID = rest.checkboxes.state.get(id).get('id') // NEW
 
+           //
+           console.log("dentro check POST",rest.checkboxes.state.get(id).get('typeInput'))
        }
 
        // NO
@@ -795,17 +803,6 @@ function checkValue (variableArray, rest) {
 
     }
 
-    /*    if (colorEnd != restcolorEnd) {
-        checkboxesActions.changeValue(id, 'colorEnd', colorEnd)
-    }
-
-    if (colorStart != restcolorStart) {
-        checkboxesActions.changeValue(id, 'colorStart', colorStart)
-    }
-
-    if (colorLine != restcolorLine) {
-        checkboxesActions.changeValue(id, 'colorLine', colorLine)
-    }*/
 }
 
 export function getPCheck (Check) {
@@ -1327,9 +1324,9 @@ export function getPCheck (Check) {
                                         animation: ${!Check.checkAnimationTransition ?
                                             `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` 
                                                 : ''}`
-                                    : ''} 
+                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`: '' } 
                                     ` : ''}
-                                  
+                                 
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};

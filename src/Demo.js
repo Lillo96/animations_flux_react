@@ -83,16 +83,89 @@ function SimpleSelect(props) {
     const classes = useStyles1();
 
     const [CheckLimit, setCheckLimit] = React.useState(true);
-    const [ColorStart, setColorStart] = React.useState('red');
-    const [ColorEnd, setColorEnd] = React.useState('red');
 
-    const [ColorStart1, setColorStart1] = React.useState('red');
-    const [ColorEnd1, setColorEnd1] = React.useState('red');
+    {/* FORM CHECK 1 - CASE 4 */}
 
-    const [ColorStart2, setColorStart2] = React.useState('red');
-    const [ColorEnd2, setColorEnd2] = React.useState('red');
+    const [TypeInput, setTypeInput] = React.useState(1);
+    const handleTypeInput = (event) => {
+        setTypeInput(event.target.value);
+    };
 
-    const [ColorLine, setColorLine] = React.useState('black');
+    const [ToEnableAnimationP, setToEnableAnimationP] = React.useState(true);
+    const handleToEnableAnimationP = (event) => {
+        setToEnableAnimationP(event.target.value);
+    };
+
+    const [Anim, setAnim] = React.useState(1);
+    const handleAnim = (event) => {
+        setAnim(event.target.value);
+    };
+
+    const [StopAnimation, setStopAnimation] = React.useState(true);
+    const handleStopAnimation = (event) => {
+        setStopAnimation(event.target.value);
+    };
+
+    const [OnAnim, setOnAnim] = React.useState(true);
+    const handleOnAnim = (event) => {
+        setOnAnim(event.target.value);
+    };
+
+    {/* FORM CHECK 2 - CASE 4 */}
+
+    const [TypeInput2, setTypeInput2] = React.useState(1);
+    const handleTypeInput2 = (event) => {
+        setTypeInput2(event.target.value);
+    };
+
+    const [ToEnableAnimationP2, setToEnableAnimationP2] = React.useState(true);
+    const handleToEnableAnimationP2 = (event) => {
+        setToEnableAnimationP2(event.target.value);
+    };
+
+    const [Anim2, setAnim2] = React.useState(1);
+    const handleAnim2 = (event) => {
+        setAnim2(event.target.value);
+    };
+
+    const [StopAnimation2, setStopAnimation2] = React.useState(true);
+    const handleStopAnimation2 = (event) => {
+        setStopAnimation2(event.target.value);
+    };
+
+    const [OnAnim2, setOnAnim2] = React.useState(true);
+    const handleOnAnim2 = (event) => {
+        setOnAnim2(event.target.value);
+    };
+
+    {/* FORM CHECK 3 - CASE 4 */}
+
+    const [TypeInput3, setTypeInput3] = React.useState(1);
+    const handleTypeInput3 = (event) => {
+        setTypeInput3(event.target.value);
+    };
+
+    const [ToEnableAnimationP3, setToEnableAnimationP3] = React.useState(true);
+    const handleToEnableAnimationP3 = (event) => {
+        setToEnableAnimationP3(event.target.value);
+    };
+
+    const [Anim3, setAnim3] = React.useState(1);
+    const handleAnim3 = (event) => {
+        setAnim3(event.target.value);
+    };
+
+    const [StopAnimation3, setStopAnimation3] = React.useState(true);
+    const handleStopAnimation3 = (event) => {
+        setStopAnimation3(event.target.value);
+    };
+
+    const [OnAnim3, setOnAnim3] = React.useState(true);
+    const handleOnAnim3 = (event) => {
+        setOnAnim3(event.target.value);
+    };
+
+    {/**/}
 
     const [BackfaceColor, setBackfaceColor] = React.useState('#D9D9D9');
     const [DirectionOfRotation, setDirectionOfRotation] = React.useState('toTheLeft');
@@ -105,30 +178,7 @@ function SimpleSelect(props) {
     const handleChangeCheckLimit = (event) => {
         setCheckLimit(event.target.value);
     };
-    const handleColorStart = (event) => {
-        setColorStart(event.target.value);
-    };
-    const handleColorEnd = (event) => {
-        setColorEnd(event.target.value);
-    };
 
-    const handleColorStart1 = (event) => {
-        setColorStart1(event.target.value);
-    };
-    const handleColorEnd1 = (event) => {
-        setColorEnd1(event.target.value);
-    };
-
-    const handleColorStart2 = (event) => {
-        setColorStart2(event.target.value);
-    };
-    const handleColorEnd2 = (event) => {
-        setColorEnd2(event.target.value);
-    };
-
-    const handleColorLine = (event) => {
-        setColorLine(event.target.value);
-    }
 
     const handleBackfaceColor = (event) => {
         setBackfaceColor(event.target.value);
@@ -207,14 +257,15 @@ function SimpleSelect(props) {
 
             const CheckBoxLabelP = getPCheck(getCheckboxes('checkbox1'))
             const CheckBoxLabelIMG = getIMGCheck(getCheckboxes('checkbox1'))
-           // const CheckBoxInput = getInputCheck(getCheckboxes('checkbox1'))
+            // const CheckBoxInput = getInputCheck(getCheckboxes('checkbox1'))
            // const CheckBoxLabelP1 = getPCheck(getCheckboxes('checkbox1_1'))
            // const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_2'))
 
+            const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_1'))
+
                     return (
                         <div>
-
-                            <FormControl className={classes.formControl}>
+                            {/*<FormControl className={classes.formControl}>
                                 <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -240,7 +291,7 @@ function SimpleSelect(props) {
                                 </Select>
 
                             </FormControl>
-
+*/}
 {/*                            <imp.checkboxes id='checkbox1' typeInput={1} colorStart={ColorStart} colorEnd={ColorEnd} opacityNotCheck='1'
                                             opacityCheck='2' duration='2s' fillMode="both" {...props}>
 
@@ -257,19 +308,35 @@ function SimpleSelect(props) {
 
                                 {/* CHECK 1 */}
 
-                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
-                                                opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={2}
+{/*                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                                opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={1}
                                                 setStopAnimation={false} onAnim={true} {...props}>
 
                                     <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
                                     <label>
                                         <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP>
-                                        {/* <CheckBoxLabelP>MARCO</CheckBoxLabelP> */}
-                                        {/*<CheckBoxLabelIMG style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
-                                        </CheckBoxLabelIMG>*/}
+                                         <CheckBoxLabelP>MARCO</CheckBoxLabelP>
+                                        <CheckBoxLabelIMG style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
+                                        </CheckBoxLabelIMG>
                                     </label>
 
-                                </imp.checkboxes>
+                                </imp.checkboxes>*/}
+
+                                {/* CHECK 2 */}
+
+{/*                                <imp.checkboxes id='checkbox1_1' typeInput={2} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                                opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={3}
+                                                setStopAnimation={true} onAnim={true} {...props}>
+
+                                    <input type="checkbox" onClick={() => { checkbox1_1.setCheckLimit(true, null) }}/>
+                                    <label>
+                                        <CheckBoxLabelP2 onMouseEnter={() => checkbox1_1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_1.setCheckLimit(null, false)}>LILLO</CheckBoxLabelP2>
+                                         <CheckBoxLabelP>MARCO</CheckBoxLabelP>
+                                        <CheckBoxLabelIMG style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
+                                        </CheckBoxLabelIMG>
+                                    </label>
+
+                                </imp.checkboxes>*/}
 
 {/*                                 CHECK 2
 
@@ -309,7 +376,7 @@ function SimpleSelect(props) {
             return (
                         <div>
 
-                            <FormControl className={classes.formControl}>
+{/*                            <FormControl className={classes.formControl}>
                                 <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -350,7 +417,7 @@ function SimpleSelect(props) {
 
                                 </Select>
 
-                            </FormControl>
+                            </FormControl>*/}
 
                             <imp.checkboxes id='checkboxprova2' typeInput={2} toEnableAnimationP={false} setFlagAnimTransitionCheckLimit={3}
                                             setStopAnimation={false} onAnim={true} {...props}>
@@ -374,7 +441,7 @@ function SimpleSelect(props) {
             return (
                 <div>
 
-                    <FormControl className={classes.formControl}>
+{/*                    <FormControl className={classes.formControl}>
                         <InputLabel id="demo-simple-select-label">ColorStart</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
@@ -399,7 +466,7 @@ function SimpleSelect(props) {
                             <MenuItem value={'yellow'}>yellow</MenuItem>
                         </Select>
 
-                    </FormControl>
+                    </FormControl>*/}
 
                     <imp.checkboxes id='checkboxprova3' typeInput={3} textInput='Checkbox off' toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={3}
                                     setStopAnimation={false} onAnim={true} {...props}>
@@ -894,7 +961,7 @@ function SimpleSelect(props) {
 
             return (
               <div>
-                  <FormControl className={classes.formControl}>
+{/*                  <FormControl className={classes.formControl}>
                       <InputLabel id="demo-simple-select-label"></InputLabel>
                       <Select
                           labelId="demo-simple-select-label"
@@ -919,7 +986,7 @@ function SimpleSelect(props) {
                           <MenuItem value={'yellow'}>yellow</MenuItem>
                       </Select>
 
-                  </FormControl>
+                  </FormControl>*/}
 
                     <imp.items id='tabsprova' {...props}>
 
@@ -976,32 +1043,32 @@ function SimpleSelect(props) {
             const TilesWrap_button2 = getTilesWrap_button_2(getItems('tabsprova'))
             return (
               <div>
-                  <FormControl className={classes.formControl}>
+ {/*                 <FormControl className={classes.formControl}>
                       <InputLabel id="demo-simple-select-label"></InputLabel>
-                      <Select
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
-                          value={ColorStart2}
-                          onChange={handleColorStart2}
-                      >
-                          <MenuItem value={'red'}>red</MenuItem>
-                          <MenuItem value={'yellow'}>yellow</MenuItem>
-                      </Select>
-                  </FormControl>
+                  <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={ColorStart2}
+                      onChange={handleColorStart2}
+                  >
+                      <MenuItem value={'red'}>red</MenuItem>
+                      <MenuItem value={'yellow'}>yellow</MenuItem>
+                  </Select>
+              </FormControl>
 
-                  <FormControl className={classes.formControl}>
-                      <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
-                      <Select
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
-                          value={ColorEnd2}
-                          onChange={handleColorEnd2}
-                      >
-                          <MenuItem value={'red'}>red</MenuItem>
-                          <MenuItem value={'yellow'}>yellow</MenuItem>
-                      </Select>
+                <FormControl className={classes.formControl}>
+            <InputLabel id="demo-simple-select-label">ColorEnd</InputLabel>
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={ColorEnd2}
+                onChange={handleColorEnd2}
+            >
+                <MenuItem value={'red'}>red</MenuItem>
+                <MenuItem value={'yellow'}>yellow</MenuItem>
+            </Select>
 
-                  </FormControl>
+            </FormControl>*/}
 
                   <imp.items id='tabsprova01' {...props}>
 
@@ -1034,6 +1101,296 @@ function SimpleSelect(props) {
             );
             break;
 
+        case '9':
+
+            const CheckBoxLabelP3 = getPCheck(getCheckboxes('checkbox1'))
+            const CheckBoxLabelIMG4 = getIMGCheck(getCheckboxes('checkbox1'))
+            // const CheckBoxInput = getInputCheck(getCheckboxes('checkbox1'))
+            // const CheckBoxLabelP1 = getPCheck(getCheckboxes('checkbox1_1'))
+            // const CheckBoxLabelP2 = getPCheck(getCheckboxes('checkbox1_2'))
+
+            const CheckBoxLabelP4 = getPCheck(getCheckboxes('checkbox1_1'))
+            const CheckBoxLabelP5 = getPCheck(getCheckboxes('checkbox1_2'))
+
+            console.log("CHECK 1", getCheckboxes('checkbox1'))
+
+            return (
+
+                <div>
+                    {/* FORM CHECK 1 */}
+
+                    <h3 style={{color: 'red', fontFamily: "Times New Roman"}}>FORM CHECK 1</h3>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">TypeInput</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={TypeInput}
+                            onChange={handleTypeInput}
+                        >
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ToEnableAnimationP</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ToEnableAnimationP}
+                            onChange={handleToEnableAnimationP}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">setAnim</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={Anim}
+                            onChange={handleAnim}
+                        >
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">StopAnimation</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={StopAnimation}
+                            onChange={handleStopAnimation}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">onAnim</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={OnAnim}
+                            onChange={handleOnAnim}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    {/* FORM CHECK 2 */}
+
+                    <h3 style={{color: 'red', fontFamily: "Times New Roman"}}>FORM CHECK 2</h3>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">TypeInput</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={TypeInput2}
+                            onChange={handleTypeInput2}
+                        >
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ToEnableAnimationP</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ToEnableAnimationP2}
+                            onChange={handleToEnableAnimationP2}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">setAnim</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={Anim2}
+                            onChange={handleAnim2}
+                        >
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">StopAnimation</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={StopAnimation2}
+                            onChange={handleStopAnimation2}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">onAnim</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={OnAnim2}
+                            onChange={handleOnAnim2}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    {/* FORM CHECK 3 */}
+
+                    <h3 style={{color: 'red', fontFamily: "Times New Roman"}}>FORM CHECK 3</h3>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">TypeInput</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={TypeInput3}
+                            onChange={handleTypeInput3}
+                        >
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">ToEnableAnimationP</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={ToEnableAnimationP3}
+                            onChange={handleToEnableAnimationP3}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">setAnim</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={Anim3}
+                            onChange={handleAnim3}
+                        >
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">StopAnimation</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={StopAnimation3}
+                            onChange={handleStopAnimation3}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">onAnim</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={OnAnim3}
+                            onChange={handleOnAnim3}
+                        >
+                            <MenuItem value={true}>true</MenuItem>
+                            <MenuItem value={false}>false</MenuItem>
+                        </Select>
+
+                    </FormControl>
+
+                    <div style={{display: 'columns'}}>
+
+                        {/* CHECK 1 */}
+
+                        <imp.checkboxes id='checkbox1' typeInput={TypeInput} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                        opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={ToEnableAnimationP} setFlagAnimTransitionCheckLimit={Anim}
+                                        setStopAnimation={StopAnimation} onAnim={OnAnim} {...props}>
+
+                            <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
+                            <label>
+                                <CheckBoxLabelP3 onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP3>
+                                {/* <CheckBoxLabelP>MARCO</CheckBoxLabelP> */}
+                                {/*<CheckBoxLabelIMG style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
+                                            </CheckBoxLabelIMG>*/}
+                            </label>
+
+                        </imp.checkboxes>
+
+                        {/* CHECK 2 */}
+
+{/*                        <imp.checkboxes id='checkbox1_1' typeInput={2} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                        opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={3}
+                                        setStopAnimation={true} onAnim={true} {...props}>
+
+                            <input type="checkbox" onClick={() => { checkbox1_1.setCheckLimit(true, null) }}/>
+                            <label>
+                                <CheckBoxLabelP4 onMouseEnter={() => checkbox1_1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_1.setCheckLimit(null, false)}>LILLO</CheckBoxLabelP4>
+                            </label>
+
+                        </imp.checkboxes>*/}
+
+                        {/* CHECK 3 */}
+
+{/*                        <imp.checkboxes id='checkbox1_2' typeInput={3} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                        opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={2}
+                                        setStopAnimation={true} onAnim={true} {...props}>
+
+                            <input type="checkbox" onClick={() => { checkbox1_2.setCheckLimit(true, null) }}/>
+                            <label>
+                                <CheckBoxLabelP5 onMouseEnter={() => checkbox1_2.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_2.setCheckLimit(null, false)}>SAMASSI</CheckBoxLabelP5>
+                            </label>
+
+
+                        </imp.checkboxes>*/}
+
+                    </div>
+
+                </div>
+
+            )
+
+            break;
     }
 
 }
@@ -1099,6 +1456,7 @@ function VerticalTabs(props) {
                         <Tab label="1" {...a11yProps2(0)} />
                         <Tab label="2" {...a11yProps2(1)} />
                         <Tab label="3" {...a11yProps2(2)} />
+                        <Tab label="4" {...a11yProps2(3)} />
                     </Tabs>
 
                     <TabPanel2 value={value} index={0}>
@@ -1109,6 +1467,9 @@ function VerticalTabs(props) {
                     </TabPanel2>
                     <TabPanel2 value={value} index={2}>
                         <SimpleSelect num='3' {...props}/>
+                    </TabPanel2>
+                    <TabPanel2 value={value} index={3}>
+                        <SimpleSelect num='9' {...props}/>
                     </TabPanel2>
                 </div>
             );
