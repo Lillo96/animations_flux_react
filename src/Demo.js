@@ -16,6 +16,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+import { FixedSizeList } from 'react-window';
 import {
     getCardBack,
     getCardContainer,
@@ -1359,22 +1360,22 @@ function SimpleSelect(props) {
 
                         {/* CHECK 2 */}
 
-{/*                        <imp.checkboxes id='checkbox1_1' typeInput={2} colorStart="black" colorEnd="red" opacityNotCheck='1'
-                                        opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={3}
-                                        setStopAnimation={true} onAnim={true} {...props}>
+                        <imp.checkboxes id='checkbox1_1' typeInput={TypeInput2} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                        opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={ToEnableAnimationP2} setFlagAnimTransitionCheckLimit={Anim2}
+                                        setStopAnimation={StopAnimation2} onAnim={OnAnim2} {...props}>
 
                             <input type="checkbox" onClick={() => { checkbox1_1.setCheckLimit(true, null) }}/>
                             <label>
                                 <CheckBoxLabelP4 onMouseEnter={() => checkbox1_1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_1.setCheckLimit(null, false)}>LILLO</CheckBoxLabelP4>
                             </label>
 
-                        </imp.checkboxes>*/}
+                        </imp.checkboxes>
 
                         {/* CHECK 3 */}
 
-{/*                        <imp.checkboxes id='checkbox1_2' typeInput={3} colorStart="black" colorEnd="red" opacityNotCheck='1'
-                                        opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={2}
-                                        setStopAnimation={true} onAnim={true} {...props}>
+                        <imp.checkboxes id='checkbox1_2' typeInput={TypeInput3} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                        opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={ToEnableAnimationP3} setFlagAnimTransitionCheckLimit={Anim3}
+                                        setStopAnimation={StopAnimation3} onAnim={OnAnim3} {...props}>
 
                             <input type="checkbox" onClick={() => { checkbox1_2.setCheckLimit(true, null) }}/>
                             <label>
@@ -1382,7 +1383,7 @@ function SimpleSelect(props) {
                             </label>
 
 
-                        </imp.checkboxes>*/}
+                        </imp.checkboxes>
 
                     </div>
 

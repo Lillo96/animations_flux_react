@@ -728,19 +728,13 @@ export function setTextValue (valueCheck, valueText) {
 
 function checkValue (variableArray, rest) {
 
-/*    const tmp = ["checkLimit", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
-        "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine", "displayCheck", "textDecoration", "textDecorationThickness",
-        "textDecorationColor", "transitionTimingFunction", "toEnableAnimationP", "durationAnimationP", "duration1AnimationP", "fillModeAnimationP",
-        "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1", "checkAnimationTransition", "setFlagAnimTransitionCheckLimit",
-        "toEnableAnimationP_2"]*/
-
-
     const tmp = ["checkLimit", "typeInput", "animationCSS", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
         "opacityCheck", "timeAnimation", "typeAnimFillMode", "colorLine",
         "displayCheck", "textDecoration", "textDecorationThickness", "textDecorationColor", "transitionTimingFunction",
         "toEnableAnimationP", "durationAnimationP", "duration1AnimationP", "fillModeAnimationP",
         "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1",
-        "checkAnimationTransition", "setFlagAnimTransitionCheckLimit", "toEnableAnimationP_2", "setStopAnimation", "onAnim", "widthImg", "heightImg"]
+        "checkAnimationTransition", "setFlagAnimTransitionCheckLimit", "toEnableAnimationP_2", "setStopAnimation", "onAnim", "widthImg", "heightImg"
+    ]
 
     /*
         0: "checkLimit",
@@ -778,25 +772,11 @@ function checkValue (variableArray, rest) {
 
     */
 
-    /*
-    // Parte da 3 perchè non devo modificare "checkLimit", "textInput" e "textValue"
-    for (let i = 3; i < variableArray.length; i++) {
-        //if (variableArray[i] != rest.)
-        //console.log(variableArray[i])
-        //console.log(rest.get(tmp[i]))
+
+    for (let i = 1; i < tmp.length; i++) {
 
         if (variableArray[i] != rest.get(tmp[i])) {
-            checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
-        }
-
-
-    }
-    */
-
-    for (let i = 5; i < tmp.length; i++) {
-
-        if (variableArray[i] != rest.get(tmp[i])) {
-            if ((i != 25 && i != 28) && i != 29) {
+            if (i != 25) {
                 checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
             }
         }

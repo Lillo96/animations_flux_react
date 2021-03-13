@@ -50,6 +50,7 @@
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-standard": "^4.0.1",
     "react-swipeable-views": "^0.13.9",
+    "react-window": "^1.8.6",
     "shortid": "^2.2.15"
   }
 }
