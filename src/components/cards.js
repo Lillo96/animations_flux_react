@@ -7,7 +7,7 @@ import getAnimation from "../data/animation"
 import styled, {keyframes, css} from "styled-components"
 import transitions from "@material-ui/core/styles/transitions";
 
-let tmp_CardID
+let tmp_CardID, tmp_CardCheckLimitFlag
 
 function cards({
     id, checkLimit, typeInput, animationCSS, textInput, textValue,
@@ -31,11 +31,13 @@ function cards({
     widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
     widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
     checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
-    toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
+    toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, count,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
 
     let animation
+
+    //console.log(rest.cards.state.)
 
     if (!rest.cards.state.has(id)) {
 
@@ -63,11 +65,12 @@ function cards({
             widthButtonCard3, heightButtonCard3, colorButtonCard3, positionButtonCard3, topButtonCard3, leftButtonCard3,
             widthButtonCard2, heightButtonCard2, colorButtonCard2, positionButtonCard2, topButtonCard2, leftButtonCard2,
             checkLimitFlag, colorCardFront, colorCardBack, toEnableAnimationButton, durationAnimationButton, duration1AnimationButton, fillModeAnimationButton,
-            toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
+            toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, count,
             duration, timing, delay, iterations, direction, fillMode, playState
         )
 
         tmp_CardID = id
+        tmp_CardCheckLimitFlag = checkLimitFlag
     } else {
 
         const variableArray = [ checkLimit, typeInput, textInput, textValue,
@@ -93,15 +96,35 @@ function cards({
             toEnableAnimationWrapper, imgCard2, transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1
         ]
 
-        checkValue(variableArray, rest.cards.state.get(id))
+        //checkValue(variableArray, rest.cards.state.get(id))
 
         const cardObj = rest.cards.state.get(id)
 
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState }, cardObj.style)
 
         tmp_CardID = rest.cards.state.get(id).get('id')
+        tmp_CardCheckLimitFlag = rest.cards.state.get(id).get('checkLimitFlag')
+
+        //console.log("PROVVVVAAAA", rest.cards.state.get(id).get('checkLimitFlag'))
+
+        /*
+        if (rest.cards.state.get(id).get('checkLimitFlag') === true) {
+            //cardsActions.changeValue(tmp_CardID, 'count', rest.cards.state.get(id).get('count') + 1)
+            console.log("PROVVVVAAAA", rest.cards.state.get(id).get('count'))
+            if (rest.cards.state.get(id).get('count') % 2 != 0) {
+                cardsActions.changeValue(tmp_CardID, 'checkLimitFlag', false)
+                console.log('wee')
+                cardsActions.changeValue(tmp_CardID, 'count', 0)
+            }
+        }*/
+        // cardsActions.changeValue(tmp_CardID, 'count', rest.cards.state.get(id).get('count') + 1)
 
     }
+
+    /*    if (tmp_CardCheckLimitFlag === true) {
+        cardsActions.changeValue(tmp_CardID, 'checkLimitFlag', false)
+        console.log('wee')
+    }*/
 
     return (
         <div id={id} style={animation} {...rest}>
@@ -266,9 +289,11 @@ export function getCardInner(Card) {
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
 
     switch (Card.typeInput) {
+
         case 1:
 
             if(Card.directionOfRotation === 'toTheLeft') {
+
                 CardInner = styled.div`
                     flex: 1;
                     display: ${Card.display};
@@ -276,32 +301,34 @@ export function getCardInner(Card) {
                     transition: ${duration};
                     transform-style: preserve-3d;
             
-                    ${Card.checkLimit ?
+                    ${Card.checkLimit && Card.checkLimitFlag ?
                         `animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                        Card.checkLimit === false && Card.checkLimitFlag ? `animation: ${tmp1} ${duration} ${fillMode};` : ''
                     }  
                          
                 `;
 
                     } else {
+
                         CardInner = styled.div`
                             flex: 1;
                             display: ${Card.display};
                             transition: ${duration};
                             transform-style: preserve-3d;
                             
-                            ${Card.checkLimit ?
+                            ${Card.checkLimit && Card.checkLimitFlag ?
                                 `animation: ${tmp_1} ${duration} ${fillMode};` :
-                                Card.checkLimit === null ? '' :  `animation: ${tmp1_1} ${duration} ${fillMode};`
+                                Card.checkLimit === false && Card.checkLimitFlag ? `animation: ${tmp1_1} ${duration} ${fillMode};` : ''
                             }
                         `;
-            }
+
+                    }
 
             break;
 
         case 2:
 
-            console.log('inner 2', Card.checkLimit )
+            //console.log('inner 2', Card.checkLimit )
 
             if(Card.directionOfRotation === 'toTheLeft') {
                 CardInner = styled.div`
@@ -339,7 +366,6 @@ export function getCardInner(Card) {
 
         case 3:
 
-            console.log('inner 3', Card.checkLimit)
             if(Card.directionOfRotation === 'toTheLeft') {
                 CardInner = styled.div`
                     flex: 1;
@@ -372,7 +398,7 @@ export function getCardInner(Card) {
 
         case 4:
 
-            console.log('inner 4', Card.checkLimit)
+            //console.log('inner 4', Card.checkLimit)
 
             if (Card.directionOfRotation === 'toTheLeft') {
                 CardInner = styled.div`
@@ -444,6 +470,8 @@ export function getCardButton(Card) {
           }
 
       `;
+
+
 
     return ItemsBodyContentIcon
 }
@@ -2802,8 +2830,10 @@ export function provaFunction_CheckValue(value) {
     switch (this.typeInput) {
 
         case 1:
-            console.log(value)
+            console.log("VALUE", value)
             cardsActions.changeValue(this.id, 'checkLimit', value)
+
+            cardsActions.changeValue(this.id, 'checkLimitFlag', true)
 
             break;
 
@@ -2811,20 +2841,6 @@ export function provaFunction_CheckValue(value) {
 
             result = (value === this.checkLimit) ? !value : value
             cardsActions.changeValue(this.id, 'checkLimit', result)
-
-            /*
-            // PRIMA ITERAZIONE
-            if ((this.checkLimit === null) && (this.checkLimitFlag === null)) {
-                console.log('2', value)
-                cardsActions.changeValue(this.id, 'checkLimit', value)
-            }
-
-            // N+1 ITERAZIONI
-            if ((this.checkLimit === null) && (this.checkLimitFlag != null)) {
-                result = (value === this.checkLimitFlag) ? !value : value
-                cardsActions.changeValue(this.id, 'checkLimit', result)
-            }
-            */
 
             break;
 
@@ -3002,7 +3018,9 @@ cards.propType = {
     transitionYEnable: PropTypes.bool,
     transitionYEnable1: PropTypes.bool,
     transitionXEnable: PropTypes.bool,
-    transitionXEnable1: PropTypes.bool
+    transitionXEnable1: PropTypes.bool,
+
+    count: PropTypes.number
 
 }
 

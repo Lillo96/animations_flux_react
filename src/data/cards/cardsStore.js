@@ -4,6 +4,7 @@ import Immutable from 'immutable'
 import style from '../styleObject'
 import cardsActionTypes from "./cardsActionTypes";
 import cards from "./cardsObject"
+import {Component} from "react";
 
 class CardsStore extends ReduceStore {
     constructor () {
@@ -150,6 +151,8 @@ class CardsStore extends ReduceStore {
                         transitionXEnable: action.transitionXEnable,
                         transitionXEnable1: action.transitionXEnable1,
 
+                        count: action.count,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
@@ -161,14 +164,16 @@ class CardsStore extends ReduceStore {
                         }),
                     })
                 );
+                break;
 
             case cardsActionTypes.CHANGE_CARDS_VALUE:
+
+                //console.log(state.get(action))
 
                 if (state.get(action.id).has(action.key)) {
                     return state.setIn([action.id, action.key], action.value)
                 } else if (action.key.startsWith('style.')) {
                     action.key = action.key.substr(6)
-
                     if (state.get(action.id).style.has(action.key)) {
                         return state.setIn([action.id, 'style', action.key], action.value)
                     } else {
@@ -177,10 +182,11 @@ class CardsStore extends ReduceStore {
                 } else {
                     throw Error('cards does not have a property ' + action.key)
                 }
-
+            break;
 
             default:
                 return state
+
         }
     }
 }

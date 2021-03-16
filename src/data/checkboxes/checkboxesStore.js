@@ -66,12 +66,15 @@ class CheckboxesStore extends ReduceStore {
 
                     if (state.get(action.id).has(action.key)) {
                         return state.setIn([action.id, action.key], action.value)
+                        //console.log('weee')
                     } else if (action.key.startsWith('style.')) {
                         action.key = action.key.substr(6)
-
+                        //console.log('iooooo')
                         if (state.get(action.id).style.has(action.key)) {
+                            //console.log('fieveeeell')
                             return state.setIn([action.id, 'style', action.key], action.value)
                         } else {
+                            //console.log('lillo')
                             throw Error('style of checkboxes does not have a property ' + action.key)
                         }
                     } else {

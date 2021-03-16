@@ -309,19 +309,16 @@ function SimpleSelect(props) {
 
                                 {/* CHECK 1 */}
 
-{/*                                <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                               <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
                                                 opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={1}
                                                 setStopAnimation={false} onAnim={true} {...props}>
 
                                     <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
                                     <label>
                                         <CheckBoxLabelP onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelP>
-                                         <CheckBoxLabelP>MARCO</CheckBoxLabelP>
-                                        <CheckBoxLabelIMG style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
-                                        </CheckBoxLabelIMG>
                                     </label>
 
-                                </imp.checkboxes>*/}
+                                </imp.checkboxes>
 
                                 {/* CHECK 2 */}
 
@@ -494,7 +491,7 @@ function SimpleSelect(props) {
             const CardInner = getCardInner(getCards('cardsprova'))
             //const CardButton = getCardButton(getCards('cardsprova'))
 
-            const CardContainer1 = getCardContainer(getCards('cardsprova1'))
+/*            const CardContainer1 = getCardContainer(getCards('cardsprova1'))
             const CardFront1 = getCardFront(getCards('cardsprova1'))
             const CardBack1 = getCardBack(getCards('cardsprova1'))
             const CardInner1 = getCardInner(getCards('cardsprova1'))
@@ -509,8 +506,9 @@ function SimpleSelect(props) {
             const CardFront3 = getCardFront(getCards('cardsprova3'))
             const CardBack3 = getCardBack(getCards('cardsprova3'))
             const CardInner3 = getCardInner(getCards('cardsprova3'))
-            const CardButton = getCardButton(getCards('cardsprova3'))
+            const CardButton = getCardButton(getCards('cardsprova3'))*/
 
+            const CheckBoxLabelPkjhi = getPCheck(getCheckboxes('checkbox1'))
 
             return (
 
@@ -570,35 +568,46 @@ function SimpleSelect(props) {
 
                     <br/>
 
+                    <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
+                                    opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={1}
+                                    setStopAnimation={false} onAnim={true} {...props}>
+
+                        <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
+                        <label>
+                            <CheckBoxLabelPkjhi onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelPkjhi>
+                        </label>
+
+                    </imp.checkboxes>
+
                     {/* CARD CLICK */}
 
-                    <imp.cards id='cardsprova1' typeInput={2} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
+{/*                    <imp.cards id='cardsprova1' typeInput={2} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" {...props}>
 
                         <CardContainer1>
                             <CardInner1 onClick={ () => {card2.provaFunction_CheckValue(false)}}>
-                                {/*<CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>*/}
+                                <CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>
                                 <CardFront1>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                    {/* <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
+                                     <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
                                 </CardFront1>
                                 <CardBack1>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                    {/* <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
+                                     <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
                                 </CardBack1>
 
                             </CardInner1>
                         </CardContainer1>
 
-                    </imp.cards>
+                    </imp.cards>*/}
 
                     <br/>
 
                     {/* CARD TASTO */}
 
-                    <imp.cards id='cardsprova2' typeInput={3} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation} textInput="i"
+{/*                    <imp.cards id='cardsprova2' typeInput={3} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation} textInput="i"
                                duration='1s' fillMode="both" {...props}>
 
                         <CardContainer2>
@@ -606,24 +615,24 @@ function SimpleSelect(props) {
                                 <CardFront2>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                    {/* <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
+                                     <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
                                 </CardFront2>
                                 <CardBack2>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                    {/* <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
+                                     <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
                                 </CardBack2>
 
                             </CardInner2>
                         </CardContainer2>
 
-                    </imp.cards>
+                    </imp.cards>*/}
 
                     <br/>
 
                     {/* CARD BOTTONE */}
 
-                    <imp.cards id='cardsprova3' typeInput={4} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
+{/*                    <imp.cards id='cardsprova3' typeInput={4} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" toEnableAnimationButton={true} transitionYEnable={true} {...props}>
 
                         <CardContainer3>
@@ -631,24 +640,24 @@ function SimpleSelect(props) {
                                 <CardFront3>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                    {/* <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
                                     <CardButton onClick={ () => card4.provaFunction_CheckValue(false)}>Back</CardButton>
                                 </CardFront3>
                                 <CardBack3>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                    {/* <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
+                                     <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
                                     <CardButton onClick={ () => card4.provaFunction_CheckValue(false)}>Title</CardButton>
                                 </CardBack3>
 
                             </CardInner3>
                         </CardContainer3>
 
-                    </imp.cards>
+                    </imp.cards>*/}
 
                     <br/>
 
                 </div>
+
                 );
 
             break;

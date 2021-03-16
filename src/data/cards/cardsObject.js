@@ -130,7 +130,8 @@ const cards = Immutable.Record({
     transitionYEnable: false,
     transitionYEnable1: false,
     transitionXEnable: false,
-    transitionXEnable1: false
+    transitionXEnable1: false,
+    count: 0
 })
 
 export default cards
