@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import checkboxesActions from "../data/checkboxes/checkboxesActions"
 import getAnimation from "../data/animation"
 
-import styled, {keyframes} from "styled-components"
+import styled, {keyframes, css } from "styled-components"
 import cardsActions from "../data/cards/cardsActions";
 import transitions from "@material-ui/core/styles/transitions";
 
@@ -2140,8 +2140,8 @@ export function getIMGCheck (Check) {
                 transition: .5s;
                  
                 ${Check.checkLimit ?
-                    `animation: ${tmp1} ${duration} ${fillMode};` :
-                    Check.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                    css`animation: ${tmp1} ${duration} ${fillMode};` :
+                    Check.checkLimit === null ? '' : css `animation: ${tmp} ${duration} ${fillMode};`
                 }  
                                              
             `;

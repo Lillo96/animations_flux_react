@@ -76,11 +76,10 @@ export function getCheckboxes(id) {
         getPCheck,
         setCheckLimit,
         setTextValue,
-        getInputCheck
     }
 }
 
-export function getCards(id) {
+export function getCards (id) {
     return {
         ...getDataAnimation('cards', id, cardsObject),
         setCheckLimitCards,

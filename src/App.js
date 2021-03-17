@@ -49,7 +49,6 @@ import tabs, {
     getTilesWrap_p,
     getTilesWrap_button
 } from "./components/items";
-import styled, {css} from "styled-components";
 import img from "./paper.jpg";
 
 
@@ -68,95 +67,98 @@ function App (props) {
   const CardBack = getCardBack(card1)
   const CardInner = getCardInner(card1)
 
+    const MyExampleBack = () =>{
+        return <CardBack style={{backgroundImage: `url(${img})`}}>
+            <h2>Back the title</h2>
+            <p>Here is the content that goes on the back</p>
+        </CardBack>
+    }
+
+    const MyExampleFront = () =>{
+        return <CardFront style={{backgroundImage: `url(${img})`}}>
+            <h2>Title</h2>
+            <p>Here is some content for the front</p>
+        </CardFront>
+    }
+
+    const MyExampleInner = () =>{
+        return <CardInner onClick={() => { card1.provaFunction_CheckValue(false)}}><MyExampleFront/><MyExampleBack/></CardInner>
+    }
+
+    const MyExampleContainer = () =>{
+        return <CardContainer><MyExampleInner/></CardContainer>
+    }
+
   const CardContainer2 = getCardContainer(getCards('cardsprova2'))
   const CardFront2 = getCardFront(getCards('cardsprova2'))
   const CardBack2 = getCardBack(getCards('cardsprova2'))
   const CardInner2 = getCardInner(getCards('cardsprova2'))
   const CardButton = getCardButton(getCards('cardsprova3'))
 
+    const MyExampleBack2 = () => {
+        return <CardBack2 style={{backgroundImage: `url(${img})`}}>
+            <h2>Back the title</h2>
+            <p>Here is the content that goes on the back</p>
+        </CardBack2>
+    }
+
+    const MyExampleFront2 = () =>{
+        return <CardFront2 style={{backgroundImage: `url(${img})`}}>
+            <h2>Title</h2>
+            <p>Here is some content for the front</p>
+        </CardFront2>
+    }
+
+    const MyExampleInner2 = () =>{
+        return <CardInner2 onClick={() => { card3.provaFunction_CheckValue(false)}}><MyExampleFront2/><MyExampleBack2/></CardInner2>
+    }
+
+    const MyExampleContainer2 = () =>{
+        return <CardContainer2><MyExampleInner2/></CardContainer2>
+    }
 
         return (
             <div className="App">
                 <header className="App-header">
 
+                    <React.StrictMode>
                     <imp.cards id='cardsprova' typeInput={2} duration='1s' fillMode="both" {...props}>
 
-                        <CardContainer>
-                            <CardInner onClick={() => {
-                                card1.provaFunction_CheckValue(false)
-                            }}>
-                                {/*<CardInner onClick={ () => {card1.provaFunction_CheckValue(false)}}>*/}
-                                {/*<CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>*/}
-                                <CardFront style={{backgroundImage: `url(${img})`}}>
-                                    <h2>Title</h2>
-                                    <p>Here is some content for the front</p>
-                                    {/* <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
-                                </CardFront>
-                                <CardBack>
-                                    <h2>Back the title</h2>
-                                    <p>Here is the content that goes on the back</p>
-                                    {/* <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton> */}
-                                </CardBack>
-
-                            </CardInner>
-                        </CardContainer>
-
+                        <MyExampleContainer/>
                     </imp.cards>
+                    </React.StrictMode>
 
                     <br/>
 
-                    <imp.cards id='cardsprova2' typeInput={3} textInput="i" duration='1s' fillMode="both" {...props}>
 
-                        <CardContainer2>
-                            <CardInner2 tabIndex="0" onKeyDown={(e) => {
-                                card3.provaFunction_CheckValue(e)
-                            }}>
-                                <CardFront2>
-                                    <h2>Title</h2>
-                                    <p>Here is some content for the front</p>
-                                    <CardButton onClick={() => {
-                                        setFlipped(true);
-                                        card3.setCheckLimitCards(flipped);
-                                    }}>Flip</CardButton>
-                                </CardFront2>
-                                <CardBack2>
-                                    <h2>Back the title</h2>
-                                    <p>Here is the content that goes on the back</p>
-                                    <CardButton onClick={() => {
-                                        setFlipped(false);
-                                        card3.setCheckLimitCards(flipped);
-                                    }}>Flip</CardButton>
-                                </CardBack2>
+                   <imp.cards id='cardsprova2' typeInput={2} duration='1s' fillMode="both" {...props}>
 
-                            </CardInner2>
-                        </CardContainer2>
+                        <MyExampleContainer2>
+                        </MyExampleContainer2>
 
                     </imp.cards>
 
-
                     {/*<img src={logo} className="App-logo" alt="logo"/>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>*/}
+                        <p>
+                          Edit <code>src/App.js</code> and save to reload.
+                        </p>*/}
 
                     {/* <label>
-          <input type="checkbox"
-                 checked={checked}
-                 onChange={() => setChecked(!checked)}
-          />
-          Check Me!
-        </label>*/}
-
+                          <input type="checkbox"
+                                 checked={checked}
+                                 onChange={() => setChecked(!checked)}
+                          />
+                          Check Me!
+                        </label>*/}
 
                     {/*<a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-          Learn React
+                        className="App-link"
+                        href="https://reactjs.org"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Learn React
+                    </a>*/}
 
-        </a>*/}
                 </header>
             </div>
         )

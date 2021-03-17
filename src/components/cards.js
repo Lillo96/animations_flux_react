@@ -5,7 +5,6 @@ import getAnimation from "../data/animation"
 // import img from '../paper.jpg'
 
 import styled, {keyframes, css} from "styled-components"
-import transitions from "@material-ui/core/styles/transitions";
 
 let tmp_CardID, tmp_CardCheckLimitFlag
 
@@ -105,19 +104,6 @@ function cards({
         tmp_CardID = rest.cards.state.get(id).get('id')
         tmp_CardCheckLimitFlag = rest.cards.state.get(id).get('checkLimitFlag')
 
-        //console.log("PROVVVVAAAA", rest.cards.state.get(id).get('checkLimitFlag'))
-
-        /*
-        if (rest.cards.state.get(id).get('checkLimitFlag') === true) {
-            //cardsActions.changeValue(tmp_CardID, 'count', rest.cards.state.get(id).get('count') + 1)
-            console.log("PROVVVVAAAA", rest.cards.state.get(id).get('count'))
-            if (rest.cards.state.get(id).get('count') % 2 != 0) {
-                cardsActions.changeValue(tmp_CardID, 'checkLimitFlag', false)
-                console.log('wee')
-                cardsActions.changeValue(tmp_CardID, 'count', 0)
-            }
-        }*/
-        // cardsActions.changeValue(tmp_CardID, 'count', rest.cards.state.get(id).get('count') + 1)
 
     }
 
@@ -135,7 +121,8 @@ function cards({
 
 // CARD 1
 
-export function getCardContainer (Card) {
+export function getCardContainer(Card) {
+
 
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
     let duration = (Card.style === null) ? '1s' : Card.style.duration
@@ -159,6 +146,7 @@ export function getCardContainer (Card) {
        `;
 
     return CardContainerFinal
+
 }
 
 export function getCardFront(Card) {
@@ -302,8 +290,8 @@ export function getCardInner(Card) {
                     transform-style: preserve-3d;
             
                     ${Card.checkLimit && Card.checkLimitFlag ?
-                        `animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === false && Card.checkLimitFlag ? `animation: ${tmp1} ${duration} ${fillMode};` : ''
+                        css`animation: ${tmp} ${duration} ${fillMode};` :
+                        Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
                     }  
                          
                 `;
@@ -317,8 +305,8 @@ export function getCardInner(Card) {
                             transform-style: preserve-3d;
                             
                             ${Card.checkLimit && Card.checkLimitFlag ?
-                                `animation: ${tmp_1} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? `animation: ${tmp1_1} ${duration} ${fillMode};` : ''
+                                css`animation: ${tmp_1} ${duration} ${fillMode};` :
+                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : ''
                             }
                         `;
 
@@ -339,8 +327,8 @@ export function getCardInner(Card) {
                     transform-style: preserve-3d;
             
                    ${Card.checkLimit ?
-                         `animation: ${tmp1} ${duration} ${fillMode};` :
-                         Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                         css`animation: ${tmp1} ${duration} ${fillMode};` :
+                         Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                    }
                   
                 `;
@@ -355,8 +343,8 @@ export function getCardInner(Card) {
                             transform-style: preserve-3d;
                     
                             ${Card.checkLimit ?
-                                `animation: ${tmp1_1} ${duration} ${fillMode};` :
-                                 Card.checkLimit === null ? '' :  `animation: ${tmp_1} ${duration} ${fillMode};`
+                                css`animation: ${tmp1_1} ${duration} ${fillMode};` :
+                                 Card.checkLimit === null ? '' :  css`animation: ${tmp_1} ${duration} ${fillMode};`
                             }            
                 `;
 
@@ -375,8 +363,8 @@ export function getCardInner(Card) {
                     transform-style: preserve-3d;
             
                    ${Card.checkLimit ?
-                    `animation: ${tmp1} ${duration} ${fillMode};` :
-                    Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`}
+                    css`animation: ${tmp1} ${duration} ${fillMode};` :
+                    Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`}
                 
                 `;
 
@@ -388,8 +376,8 @@ export function getCardInner(Card) {
                             transform-style: preserve-3d;
                     
                             ${Card.checkLimit ?
-                                `animation: ${tmp1_1} ${duration} ${fillMode};` :
-                                Card.checkLimit === null ? '' :  `animation: ${tmp_1} ${duration} ${fillMode};`}
+                                css`animation: ${tmp1_1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  css`animation: ${tmp_1} ${duration} ${fillMode};`}
                             
                 `;
             }
@@ -409,8 +397,8 @@ export function getCardInner(Card) {
                     transform-style: preserve-3d;
             
                    ${Card.checkLimit ?
-                    `animation: ${tmp1} ${duration} ${fillMode};` :
-                    Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`}
+                    css`animation: ${tmp1} ${duration} ${fillMode};` :
+                    Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`}
                 
                 `;
 
@@ -422,8 +410,8 @@ export function getCardInner(Card) {
                             transform-style: preserve-3d;
                     
                             ${Card.checkLimit ?
-                    `animation: ${tmp1_1} ${duration} ${fillMode};` :
-                    Card.checkLimit === null ? '' :  `animation: ${tmp_1} ${duration} ${fillMode};`}
+                    css`animation: ${tmp1_1} ${duration} ${fillMode};` :
+                    Card.checkLimit === null ? '' :  css`animation: ${tmp_1} ${duration} ${fillMode};`}
                             
                 `;
             }
@@ -452,7 +440,7 @@ export function getCardButton(Card) {
           display: ${Card.displayButton};
           font-size: ${Card.fontSizeButton};
 
-          ${Card.toEnableAnimationButton ? `animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
+          ${Card.toEnableAnimationButton ? css`animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
      
           @keyframes icon {
               0%,100%{
@@ -501,29 +489,6 @@ export function getImageArea(Card) {
 }
 
 export function getImageWrapper(Card) {
-
-    const tmp = keyframes`
-
-         from {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 180%;
-                height: 100%;
-                width: 100%;
-                background: rgba(255,255,255,.3);
-                z-index: 1;
-                transform: skew(45deg);
-                transition: .5s;
-         }
-    `;
-
-    const tmp1 = keyframes`
-
-         from, to {
-               left: -180%;
-         }
-    `;
 
     let ImageWrapper
 
@@ -1041,7 +1006,7 @@ export function getIconUL(Card) {
           font-size: ${Card.fontSizeButton};
 
           // animation: icon 1.5s infinite forwards;
-          
+
           @keyframes icon {
               0%,100%{
                 transform: translate(0px);
@@ -1968,149 +1933,6 @@ export function getAdditional(Card) {
 
 }
 
-// NO
-export function getUserCard(Card) {
-
-    const UserCard = styled.div`
-       
-        position: absolute;
-        width: 150px;
-        height: 100%;
-        background: linear-gradient(${Card.colorCardTrans1}, ${Card.colorCardTrans2});
-        transition: width 0.4s;
-        overflow: hidden;
-        z-index: 2;
-       `;
-
-    const tmp = keyframes`  
-              from,to {
-                    position: absolute;
-                    width: 150px;
-                    height: 100%;
-                    background: linear-gradient(${Card.colorCardTrans1}, ${Card.colorCardTrans2});
-                    transition: width 0.4s;
-                    overflow: hidden;
-                    z-index: 2;
-              }
-    `;
-
-
-    const UserCardFinal = styled.div`
-          animation: 1s ${tmp} both;
-    `;
-
-
-    return UserCardFinal
-}
-
-// NO
-export function getLevelCenter(Card) {
-
-    const LevelCenter = styled.div`
-        top: 15%;
-        color: ${Card.colorCard};
-        text-transform: uppercase;
-        font-size: ${Card.fontSizeLCentral};
-        font-weight: bold;
-        background: rgba(0,0,0,0.15);
-        padding: 0.125rem 0.75rem;
-        border-radius: 100px;
-        white-space: nowrap;
-       `;
-
-    const tmp = keyframes`  
-              from,to {
-                    top: 15%;
-                    color: ${Card.colorCard};
-                    text-transform: uppercase;
-                    font-size: ${Card.fontSizeLCentral};
-                    font-weight: bold;
-                    background: rgba(0,0,0,0.15);
-                    padding: 0.125rem 0.75rem;
-                    border-radius: 100px;
-                    white-space: nowrap;  
-              }
-    `;
-
-    const LevelCenterFinal = styled.div`
-          animation: 1s ${tmp} both;
-    `;
-
-    return LevelCenterFinal
-}
-
-// NO
-export function getPointsCenter(Card) {
-
-    const PointsCenter = styled.div`
-        top: 15%;
-        color: #fff;
-        text-transform: uppercase;
-        font-size: ${Card.fontSizePointsCenter};
-        font-weight: bold;
-        background: rgba(0,0,0,0.15);
-        padding: 0.125rem 0.75rem;
-        border-radius: 100px;
-        white-space: nowrap;
-        
-        top: 85%;
-       `;
-
-    const tmp = keyframes`  
-              from,to {
-                    top: 15%;
-                    color: #fff;
-                    text-transform: uppercase;
-                    font-size: ${Card.fontSizePointsCenter};
-                    font-weight: bold;
-                    background: rgba(0,0,0,0.15);
-                    padding: 0.125rem 0.75rem;
-                    border-radius: 100px;
-                    white-space: nowrap;
-                    
-                    top: 85%; 
-              }
-    `;
-
-    const PointsCenterFinal = styled.div`
-          animation: 1s ${tmp} both;
-    `;
-
-    return PointsCenterFinal
-}
-
-// NO
-export function getSvg(Card) {
-
-    const cssSvg = css`
-         width: 110px;
-         height: 110px;
-         viewBox: 0 0 250 250;
-         xmlns: "http://www.w3.org/2000/svg"; 
-         role: img;
-         aria-labelledby: title desc;
-    `;
-
-    const Svg = styled.div`
-        ${cssSvg}
-    
-        top: 50%;
-       `;
-
-    const tmp = keyframes`  
-              from,to {
-                    ${cssSvg}
-                
-                    top: 50%;
-    `;
-
-    const SvgFinal = styled.div`
-          animation: 1s ${tmp} both;
-    `;
-
-    return SvgFinal
-}
-
 export function getMoreInfo(Card) {
 
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
@@ -2166,28 +1988,6 @@ export function getMoreInfo(Card) {
 
     return MoreInfoFinal
 }
-
-// NO
-export function getMoreInfoName(Card) {
-
-    const Name = styled.h1`
-        color: #fff;
-        margin-bottom: 0;
-       `;
-
-    const tmp = keyframes`  
-              from,to {
-                    color: #fff;
-                    margin-bottom: 0;
-    `;
-
-    const NameFinal = styled.h1`
-          animation: 1s ${tmp} both;
-    `;
-
-    return NameFinal
-}
-
 
 export function getCoords(Card) {
 
@@ -2323,73 +2123,6 @@ export function getCoords(Card) {
     `;
 
     return CoordsFinal
-}
-
-// NO
-export function getStats(Card) {
-
-    const Stats = styled.div`
-        font-size: 2rem;
-        display: flex;
-        position: absolute;
-        bottom: 1rem;
-        left: 1rem;
-        right: 1rem;
-        top: auto;
-        color: #fff;
-         
-         .i {
-            display: block;
-         }
-       `;
-
-    return Stats
-}
-
-// NO
-export function getStatsTitle(Card) {
-
-    const Title = styled.div`
-        font-size: 0.75rem;
-        font-weight: bold;
-        text-transform: uppercase;
-       `;
-
-    const tmp = keyframes`  
-              from,to {
-                font-size: 0.75rem;
-                font-weight: bold;
-                text-transform: uppercase;
-    `;
-
-    const TitleFinal = styled.div`
-          animation: 1s ${tmp} both;
-    `;
-
-    return TitleFinal
-}
-
-// NO
-export function getStatsValue(Card) {
-
-    const Value = styled.div`
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-       `;
-
-    const tmp = keyframes`  
-              from,to {
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                    line-height: 1.5rem;
-    `;
-
-    const ValueFinal = styled.div`
-          animation: 1s ${tmp} both;
-    `;
-
-    return ValueFinal
 }
 
 export function getCardGeneral(Card) {
@@ -2529,123 +2262,6 @@ export function getCardGeneralMore(Card) {
 }
 
 //
-
-export function setAnimationCSS (id, value) {
-    //console.log(value)
-    cardsActions.changeValue(id, 'animationCSS', value)
-}
-
-function cssStylesKeyFrames(checkLimit, typeInput) {
-
-    let tmp
-
-    tmp = keyframes`
-        .flip3D {
-            width: 240px;
-            height: 200px;
-            margin: 10px;
-            float: left;
-        }
-    
-    `;
-
-    /*if (checkLimit){
-        //console.log('true')
-
-        switch (typeInput) {
-            case 1:
-                //console.log("CC", typeInput)
-                tmp = keyframes`  
-                      0% {
-                        opacity: 0;
-                        color: black;
-                      }
-                      
-                      25% {
-                        opacity: 0.25;
-                        color: black;
-                      }
-                      
-                      50% {
-                        opacity: 0.5;
-                        color: white;
-                      }
-                      
-                      75% {
-                        opacity: 0.75;
-                        color: white;
-                      }
-                    
-                      100% {
-                         opacity: 0.8;
-                         color: white;
-                      }
-                  `;
-
-                break;
-
-            default:
-                return
-
-        }
-
-
-    } else {
-        //console.log('tmp = 1')
-        //console.log("QQ", typeInput)
-        switch (typeInput) {
-            case 1:
-                //console.log("GG", typeInput)
-
-                tmp = keyframes`  
-                      0% {
-                        opacity: 0;
-                        color: white;
-                      }
-                      
-                      25% {
-                        opacity: 0.25;
-                        color: white;
-                      }
-                      
-                      50% {
-                        opacity: 0.5;
-                        color: red;
-                      }
-                      
-                      75% {
-                        opacity: 0.75;
-                        color: red;
-                      }
-                    
-                      100% {
-                        opacity: 1;
-                        color: red;
-                      }
-                  `;
-
-                /!*tmp = keyframes`
-                      from {
-                        opacity: 0;
-                        color: white;
-                      }
-
-                      to {
-                        opacity: 1;
-                        color: red;
-                      }
-                  `;*!/
-
-                break;
-
-            default:
-                return
-        }
-    }*/
-
-    return tmp
-}
-
 export function setCheckLimitCards (value) {
     //console.log(value)
     cardsActions.changeValue(this.id, 'checkLimit', value)
@@ -2654,10 +2270,6 @@ export function setCheckLimitCards (value) {
 export function setValueVariable (id, idVar, value) {
     console.log(id, idVar, value);
     cardsActions.changeValue(id, idVar, value)
-}
-
-function checkValueRest (cardRest, card) {
-    console.log(cardRest, card)
 }
 
 function checkValue (variableArray, rest) {
