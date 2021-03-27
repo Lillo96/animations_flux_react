@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cardsActions from "../data/cards/cardsActions"
+import cardsStore from "../data/cards/cardsStore"
 import getAnimation from "../data/animation"
 // import img from '../paper.jpg'
 
 import styled, {keyframes, css} from "styled-components"
+import img from "../paper.jpg";
+import {getCards, getCheckboxes} from "../imp";
 
 let tmp_CardID, tmp_CardCheckLimitFlag
 
@@ -39,6 +42,7 @@ function cards({
     //console.log(rest.cards.state.)
 
     if (!rest.cards.state.has(id)) {
+        console.log('DENTRO')
 
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
 
@@ -2439,10 +2443,12 @@ function checkValue (variableArray, rest) {
 export function provaFunction_CheckValue(value) {
     let result
 
+    console.log(value)
+
     switch (this.typeInput) {
 
         case 1:
-            console.log("VALUE", value)
+
             cardsActions.changeValue(this.id, 'checkLimit', value)
 
             cardsActions.changeValue(this.id, 'checkLimitFlag', true)

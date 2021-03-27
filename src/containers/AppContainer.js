@@ -5,6 +5,7 @@ import checkboxesStore from "../data/checkboxes/checkboxesStore"
 import cardsStore from "../data/cards/cardsStore"
 import itemsStore from "../data/items/itemsStore";
 import cards from "../components/cards";
+import {render} from "@testing-library/react";
 
 //import '../impAnimation.css'
 

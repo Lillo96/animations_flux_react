@@ -170,6 +170,7 @@ const cardsActions = {
 
         })
     },
+
     changeValue (id, key, value) {
         //console.log("ID", id)
         //console.log("KEY", key)

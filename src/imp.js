@@ -37,7 +37,7 @@ import cards, {
     getCardGeneralTitle,
     getCardGeneralText,
     setValueVariable,
-    provaFunction_CheckValue ///////
+    provaFunction_CheckValue
 } from "./components/cards"
 import items ,{
     getContainerItems,

@@ -38,7 +38,7 @@ function objectByType(type) {
             break;
 
         default:
-            throw TypeError(`"${type}" is not an animation defined in uit`)
+            throw TypeError(`${type}`)
     }
 }
 
