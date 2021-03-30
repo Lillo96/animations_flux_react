@@ -21,9 +21,13 @@ class CardsStore extends ReduceStore {
 
             case cardsActionTypes.NEW_CARDS:
 
+                if (!action.key) {
+                    return state;
+                }
+
                 return state.set(
                     action.id,
-                    cards({
+                    new cards({
                         id: action.id,
                         checkLimit: action.checkLimit,
                         typeInput: action.typeInput,
@@ -170,9 +174,22 @@ class CardsStore extends ReduceStore {
 
             case cardsActionTypes.CHANGE_CARDS_VALUE:
 
-                if (state.get(action.id).has(action.key)) {
+                //console.log("WEEEE", state.get(action.id))
+
+                if (state.get(action)) {
+                    if (state.get(action.id).has(action.key)) {
+                        return state.setIn([action.id, action.key], action.value)
+                    } else if (action.key.startsWith('style.')) {
+                        action.key = action.key.substr(6)
+
+                        if (state.get(action.id).style.has(action.key)) {
+                            return state.setIn([action.id, 'style', action.key], action.value)
+                        } else {
+                            throw Error('style of items does not have a property ' + action.key)
+                        }
+                    }
+                } else
                     return state.setIn([action.id, action.key], action.value)
-                }
 
             break;
 
@@ -182,5 +199,6 @@ class CardsStore extends ReduceStore {
         }
     }
 }
+
 
 export default new CardsStore()

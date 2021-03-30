@@ -34,6 +34,7 @@ function getState() {
 let View
 
 export default function animationEnv (view) {
+    console.log(getStores())
     const Env = Container.createFunctional(EnvView, getStores, getState)
     View = view
     return <Env/>

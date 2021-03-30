@@ -127,6 +127,7 @@ function cards({
 
 export function getCardContainer(Card) {
 
+    console.log(Card)
 
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
     let duration = (Card.style === null) ? '1s' : Card.style.duration
