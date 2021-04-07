@@ -90,7 +90,6 @@ function AppView2(props) {
 }
 
 function Header(props) {
-
     let card1 = getCards('cardsprova')
     let CardContainer = getCardContainer(card1)
     let CardFront = getCardFront(card1)
@@ -125,7 +124,7 @@ function Main(props) {
 
     return (
         <imp.cards id='cardsprova2' typeInput={2} {...props}>
-            <CardContainer2>
+           <CardContainer2>
                 <CardInner2 onClick={() => { card2.provaFunction_CheckValue(false)}}>
                     <CardFront2>
                         <h2>Title</h2>
@@ -136,7 +135,7 @@ function Main(props) {
                         <p>Here is the content that goes on the back</p>
                     </CardBack2>
                 </CardInner2>
-            </CardContainer2>
+           </CardContainer2>
         </imp.cards>
     );
 }

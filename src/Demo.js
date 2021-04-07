@@ -491,7 +491,7 @@ function SimpleSelect(props) {
             const CardInner = getCardInner(getCards('cardsprova'))
             //const CardButton = getCardButton(getCards('cardsprova'))
 
-/*            const CardContainer1 = getCardContainer(getCards('cardsprova1'))
+            const CardContainer1 = getCardContainer(getCards('cardsprova1'))
             const CardFront1 = getCardFront(getCards('cardsprova1'))
             const CardBack1 = getCardBack(getCards('cardsprova1'))
             const CardInner1 = getCardInner(getCards('cardsprova1'))
@@ -506,9 +506,8 @@ function SimpleSelect(props) {
             const CardFront3 = getCardFront(getCards('cardsprova3'))
             const CardBack3 = getCardBack(getCards('cardsprova3'))
             const CardInner3 = getCardInner(getCards('cardsprova3'))
-            const CardButton = getCardButton(getCards('cardsprova3'))*/
+            const CardButton = getCardButton(getCards('cardsprova3'))
 
-            const CheckBoxLabelPkjhi = getPCheck(getCheckboxes('checkbox1'))
 
             return (
 
@@ -568,46 +567,36 @@ function SimpleSelect(props) {
 
                     <br/>
 
-                    <imp.checkboxes id='checkbox1' typeInput={1} colorStart="black" colorEnd="red" opacityNotCheck='1'
-                                    opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={true} setFlagAnimTransitionCheckLimit={1}
-                                    setStopAnimation={false} onAnim={true} {...props}>
-
-                        <input type="checkbox" onClick={() => { checkbox1.setCheckLimit(true, null) }}/>
-                        <label>
-                            <CheckBoxLabelPkjhi onMouseEnter={() => checkbox1.setCheckLimit(null, true)} onMouseLeave={() => checkbox1.setCheckLimit(null, false)}>MARCO</CheckBoxLabelPkjhi>
-                        </label>
-
-                    </imp.checkboxes>
 
                     {/* CARD CLICK */}
 
-{/*                    <imp.cards id='cardsprova1' typeInput={2} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
+                   <imp.cards id='cardsprova1' typeInput={2} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" {...props}>
 
                         <CardContainer1>
                             <CardInner1 onClick={ () => {card2.provaFunction_CheckValue(false)}}>
-                                <CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>
+                                {/*<CardInner tabIndex="0" onKeyDown={(e) => {card1.provaFunction_CheckValue(e)}}>*/}
                                 <CardFront1>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                     <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                     {/*<CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>*/}
                                 </CardFront1>
                                 <CardBack1>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                     <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                     {/*<CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>*/}
                                 </CardBack1>
 
                             </CardInner1>
                         </CardContainer1>
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
                     {/* CARD TASTO */}
 
-{/*                    <imp.cards id='cardsprova2' typeInput={3} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation} textInput="i"
+                    <imp.cards id='cardsprova2' typeInput={3} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation} textInput="i"
                                duration='1s' fillMode="both" {...props}>
 
                         <CardContainer2>
@@ -615,24 +604,24 @@ function SimpleSelect(props) {
                                 <CardFront2>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                     <CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                     {/*<CardButton onClick={() => {setFlipped(true); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>*/}
                                 </CardFront2>
                                 <CardBack2>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                     <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                     {/*<CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>*/}
                                 </CardBack2>
 
                             </CardInner2>
                         </CardContainer2>
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
                     {/* CARD BOTTONE */}
 
-{/*                    <imp.cards id='cardsprova3' typeInput={4} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
+                    <imp.cards id='cardsprova3' typeInput={4} colorCard={BackfaceColor} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" toEnableAnimationButton={true} transitionYEnable={true} {...props}>
 
                         <CardContainer3>
@@ -645,14 +634,14 @@ function SimpleSelect(props) {
                                 <CardBack3>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                     <CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>
+                                     {/*<CardButton onClick={() => {setFlipped(false); card1.setCheckLimitCards(flipped);}}>Flip</CardButton>*/}
                                     <CardButton onClick={ () => card4.provaFunction_CheckValue(false)}>Title</CardButton>
                                 </CardBack3>
 
                             </CardInner3>
                         </CardContainer3>
 
-                    </imp.cards>*/}
+                    </imp.cards>
 
                     <br/>
 
@@ -778,17 +767,18 @@ function SimpleSelect(props) {
 
                     {/* CARD BOTTONE */}
 
-                    <imp.cards id='cardsprova02_3' directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
+                    <imp.cards id='cardsprova02_3' directionOfAnimation={DirectionOfAnimation} directionName='FromRightHandToSinister'
                                typeInput={4} toEnableAnimationButton={true} {...props}>
 
                         {/* <ImageArea3> */}
                             <ImageWrapper3 style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
                                 <HeaderImage3/>
                                 <NameCard3>Lillo</NameCard3>
-                                <IconUL3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {card1_3.provaFunction_CheckValue(false)}}></IconUL3>
+
                                 {/*<IconUL3 onClick={() => {card1_3.provaFunction_CheckValue(false)}}>On</IconUL3>*/}
                             </ImageWrapper3>
                         {/* </ImageArea3> */}
+                        <IconUL3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {card1_3.provaFunction_CheckValue(false)}}></IconUL3>
 
                     </imp.cards>
 
@@ -1000,7 +990,7 @@ function SimpleSelect(props) {
 
                     <imp.items id='tabsprova' {...props}>
 
-                          {/*<ContainerItems>*/}
+
                               <DivItems>
                                   <DivItemsHead>
                                       <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
@@ -1009,12 +999,12 @@ function SimpleSelect(props) {
 
                                   <ItemsBody>
                                       {/* ITEM CON TRANSIZIONE MOUSE */}
-{/*                                      <ItemsBodyContent>
-                                          <ItemBodySpan onMouseEnter={() => item1.setCheckLimitItems(true, 'transitionMouse')} onMouseLeave={() => item1.setCheckLimitItems(false, 'transitionMouse')}>
+                                      <ItemsBodyContent>
+                                          <ItemBodySpan onMouseEnter={() => item1.setCheckItems(true, 'ItemBodySpan', 'transitionMouse')} onMouseLeave={() => item1.setCheckItems(false, 'ItemBodySpan', 'transitionMouse')}>
                                               Web Usabilty Testing
                                           </ItemBodySpan>
                                           <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                      </ItemsBodyContent>*/}
+                                      </ItemsBodyContent>
 
                                       {/* ITEM CON CLICK CON MOUSE */}
                                       <ItemsBodyContent onClick={() => item1.setCheckItems(true, 'ItemsBodyContent', 'clickMouse')}>
@@ -1025,16 +1015,15 @@ function SimpleSelect(props) {
                                       </ItemsBodyContent>
 
                                       {/* ITEM CON PRESSIONE TASTO */}
-{/*                                      <ItemsBodyContent tabIndex="0" onKeyDown={(e) => {item1.setCheckItems(e, 'ItemsBodyContent', 'keyDown')}}>
+                                      <ItemsBodyContent tabIndex="0" onKeyDown={(e) => {item1.setCheckItems(e, 'ItemsBodyContent', 'keyDown')}}>
                                           <ItemBodySpan onMouseEnter={() => item1.setCheckItems(true, 'ItemBodySpan', 'transitionMouse')} onMouseLeave={() => item1.setCheckItems(false, 'ItemBodySpan', 'transitionMouse')}>
                                               Practical Empathy: For Collaboration & Creativity in Your Work
                                           </ItemBodySpan>
                                           <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                      </ItemsBodyContent>*/}
+                                      </ItemsBodyContent>
 
                                   </ItemsBody>
                               </DivItems>
-                          {/*</ContainerItems>*/}
 
                       </imp.items>
               </div>
@@ -1384,13 +1373,12 @@ function SimpleSelect(props) {
 
                         <imp.checkboxes id='checkbox1_2' typeInput={TypeInput3} colorStart="black" colorEnd="red" opacityNotCheck='1'
                                         opacityCheck='2' duration='2s' fillMode="both" toEnableAnimationP={ToEnableAnimationP3} setFlagAnimTransitionCheckLimit={Anim3}
-                                        setStopAnimation={StopAnimation3} onAnim={OnAnim3} {...props}>
+                                        setStopAnimation={StopAnimation3} onAnim={OnAnim3} textInput='Color' {...props}>
 
-                            <input type="checkbox" onClick={() => { checkbox1_2.setCheckLimit(true, null) }}/>
+                            <input type="checkbox" onClick={() => { checkbox1_2.setTextValue(true, 'Checkbox on'); checkbox1_2.setCheckLimit(true, null) }}/>
                             <label>
-                                <CheckBoxLabelP5 onMouseEnter={() => checkbox1_2.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_2.setCheckLimit(null, false)}>SAMASSI</CheckBoxLabelP5>
+                                <CheckBoxLabelP5 onMouseEnter={() => checkbox1_2.setCheckLimit(null, true)} onMouseLeave={() => checkbox1_2.setCheckLimit(null, false)}>{getCheckboxes('checkbox1_2').textValue}</CheckBoxLabelP5>
                             </label>
-
 
                         </imp.checkboxes>
 

@@ -4,8 +4,6 @@ import itemsActions from "../data/items/itemsActions";
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css} from "styled-components"
-import checkboxesActions from "../data/checkboxes/checkboxesActions";
-import cardsActions from "../data/cards/cardsActions";
 
 function items({
                   id, checkLimit, typeInput, animationCSS, textInput, textValue, borderDim_ContItem, borderType_ContItem,
@@ -38,9 +36,6 @@ function items({
                }) {
 
     let animation
-
-    // NO
-    let getAnimationCSS, getAnimationCSS_1
 
     if (!rest.items.state.has(id)) {
 
@@ -109,18 +104,9 @@ function items({
 
         // checkValue( variableArray, rest.items.state.get(id))
 
-        //console.log("Dentro else di !rest")
-
         const itemObj = rest.items.state.get(id)
 
         animation = getAnimation(id, {}, itemObj.style)
-        //console.log(animation)
-
-        // NO
-        // setAnimationCSS(id, cssStylesKeyFrames(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput')))
-        // getAnimationCSS = rest.checkboxes.state.get(id).get('animationCSS')
-        // getAnimationCSS_1 = setKeyframes2(rest.checkboxes.state.get(id).get('checkLimit'), rest.checkboxes.state.get(id).get('typeInput'))
-
     }
 
     return (
@@ -134,21 +120,6 @@ function items({
 
 // NO
 export function getContainerItems(Item) {
-
-    const ContainerItem = styled.div`
-        border: 1px solid black;
-    
-        top: 0; right: 0; bottom: 0; left: 0;
-        margin: auto;
-    
-        display: grid;
-        place-items: center;
-        
-       `;
-
-    const tmpCss = css`
-             border: 3px solid black;
-       `;
 
     const tmp = keyframes`
                       
@@ -171,12 +142,6 @@ export function getContainerItems(Item) {
 
 export function getDivItems(Item) {
 
-    const DivItems = styled.div`
-         width: 300px;
-         background: #fffffe;
-         box-shadow: 0 3px 6px rgba(black,0.16), 0 3px 6px rgba(black,0.23);
-         border-top: 10px solid #0B5AA2;
-       `;
 
     const tmp = keyframes`
                       
@@ -197,14 +162,6 @@ export function getDivItems(Item) {
 }
 
 export function getDivItemsHead(Item) {
-
-    const DivItemsHead = styled.div`     
-          padding: 5px 20px;
-          margin: 10px;
-          color: #0B5AA2;
-          font-weight: bold;
-          font-size: 20px;
-       `;
 
     const tmp = keyframes`
                       
@@ -233,7 +190,6 @@ export function getDivItemsHead_p(Item) {
           font-weight: ${Item.fontWeigh_DivItemsHeadFinal_p};
           font-size: ${Item.fontSize_DivItemsHeadFinal_p};
        `;
-
 
     return DivItemsHead_p
 }
@@ -293,7 +249,7 @@ export function getItemsBodyContent(Item) {
           border: ${Item.borderDim_ItemsBodyContent} ${Item.borderType_ItemsBodyContent} ${Item.borderColor_ItemsBodyContent};
           cursor: pointer;
           
-          ${Item.checkLimit ? `animation: ${tmp} 1s both;` : `animation: ${tmp1} 1s both;`}
+          ${Item.checkLimit ? css`animation: ${tmp} 1s both;` : css`animation: ${tmp1} 1s both;`}
           
       `;
 
@@ -307,7 +263,7 @@ export function getItemsBodySpan(Item) {
     const ItemBodySpan = styled.span`
         
           color: ${Item.checkSpan ? Item.colorEndSpan : Item.colorStartSpan};
-          animation: ${(Item.checkSpan && Item.toEnableAnimationSpan) ? `icon ${Item.durationAnimationP} ${Item.duration1AnimationP} ${Item.fillModeAnimationP};` : '' };
+          animation: ${(Item.checkSpan && Item.toEnableAnimationSpan) ? css`icon ${Item.durationAnimationP} ${Item.duration1AnimationP} ${Item.fillModeAnimationP};` : '' };
               
           @keyframes icon {
                 0%,100%{
@@ -348,7 +304,7 @@ export function getItemsBodyContent_icon(Item) {
       font-size: ${Item.fontSize_ItemsBodyContentIcon};
       color: ${Item.checkSpan ? Item.color_ItemsBodyContentIcon_end : Item.color_ItemsBodyContentIcon_start};
       font-weight: ${Item.fontWeight_ItemsBodyContentIcon};
-      animation: ${(Item.checkIcon && Item.toEnableAnimationIcon) ? `icon ${Item.durationAnimationIcon} ${Item.duration1AnimationIcon} ${Item.fillModeAnimationIcon};` : ''}
+      animation: ${(Item.checkIcon && Item.toEnableAnimationIcon) ? css`icon ${Item.durationAnimationIcon} ${Item.duration1AnimationIcon} ${Item.fillModeAnimationIcon};` : ''}
          
       @keyframes icon {
                 0%,100%{
@@ -544,7 +500,6 @@ export function getTilesWrap_h2(Item) {
 
     return TilesWrap_h2
 }
-
 
 // NO
 export function getTilesWrap_h3(Item) {

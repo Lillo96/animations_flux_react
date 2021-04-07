@@ -9,8 +9,6 @@ function getDataAnimation(type, id, tmpObj) {
     const state = objectByType(type)
     const obj = state.get(id, tmpObj({ id: id })).toJS()
     const ret = { }
-    //console.log("STATE", state)
-    console.log("OBJ", obj)
 
     for (const prop in obj) {
         //console.log("PROP", prop)

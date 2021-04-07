@@ -7,7 +7,7 @@ import animationEnv from "./containers/AppContainer"
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import React from "react";
 
-ReactDOM.render(animationEnv(AppView2), document.getElementById('root'))
+ReactDOM.render(animationEnv(Demo), document.getElementById('root'))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

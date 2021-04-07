@@ -42,7 +42,7 @@ function cards({
     //console.log(rest.cards.state.)
 
     if (!rest.cards.state.has(id)) {
-        console.log('DENTRO')
+        console.log('DENTRO', id)
 
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
 
@@ -108,13 +108,7 @@ function cards({
         tmp_CardID = rest.cards.state.get(id).get('id')
         tmp_CardCheckLimitFlag = rest.cards.state.get(id).get('checkLimitFlag')
 
-
     }
-
-    /*    if (tmp_CardCheckLimitFlag === true) {
-        cardsActions.changeValue(tmp_CardID, 'checkLimitFlag', false)
-        console.log('wee')
-    }*/
 
     return (
         <div id={id} style={animation} {...rest}>
@@ -664,9 +658,9 @@ export function getHeaderImage(Card) {
         filter: grayscale(100%);
         transition: ${Card.transitionRGBACard2};
         
-        ${Card.toEnableAnimationWrapper ? `       
+        ${Card.toEnableAnimationWrapper ? css`       
             &:hover {
-                 animation: ${tmp} ${duration} ${fillMode}; 
+                 animation: ${tmp} ${duration} ${fillMode};
             }
         ` : null
         }
@@ -722,8 +716,8 @@ export function getName(Card) {
                         transition: ${Card.transitionNameCard2};
                         
                         ${Card.checkLimit ?
-                            `animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                            css`animation: ${tmp} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  css`animation: ${tmp1} ${duration} ${fillMode};`
                         }  
                                               
                     `;
@@ -752,8 +746,8 @@ export function getName(Card) {
                             transition: ${Card.transitionNameCard2};
                             
                             ${Card.checkLimit ?
-                                `animation: ${tmp} ${duration} ${fillMode};` :
-                                Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  css`animation: ${tmp1} ${duration} ${fillMode};`
                             }  
               
                         `;
@@ -782,8 +776,8 @@ export function getName(Card) {
                             transition: ${Card.transitionNameCard2};
                             
                             ${Card.checkLimit ?
-                                `animation: ${tmp1} ${duration} ${fillMode};` :
-                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                                css`animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                             }
                             
                         `;
@@ -813,8 +807,8 @@ export function getName(Card) {
                             
                             
                             ${Card.checkLimit ?
-                                `animation: ${tmp1} ${duration} ${fillMode};` :
-                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                                css`animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                             }
                             
                         `;
@@ -844,8 +838,8 @@ export function getName(Card) {
                             transition: ${Card.transitionNameCard2};
                             
                             ${Card.checkLimit ?
-                                `animation: ${tmp1} ${duration} ${fillMode};` :
-                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                                css`animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                             }
 
                         `;
@@ -872,8 +866,8 @@ export function getName(Card) {
                             transition: ${Card.transitionNameCard2};
                             
                            ${Card.checkLimit ?
-                                `animation: ${tmp1} ${duration} ${fillMode};` :
-                                Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                                css`animation: ${tmp1} ${duration} ${fillMode};` :
+                                Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                             }
 
                         `;
@@ -903,8 +897,8 @@ export function getName(Card) {
                             transition: ${Card.transitionNameCard2};
                             
                            ${Card.checkLimit ?
-                                    `animation: ${tmp1} ${duration} ${fillMode};` :
-                                    Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                                    css`animation: ${tmp1} ${duration} ${fillMode};` :
+                                    Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                            }
                            
                         `;
@@ -931,8 +925,8 @@ export function getName(Card) {
                             transition: ${Card.transitionNameCard2};
                             
                              ${Card.checkLimit ?
-                                     `animation: ${tmp1} ${duration} ${fillMode};` :
-                                      Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                                     css`animation: ${tmp1} ${duration} ${fillMode};` :
+                                      Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                              }
                         `;
                     }
@@ -969,7 +963,7 @@ export function getIconUL(Card) {
                             width: ${width};
                             height: ${height};
                             color: ${color};
-                            
+                          
                             position: ${position};
                             bottom: ${bottom};
                       }
@@ -999,37 +993,12 @@ export function getIconUL(Card) {
 
     }
 
-/*    const ItemsBodyContentIcon = styled.button`
-
-          background-color: ${Card.backgroundColorButton};
-          border: ${Card.borderButton};
-          color: ${Card.colorButton};
-          padding: ${Card.paddingButtonTopBottom} ${Card.paddingButtonRightLeft};
-          text-align: ${Card.textAlignButton};
-          text-decoration: ${Card.textDecorationButton};
-          display: ${Card.displayButton};
-          font-size: ${Card.fontSizeButton};
-
-          // animation: icon 1.5s infinite forwards;
-
-          @keyframes icon {
-              0%,100%{
-                transform: translate(0px);
-              }
-              50% {
-                transform: translate(3px);
-              }
-            }
-
-      `;*/
-
     let width = (Card.widthButtonCard2 === null) ? '30px' : Card.widthButtonCard2
     let height = (Card.heightButtonCard2 === null) ? '80px' : Card.heightButtonCard2
     let color = (Card.colorButtonCard2 === null) ? '#fff' : Card.colorButtonCard2
     let position = (Card.positionButtonCard2 === null) ? 'relative' : Card.positionButtonCard2
     let bottom = (Card.topButtonCard2 === null) ? '20%' : Card.topButtonCard2
     let left = (Card.leftButtonCard2 === null) ? (Card.directionName === "FromRightHandToSinister") ? '85%' : '0%' : Card.leftButtonCard2
-
 
     let tmp1 = ( (!Card.transitionYEnable && !Card.transitionYEnable1) && (!Card.transitionXEnable && !Card.transitionXEnable1)) ? true : false
 
@@ -1048,7 +1017,8 @@ export function getIconUL(Card) {
           background: rgba(255, 255, 255,0); 
           border: none;
                 
-          ${Card.toEnableAnimationButton ? `animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
+          ${Card.toEnableAnimationButton ? css`animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
+     
      
           @keyframes icon {
               0%,100%{
@@ -1189,8 +1159,8 @@ export function getAdditional(Card) {
                         z-index: 2; 
                         
                         ${Card.checkLimit ?
-                            `animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                            css`animation: ${tmp} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  css`animation: ${tmp1} ${duration} ${fillMode};`
                         }
                         
                 `;
@@ -1236,8 +1206,8 @@ export function getAdditional(Card) {
                         z-index: 2;
                         
                         ${Card.checkLimit ?
-                            `animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                            css`animation: ${tmp} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  css`animation: ${tmp1} ${duration} ${fillMode};`
                         }
                         
                `;
@@ -1286,8 +1256,8 @@ export function getAdditional(Card) {
                     z-index: 2;
                     
                     ${Card.checkLimit ?
-                        `animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                        css`animation: ${tmp} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  css`animation: ${tmp1} ${duration} ${fillMode};`
                     }
                     
                `;
@@ -1335,8 +1305,8 @@ export function getAdditional(Card) {
                     z-index: 2;
                     
                     ${Card.checkLimit ?
-                        `animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === null ? '' :  `animation: ${tmp1} ${duration} ${fillMode};`
+                        css`animation: ${tmp} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  css`animation: ${tmp1} ${duration} ${fillMode};`
                     }
                `;
 
@@ -1383,8 +1353,8 @@ export function getAdditional(Card) {
                         z-index: 2; 
                         
                         ${Card.checkLimit ? 
-                            `animation: ${tmp1} ${duration} ${fillMode};` :
-                             Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            css`animation: ${tmp1} ${duration} ${fillMode};` :
+                             Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                         }
 
                 `;
@@ -1430,8 +1400,8 @@ export function getAdditional(Card) {
                         z-index: 2;
                         
                         ${Card.checkLimit ?
-                             `animation: ${tmp1} ${duration} ${fillMode};` :
-                             Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                             css`animation: ${tmp1} ${duration} ${fillMode};` :
+                             Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                         }
 
                `;
@@ -1480,8 +1450,8 @@ export function getAdditional(Card) {
                     z-index: 2;
                     
                     ${Card.checkLimit ?
-                        `animation: ${tmp1} ${duration} ${fillMode};` :
-                        Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                        css`animation: ${tmp1} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                     }
 
                `;
@@ -1529,8 +1499,8 @@ export function getAdditional(Card) {
                     z-index: 2;
                     
                     ${Card.checkLimit ?
-                        `animation: ${tmp1} ${duration} ${fillMode};` :
-                        Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                        css`animation: ${tmp1} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                     }
 
                `;
@@ -1578,8 +1548,8 @@ export function getAdditional(Card) {
                         z-index: 2; 
                         
                         ${Card.checkLimit ?
-                            `animation: ${tmp1} ${duration} ${fillMode};` :
-                            Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            css`animation: ${tmp1} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                         }
                         
                 `;
@@ -1625,8 +1595,8 @@ export function getAdditional(Card) {
                         z-index: 2;
                         
                         ${Card.checkLimit ?
-                            `animation: ${tmp1} ${duration} ${fillMode};` :
-                            Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            css`animation: ${tmp1} ${duration} ${fillMode};` :
+                            Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                         }
 
                `;
@@ -1675,8 +1645,8 @@ export function getAdditional(Card) {
                     z-index: 2;
                     
                     ${Card.checkLimit ?
-                      `animation: ${tmp1} ${duration} ${fillMode};` :
-                      Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                      css`animation: ${tmp1} ${duration} ${fillMode};` :
+                      Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                     }
                     
                `;
@@ -1724,8 +1694,8 @@ export function getAdditional(Card) {
                     z-index: 2;
                    
                     ${Card.checkLimit ?
-                          `animation: ${tmp1} ${duration} ${fillMode};` :
-                           Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                          css`animation: ${tmp1} ${duration} ${fillMode};` :
+                           Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                     }
                     
                `;
@@ -1773,8 +1743,8 @@ export function getAdditional(Card) {
                         z-index: 2; 
                         
                         ${Card.checkLimit ?
-                              `animation: ${tmp1} ${duration} ${fillMode};` :
-                               Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                              css`animation: ${tmp1} ${duration} ${fillMode};` :
+                               Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                         }
                         
                 `;
@@ -1820,8 +1790,8 @@ export function getAdditional(Card) {
                         z-index: 2;
                       
                         ${Card.checkLimit ?
-                            `animation: ${tmp1} ${duration} ${fillMode};` :
-                             Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                            css`animation: ${tmp1} ${duration} ${fillMode};` :
+                             Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                         }
                         
                `;
@@ -1871,8 +1841,8 @@ export function getAdditional(Card) {
                     
                     
                     ${Card.checkLimit ?
-                        `animation: ${tmp1} ${duration} ${fillMode};` :
-                         Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                        css`animation: ${tmp1} ${duration} ${fillMode};` :
+                         Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                     }
                     
                `;
@@ -1920,8 +1890,8 @@ export function getAdditional(Card) {
                     z-index: 2;
                     
                     ${Card.checkLimit ?
-                       `animation: ${tmp1} ${duration} ${fillMode};` :
-                        Card.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
+                       css`animation: ${tmp1} ${duration} ${fillMode};` :
+                        Card.checkLimit === null ? '' :  css`animation: ${tmp} ${duration} ${fillMode};`
                     }
                `;
 
@@ -2109,7 +2079,7 @@ export function getCoords(Card) {
           bottom: ${Card.toEnableAnimationButton ? bottom : null}
           left: ${Card.toEnableAnimationButton ? left : null}
           
-          ${Card.toEnableAnimationButton ? `animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
+          ${Card.toEnableAnimationButton ? css`animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
      
           @keyframes icon {
               0%,100%{

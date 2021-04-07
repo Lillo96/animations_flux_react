@@ -172,7 +172,7 @@ const cardsActions = {
     },
 
     changeValue (id, key, value) {
-        //console.log("ID", id)
+        console.log("ID", id)
         //console.log("KEY", key)
         //console.log("VALUE", value)
 
