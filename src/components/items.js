@@ -32,6 +32,7 @@ function items({
                   backgroundWrapButton_2, borderWrap1_2, borderWrap2_2, borderWrap3_2, paddingWrap1_2, paddingWrap2_2, colorButtonWrap_2, borderRadiusWrap_2,
                   positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2,
 
+                  flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag11, flag12, flag13, flag14, flag15, flag16, flag17, flag18, flag19, flag20,
                   duration, timing, delay, iterations, direction, fillMode, playState, ...rest
                }) {
 
@@ -40,9 +41,8 @@ function items({
     if (!rest.items.state.has(id)) {
 
         animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
-        //console.log(animation)
 
-        itemsActions.newItems(
+        /*itemsActions.newItems(
             id, checkLimit, typeInput, animationCSS, textInput, textValue, borderDim_ContItem, borderType_ContItem,
             borderColor_ContItem, colorDivItems, width_DivItem, borderDim_DivItems, borderType_DivItems,borderColor_DivItems, color_DivItemHead, fontWeight_DivItemHead, fontSize_DivItemHead,
             paddingX_DivItemsHeadFinal,paddingY_DivItemsHeadFinal, paddingX_DivItemsHeadFinal_p, paddingY_DivItemsHeadFinal_p,
@@ -70,10 +70,7 @@ function items({
             positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2,
 
             duration, timing, delay, iterations, direction, fillMode, playState
-        )
-
-        // NO
-        //setAnimationCSS(id, cssStylesKeyFrames(true,1))
+        )*/
 
     } else {
 
@@ -99,14 +96,15 @@ function items({
             backgroundWrapButton, borderWrap1, borderWrap2, borderWrap3, paddingWrap1, paddingWrap2, colorButtonWrap, borderRadiusWrap,
             positionWrap, transitionDurationWrap1, transitionFillModeWrap2, opacityWrap, cursorWrap, overflowWrap, marginWrap,
             backgroundWrapButton_2, borderWrap1_2, borderWrap2_2, borderWrap3_2, paddingWrap1_2, paddingWrap2_2, colorButtonWrap_2, borderRadiusWrap_2,
-            positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2
+            positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2,
+            flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag11, flag12, flag13, flag14, flag15, flag16, flag17, flag18, flag19, flag20
         ]
-
-        // checkValue( variableArray, rest.items.state.get(id))
 
         const itemObj = rest.items.state.get(id)
 
         animation = getAnimation(id, {}, itemObj.style)
+
+        checkValue( variableArray, rest.items.state.get(id))
     }
 
     return (
@@ -118,30 +116,7 @@ function items({
 
 //  ITEM 1
 
-// NO
-export function getContainerItems(Item) {
-
-    const tmp = keyframes`
-                      
-                      from, to {
-                            top: 0; right: 0; bottom: 0; left: 0;
-                            margin: auto;
-                        
-                            display: grid;
-                            place-items: center;
-                      }
-                  `;
-
-    const ContainerItemFinal = styled.div`
-          border: ${Item.borderDim_ContItem} ${Item.borderType_ContItem} ${Item.borderColor_ContItem};
-          // animation: $1s ${tmp} both;
-       `;
-
-    return ContainerItemFinal
-}
-
 export function getDivItems(Item) {
-
 
     const tmp = keyframes`
                       
@@ -216,7 +191,7 @@ export function getItemsBody(Item) {
     return ItemsBody
 }
 
-export function getItemsBodyContent(Item) {
+export function getItemsBodyContent(Item, flag) {
 
     const tmp = keyframes`
         
@@ -249,14 +224,14 @@ export function getItemsBodyContent(Item) {
           border: ${Item.borderDim_ItemsBodyContent} ${Item.borderType_ItemsBodyContent} ${Item.borderColor_ItemsBodyContent};
           cursor: pointer;
           
-          ${Item.checkLimit ? css`animation: ${tmp} 1s both;` : css`animation: ${tmp1} 1s both;`}
+          ${Item.checkLimit && flag ? css`animation: ${tmp} 1s both;` : (!Item.checkLimit && flag) ? css`animation: ${tmp1} 1s both;`: ''}
           
       `;
 
     return ItemsBodyContent
 }
 
-export function getItemsBodySpan(Item) {
+export function getItemsBodySpan(Item, flag) {
 
     let tmp = ( (!Item.transitionYEnable && !Item.transitionYEnable1) && (!Item.transitionXEnable && !Item.transitionXEnable1)) ? true : false
 
@@ -279,16 +254,7 @@ export function getItemsBodySpan(Item) {
                     transform: ${Item.transitionXEnable1 ? 'translateX(-3px)' : ''};
                 }
           } 
-          
-        /*            &:hover {
-                border-radius: 15px 50px 30px;
-                // border-radius: ${Item.borderRadius_hover_ItemsBodyContent};
-                border: ${Item.borderDim_hover_ItemsBodyContent} ${Item.borderType_hover_ItemsBodyContent} ${Item.borderColor_hover_ItemsBodyContent};
-                // background-color: yellow;
-               
-            }*/
-
-        
+         
     `;
 
     return ItemBodySpan
@@ -327,35 +293,6 @@ export function getItemsBodyContent_icon(Item) {
 }
 
 //  ITEM 2
-
-
-// NO
-export function getTilesWrap(Item) {
-
-    const TilesWrap = styled.ul`
-      padding: 0;
-      margin: 50px auto;
-      list-style: none;
-      text-align: center;
-      `;
-
-
-    const tmp = keyframes`
-                      
-                      from, to {
-                          padding: 0;
-                          margin: 50px auto;
-                          list-style: none;
-                          text-align: center;
-                      }
-                  `;
-
-    const TilesWrapFinal = styled.ul`
-          animation: $1s ${tmp} both;
-       `;
-
-    return TilesWrapFinal
-}
 
 export function getTilesWrap_li(Item) {
 
@@ -436,7 +373,6 @@ export function getTilesWrap_li(Item) {
     return TilesWrap_li
 }
 
-// NO
 export function getTilesWrap_h2(Item) {
 
     // NUMERI IN ALTO A SINISTRA
@@ -448,7 +384,7 @@ export function getTilesWrap_h2(Item) {
       opacity: 0.2;
       top: 50px;
       right: 30%;
-      transition: all 0.3s ease-in-out; 
+      transition: all 0.3s ease-in-out;
       `;*/
 
     // NUMERI IN ALTO A DESTRA
@@ -486,7 +422,6 @@ export function getTilesWrap_h2(Item) {
 
       `;*/
 
-
     const TilesWrap_h2 = styled.h2`
       font-size: ${Item.fontSize_TilesWrap_h2};
       margin: 0;
@@ -499,18 +434,6 @@ export function getTilesWrap_h2(Item) {
     `;
 
     return TilesWrap_h2
-}
-
-// NO
-export function getTilesWrap_h3(Item) {
-
-    const TilesWrap_h3 = styled.h3`
-          font-size: ${Item.fontSize_getTilesWrap_h3};
-          color: ${Item.color_getTilesWrap_h3};
-          margin-bottom: ${Item.marginBotton_getTilesWrap_h3};
-      `;
-
-    return TilesWrap_h3
 }
 
 export function getTilesWrap_p(Item) {
@@ -1073,9 +996,6 @@ export function getTilesWrap_button_2(Item) {
 
 function checkValue (variableArray, rest) {
 
-    //console.log(variableArray, rest)
-    //console.log(colorEnd, restcolorEnd)
-
     const tmp = ["borderDim_ContItem", "borderType_ContItem",
         "borderColor_ContItem", "colorDivItems", "width_DivItem", "borderDim_DivItems", "borderType_DivItems","borderColor_DivItems", "color_DivItemHead", "fontWeight_DivItemHead", "fontSize_DivItemHead",
         "paddingX_DivItemsHeadFinal","paddingY_DivItemsHeadFinal", "paddingX_DivItemsHeadFinal_p", "paddingY_DivItemsHeadFinal_p",
@@ -1087,15 +1007,18 @@ function checkValue (variableArray, rest) {
         "borderColor_hover_ItemsBodyContent", "fontSize_ItemsBodyContentIcon", "color_ItemsBodyContentIcon", "fontWeight_ItemsBodyContentIcon",
         "width_TilesWrapLi1", "fontFamily_TilesWrapLi1","fontFamily_TilesWrapLi2","height_TilesWrapLi",
         "backgroundColor_TilesWrapLi", "borderDim_TilesWrapLi", "borderType_TilesWrapLi","borderColor_TilesWrapLi","fontSize_TilesWrap_h2",
-        "fontSize_getTilesWrap_h3", "color_getTilesWrap_h3", "marginBotton_getTilesWrap_h3", "fontSize_TilesWrap_p", "lineHeight_TilesWrap_p", "color_TilesWrap_p", "checkSpan",
-        "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1", "durationAnimationP", "duration1AnimationP",
-        "fillModeAnimationP", "colorEndSpan", "colorStartSpan", "textInputSpan", "toEnableAnimationSpan",
+        "fontSize_getTilesWrap_h3", "color_getTilesWrap_h3", "marginBotton_getTilesWrap_h3", "fontSize_TilesWrap_p", "lineHeight_TilesWrap_p", "color_TilesWrap_p",
+        "checkSpan", "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1", "durationAnimationP", "duration1AnimationP",
+        "fillModeAnimationP", "colorEndSpan", "colorStartSpan", "textInputSpan", "toEnableAnimationSpan", "toEnableAnimationSpan",
         "checkIcon", "toEnableAnimationIcon", "durationAnimationIcon", "duration1AnimationIcon", "fillModeAnimationIcon", "transitionYEnableIcon",
-        "transitionYEnable1Icon", "transitionXEnableIcon", "transitionXEnable1Icon", "color_ItemsBodyContentIcon_end", "color_ItemsBodyContentIcon_start",
-        "textInputIcon", "checkButton",
+        "transitionYEnable1Icon", "transitionXEnableIcon", "transitionXEnable1Icon", "color_ItemsBodyContentIcon_end", "color_ItemsBodyContentIcon_start", "textInputIcon",
+        "checkButton",
         "minWidthLi", "maxWidthLi", "padding1Li", "padding2Li", "padding3Li", "positionLi", "verticalAlignLi", "marginLi", "textAlignLi", "opacityButtonLiEnter", "colorEndLi",
-        "opacityButtonLiEnd", "colorStartLi", "topLiH2Enter", "opacityLiH2Enter", "topLiH2End", "opacityLiH2End", "marginTopP",
-
+        "opacityButtonLiEnd", "colorStartLi", "topLiH2Enter", "opacityLiH2Enter", "topLiH2End", "opacityLiH2End", "marginTopP", "typeTransitionButton", "typeTransitionButton1", "typeTransitionButton2",
+        "backgroundWrapButton", "borderWrap1", "borderWrap2", "borderWrap3", "paddingWrap1", "paddingWrap2", "colorButtonWrap", "borderRadiusWrap",
+        "positionWrap", "transitionDurationWrap1", "transitionFillModeWrap2", "opacityWrap", "cursorWrap", "overflowWrap", "marginWrap",
+        "backgroundWrapButton_2", "borderWrap1_2", "borderWrap2_2", "borderWrap3_2", "paddingWrap1_2", "paddingWrap2_2", "colorButtonWrap_2", "borderRadiusWrap_2",
+        "positionWrap_2", "transitionDurationWrap1_2", "transitionFillModeWrap2_2", "opacityWrap_2", "cursorWrap_2", "overflowWrap_2", "marginWrap_2"
     ]
 
     /*
@@ -1183,7 +1106,58 @@ function checkValue (variableArray, rest) {
         82: "color_ItemsBodyContentIcon_end",
         83: "color_ItemsBodyContentIcon_start",
         84: "textInputIcon",
-        85: "checkButton"
+        85: "checkButton",
+        86: "minWidthLi",
+        87: "maxWidthLi",
+        88: "padding1Li",
+        89: "padding2Li",
+        90: "padding3Li",
+        91: "positionLi",
+        92: "verticalAlignLi",
+        93: "marginLi",
+            "textAlignLi",
+             "opacityButtonLiEnter",
+             "colorEndLi",
+        "opacityButtonLiEnd",
+         "colorStartLi",
+         "topLiH2Enter",
+         "opacityLiH2Enter",
+          "topLiH2End",
+           "opacityLiH2End",
+            "marginTopP",
+            "typeTransitionButton",
+            "typeTransitionButton1",
+            "typeTransitionButton2",
+        "backgroundWrapButton",
+        "borderWrap1",
+        "borderWrap2",
+         "borderWrap3",
+          "paddingWrap1",
+           "paddingWrap2",
+            "colorButtonWrap",
+            "borderRadiusWrap",
+        "positionWrap",
+        "transitionDurationWrap1",
+        "transitionFillModeWrap2",
+        "opacityWrap",
+         "cursorWrap",
+         ù"overflowWrap",
+          "marginWrap",
+        "backgroundWrapButton_2",
+         "borderWrap1_2",
+         "borderWrap2_2",
+         "borderWrap3_2",
+         "paddingWrap1_2",
+         "paddingWrap2_2",
+          "colorButtonWrap_2",
+          "borderRadiusWrap_2",
+        "positionWrap_2",
+         "transitionDurationWrap1_2",
+         "transitionFillModeWrap2_2",
+         "opacityWrap_2",
+          "cursorWrap_2",
+          "overflowWrap_2",
+          "marginWrap_2"
     */
 
 
@@ -1227,7 +1201,6 @@ export function setCheckItems(value, typeTag, type) {
                 default:
                     return;
             }
-
 
             break;
 
@@ -1478,7 +1451,27 @@ items.propType = {
     opacityWrap_2: PropTypes.string,
     cursorWrap_2: PropTypes.string,
     overflowWrap_2: PropTypes.string,
-    marginWrap_2: PropTypes.string
+    marginWrap_2: PropTypes.string,
+    flag1: PropTypes.bool,
+    flag2: PropTypes.bool,
+    flag3: PropTypes.bool,
+    flag4: PropTypes.bool,
+    flag5: PropTypes.bool,
+    flag6: PropTypes.bool,
+    flag7: PropTypes.bool,
+    flag8: PropTypes.bool,
+    flag9: PropTypes.bool,
+    flag10: PropTypes.bool,
+    flag11: PropTypes.bool,
+    flag12: PropTypes.bool,
+    flag13: PropTypes.bool,
+    flag14: PropTypes.bool,
+    flag15: PropTypes.bool,
+    flag16: PropTypes.bool,
+    flag17: PropTypes.bool,
+    flag18: PropTypes.bool,
+    flag19: PropTypes.bool,
+    flag20: PropTypes.bool
 
 }
 

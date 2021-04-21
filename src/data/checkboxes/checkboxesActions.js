@@ -1,5 +1,6 @@
 import animationDispatcher from "../animationDispatcher"
 import checkboxesActionTypes from "./checkboxesActionTypes"
+import cardsActionTypes from "../cards/cardsActionTypes";
 
 const checkboxesActions = {
     newCheckboxes (
@@ -9,6 +10,7 @@ const checkboxesActions = {
         toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
         transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1, checkAnimationTransition,
         setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim, widthImg, heightImg,
+        textValue2, textValueFinal, textValue1,
         duration, timing, delay, iterations, direction, fillMode, playState) {
 
          animationDispatcher.dispatch ({
@@ -56,13 +58,18 @@ const checkboxesActions = {
                 setStopAnimation: setStopAnimation,
                 onAnim: onAnim,
                 widthImg: widthImg,
-                heightImg: heightImg
+                heightImg: heightImg,
+                textValue2: textValue2,
+                textValueFinal: textValueFinal,
+                textValue1: textValue1
         })
     },
+
     changeValue (id, key, value) {
-        //console.log("ID", id)
-        //console.log("KEY", key)
-        //console.log("VALUE", value)
+
+        if (animationDispatcher.isDispatching()) {
+            animationDispatcher._stopDispatching()
+        }
 
         animationDispatcher.dispatch({
             type: checkboxesActionTypes.CHANGE_CHECKBOXES_VALUE,
@@ -70,7 +77,41 @@ const checkboxesActions = {
             key: key,
             value: value
         })
+    },
+
+    updateCheck(id){
+
+        animationDispatcher.dispatch({
+            type: checkboxesActionTypes.UPDATE_CHECK,
+            id
+        });
+
+    },
+
+    updateCheckAnimation(id){
+        animationDispatcher.dispatch({
+            type: checkboxesActionTypes.UPDATE_CHECK_ANIMATION,
+            id
+        });
+    },
+
+    changeValueTextValue (id, idParam, value) {
+
+        animationDispatcher.dispatch({
+            type: checkboxesActionTypes.CHANGE_CHECKBOXES_TEXTVALUE,
+            id,
+            idParam,
+            value
+        })
+    },
+
+    updateTextValue(id){
+        animationDispatcher.dispatch({
+            type: checkboxesActionTypes.UPDATE_CHECK_VALUETEXT,
+            id
+        });
     }
+
 }
 
 export default checkboxesActions

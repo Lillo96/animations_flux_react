@@ -2,12 +2,9 @@ import getDataAnimation from "./view"
 import checkboxes, {
     getIMGCheck,
     getPCheck,
-    setCheckLimit,
-    setTextValue,
     getInputCheck
 } from "./components/checkboxes";
 import cards, {
-    setCheckLimitCards,
     getCardContainer,
     getCardBack,
     getCardFront,
@@ -22,25 +19,14 @@ import cards, {
     getCardCenter,
     getCard,
     getAdditional,
-    getUserCard,
-    getLevelCenter,
-    getPointsCenter,
-    getSvg,
     getMoreInfo,
-    getMoreInfoName,
     getCoords,
-    getStats,
-    getStatsValue,
-    getStatsTitle,
     getCardGeneral,
     getCardGeneralMore,
     getCardGeneralTitle,
     getCardGeneralText,
-    setValueVariable,
-    provaFunction_CheckValue
 } from "./components/cards"
 import items ,{
-    getContainerItems,
     getDivItems,
     getDivItemsHead,
     getDivItemsHead_p,
@@ -48,10 +34,7 @@ import items ,{
     getItemsBody,
     getItemsBodyContent,
     getItemsBodyContent_icon,
-    getTilesWrap,
     getTilesWrap_li,
-    getTilesWrap_h2,
-    getTilesWrap_h3,
     getTilesWrap_p,
     getTilesWrap_button,
     setCheckItems,
@@ -64,49 +47,30 @@ import cardsObject from "./data/cards/cardsObject"
 import itemsObject from "./data/items/itemsObject"
 
 const imp = {
+
     checkboxes: checkboxes,
+
     cards: cards,
+
     items: items
+
 }
 
 export function getCheckboxes(id) {
     return {
-        ...getDataAnimation('checkboxes', id, checkboxesObject),
-        getIMGCheck,
-        getPCheck,
-        setCheckLimit,
-        setTextValue,
+        ...getDataAnimation('checkboxes', id, checkboxesObject)
     }
 }
 
 export function getCards (id) {
     return {
-        ...getDataAnimation('cards', id, cardsObject),
-        setCheckLimitCards,
-        provaFunction_CheckValue
+        ...getDataAnimation('cards', id, cardsObject)
     }
 }
 
 export function getItems(id) {
     return {
-        ...getDataAnimation('items', id, itemsObject),
-        getContainerItems,
-        getDivItems,
-        getDivItemsHead,
-        getDivItemsHead_p,
-        getDivItemsHead_hr,
-        getItemsBody,
-        getItemsBodyContent,
-        getItemsBodyContent_icon,
-        getTilesWrap,
-        getTilesWrap_li,
-        getTilesWrap_h2,
-        getTilesWrap_h3,
-        getTilesWrap_p,
-        getTilesWrap_button,
-        setCheckItems,
-        getTilesWrap_button_1,
-        getTilesWrap_button_2
+        ...getDataAnimation('items', id, itemsObject)
     }
 
 }

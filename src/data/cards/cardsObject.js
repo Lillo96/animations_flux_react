@@ -1,5 +1,4 @@
-import Immutable from 'immutable'
-import PropTypes from "prop-types";
+import Immutable from 'immutable';
 
 const cards = Immutable.Record({
     id: '',
@@ -19,8 +18,8 @@ const cards = Immutable.Record({
     borderDim: '2px',
     borderType: 'solid',
     borderColor: '#0d0d0d',
-    height: '100%',
-    width: '100%',
+    height: '250px',
+    width: '450px',
     timeAnim: '1s', // ANIM
     buttonFontSize: '1em',
     buttonMargin: '1em',
@@ -116,11 +115,11 @@ const cards = Immutable.Record({
     topButtonCard2: null,
     leftButtonCard2: null,
 
-    checkLimitFlag: null,
+    checkLimitFlag: true,
 
     colorCardFront: null,
     colorCardBack: null,
-    toEnableAnimationButton: true,
+    toEnableAnimationButton: false,
     durationAnimationButton: '1.5s',
     duration1AnimationButton: 'infinite',
     fillModeAnimationButton: 'forwards',
@@ -131,7 +130,9 @@ const cards = Immutable.Record({
     transitionYEnable1: false,
     transitionXEnable: false,
     transitionXEnable1: false,
-    count: 0
+    count: 0,
+
+    function1: null
 })
 
 export default cards

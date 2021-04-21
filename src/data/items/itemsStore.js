@@ -3,9 +3,7 @@ import animationDispatcher from "../animationDispatcher"
 import Immutable from 'immutable'
 import style from '../styleObject'
 import tabsActionTypes from "./itemsActionTypes";
-import tabs from "./itemsObject"
-import PropTypes from "prop-types";
-import {act} from "@testing-library/react";
+import tabs from "./itemsObject";
 
 class ItemsStore extends ReduceStore {
     constructor () {
@@ -176,6 +174,29 @@ class ItemsStore extends ReduceStore {
                         overflowWrap_2: action.overflowWrap_2,
                         marginWrap_2: action.marginWrap_2,
 
+                        flag: ({
+                            flag1: action.flag1,
+                            flag2: action.flag2,
+                            flag3: action.flag3,
+                            flag4: action.flag4,
+                            flag5: action.flag5,
+                            flag6: action.flag6,
+                            flag7: action.flag7,
+                            flag8: action.flag8,
+                            flag9: action.flag9,
+                            flag10: action.flag10,
+                            flag11: action.flag11,
+                            flag12: action.flag12,
+                            flag13: action.flag13,
+                            flag14: action.flag14,
+                            flag15: action.flag15,
+                            flag16: action.flag16,
+                            flag17: action.flag17,
+                            flag18: action.flag18,
+                            flag19: action.flag19,
+                            flag20: action.flag20,
+                        }),
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
@@ -204,6 +225,105 @@ class ItemsStore extends ReduceStore {
                     throw Error('items does not have a property ' + action.key)
                 }
 
+            case tabsActionTypes.UPDATE_CHECKSPAN:
+
+                if(!action.id){
+                    return state;
+                }
+
+                state = state.update(
+                    action.id,
+
+                    item => item.set('checkSpan', !item.checkSpan)
+                );
+
+                return state;
+
+                break;
+
+            case tabsActionTypes.UPDATE_CHECKLIMIT:
+
+                if(!action.id){
+                    return state;
+                }
+
+                state = state.update(
+                    action.id,
+
+                    item => item.set('checkLimit', !item.checkLimit)
+                );
+
+                return state;
+
+                break;
+
+            case tabsActionTypes.UPDATE_CHECKICON:
+
+                if(!action.id){
+                    return state;
+                }
+
+                state = state.update(
+                    action.id,
+
+                    item => item.set('checkIcon', !item.checkIcon)
+                );
+
+                return state;
+
+                break;
+
+            case tabsActionTypes.UPDATE_VALUE_FLAG:
+
+                let tmp = ["flag1", "flag2"]
+
+                if (!action.id) {
+                    return state;
+                }
+
+                state.map( item => {
+
+                    if (item.id === action.id){
+
+                        for (let i = 0; i < tmp.length; i++) {
+                            if (tmp[i] != action.idParam) {
+
+                                state = state.update(
+                                    item.id,
+
+                                    item => item.set(tmp[i], false)
+                                );
+
+                            }
+                        }
+
+                    } else {
+
+                        for (let i = 0; i < tmp.length; i++) {
+
+                                state = state.update(
+                                    item.id,
+
+                                    item => item.set(tmp[i], false)
+                                );
+
+
+                        }
+
+                    }
+
+                })
+
+
+                state = state.update(
+                    action.id,
+
+                    item => item.set(action.idParam, !action.valueFlag)
+                )
+
+                return state;
+
+                break;
 
             default:
                 return state

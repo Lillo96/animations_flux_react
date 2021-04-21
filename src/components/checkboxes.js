@@ -4,8 +4,6 @@ import checkboxesActions from "../data/checkboxes/checkboxesActions"
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css } from "styled-components"
-import cardsActions from "../data/cards/cardsActions";
-import transitions from "@material-ui/core/styles/transitions";
 
 let tmp_CardID
 
@@ -16,25 +14,25 @@ function checkboxes({
     toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
     transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
     checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim,
-    widthImg, heightImg,
+    widthImg, heightImg, textValue2, textValueFinal, textValue1,
     duration, timing, delay, iterations, direction, fillMode, playState, ...rest
 }) {
     let animation
 
-       if (!rest.checkboxes.state.has(id)) {
+      if (!rest.checkboxes.state.has(id)) {
 
            animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState })
 
-           checkboxesActions.newCheckboxes(
+           /*checkboxesActions.newCheckboxes(
                id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
                opacityCheck, timeAnimation, typeAnimFillMode, colorLine,
                displayCheck, textDecoration, textDecorationThickness, textDecorationColor, transitionTimingFunction,
                toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
                transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
                checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim,
-               widthImg, heightImg,
+               widthImg, heightImg, textValue2, textValueFinal, textValue1,
                duration, timing, delay, iterations, direction, fillMode, playState,
-            )
+            )*/
 
            tmp_CardID = id // NEW
 
@@ -46,15 +44,15 @@ function checkboxes({
                toEnableAnimationP, durationAnimationP, duration1AnimationP, fillModeAnimationP,
                transitionYEnable, transitionYEnable1, transitionXEnable, transitionXEnable1,
                checkAnimationTransition, setFlagAnimTransitionCheckLimit, toEnableAnimationP_2, setStopAnimation, onAnim,
-               widthImg, heightImg] // NEW
-
-           checkValue(variableArray, rest.checkboxes.state.get(id)) // NEW
+               widthImg, heightImg, textValue2, textValueFinal, textValue1] // NEW
 
            const cardObj = rest.checkboxes.state.get(id) // NEW
 
            animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState }, cardObj.style) // NEW
 
            tmp_CardID = rest.checkboxes.state.get(id).get('id') // NEW
+
+           checkValue(variableArray, rest.checkboxes.state.get(id))
        }
 
        return (
@@ -65,61 +63,6 @@ function checkboxes({
 
 }
 
-export function setCheckLimit (value, flag) {
-
-    let result
-
-    if (value != null) {
-        switch (this.typeInput) {
-            case 1:
-            case 2:
-            case 3:
-
-                result = (value === this.checkLimit) ? !value : value
-                checkboxesActions.changeValue(this.id, 'checkLimit', result)
-
-                break;
-
-            default:
-                return;
-        }
-    }
-
-    if (flag != null) {
-
-        switch (flag) {
-            case true:
-                checkboxesActions.changeValue(this.id, 'checkAnimationTransition', flag)
-                break;
-
-            case false:
-                checkboxesActions.changeValue(this.id, 'checkAnimationTransition', flag)
-                break;
-
-            default:
-                return;
-        }
-
-    }
-
-}
-
-export function setTextValue (valueCheck, valueText) {
-
-    switch (!this.checkLimit) {
-        case true:
-            checkboxesActions.changeValue(this.id, 'textValue', this.textInput)
-            break;
-
-        case false:
-            checkboxesActions.changeValue(this.id, 'textValue', valueText)
-            break;
-
-        default:
-            return
-    }
-}
-
 function checkValue (variableArray, rest) {
 
     const tmp = ["checkLimit", "typeInput", "animationCSS", "textInput", "textValue", "colorStart", "colorEnd", "opacityNotCheck",
@@ -127,7 +70,8 @@ function checkValue (variableArray, rest) {
         "displayCheck", "textDecoration", "textDecorationThickness", "textDecorationColor", "transitionTimingFunction",
         "toEnableAnimationP", "durationAnimationP", "duration1AnimationP", "fillModeAnimationP",
         "transitionYEnable", "transitionYEnable1", "transitionXEnable", "transitionXEnable1",
-        "checkAnimationTransition", "setFlagAnimTransitionCheckLimit", "toEnableAnimationP_2", "setStopAnimation", "onAnim", "widthImg", "heightImg"
+        "checkAnimationTransition", "setFlagAnimTransitionCheckLimit", "toEnableAnimationP_2", "setStopAnimation", "onAnim", "widthImg", "heightImg",
+        "textValue2", "textValueFinal", "textValue1"
     ]
 
     /*
@@ -162,20 +106,29 @@ function checkValue (variableArray, rest) {
         28: "setStopAnimation",
         29: "onAnim",
         30: "widthImg",
-        31: "heightImg"
-
+        31: "heightImg",
+        32: "textValue2",
+        33: "textValueFinal"
+        34: "textValue1"
     */
-
 
     for (let i = 1; i < tmp.length; i++) {
 
-        if (variableArray[i] != rest.get(tmp[i])) {
-            if (i != 25 && i != 4) {
-                checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+        if ( (variableArray[i] !== undefined ) && (variableArray[i] !== rest.get(tmp[i]))) {
+            if (i !== 4) {
+                if (i !== 25) {
+                    if (i !== 33) {
+                        checkboxesActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
+                    }
+                }
             }
         }
-
     }
+
+    if (rest.get('textValueFinal') === '') {
+        checkboxesActions.changeValue(rest.get('id'), 'textValueFinal', variableArray[34])
+    }
+
 
 }
 
@@ -412,7 +365,6 @@ export function getPCheck (Check) {
                         return;
 
                 }
-
 
             } else {
 
@@ -956,99 +908,9 @@ export function getPCheck (Check) {
 
             }
 
-
-/*            tmp = keyframes`
-                      
-                      from, to {                           
-                            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                            text-decoration: ${Check.textDecoration};
-                            text-decoration-thickness: ${Check.textDecorationThickness};
-                            text-decoration-color: ${Check.textDecorationColor};
-                            transition-timing-function: clip-path ${Check.transitionTimingFunction} cubic-bezier(.25,.77,.74,.24);
-                      }
-                      
-                  `;
-
-            tmp1 = keyframes`  
-                      
-                      from, to {
-                        opacity: ${Check.opacityNotCheck};
-                        color: ${Check.colorStart};
-                      }
-                      
-                  `;
-
-            duration = (Check.style === null) ? '1s' : Check.style.duration
-            fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
-
-            CheckLabel = styled.p`
-                
-                display: ${Check.displayCheck};
-                
-                ${Check.checkLimit ?
-                `animation: ${tmp1} ${duration} ${fillMode};` :
-                Check.checkLimit === null ? '' :  `animation: ${tmp} ${duration} ${fillMode};`
-                 }  
-                             
-            `;*/
-
             break;
 
         case 3:
-
-            /*            let tmp = keyframes`
-              0% {
-                opacity: 0;
-                color: ${Check.colorStart};
-              }
-
-              25% {
-                opacity: ${Check.opacityNotCheck/4};
-                color: ${Check.colorStart};
-              }
-
-              50% {
-                opacity: ${Check.opacityNotCheck/2};
-                color: ${Check.colorStart};
-              }
-
-              75% {
-                opacity: ${Check.opacityNotCheck/4 + Check.opacityNotCheck/2};
-                color: ${Check.colorStart};
-              }
-
-              100% {
-                 opacity: ${Check.opacityNotCheck};
-                 color: ${Check.colorStart};
-              }
-          `;
-
-    let tmp1 = keyframes`
-              0% {
-                opacity: 0;
-                color: ${Check.colorStart};
-              }
-
-              25% {
-                opacity: ${Check.opacityCheck/4};
-                color: ${Check.colorStart};
-              }
-
-              50% {
-                opacity: ${Check.opacityCheck/2};
-                color: ${Check.colorEnd};
-              }
-
-              75% {
-                opacity: ${Check.opacityCheck/4 + Check.opacityCheck/2};
-                color: ${Check.colorEnd};
-              }
-
-              100% {
-                opacity: ${Check.opacityCheck};
-                color: ${Check.colorEnd};
-              }
-          `;*/
 
             // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
 
@@ -1396,60 +1258,6 @@ export function getIMGCheck (Check) {
         case 1:
         case 2:
 
-            /*            let tmp = keyframes`
-                          0% {
-                            opacity: 0;
-                            color: ${Check.colorStart};
-                          }
-
-                          25% {
-                            opacity: ${Check.opacityNotCheck/4};
-                            color: ${Check.colorStart};
-                          }
-
-                          50% {
-                            opacity: ${Check.opacityNotCheck/2};
-                            color: ${Check.colorStart};
-                          }
-
-                          75% {
-                            opacity: ${Check.opacityNotCheck/4 + Check.opacityNotCheck/2};
-                            color: ${Check.colorStart};
-                          }
-
-                          100% {
-                             opacity: ${Check.opacityNotCheck};
-                             color: ${Check.colorStart};
-                          }
-                      `;
-
-                let tmp1 = keyframes`
-                          0% {
-                            opacity: 0;
-                            color: ${Check.colorStart};
-                          }
-
-                          25% {
-                            opacity: ${Check.opacityCheck/4};
-                            color: ${Check.colorStart};
-                          }
-
-                          50% {
-                            opacity: ${Check.opacityCheck/2};
-                            color: ${Check.colorEnd};
-                          }
-
-                          75% {
-                            opacity: ${Check.opacityCheck/4 + Check.opacityCheck/2};
-                            color: ${Check.colorEnd};
-                          }
-
-                          100% {
-                            opacity: ${Check.opacityCheck};
-                            color: ${Check.colorEnd};
-                          }
-                      `;*/
-
             const tmp = keyframes`
 
                  to {
@@ -1521,7 +1329,7 @@ checkboxes.propType = {
     playState: PropTypes.string,
     animationCSS: PropTypes.string,
     textInput: PropTypes.string,
-    textValue: PropTypes.string,
+    textValue: PropTypes.bool,
     colorStart: PropTypes.string,
     colorEnd: PropTypes.string,
     opacityNotCheck: PropTypes.string,
@@ -1554,7 +1362,10 @@ checkboxes.propType = {
     onAnim: PropTypes.bool,
 
     widthImg: PropTypes.string,
-    heightImg: PropTypes.string
+    heightImg: PropTypes.string,
+    textValue2: PropTypes.string,
+    textValueFinal: PropTypes.string,
+    textValue1: PropTypes.string
 
 }
 

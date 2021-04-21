@@ -4,6 +4,7 @@ import Immutable from 'immutable'
 import style from '../styleObject'
 import checkboxesActionTypes from "./checkboxesActionTypes"
 import checkboxes from "./checkboxesObject"
+import cardsActionTypes from "../cards/cardsActionTypes";
 
 class CheckboxesStore extends ReduceStore {
     constructor () {
@@ -50,6 +51,10 @@ class CheckboxesStore extends ReduceStore {
                         onAnim: action.onAnim,
                         widthImg: action.widthImg,
                         heightImg: action.heightImg,
+                        textValue2: action.textValue2,
+                        textValueFinal: action.textValueFinal,
+                        textValue1: action.textValue1,
+
                         style: style({
                             duration: action.duration,
                             timing: action.timing,
@@ -66,21 +71,103 @@ class CheckboxesStore extends ReduceStore {
 
                     if (state.get(action.id).has(action.key)) {
                         return state.setIn([action.id, action.key], action.value)
-                        //console.log('weee')
                     } else if (action.key.startsWith('style.')) {
                         action.key = action.key.substr(6)
-                        //console.log('iooooo')
                         if (state.get(action.id).style.has(action.key)) {
-                            //console.log('fieveeeell')
                             return state.setIn([action.id, 'style', action.key], action.value)
                         } else {
-                            //console.log('lillo')
                             throw Error('style of checkboxes does not have a property ' + action.key)
                         }
                     } else {
                         throw Error('checkboxes does not have a property ' + action.key)
                     }
 
+            case checkboxesActionTypes.UPDATE_CHECK:
+
+                if(!action.id){
+                    return state;
+                }
+
+                state = state.update(
+                    action.id,
+
+                    check => check.set('checkLimit', !check.checkLimit),
+                );
+
+                return state;
+
+                break;
+
+            case checkboxesActionTypes.UPDATE_CHECK_ANIMATION:
+
+                if(!action.id){
+                    return state;
+                }
+
+                state = state.update(
+                    action.id,
+
+                    check => check.set('checkAnimationTransition', !check.checkAnimationTransition),
+                );
+
+                return state;
+
+                break;
+
+            case checkboxesActionTypes.CHANGE_CHECKBOXES_TEXTVALUE:
+
+                if (!action.id) {
+                    return state;
+                }
+
+                state = state.update(
+                    action.id,
+
+                    check => check.set(action.idParam, action.value)
+                )
+
+                break;
+
+            case checkboxesActionTypes.UPDATE_CHECK_VALUETEXT:
+
+                if(!action.id){
+                    return state;
+                }
+
+                state.map( check => {
+
+                    if (check.id === action.id){
+
+                        if(!check.textValue) {
+
+                            state = state.update(
+                                check.id,
+
+                                check => check.set('textValueFinal', check.textValue2)
+                            );
+
+                        } else {
+
+                            state = state.update(
+                                check.id,
+
+                                check => check.set('textValueFinal', check.textValue1)
+                            );
+
+                        }
+                    }
+
+                })
+
+                state = state.update(
+                    action.id,
+
+                    check => check.set('textValue', !check.textValue),
+                );
+
+                return state;
+
+                break;
 
             default:
                 return state

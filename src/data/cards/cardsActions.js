@@ -1,6 +1,5 @@
 import animationDispatcher from "../animationDispatcher"
 import cardsActionTypes from "./cardsActionTypes"
-import PropTypes from "prop-types";
 
 const cardsActions = {
     newCards (
@@ -172,17 +171,37 @@ const cardsActions = {
     },
 
     changeValue (id, key, value) {
-        console.log("ID", id)
-        //console.log("KEY", key)
-        //console.log("VALUE", value)
-
         animationDispatcher.dispatch({
             type: cardsActionTypes.CHANGE_CARDS_VALUE,
             id: id,
             key: key,
             value: value
         })
+    },
+
+    updateCard(id){
+            animationDispatcher.dispatch({
+                type: cardsActionTypes.UPDATE_CARD,
+                id
+            });
+
+    },
+
+    updateCardValue(id, idParam, value) {
+
+        if (animationDispatcher.isDispatching()) {
+            animationDispatcher._stopDispatching()
+        }
+
+        animationDispatcher.dispatch({
+            type: cardsActionTypes.UPDATE_VALUE_CARD,
+            id,
+            idParam,
+            value
+        })
+
     }
+
 }
 
 export default cardsActions

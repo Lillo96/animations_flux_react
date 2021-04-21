@@ -157,7 +157,28 @@ const items = Immutable.Record({
     opacityWrap_2: '0',
     cursorWrap_2: 'pointer',
     overflowWrap_2: 'hidden',
-    marginWrap_2: '5px'
+    marginWrap_2: '5px',
+
+    flag1: null,
+    flag2: null,
+    flag3: null,
+    flag4: null,
+    flag5: null,
+    flag6: null,
+    flag7: null,
+    flag8: null,
+    flag9: null,
+    flag10: null,
+    flag11: null,
+    flag12: null,
+    flag13: null,
+    flag14: null,
+    flag15: null,
+    flag16: null,
+    flag17: null,
+    flag18: null,
+    flag19: null,
+    flag20: null
 
 })
 

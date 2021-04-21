@@ -16,7 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
-    "styled-components": "5.2.1",
+    "styled-components": "5.2.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -50,10 +50,10 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-standard": "^4.0.1",
     "react-swipeable-views": "^0.13.9",
     "react-window": "1.8.6",
     "shortid": "^2.2.15"
   }
 }
-

@@ -4,10 +4,9 @@ import { Container } from 'flux/utils'
 import checkboxesStore from "../data/checkboxes/checkboxesStore"
 import cardsStore from "../data/cards/cardsStore"
 import itemsStore from "../data/items/itemsStore";
-import cards from "../components/cards";
-import {render} from "@testing-library/react";
-
-//import '../impAnimation.css'
+import cardsActions from "../data/cards/cardsActions";
+import checkboxesActions from "../data/checkboxes/checkboxesActions";
+import itemsActions from "../data/items/itemsActions";
 
 function getStores () {
     return [
@@ -18,15 +17,31 @@ function getStores () {
 }
 
 function getState() {
+
     return {
         checkboxes: {
-            state: checkboxesStore.getState()
+            state: checkboxesStore.getState(),
+
+            updateCheckLimitCheckbox: checkboxesActions.updateCheck,
+            updateCheckAnimationCheckbox: checkboxesActions.updateCheckAnimation,
+            updateCheckTextValue: checkboxesActions.updateTextValue
         },
         cards: {
-            state: cardsStore.getState()
+            state: cardsStore.getState(),
+
+            updateCheckLimitCard: cardsActions.updateCard,
+            updateValueCard: cardsActions.updateCardValue,
+            updateTextValue: cardsActions.changeValueTextValue
         },
         items: {
-            state: itemsStore.getState()
+            state: itemsStore.getState(),
+
+            updateCheckLimit: itemsActions.updateCheckLimit,
+            updateCheckIcon: itemsActions.updateCheckIcon,
+            updateCheckSpan: itemsActions.updateCheckSpan,
+
+            updateFlag: itemsActions.updateFlagValue
+
         }
     }
 }

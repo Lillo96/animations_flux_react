@@ -1,6 +1,7 @@
 import animationDispatcher from "../animationDispatcher"
 import itemsActionTypes from "./itemsActionTypes";
 import PropTypes from "prop-types";
+import cardsActionTypes from "../cards/cardsActionTypes";
 
 const itemsActions = {
     newItems (
@@ -32,7 +33,7 @@ const itemsActions = {
         positionWrap, transitionDurationWrap1, transitionFillModeWrap2, opacityWrap, cursorWrap, overflowWrap, marginWrap,
         backgroundWrapButton_2, borderWrap1_2, borderWrap2_2, borderWrap3_2, paddingWrap1_2, paddingWrap2_2, colorButtonWrap_2, borderRadiusWrap_2,
         positionWrap_2, transitionDurationWrap1_2, transitionFillModeWrap2_2, opacityWrap_2, cursorWrap_2, overflowWrap_2, marginWrap_2,
-
+        flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag11, flag12, flag13, flag14, flag15, flag16, flag17, flag18, flag19, flag20,
         duration, timing, delay, iterations, direction, fillMode, playState) {
         animationDispatcher.dispatch ({
             type: itemsActionTypes.NEW_ITEMS,
@@ -192,14 +193,33 @@ const itemsActions = {
             opacityWrap_2: opacityWrap_2,
             cursorWrap_2: cursorWrap_2,
             overflowWrap_2: overflowWrap_2,
-            marginWrap_2: marginWrap_2
+            marginWrap_2: marginWrap_2,
+
+            flag1: flag1,
+            flag2: flag2,
+            flag3: flag3,
+            flag4: flag4,
+            flag5: flag5,
+            flag6: flag6,
+            flag7: flag7,
+            flag8: flag8,
+            flag9: flag9,
+            flag10: flag10,
+            flag11: flag11,
+            flag12: flag12,
+            flag13: flag13,
+            flag14: flag14,
+            flag15: flag15,
+            flag16: flag16,
+            flag17: flag17,
+            flag18: flag18,
+            flag19: flag19,
+            flag20: flag20
 
         })
     },
+
     changeValue (id, key, value) {
-        //console.log("ID", id)
-        //console.log("KEY", key)
-        //console.log("VALUE", value)
 
         animationDispatcher.dispatch({
             type: itemsActionTypes.CHANGE_ITEMS_VALUE,
@@ -207,7 +227,44 @@ const itemsActions = {
             key: key,
             value: value
         })
+    },
+
+    updateCheckSpan(id){
+        animationDispatcher.dispatch({
+            type: itemsActionTypes.UPDATE_CHECKSPAN,
+            id,
+        });
+    },
+
+    updateCheckLimit(id){
+        animationDispatcher.dispatch({
+            type: itemsActionTypes.UPDATE_CHECKLIMIT,
+            id,
+        });
+    },
+
+    updateCheckIcon(id){
+        animationDispatcher.dispatch({
+            type: itemsActionTypes.UPDATE_CHECKICON,
+            id,
+        });
+    },
+
+    updateFlagValue(id, idParam, valueFlag) {
+
+        if (animationDispatcher.isDispatching()) {
+            animationDispatcher._stopDispatching()
+        }
+
+        animationDispatcher.dispatch({
+            type: itemsActionTypes.UPDATE_VALUE_FLAG,
+            id,
+            idParam,
+            valueFlag
+        })
+
     }
+
 }
 
 export default itemsActions

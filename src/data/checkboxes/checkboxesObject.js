@@ -9,7 +9,7 @@ const checkboxes = Immutable.Record({
     style: null,
     animationCSS: '',
     textInput: '',
-    textValue: '',
+    textValue: false,
     colorStart: 'black',
     colorEnd: 'red',
     opacityNotCheck: 1,
@@ -41,7 +41,9 @@ const checkboxes = Immutable.Record({
     onAnim: null,
     widthImg: '300px',
     heightImg: '40px',
-
+    textValue2: 'value 2',
+    textValueFinal: '',
+    textValue1: 'value 11',
 })
 
 export default checkboxes

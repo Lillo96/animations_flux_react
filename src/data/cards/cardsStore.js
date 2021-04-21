@@ -12,6 +12,7 @@ class CardsStore extends ReduceStore {
     }
 
     getInitialState() {
+        //console.log('SONO DENTRO GET INITIAL STATE')
         return Immutable.OrderedMap()
     }
 
@@ -20,6 +21,10 @@ class CardsStore extends ReduceStore {
         switch (action.type) {
 
             case cardsActionTypes.NEW_CARDS:
+
+                if(!action.id){
+                    return state;
+                }
 
                 return state.set(
                     action.id,
@@ -170,16 +175,61 @@ class CardsStore extends ReduceStore {
 
             case cardsActionTypes.CHANGE_CARDS_VALUE:
 
-                //console.log("WEEEE", state.get(action.id))
-
                 if (state.get(action)) {
                     if (state.get(action.id).has(action.key)) {
                         return state.setIn([action.id, action.key], action.value)
                     }
-                } else
-                    return state.setIn([action.id, action.key], action.value)
+                }
 
             break;
+
+            case cardsActionTypes.UPDATE_CARD:
+
+                if(!action.id){
+                    return state;
+                }
+
+                state.map( card => {
+                    if (card.id != action.id){
+                        state = state.update(
+                            card.id,
+
+                            card => card.set('checkLimitFlag', false)
+                        );
+                    }
+                })
+
+                state = state.update(
+                    action.id,
+
+                    card => card.set('checkLimit', !card.checkLimit)
+                );
+
+                state = state.update(
+                    action.id,
+
+                    card => card.set('checkLimitFlag', true)
+                );
+
+                return state;
+
+                break;
+
+            case cardsActionTypes.UPDATE_VALUE_CARD:
+
+                if (!action.id) {
+                    return state;
+                }
+
+                state = state.update(
+                    action.id,
+
+                    card => card.set(action.idParam, action.value)
+                )
+
+                return state;
+
+                break;
 
             default:
                 return state
