@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cardsActions from "../data/cards/cardsActions"
-import cardsStore from "../data/cards/cardsStore"
 import getAnimation from "../data/animation"
 
 import styled, {keyframes, css} from "styled-components"
@@ -117,8 +116,6 @@ function cards({
 
 export function getCardContainer(Card) {
 
-    let CardContainerFinal
-
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
     let duration = (Card.style === null) ? '1s' : Card.style.duration
 
@@ -136,11 +133,7 @@ export function getCardContainer(Card) {
                           }
                       `;
 
-    CardContainerFinal = styled.div`
-              animation: ${duration} ${tmp} ${fillMode};
-            `;
-
-    return CardContainerFinal
+    return { tmp, fillMode, duration }
 
 }
 
@@ -170,11 +163,7 @@ export function getCardFront(Card) {
    let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
    let duration = (Card.style === null) ? '1s' : Card.style.duration
 
-   const CardFrontFinal = styled.div`
-          animation: ${duration} ${tmp} ${fillMode};
-       `;
-
-   return CardFrontFinal
+   return { tmp, fillMode, duration }
 }
 
 export function getCardBack(Card) {
@@ -226,18 +215,14 @@ export function getCardBack(Card) {
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
     let duration = (Card.style === null) ? '1s' : Card.style.duration
 
-    const CardBackFinal = styled.div`
-          animation: ${duration} ${tmp} ${fillMode};
-    `;
-
-    return CardBackFinal
+    return { tmp, fillMode, duration }
 }
 
 export function getCardInner(Card) {
 
-    let CardInner
+    let flag, tmp, tmp1, tmp_1, tmp1_1, num, inf, checkLimitTMP, checkLimitFLAG, i
 
-    const tmp = keyframes`
+    tmp = keyframes`
         
          to {
                 transform: rotateX(180deg);
@@ -245,7 +230,7 @@ export function getCardInner(Card) {
          
     `;
 
-    const tmp1 = keyframes`
+    tmp1 = keyframes`
         
          from {
                 transform: rotateX(180deg);
@@ -253,7 +238,7 @@ export function getCardInner(Card) {
          
     `;
 
-    const tmp_1 = keyframes`
+    tmp_1 = keyframes`
         
          to {
                 transform: rotateY(180deg);
@@ -261,7 +246,7 @@ export function getCardInner(Card) {
          
     `;
 
-    const tmp1_1 = keyframes`
+    tmp1_1 = keyframes`
         
          from {
                 transform: rotateY(180deg);
@@ -276,34 +261,39 @@ export function getCardInner(Card) {
 
         case 1:
 
+            num = 1
+
             if(Card.directionOfRotation === 'toTheLeft') {
 
-                CardInner = styled.div`
+                inf = 1
+
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                flag = css`
+                
                     flex: 1;
                     display: ${Card.display};
                     text-align: ${Card.textAlign};
                     transition: ${duration};
                     transform-style: preserve-3d;
-            
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                        css`animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
-                    }  
-                         
+                   
                 `;
 
                     } else {
 
-                        CardInner = styled.div`
-                            flex: 1;
-                            display: ${Card.display};
-                            transition: ${duration};
-                            transform-style: preserve-3d;
-                         
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp_1} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : ''
-                            }
+                        inf = 2
+
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFLAG = Card.checkLimitFlag
+
+                        flag = css`
+                            
+                                flex: 1;
+                                display: ${Card.display};
+                                transition: ${duration};
+                                transform-style: preserve-3d;
+                            
                         `;
 
                     }
@@ -312,7 +302,8 @@ export function getCardInner(Card) {
 
         case 2:
 
-            let i
+            num = 2
+
             if (Card.checkLimit === null){
                 i = 1
             } else {
@@ -326,78 +317,86 @@ export function getCardInner(Card) {
             }
 
             if(Card.directionOfRotation === 'toTheLeft') {
-                CardInner = styled.div`
+
+                inf = 1
+
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                flag = css`
                     flex: 1;
                     display: ${Card.display};
                     text-align: ${Card.textAlign};
                     transition: ${duration};
                     transform-style: preserve-3d;
             
-                   ${Card.checkLimit && Card.checkLimitFlag ?
-                         css`animation: ${tmp} ${duration} ${fillMode};` :
-                         Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
-                   }
-                  
                 `;
 
             } else {
-                CardInner = styled.div`
+
+                inf = 2
+
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                flag = css`
+                
                             flex: 1;
                             display: ${Card.display};
                             transition: ${duration};
                             transform-style: preserve-3d;
-                    
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp_1} ${duration} ${fillMode};` :
-                                 Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp_1 : i === 3 ? tmp1_1 : ''} 0s ${fillMode};`
-                }            
+                               
                 `;
 
             }
+
             break;
 
         case 3:
 
-            let o
+            num = 3
+
             if (Card.checkLimit === null){
-                o = 1
+                i = 1
             } else {
                 if (Card.checkLimit === true) {
-                    o = 2
+                    i = 2
                 } else {
                     if (Card.checkLimit === false){
-                        o = 3
+                        i = 3
                     }
                 }
             }
 
             if(Card.directionOfRotation === 'toTheLeft') {
-                CardInner = styled.div`
+
+                inf = 1
+
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                flag = css`
                     flex: 1;
                     display: ${Card.display};
                     text-align: ${Card.textAlign};
                     transition: ${duration};
                     transform-style: preserve-3d;
-            
-                   ${Card.checkLimit && Card.checkLimitFlag ?
-                    css`animation: ${tmp} ${duration} ${fillMode};` :
-                    Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
-                
+   
                 `;
 
             } else {
-                CardInner = styled.div`
+
+                inf = 2
+
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                flag = css`
                             flex: 1;
                             display: ${Card.display};
                             transition: transform ${duration};
                             transform-style: preserve-3d;
-                    
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp_1} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp_1 : o === 3 ? tmp1_1 : ''} 0s ${fillMode};`  
-                            }
-                            
+                           
                 `;
             }
 
@@ -405,47 +404,51 @@ export function getCardInner(Card) {
 
         case 4:
 
-            let k
+            num = 4
+
             if (Card.checkLimit === null){
-                k = 1
+                i = 1
             } else {
                 if (Card.checkLimit === true) {
-                    k = 2
+                    i = 2
                 } else {
                     if (Card.checkLimit === false){
-                        k = 3
+                        i = 3
                     }
                 }
             }
 
             if (Card.directionOfRotation === 'toTheLeft') {
-                CardInner = styled.div`
+
+                inf = 1
+
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                flag = css`
                     flex: 1;
                     display: ${Card.display};
                     text-align: ${Card.textAlign};
                     transition: ${duration};
                     transform-style: preserve-3d;
             
-                   ${Card.checkLimit && Card.checkLimitFlag ?
-                    css`animation: ${tmp} ${duration} ${fillMode};` :
-                    Card.checkLimit === false && Card.checkLimitFlag ?  css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${k === 2 ? tmp : k === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
-                
                 `;
 
             } else {
-                CardInner = styled.div`
+
+                inf = 2
+
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                flag = css`
                             flex: 1;
                             display: ${Card.display};
                             transition: transform ${duration};
                             transform-style: preserve-3d;
-                    
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp_1} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : css`animation: ${k === 2 ? tmp_1 : k === 3 ? tmp1_1 : ''} 0s ${fillMode};`  
-                            }
-                            
+                       
                 `;
+
             }
 
             break;
@@ -454,14 +457,15 @@ export function getCardInner(Card) {
             return
     }
 
-    return CardInner
+    return { flag, duration, fillMode, tmp, tmp1, tmp_1, tmp1_1, i, num, inf, checkLimitTMP, checkLimitFLAG }
+
 }
 
 export function getCardButton(Card) {
 
     let tmp = ( (!Card.transitionYEnable && !Card.transitionYEnable1) && (!Card.transitionXEnable && !Card.transitionXEnable1)) ? true : false
 
-    const ItemsBodyContentIcon = styled.button`
+    const ItemsBodyContentIcon = css`
 
           background-color: ${Card.backgroundColorButton};
           border: ${Card.borderButton};
@@ -472,8 +476,7 @@ export function getCardButton(Card) {
           display: ${Card.displayButton};
           font-size: ${Card.fontSizeButton};
 
-          ${Card.toEnableAnimationButton ? css`animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
-     
+         
           @keyframes icon {
               0%,100%{
                     transform: ${tmp ? 'translateY(0px)' : Card.transitionYEnable ? 'translateY(0px)' : ''};
@@ -491,7 +494,181 @@ export function getCardButton(Card) {
 
       `;
 
-    return ItemsBodyContentIcon
+    let bool = Card.toEnableAnimationButton
+    let duration = Card.durationAnimationButton
+    let duration1 = Card.duration1AnimationButton
+    let fillMode = Card.fillModeAnimationButton
+
+    return { ItemsBodyContentIcon, bool, duration, duration1, fillMode }
+}
+
+export const getAnimationCard = ({ tmp, duration, fillMode }) => {
+    return css`
+        animation: ${duration} ${tmp} ${fillMode};
+    `;
+};
+
+export const getAnimationInner = ({ flag, duration, fillMode, tmp, tmp1, tmp_1, tmp1_1, i, num, inf, checkLimitTMP, checkLimitFLAG }) => {
+
+    switch (num) {
+
+        case 1:
+
+            switch (inf) {
+
+                case 1:
+
+                    return css`
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
+                        }
+                    `;
+
+                case 2:
+
+                    return css`
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp_1} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : ''
+                        }
+                    `;
+
+                default:
+                    return
+
+            }
+
+        case 2:
+
+            switch (inf) {
+
+                case 1:
+
+                    return css`
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
+                        }
+                   
+                    `;
+
+                case 2:
+
+                    return css`
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp_1} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp_1 : i === 3 ? tmp1_1 : ''} 0s ${fillMode};`
+                        }
+                        
+                    `;
+
+                default:
+                    return
+
+            }
+
+        case 3:
+
+            switch (inf) {
+
+                case 1:
+
+                    return css`
+                    
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
+                        }
+                  
+                    `;
+
+                case 2:
+
+                    return css`
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp_1} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp_1 : i === 3 ? tmp1_1 : ''} 0s ${fillMode};`
+                        }
+                        
+                    `;
+
+                default:
+                    return
+
+            }
+
+        case 4:
+
+            switch (inf) {
+
+                case 1:
+
+                    return css`
+                    
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ?  css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
+                        }
+                  
+                    `;
+
+                case 2:
+
+                    return css`
+                        ${flag};
+                        
+                        ${checkLimitTMP && checkLimitFLAG ?
+                            css`animation: ${tmp_1} ${duration} ${fillMode};` :
+                            checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1_1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp_1 : i === 3 ? tmp1_1 : ''} 0s ${fillMode};`
+                        }
+                        
+                    `;
+
+                default:
+                    return
+
+            }
+
+        default:
+            return
+    }
+
+
+
+}
+
+export const getAnimationInner1 = ({flag, duration, fillMode, tmp, tmp1, value, i }) => {
+    return css`
+        ${flag};
+        
+        ${value ? css`animation: ${tmp} ${duration} ${fillMode};` :
+        !value ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
+    }
+    `;
+}
+
+export const getAnimationButton = ({ ItemsBodyContentIcon, bool, duration, duration1, fillMode }) => {
+    return css`
+        ${ItemsBodyContentIcon};
+        
+        ${bool ? css`animation: icon ${duration} ${duration1} ${fillMode};` : null}
+     
+    `;
 }
 
 // CARD 2
@@ -525,7 +702,7 @@ export function getImageWrapper(Card) {
         // DALL ALTO A SINISTRA VERSO IL BASSO A DESTRA
     if (Card.directionOfAnimation === "topLeftBottomRight") {
 
-            ImageWrapper = styled.div`
+            ImageWrapper = css`
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
@@ -555,7 +732,7 @@ export function getImageWrapper(Card) {
                            
         `;
 
-            return ImageWrapper
+            return { ImageWrapper }
 
     }
 
@@ -563,7 +740,7 @@ export function getImageWrapper(Card) {
         // DALL'ALTO A DESTRA VERSO L BASSO A SINISTRA
     if (Card.directionOfAnimation === "topRightBottomLeft") {
 
-            const ImageWrapper1 = styled.div`
+             ImageWrapper = css`
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
@@ -593,14 +770,16 @@ export function getImageWrapper(Card) {
                            
         `;
 
-            return ImageWrapper1
+            return { ImageWrapper }
 
         }
 
 
         // DAL BASSO A DESTRA VERSO L'ALTO A SINISTRA
     if (Card.directionOfAnimation === "lowRightToHighLeft") {
-            const ImageWrapper2 = styled.div`
+
+             ImageWrapper = css`
+             
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
@@ -630,13 +809,15 @@ export function getImageWrapper(Card) {
                         
                        `;
 
-            return ImageWrapper2
+            return { ImageWrapper }
         }
 
 
         // DAL BASSO A SINISTRA VERSO L'ALTO A DESTRA
     if (Card.directionOfAnimation === "lowLeftToHighRight") {
-            const ImageWrapper3 = styled.div`
+
+                ImageWrapper = css`
+                
                           width: ${Card.widthCard2};
                           height: ${Card.heightCard2};
                           position: ${Card.positionCard2};
@@ -663,9 +844,9 @@ export function getImageWrapper(Card) {
                           
                            ` : '' 
                           } 
-                       `;
+                `;
 
-            return ImageWrapper3
+            return { ImageWrapper }
         }
 
 }
@@ -674,6 +855,7 @@ export function getHeaderImage(Card) {
 
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
     let duration = (Card.style === null) ? '1s' : Card.style.duration
+    let control
 
     const tmp = keyframes`
 
@@ -683,22 +865,18 @@ export function getHeaderImage(Card) {
          }
     `;
 
-    const HeaderImg = styled.img`
+    const HeaderImg = css`
+    
         width: ${Card.widthCard2};
         height: ${Card.heightCard2};
         filter: grayscale(100%);
         transition: ${Card.transitionRGBACard2};
         
-        ${Card.toEnableAnimationWrapper ? css`       
-            &:hover {
-                 animation: ${tmp} ${duration} ${fillMode};
-            }
-        ` : null
-        }
-  
     `;
 
-    return HeaderImg
+    control = Card.toEnableAnimationWrapper
+
+    return { HeaderImg, tmp, fillMode, duration, control }
 
 }
 
@@ -720,7 +898,7 @@ export function getName(Card) {
          
     `;
 
-    let name
+    let name, checkLimitTMP, checkLimitFlagTMP, flag, num, o
 
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
     let duration = (Card.style === null) ? '1s' : Card.style.duration
@@ -729,30 +907,32 @@ export function getName(Card) {
 
                 case 1:
 
+                    num = 1
+
                     // SINISTRA IN BASSO
                     if (Card.directionName === "FromLeftToRight") {
 
-                        name = styled.h2`
-                        background: ${Card.backgroundNameCard2};
-                        font-family: ${Card.fontFamilyNameCard2};
-                        color: ${Card.colorNameCard2};
-                        text-align: ${Card.textAlignNameCard2};
-                        text-transform: ${Card.textTransformNameCard2};
-                        margin: ${Card.marginNameCard2};
-                        padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
-                        position: ${Card.positionNameCard2};
-                        bottom: ${Card.bottomNameCard2};
-                        width: ${Card.widthNameCard2};
-                        transform: perspective(400px) rotateY(90deg);
-                        transform-origin: left; 
-                        transition: ${Card.transitionNameCard2};
+                        flag = 1
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
                         
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                            css`animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : '' 
-                        }  
+                            background: ${Card.backgroundNameCard2};
+                            font-family: ${Card.fontFamilyNameCard2};
+                            color: ${Card.colorNameCard2};
+                            text-align: ${Card.textAlignNameCard2};
+                            text-transform: ${Card.textTransformNameCard2};
+                            margin: ${Card.marginNameCard2};
+                            padding: ${Card.paddingTopBottomNameCard2} ${Card.paddingRightLeftNameCard2};
+                            position: ${Card.positionNameCard2};
+                            bottom: ${Card.bottomNameCard2};
+                            width: ${Card.widthNameCard2};
+                            transform: perspective(400px) rotateY(90deg);
+                            transform-origin: left; 
+                            transition: ${Card.transitionNameCard2};
                                               
-                    `;
+                        `;
 
                     }
 
@@ -760,7 +940,12 @@ export function getName(Card) {
                     // DESTRA IN BASSO
                     if(Card.directionName === "FromRightHandToSinister") {
 
-                        name = styled.h2`
+                        flag = 2
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
+                        
                             background: ${Card.backgroundNameCard2};
                             font-family: ${Card.fontFamilyNameCard2};
                             color: ${Card.colorNameCard2};
@@ -775,11 +960,6 @@ export function getName(Card) {
                             transform-origin: right;
                             transition: ${Card.transitionNameCard2};
                             
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
-                            }  
-              
                         `;
                     }
 
@@ -787,7 +967,8 @@ export function getName(Card) {
 
                 case 2:
 
-                    let o
+                    num = 2
+
                     if (Card.checkLimit === null){
                         o = 1
                     } else {
@@ -803,7 +984,12 @@ export function getName(Card) {
                     // SINISTRA IN BASSO
                     if (Card.directionName === "FromLeftToRight") {
 
-                        name = styled.h2`
+                        flag = 1
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
+                        
                             background: ${Card.backgroundNameCard2};
                             font-family: ${Card.fontFamilyNameCard2};
                             color: ${Card.colorNameCard2};
@@ -818,11 +1004,6 @@ export function getName(Card) {
                             transform-origin: left; 
                             transition: ${Card.transitionNameCard2};
                             
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
-                            }
-                            
                         `;
 
 
@@ -832,7 +1013,12 @@ export function getName(Card) {
                     // DESTRA IN BASSO
                     if(Card.directionName === "FromRightHandToSinister") {
 
-                        name = styled.h2`
+                        flag = 2
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
+                        
                             background: ${Card.backgroundNameCard2};
                             font-family: ${Card.fontFamilyNameCard2};
                             color: ${Card.colorNameCard2};
@@ -846,13 +1032,7 @@ export function getName(Card) {
                             transform: perspective(400px) rotateY(90deg);
                             transform-origin: right;
                             transition: ${Card.transitionNameCard2};
-                            
-                            
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
-                            }
-                            
+                           
                         `;
                     }
 
@@ -861,15 +1041,16 @@ export function getName(Card) {
 
                 case 3:
 
-                    let i
+                    num = 3
+
                     if (Card.checkLimit === null){
-                        i = 1
+                        o = 1
                     } else {
                         if (Card.checkLimit === true) {
-                            i = 2
+                            o = 2
                         } else {
                             if (Card.checkLimit === false){
-                                i = 3
+                                o = 3
                             }
                         }
                     }
@@ -877,7 +1058,11 @@ export function getName(Card) {
                     // SINISTRA IN BASSO
                     if (Card.directionName === "FromLeftToRight") {
 
-                        name = styled.h2`
+                        flag = 1
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
                             background: ${Card.backgroundNameCard2};
                             font-family: ${Card.fontFamilyNameCard2};
                             color: ${Card.colorNameCard2};
@@ -892,11 +1077,6 @@ export function getName(Card) {
                             transform-origin: left; 
                             transition: ${Card.transitionNameCard2};
                             
-                            ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
-                            }
-
                         `;
 
                     }
@@ -905,7 +1085,12 @@ export function getName(Card) {
                     // DESTRA IN BASSO
                     if(Card.directionName === "FromRightHandToSinister") {
 
-                        name = styled.h2`
+                        flag = 2
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
+                        
                             background: ${Card.backgroundNameCard2};
                             font-family: ${Card.fontFamilyNameCard2};
                             color: ${Card.colorNameCard2};
@@ -920,11 +1105,6 @@ export function getName(Card) {
                             transform-origin: right;
                             transition: ${Card.transitionNameCard2};
                             
-                           ${Card.checkLimit && Card.checkLimitFlag ?
-                                css`animation: ${tmp} ${duration} ${fillMode};` :
-                                Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
-                            }
-
                         `;
                     }
 
@@ -933,15 +1113,16 @@ export function getName(Card) {
 
                 case 4:
 
-                    let z
+                    num = 4
+
                     if (Card.checkLimit === null){
-                        z = 1
+                        o = 1
                     } else {
                         if (Card.checkLimit === true) {
-                            z = 2
+                            o = 2
                         } else {
                             if (Card.checkLimit === false){
-                                z = 3
+                                o = 3
                             }
                         }
                     }
@@ -949,7 +1130,11 @@ export function getName(Card) {
                     // SINISTRA IN BASSO
                     if (Card.directionName === "FromLeftToRight") {
 
-                        name = styled.h2`
+                        flag = 1
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
                             background: ${Card.backgroundNameCard2};
                             font-family: ${Card.fontFamilyNameCard2};
                             color: ${Card.colorNameCard2};
@@ -963,11 +1148,6 @@ export function getName(Card) {
                             transform: perspective(400px) rotateY(90deg);
                             transform-origin: left; 
                             transition: ${Card.transitionNameCard2};
-                            
-                           ${Card.checkLimit && Card.checkLimitFlag ?
-                                    css`animation: ${tmp} ${duration} ${fillMode};` :
-                                    Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${z === 2 ? tmp : z === 3 ? tmp1 : ''} 0s ${fillMode};`
-                           }
                            
                         `;
 
@@ -977,7 +1157,12 @@ export function getName(Card) {
                     // DESTRA IN BASSO
                     if(Card.directionName === "FromRightHandToSinister") {
 
-                        name = styled.h2`
+                        flag = 2
+                        checkLimitTMP = Card.checkLimit
+                        checkLimitFlagTMP = Card.checkLimitFlag
+
+                        name = css`
+                        
                             background: ${Card.backgroundNameCard2};
                             font-family: ${Card.fontFamilyNameCard2};
                             color: ${Card.colorNameCard2};
@@ -992,10 +1177,6 @@ export function getName(Card) {
                             transform-origin: right;
                             transition: ${Card.transitionNameCard2};
                             
-                             ${Card.checkLimit && Card.checkLimitFlag ?
-                                     css`animation: ${tmp} ${duration} ${fillMode};` :
-                                      Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${z === 2 ? tmp : z === 3 ? tmp1 : ''} 0s ${fillMode};`
-                             }
                         `;
                     }
 
@@ -1007,7 +1188,7 @@ export function getName(Card) {
             }
 
 
-    return name
+    return { name, checkLimitTMP, checkLimitFlagTMP, flag, num, tmp, tmp1, duration, fillMode, o }
 
 }
 
@@ -1079,10 +1260,8 @@ export function getIconUL(Card) {
         flag = ``
     }
 
-    const ItemsBodyContentIcon = styled.button`
+    const ItemsBodyContentIcon = css`
  
-          animation: ${duration} ${tmp} ${fillMode} ${flag};
-          
           width: ${Card.toEnableAnimationButton ? width : null}
           height: ${Card.toEnableAnimationButton ? height : null}
           color: ${Card.toEnableAnimationButton ? color : null}
@@ -1092,8 +1271,7 @@ export function getIconUL(Card) {
           
           background-color: 'black'; 
           border: none;
-                
-        
+          
           @keyframes icon {
               0%,100%{
                     transform: ${tmp1 ? 'translateY(0px)' : Card.transitionYEnable ? 'translateY(0px)' : ''};
@@ -1111,7 +1289,7 @@ export function getIconUL(Card) {
   
     `;
 
-    return ItemsBodyContentIcon
+    return { ItemsBodyContentIcon, duration, tmp, fillMode, flag }
 }
 
 export function getIconLi(Card) {
@@ -1134,6 +1312,171 @@ export function getIconLi(Card) {
     return IconLI
 
 }
+
+export const getAnimationImageWrapper = ({ ImageWrapper }) => {
+    return css`
+        ${ImageWrapper};
+    `;
+};
+
+export const getAnimationHeaderImage = ({ HeaderImg, tmp, fillMode, duration, control }) => {
+
+    console.log(control)
+
+    return css`
+        ${HeaderImg};
+        
+        ${control ? css`       
+            &:hover {
+                 animation: ${tmp} ${duration} ${fillMode};
+            }
+        ` : null
+    }
+    `;
+};
+
+export const getAnimationName = ({ name, checkLimitTMP, checkLimitFlagTMP, flag, num, tmp, tmp1, duration, fillMode, o }) => {
+
+    switch (num) {
+
+        case 1:
+
+            switch (flag) {
+
+                case 1:
+
+                    return css`
+                            ${name};
+            
+                            ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
+                            }
+                           
+                    `;
+
+                case 2:
+
+                    return css`
+                            ${name};
+            
+                            ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
+                            }
+                        `;
+
+                default:
+                    return
+            }
+
+        case 2:
+
+            switch (flag) {
+
+                case 1:
+
+                    return css`
+                            ${name};
+            
+                            ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
+                            }
+                            
+                        `;
+
+                case 2:
+
+                    return css`
+                            ${name};
+            
+                            ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
+                            }
+                        `;
+
+                default:
+                    return
+            }
+
+        case 3:
+
+            switch (flag) {
+
+                case 1:
+
+                    return css`
+                            ${name};
+            
+                            ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
+                            }
+                            
+                        `;
+
+                case 2:
+
+                    return css`
+                            ${name};
+            
+                            ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
+                            }                
+                        `;
+
+                default:
+                    return
+            }
+
+        case 4:
+
+            switch (flag) {
+
+                case 1:
+
+                    return css`
+                            ${name};
+            
+                            ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
+                            }                            
+                        `;
+
+                case 2:
+
+                    return css`
+                            ${name};
+            
+                             ${checkLimitTMP && checkLimitFlagTMP ?
+                                css`animation: ${tmp} ${duration} ${fillMode};` :
+                                checkLimitTMP === false && checkLimitFlagTMP ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${o === 2 ? tmp : o === 3 ? tmp1 : ''} 0s ${fillMode};`
+                             }             
+                        `;
+
+                default:
+                    return
+            }
+
+        default:
+            return
+    }
+
+};
+
+export const getAnimationIconUL = ({ ItemsBodyContentIcon, duration, tmp, fillMode, flag }) => {
+
+    return css`
+        ${ItemsBodyContentIcon};
+        
+        animation: ${duration} ${tmp} ${fillMode} ${flag};
+    `;
+
+};
 
 // CARD 3
 
@@ -1179,21 +1522,20 @@ export function getCard(Card) {
                       }
     `;
 
-    const CardFinal = styled.div`
-          animation: ${duration} ${tmp} ${fillMode};
-    `;
-
-    return CardFinal
+    return { duration, tmp, fillMode }
 }
 
 export function getAdditional(Card) {
 
     let fillMode = (Card.style === null) ? 'both' : Card.style.fillMode
     let duration = (Card.style === null) ? '1s' : Card.style.duration
+    let checkLimitTMP, checkLimitFLAG, Additional, num, i
 
     switch (Card.typeInput) {
 
         case 1:
+
+            num = 1
 
             // DA DESTRA VERSO SINITRA
 
@@ -1219,7 +1561,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
 
-                const Additional = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                         position: ${Card.positionAdditionalCard3};
                         width: 150px;
@@ -1229,14 +1574,9 @@ export function getAdditional(Card) {
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2; 
                         
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                            css`animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
-                        }
-                        
                 `;
 
-                return Additional
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1266,7 +1606,10 @@ export function getAdditional(Card) {
                      
                 `;
 
-                const Additional1 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                         position:  ${Card.positionAdditionalCard3};
                         width: 100%;
@@ -1276,14 +1619,9 @@ export function getAdditional(Card) {
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2;
                         
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                            css`animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''  
-                        }
-                        
                `;
 
-                return Additional1
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1316,7 +1654,10 @@ export function getAdditional(Card) {
                      
                 `;
 
-                const Additional2 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -1326,15 +1667,10 @@ export function getAdditional(Card) {
                     transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
-                   
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                        css`animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
-                    }
                     
                `;
 
-                return Additional2
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
             }
 
             // DA DESTRA VERSO SINISTRA
@@ -1365,7 +1701,10 @@ export function getAdditional(Card) {
                      
                 `;
 
-                const Additional3 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                const Additional = css`
            
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -1376,13 +1715,9 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                        css`animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
-                    }
                `;
 
-                return Additional3
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1390,7 +1725,8 @@ export function getAdditional(Card) {
 
         case 2:
 
-            let i
+            num = 2
+
             if (Card.checkLimit === null){
                 i = 1
             } else {
@@ -1427,7 +1763,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
 
-                const Additional = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                const Additional = css`
        
                         position: ${Card.positionAdditionalCard3};
                         width: 150px;
@@ -1435,16 +1774,11 @@ export function getAdditional(Card) {
                         background: ${Card.backgroundAdditionalCard3};
                         transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                         overflow: ${Card.overflowAdditionalCard3};
-                        z-index: 2; 
-                        
-                        ${Card.checkLimit && Card.checkLimitFlag ? 
-                            css`animation: ${tmp} ${duration} ${fillMode};` :
-                             Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
-                        }
+                        z-index: 2;
 
                 `;
 
-                return Additional
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1474,7 +1808,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
 
-                const Additional1 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                         position:  ${Card.positionAdditionalCard3};
                         width: 100%;
@@ -1483,15 +1820,10 @@ export function getAdditional(Card) {
                         transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2;
-                        
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                             css`animation: ${tmp} ${duration} ${fillMode};` :
-                             Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
-                        }
 
                `;
 
-                return Additional1
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1523,7 +1855,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
 
-                const Additional2 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -1533,15 +1868,10 @@ export function getAdditional(Card) {
                     transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
-                    
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                        css`animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
 
                `;
 
-                return Additional2
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
             }
 
             // DA DESTRA VERSO SINISTRA
@@ -1572,7 +1902,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
 
-                const Additional3 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
            
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -1582,15 +1915,10 @@ export function getAdditional(Card) {
                     transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
-                    
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                        css`animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
 
                `;
 
-                return Additional3
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1598,15 +1926,16 @@ export function getAdditional(Card) {
 
         case 3:
 
-            let k
+            num = 3
+
             if (Card.checkLimit === null){
-                k = 1
+                i = 1
             } else {
                 if (Card.checkLimit === true) {
-                    k = 2
+                    i = 2
                 } else {
                     if (Card.checkLimit === false){
-                        k = 3
+                        i = 3
                     }
                 }
             }
@@ -1635,7 +1964,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
 
-                const Additional = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                         position: ${Card.positionAdditionalCard3};
                         width: 150px;
@@ -1643,16 +1975,11 @@ export function getAdditional(Card) {
                         background: ${Card.backgroundAdditionalCard3};
                         transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                         overflow: ${Card.overflowAdditionalCard3};
-                        z-index: 2; 
-                        
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                            css`animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${k === 2 ? tmp : k === 3 ? tmp1 : ''} 0s ${fillMode};`
-                        }
-                        
+                        z-index: 2;
+                       
                 `;
 
-                return Additional
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1682,7 +2009,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
 
-                const Additional1 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                         position:  ${Card.positionAdditionalCard3};
                         width: 100%;
@@ -1691,15 +2021,10 @@ export function getAdditional(Card) {
                         transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2;
-                        
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                            css`animation: ${tmp} ${duration} ${fillMode};` :
-                            Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${k === 2 ? tmp : k === 3 ? tmp1 : ''} 0s ${fillMode};`
-                        }
 
                `;
 
-                return Additional1
+                return  { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1731,7 +2056,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
 
-                const Additional2 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -1742,14 +2070,9 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                      css`animation: ${tmp} ${duration} ${fillMode};` :
-                      Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${k === 2 ? tmp : k === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
-                    
                `;
 
-                return Additional2
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
             }
 
             // DA DESTRA VERSO SINISTRA
@@ -1780,7 +2103,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
 
-                const Additional3 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
            
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -1790,15 +2116,10 @@ export function getAdditional(Card) {
                     transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
-                   
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                          css`animation: ${tmp} ${duration} ${fillMode};` :
-                           Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${k === 2 ? tmp : k === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
                     
                `;
 
-                return Additional3
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1806,15 +2127,16 @@ export function getAdditional(Card) {
 
         case 4:
 
-            let h
+            num = 4
+
             if (Card.checkLimit === null){
-                h = 1
+                i = 1
             } else {
                 if (Card.checkLimit === true) {
-                    h = 2
+                    i = 2
                 } else {
                     if (Card.checkLimit === false){
-                        h = 3
+                        i = 3
                     }
                 }
             }
@@ -1843,7 +2165,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'width' : Card.transitionAdditionalCard3_1
 
-                const Additional = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                         position: ${Card.positionAdditionalCard3};
                         width: 150px;
@@ -1851,16 +2176,11 @@ export function getAdditional(Card) {
                         background: ${Card.backgroundAdditionalCard3};
                         transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                         overflow: ${Card.overflowAdditionalCard3};
-                        z-index: 2; 
-                        
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                              css`animation: ${tmp} ${duration} ${fillMode};` :
-                               Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${h === 2 ? tmp : h === 3 ? tmp1 : ''} 0s ${fillMode};`
-                        }
+                        z-index: 2;
                         
                 `;
 
-                return Additional
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1890,7 +2210,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'height' : Card.transitionAdditionalCard3_1
 
-                const Additional1 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                         position:  ${Card.positionAdditionalCard3};
                         width: 100%;
@@ -1899,15 +2222,10 @@ export function getAdditional(Card) {
                         transition: ${transitionsAdditional1} ${Card.transitionAdditionalCard3_2};
                         overflow: ${Card.overflowAdditionalCard3};
                         z-index: 2;
-                      
-                        ${Card.checkLimit && Card.checkLimitFlag ?
-                            css`animation: ${tmp} ${duration} ${fillMode};` :
-                             Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${h === 2 ? tmp : h === 3 ? tmp1 : ''} 0s ${fillMode};`
-                        }
                         
                `;
 
-                return Additional1
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -1939,7 +2257,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'top' : Card.transitionAdditionalCard3_1
 
-                const Additional2 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
        
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -1950,15 +2271,9 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                        css`animation: ${tmp} ${duration} ${fillMode};` :
-                         Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${h === 2 ? tmp : h === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
-                    
                `;
 
-                return Additional2
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
             }
 
             // DA DESTRA VERSO SINISTRA
@@ -1989,7 +2304,10 @@ export function getAdditional(Card) {
 
                 let transitionsAdditional1 = (Card.transitionAdditionalCard3_1 === null) ? 'left' : Card.transitionAdditionalCard3_1
 
-                const Additional3 = styled.div`
+                checkLimitTMP = Card.checkLimit
+                checkLimitFLAG = Card.checkLimitFlag
+
+                Additional = css`
            
                     position: ${Card.positionAdditionalCard3};
                     width: 100%;
@@ -2000,13 +2318,9 @@ export function getAdditional(Card) {
                     overflow: ${Card.overflowAdditionalCard3};
                     z-index: 2;
                     
-                    ${Card.checkLimit && Card.checkLimitFlag ?
-                       css`animation: ${tmp} ${duration} ${fillMode};` :
-                        Card.checkLimit === false && Card.checkLimitFlag ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${h === 2 ? tmp : h === 3 ? tmp1 : ''} 0s ${fillMode};`
-                    }
                `;
 
-                return Additional3
+                return { Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }
 
             }
 
@@ -2066,13 +2380,7 @@ export function getMoreInfo(Card) {
          `;
     }
 
-
-    const MoreInfoFinal = styled.div`
-          animation: ${duration} ${tmp} ${fillMode};
-          
-    `;
-
-    return MoreInfoFinal
+    return { duration, tmp, fillMode }
 }
 
 export function getCoords(Card) {
@@ -2178,7 +2486,13 @@ export function getCoords(Card) {
 
     }
 
-    const CoordsFinal = styled.button`
+    let toEnable = Card.toEnableAnimationButton
+    let durationAnimB = Card.durationAnimationButton
+    let durationAnim1B = Card.duration1AnimationButton
+    let fillModeB = Card.fillModeAnimationButton
+
+    const CoordsFinal = css`
+    
           animation: ${duration} ${tmp} ${fillMode};
           background: rgba(255, 255, 255,0);
           border: none;
@@ -2189,9 +2503,7 @@ export function getCoords(Card) {
           position: ${Card.toEnableAnimationButton ? position : null}
           bottom: ${Card.toEnableAnimationButton ? bottom : null}
           left: ${Card.toEnableAnimationButton ? left : null}
-          
-          ${Card.toEnableAnimationButton ? css`animation: icon ${Card.durationAnimationButton} ${Card.duration1AnimationButton} ${Card.fillModeAnimationButton};` : null}
-     
+         
           @keyframes icon {
               0%,100%{
                     transform: ${tmp1 ? 'translateY(0px)' : Card.transitionYEnable ? 'translateY(0px)' : ''};
@@ -2208,7 +2520,8 @@ export function getCoords(Card) {
           }
     `;
 
-    return CoordsFinal
+    return { CoordsFinal, toEnable, durationAnimB, durationAnim1B, fillModeB }
+
 }
 
 export function getCardGeneral(Card) {
@@ -2220,7 +2533,7 @@ export function getCardGeneral(Card) {
     // DAL BASSO VERSO L ALTO
     if(Card.directionOfRotation1 !== "FromLeftToRight") {
 
-         General = styled.div`
+         General = css`
             width: 300px;
             height: 100%;
             position: ${Card.positionGeneralCard3};
@@ -2241,7 +2554,7 @@ export function getCardGeneral(Card) {
 
         // DA DESTRA VERSO SINISTRA
 
-         General = styled.div`
+         General = css`
             width: 450px;
             height: 100%;
             position: ${Card.positionGeneralCard3};
@@ -2260,7 +2573,7 @@ export function getCardGeneral(Card) {
 
     }
 
-    return General
+    return { General }
 }
 
 export function getCardGeneralTitle(Card) {
@@ -2273,11 +2586,7 @@ export function getCardGeneralTitle(Card) {
                     front-size: ${Card.frontSizeGeneralTitleCard3};
     `;
 
-    const GeneralFinal = styled.h1`
-          animation: ${duration} ${tmp} ${fillMode};
-    `;
-
-    return GeneralFinal
+    return { duration, tmp, fillMode }
 }
 
 export function getCardGeneralText(Card) {
@@ -2290,12 +2599,8 @@ export function getCardGeneralText(Card) {
                     front-size: ${Card.frontSizeGeneralTextCard3};
     `;
 
-    const GeneralFinal = styled.p`
-          animation: ${duration} ${tmp} ${fillMode};
-    `;
+    return { duration, tmp, fillMode }
 
-
-    return GeneralFinal
 }
 
 export function getCardGeneralMore(Card) {
@@ -2337,12 +2642,104 @@ export function getCardGeneralMore(Card) {
 
     }
 
-    const GeneralMoreFinal = styled.span`
-          animation: ${duration} ${tmp} ${fillMode};
+    return { duration, tmp, fillMode }
+}
+
+export const getAnimationCard3 = ({ duration, tmp, fillMode }) => {
+    return css`
+        animation: ${duration} ${tmp} ${fillMode};
+    `;
+};
+
+export const getAnimationAdditional = ({ Additional, fillMode, duration, checkLimitTMP, checkLimitFLAG, tmp, tmp1, num, i }) => {
+
+    switch (num) {
+
+        case 1:
+
+            return css`
+                ${Additional};
+                
+                ${checkLimitTMP && checkLimitFLAG ?
+                        css`animation: ${tmp} ${duration} ${fillMode};` :
+                        checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1} ${duration} ${fillMode};` : ''
+                    }
+                
+            `;
+
+        case 2:
+        case 3:
+        case 4:
+
+            return css`
+            
+                ${Additional};
+                
+                ${checkLimitTMP && checkLimitFLAG ?
+                    css`animation: ${tmp} ${duration} ${fillMode};` :
+                    checkLimitTMP === false && checkLimitFLAG ? css`animation: ${tmp1} ${duration} ${fillMode};` : css`animation: ${i === 2 ? tmp : i === 3 ? tmp1 : ''} 0s ${fillMode};`
+                }
+             
+            `;
+
+        default:
+            break;
+    }
+
+
+
+};
+
+export const getAnimationMoreInfo = ({ duration, tmp, fillMode }) => {
+
+    return css`
+        animation: ${duration} ${tmp} ${fillMode};
     `;
 
-    return GeneralMoreFinal
-}
+};
+
+export const getAnimationCardGeneral = ({ General }) => {
+
+    return css`
+        ${General};
+    `;
+
+};
+
+export const getAnimationCardGeneralMore = ({ duration, tmp, fillMode }) => {
+
+    return css`
+        animation: ${duration} ${tmp} ${fillMode};
+    `;
+
+};
+
+export const getAnimationCardGeneralTitle = ({ duration, tmp, fillMode }) => {
+
+    return css`
+        animation: ${duration} ${tmp} ${fillMode};
+    `;
+
+};
+
+export const getAnimationCardGeneralText = ({ duration, tmp, fillMode }) => {
+
+    return css`
+        animation: ${duration} ${tmp} ${fillMode};
+    `;
+
+};
+
+export const getAnimationCoords = ({ CoordsFinal, toEnable, durationAnimB, durationAnim1B, fillModeB }) => {
+
+    return css`
+        ${CoordsFinal};
+        
+        ${toEnable ? css`animation: icon ${durationAnimB} ${durationAnim1B} ${fillModeB};` : null}
+     
+    `;
+
+};
 
 ///
 

@@ -1,5 +1,4 @@
 import Immutable from 'immutable'
-import PropTypes from "prop-types";
 
 const checkboxes = Immutable.Record({
     id: '',

@@ -4,7 +4,6 @@ import Immutable from 'immutable'
 import style from '../styleObject'
 import checkboxesActionTypes from "./checkboxesActionTypes"
 import checkboxes from "./checkboxesObject"
-import cardsActionTypes from "../cards/cardsActionTypes";
 
 class CheckboxesStore extends ReduceStore {
     constructor () {
@@ -96,8 +95,6 @@ class CheckboxesStore extends ReduceStore {
 
                 return state;
 
-                break;
-
             case checkboxesActionTypes.UPDATE_CHECK_ANIMATION:
 
                 if(!action.id){
@@ -112,8 +109,6 @@ class CheckboxesStore extends ReduceStore {
 
                 return state;
 
-                break;
-
             case checkboxesActionTypes.CHANGE_CHECKBOXES_TEXTVALUE:
 
                 if (!action.id) {
@@ -126,7 +121,7 @@ class CheckboxesStore extends ReduceStore {
                     check => check.set(action.idParam, action.value)
                 )
 
-                break;
+                return state;
 
             case checkboxesActionTypes.UPDATE_CHECK_VALUETEXT:
 
@@ -166,8 +161,6 @@ class CheckboxesStore extends ReduceStore {
                 );
 
                 return state;
-
-                break;
 
             default:
                 return state

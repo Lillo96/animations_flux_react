@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import checkboxesActions from "../data/checkboxes/checkboxesActions"
 import getAnimation from "../data/animation"
 
-import styled, {keyframes, css } from "styled-components"
-
-let tmp_CardID
+import {keyframes, css } from "styled-components"
 
 function checkboxes({
     id, checkLimit, typeInput, animationCSS, textInput, textValue, colorStart, colorEnd, opacityNotCheck,
@@ -34,7 +32,6 @@ function checkboxes({
                duration, timing, delay, iterations, direction, fillMode, playState,
             )*/
 
-           tmp_CardID = id // NEW
 
        } else {
 
@@ -49,8 +46,6 @@ function checkboxes({
            const cardObj = rest.checkboxes.state.get(id) // NEW
 
            animation = getAnimation(id, {duration, timing, delay, iterations, direction, fillMode, playState }, cardObj.style) // NEW
-
-           tmp_CardID = rest.checkboxes.state.get(id).get('id') // NEW
 
            checkValue(variableArray, rest.checkboxes.state.get(id))
        }
@@ -134,12 +129,13 @@ function checkValue (variableArray, rest) {
 
 export function getPCheck (Check) {
 
-    let CheckLabel, tmp, tmp1, duration, fillMode
+    let CheckLabel, control, checkLimitTMP, num, type
 
     switch (Check.typeInput) {
 
         case 1:
 
+            type = 1
             // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
 
             if (Check.toEnableAnimationP) {
@@ -161,47 +157,44 @@ export function getPCheck (Check) {
 
                             case 1:
 
-                                CheckLabel = styled.p`
+                                control = (Check.checkAnimationTransition && Check.checkLimit) ? true : false
+
+                                CheckLabel = css`
                 
-                                    display: ${Check.displayCheck};
-                                    opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
-                                    color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
-                      
-                                    @keyframes icon {
-                                              0%,100%{
-                                                     transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
-                                                     transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
-                                                     transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
-                                                     transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
-                                              }
-                                              50% {
-                                                     transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
-                                                     transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
-                                                     transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
-                                                     transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
-                                              }
-                                    } 
-                           
+                                    
+                                        display: ${Check.displayCheck};
+                                        opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
+                                        color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
+                                      
+                                        @keyframes icon {
+                                                  0%,100%{
+                                                         transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
+                                                         transform: ${Check.transitionYEnable1 ? 'translateY(0px)' : ''};
+                                                         transform: ${Check.transitionXEnable ? 'translateX(0px)' : ''};
+                                                         transform: ${Check.transitionXEnable1 ? 'translateX(0px)' : ''};
+                                                  }
+                                                  50% {
+                                                         transform: ${tmp ? 'translateY(3px)' : Check.transitionYEnable ? 'translateY(3px)' : ''};
+                                                         transform: ${Check.transitionYEnable1 ? 'translateY(-3px)' : ''};
+                                                         transform: ${Check.transitionXEnable ? 'translateX(3px)' : ''};
+                                                         transform: ${Check.transitionXEnable1 ? 'translateX(-3px)' : ''};
+                                                  }
+                                        } 
+                                   
                                 `;
 
                                 break;
 
                             case 2:
 
-                                CheckLabel = styled.p`
+                                control = (Check.checkAnimationTransition && !Check.checkLimit) ? true : false
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
-                                    
+                                   
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -223,15 +216,13 @@ export function getPCheck (Check) {
 
                             case 3:
 
-                                CheckLabel = styled.p`
+                                control = Check.checkAnimationTransition
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
                                   
                                     @keyframes icon {
                                               0%,100%{
@@ -264,16 +255,14 @@ export function getPCheck (Check) {
 
                             case 1:
 
-                                CheckLabel = styled.p`
+                                control = (!Check.checkAnimationTransition && Check.checkLimit) ? true : false
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                                   
-                                    ${Check.onAnim ? `
-                                        animation: ${(!Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
-                      
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -295,16 +284,14 @@ export function getPCheck (Check) {
 
                             case 2:
 
-                                CheckLabel = styled.p`
+                                control = (!Check.checkAnimationTransition && !Check.checkLimit) ? true : false
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(!Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
-                      
+                    
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -326,15 +313,14 @@ export function getPCheck (Check) {
 
                             case 3:
 
-                                CheckLabel = styled.p`
+                                control = !Check.checkAnimationTransition
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                                   
-                                    ${Check.onAnim ? `
-                                        animation: ${(!Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
                                   
                                     @keyframes icon {
                                               0%,100%{
@@ -380,16 +366,14 @@ export function getPCheck (Check) {
 
                     case 1:
 
-                        CheckLabel = styled.p`
+                        control = (Check.checkLimit && Check.toEnableAnimationP_2) ? true : false
+
+                        CheckLabel = css`
                 
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                         
-                            ${Check.onAnim ? `    
-                                animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                            ` : ''}
-                          
                             @keyframes icon {
                                       0%,100%{
                                              transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -411,16 +395,14 @@ export function getPCheck (Check) {
 
                     case 2:
 
-                        CheckLabel = styled.p`
+                        control = (!Check.checkLimit && Check.toEnableAnimationP_2) ? true : false
+
+                            CheckLabel = css`
                 
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            ${Check.onAnim ? `
-                                animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                            ` : ''}
-                          
+                         
                             @keyframes icon {
                                       0%,100%{
                                              transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -442,15 +424,13 @@ export function getPCheck (Check) {
 
                     case 3:
 
-                        CheckLabel = styled.p`
+                        control = Check.toEnableAnimationP_2
+
+                        CheckLabel = css`
                       
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            ${Check.onAnim ? `
-                                animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                            ` : ''}
                             
                             @keyframes icon {
                                       0%,100%{
@@ -471,6 +451,9 @@ export function getPCheck (Check) {
 
                         break;
 
+                    default:
+                        return
+
                 }
 
             }
@@ -478,7 +461,7 @@ export function getPCheck (Check) {
         break;
 
         case 2:
-
+            type = 2
             // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
 
             if (Check.toEnableAnimationP) {
@@ -500,18 +483,16 @@ export function getPCheck (Check) {
 
                             case 1:
 
-                                CheckLabel = styled.p`
+                                control = (!Check.checkAnimationTransition && Check.checkLimit) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 1
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(!Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, 
-                                        line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`
-                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
-                      
+                     
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -544,17 +525,16 @@ export function getPCheck (Check) {
 
                             case 2:
 
-                                CheckLabel = styled.p`
+                                control = (!Check.checkAnimationTransition && !Check.checkLimit) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 2
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                    
-                                    ${Check.onAnim ? `
-                                        animation: ${(!Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` 
-                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`: ''};
-                                    ` : ''}
-                      
+                     
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -586,19 +566,16 @@ export function getPCheck (Check) {
 
                             case 3:
 
-                                CheckLabel = styled.p`
+                                control = !Check.checkAnimationTransition
+                                checkLimitTMP = Check.checkLimit
+                                num = 3
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                                   
-                                    ${Check.onAnim ? `
-                                        animation: ${!Check.checkAnimationTransition ?
-                                            `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` 
-                                                : ''}`
-                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`: '' } 
-                                    ` : ''}
-                                 
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -627,6 +604,9 @@ export function getPCheck (Check) {
                                 `;
 
                                 break;
+
+                            default:
+                                return
                         }
 
                         break;
@@ -637,17 +617,16 @@ export function getPCheck (Check) {
 
                             case 1:
 
-                                CheckLabel = styled.p`
+                                control = (Check.checkAnimationTransition && Check.checkLimit) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 4
+
+                                CheckLabel = css`
                         
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(Check.checkAnimationTransition && Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` 
-                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : ''}
-                      
+                     
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -680,17 +659,16 @@ export function getPCheck (Check) {
 
                             case 2:
 
-                                CheckLabel = styled.p`
+                                control = (Check.checkAnimationTransition && !Check.checkLimit) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 5
+
+                                CheckLabel = css`
                         
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                                   
-                                    ${Check.onAnim ? `
-                                        animation: ${(Check.checkAnimationTransition && !Check.checkLimit) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`
-                                    : Check.checkLimit ? `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};`: ''};
-                                    ` : ''}
-                      
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -722,16 +700,15 @@ export function getPCheck (Check) {
 
                             case 3:
 
-                                CheckLabel = styled.p`
+                                checkLimitTMP = Check.checkLimit
+                                num = 6
+
+                                CheckLabel = css`
                         
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                                     
-                                    ${Check.onAnim ? `
-                                        animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';'}
-                                    ` : ''}
-                                  
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -760,6 +737,9 @@ export function getPCheck (Check) {
                                 `;
 
                                 break;
+
+                            default:
+                                return
                         }
 
                         break;
@@ -782,15 +762,15 @@ export function getPCheck (Check) {
 
                     case 1:
 
-                        CheckLabel = styled.p`
+                        control = (Check.checkLimit && Check.toEnableAnimationP_2) ? true : false
+                        checkLimitTMP = Check.checkLimit
+                        num = 7
+
+                        CheckLabel = css`
                 
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            ${Check.onAnim ? `
-                                animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP}, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -823,15 +803,16 @@ export function getPCheck (Check) {
 
                     case 2:
 
-                        CheckLabel = styled.p`
+                        control = (!Check.checkLimit && Check.toEnableAnimationP_2) ? true : false
+                        checkLimitTMP = Check.checkLimit
+                        num = 8
+
+                        CheckLabel = css`
                 
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                           
-                            ${Check.onAnim ? `
-                                animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : `line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` };
-                            ` : ''}
                             
                             @keyframes icon {
                                       0%,100%{
@@ -864,18 +845,16 @@ export function getPCheck (Check) {
 
                     case 3:
 
-                        console.log('OKOKOKOK')
+                        control = Check.toEnableAnimationP_2
+                        checkLimitTMP = Check.checkLimit
+                        num = 9
 
-                        CheckLabel = styled.p`
+                        CheckLabel = css`
                       
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            ${Check.onAnim ? `
-                                animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP} ${Check.checkLimit ? `, line ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : ';' }` : ''};
-                            ` : ''}
-                          
+                         
                             @keyframes icon {
                                       0%,100%{
                                              transform: ${tmpT ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -904,6 +883,9 @@ export function getPCheck (Check) {
                         `;
 
                         break;
+
+                    default:
+                        return
                 }
 
             }
@@ -911,7 +893,7 @@ export function getPCheck (Check) {
             break;
 
         case 3:
-
+            type = 3
             // CASO IN CUI ATTIVAZIONE DELL'ANIM ALLA TRANSIZIONE DEL MOUSE SOPRA IL TESTO
 
             if (Check.toEnableAnimationP) {
@@ -933,16 +915,16 @@ export function getPCheck (Check) {
 
                             case 1:
 
-                                CheckLabel = styled.p`
+                                control = (Check.checkLimit && !Check.checkAnimationTransition) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 1
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(Check.checkLimit && !Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : '' }
-                      
+                     
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -964,17 +946,16 @@ export function getPCheck (Check) {
 
                             case 2:
 
-                                console.log('2', Check.checkLimit, Check.checkAnimationTransition)
-                                CheckLabel = styled.p`
+                                control = (!Check.checkLimit && !Check.checkAnimationTransition) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 2
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                                   
-                                    ${Check.onAnim ? `
-                                        animation: ${(!Check.checkLimit && !Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : '' }
-                      
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -996,15 +977,15 @@ export function getPCheck (Check) {
 
                             case 3:
 
-                                CheckLabel = styled.p`
+                                control = (Check.onAnim && !Check.checkAnimationTransition ) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 3
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim && !Check.checkAnimationTransition ? `
-                                        animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};                            
-                                    ` : '' }
                                   
                                     @keyframes icon {
                                               0%,100%{
@@ -1024,6 +1005,9 @@ export function getPCheck (Check) {
                                 `;
 
                                 break;
+
+                            default:
+                                return
                         }
                         break;
 
@@ -1033,16 +1017,16 @@ export function getPCheck (Check) {
 
                             case 1:
 
-                                CheckLabel = styled.p`
+                                control = (Check.checkLimit && Check.checkAnimationTransition) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 4
+
+                                CheckLabel = css`
                 
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
                                   
-                                    ${Check.onAnim ? `
-                                        animation: ${(Check.checkLimit && Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : '' }
-                      
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -1064,17 +1048,16 @@ export function getPCheck (Check) {
 
                             case 2:
 
-                                console.log('2', Check.checkLimit, Check.checkAnimationTransition)
-                                CheckLabel = styled.p`
+                                control = (!Check.checkLimit && Check.checkAnimationTransition) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 5
+
+                                CheckLabel = css`
                         
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim ? `
-                                        animation: ${(!Check.checkLimit && Check.checkAnimationTransition) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                                    ` : '' }
-                                    
+                                   
                                     @keyframes icon {
                                               0%,100%{
                                                      transform: ${tmp ? 'translateY(0px)' : Check.transitionYEnable ? 'translateY(0px)' : ''};
@@ -1096,15 +1079,15 @@ export function getPCheck (Check) {
 
                             case 3:
 
-                                CheckLabel = styled.p`
+                                control = (Check.onAnim && Check.checkAnimationTransition) ? true : false
+                                checkLimitTMP = Check.checkLimit
+                                num = 6
+
+                                CheckLabel = css`
                         
                                     display: ${Check.displayCheck};
                                     opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                                     color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                  
-                                    ${Check.onAnim && Check.checkAnimationTransition ? `
-                                        animation: icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};
-                                    ` : '' }
                                   
                                     @keyframes icon {
                                               0%,100%{
@@ -1124,12 +1107,16 @@ export function getPCheck (Check) {
                                 `;
 
                                 break;
+
+                            default:
+                                return
                         }
 
                         break;
 
                     default:
-                        return;
+                        return
+
                 }
 
             } else {
@@ -1146,15 +1133,15 @@ export function getPCheck (Check) {
 
                     case 1:
 
-                        CheckLabel = styled.p`
+                        control = (Check.checkLimit && Check.toEnableAnimationP_2) ? true : false
+                        checkLimitTMP = Check.checkLimit
+                        num = 7
+
+                        CheckLabel = css`
                 
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                                
-                            ${Check.onAnim ? `                     
-                                animation: ${(Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                            ` : ''}
                             
                             @keyframes icon {
                                       0%,100%{
@@ -1177,15 +1164,15 @@ export function getPCheck (Check) {
 
                     case 2:
 
-                        CheckLabel = styled.p`
+                        control = (!Check.checkLimit && Check.toEnableAnimationP_2) ? true : false
+                        checkLimitTMP = Check.checkLimit
+                        num = 8
+
+                        CheckLabel = css`
                 
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            ${Check.onAnim ? ` 
-                                animation: ${(!Check.checkLimit && Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1208,15 +1195,15 @@ export function getPCheck (Check) {
 
                     case 3:
 
-                        CheckLabel = styled.p`
+                        control = Check.toEnableAnimationP_2
+                        checkLimitTMP = Check.checkLimit
+                        num = 9
+
+                        CheckLabel = css`
                       
                             display: ${Check.displayCheck};
                             opacity: ${Check.checkLimit ? Check.opacityCheck : Check.opacityNotCheck};
                             color: ${Check.checkLimit ? Check.colorEnd : Check.colorStart};
-                          
-                            ${Check.onAnim ? `
-                                animation: ${(Check.toEnableAnimationP_2) ? `icon ${Check.durationAnimationP} ${Check.duration1AnimationP} ${Check.fillModeAnimationP};` : '' };
-                            ` : ''}
                           
                             @keyframes icon {
                                       0%,100%{
@@ -1236,6 +1223,9 @@ export function getPCheck (Check) {
                         `;
 
                         break;
+
+                    default:
+                        return
                 }
 
             }
@@ -1246,18 +1236,256 @@ export function getPCheck (Check) {
             return;
     }
 
-    return CheckLabel
+    let AnimOn, duration1, duration2, fillMode1
+    AnimOn = Check.onAnim
+
+    duration1 = Check.durationAnimationP
+    duration2 = Check.duration1AnimationP
+    fillMode1 = Check.fillModeAnimationP
+
+    switch (type) {
+
+        case 1:
+            return { CheckLabel, AnimOn, control, duration1, duration2, fillMode1 }
+        case 2:
+            return { CheckLabel, AnimOn, control, duration1, duration2, fillMode1, checkLimitTMP, num }
+
+        case 3:
+            return { CheckLabel, AnimOn, control, duration1, duration2, fillMode1, checkLimitTMP, num }
+
+        default:
+            return;
+    }
+
+}
+
+export const getAnimationCheckP1 = ({ CheckLabel, AnimOn, control, duration1, duration2, fillMode1 }) => {
+    return css`
+        ${CheckLabel};
+        
+        ${AnimOn ? `animation: ${ control ? 
+        `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+         ` : ''}
+    `;
+}
+
+export const getAnimationCheckP2 = ({ CheckLabel, AnimOn, control, duration1, duration2, fillMode1, checkLimitTMP, num  }) => {
+
+    switch (num) {
+
+        case 1:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${ control ? `icon ${duration1} ${duration2} ${fillMode1}, 
+                     line ${duration1} ${duration2} ${fillMode1};`
+                     : checkLimitTMP ? `line ${duration1} ${duration2} ${fillMode1};` : '' };
+                 ` : ''}
+               
+            `;
+
+        case 2:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${ control ? `icon ${duration1} ${duration2} ${fillMode1};`
+                    : checkLimitTMP? `line ${duration1} ${duration2} ${fillMode1};`: ''};
+                ` : ''}
+               
+            `;
+
+        case 3:
+
+            return css`
+                ${CheckLabel};
+                
+                 ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1} ${checkLimitTMP ? `, line ${duration1} ${duration2} ${fillMode1};` : ''}`
+                    : checkLimitTMP ? `line ${duration1} ${duration2} ${fillMode1};`: '' } 
+                 ` : ''}
+               
+            `;
+
+        case 4:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${ control ? `icon ${duration1} ${duration2} ${fillMode1}, line ${duration1} ${duration2} ${fillMode1};`
+                    : checkLimitTMP ? `line ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : ''}
+               
+            `;
+
+        case 5:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};`
+                    : checkLimitTMP ? `line ${duration1} ${duration2} ${fillMode1};`: ''};
+                ` : ''}
+               
+            `;
+
+        case 6:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: icon ${duration1} ${duration2} ${fillMode1} ${checkLimitTMP ? `, line ${duration1} ${duration2} ${fillMode1};` : ';'}
+                ` : ''}
+               
+            `;
+
+        case 7:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1}, line ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : ''} 
+               
+            `;
+
+        case 8:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};` : `line ${duration1} ${duration2} ${fillMode1};` };
+                ` : ''}
+               
+            `;
+
+        case 9:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1} ${checkLimitTMP ? `, line ${duration1} ${duration2} ${fillMode1};` : ';' }` : ''};
+                ` : ''}
+               
+            `;
+
+        default:
+            return;
+    }
+
+}
+
+export const getAnimationCheckP3 = ({ CheckLabel, AnimOn, control, duration1, duration2, fillMode1, checkLimitTMP, num  }) => {
+
+    switch (num) {
+
+        case 1:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : '' }
+               
+            `;
+
+        case 2:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : '' }
+               
+            `;
+
+        case 3:
+
+            return css`
+                ${CheckLabel};
+                
+                ${control ? `animation: icon ${duration1} ${duration2} ${fillMode1};                            
+                ` : '' }
+               
+            `;
+
+        case 4:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : '' }
+               
+            `;
+
+        case 5:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : '' }
+               
+            `;
+
+        case 6:
+
+            return css`
+                ${CheckLabel};
+                
+                ${control ? `animation: icon ${duration1} ${duration2} ${fillMode1};
+                ` : '' }
+               
+            `;
+
+        case 7:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : ''}
+               
+            `;
+
+        case 8:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${control ? `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : ''}
+               
+            `;
+
+        case 9:
+
+            return css`
+                ${CheckLabel};
+                
+                ${AnimOn ? `animation: ${ control ? `icon ${duration1} ${duration2} ${fillMode1};` : '' };
+                ` : ''}
+               
+            `;
+
+        default:
+            return;
+    }
+
+
 }
 
 export function getIMGCheck (Check) {
 
-    let CheckLabel, tmp, tmp1, duration, fillMode
+    let CheckLabel, duration, fillMode, checkLimitTMP, flag
 
     switch (Check.typeInput) {
 
         case 1:
         case 2:
 
+            flag = 1
             const tmp = keyframes`
 
                  to {
@@ -1278,27 +1506,24 @@ export function getIMGCheck (Check) {
 
             duration = (Check.style === null) ? '1s' : Check.style.duration
             fillMode = (Check.style === null) ? 'both' : Check.style.fillMode
+            checkLimitTMP = Check.checkLimit
 
-            CheckLabel = styled.img`
+            CheckLabel = css`
 
                 display: ${Check.displayCheck};
                 width: ${Check.widthImg};
                 height: ${Check.heightImg};
                 filter: grayscale(100%);
                 transition: .5s;
-                 
-                ${Check.checkLimit ?
-                    css`animation: ${tmp1} ${duration} ${fillMode};` :
-                    Check.checkLimit === null ? '' : css `animation: ${tmp} ${duration} ${fillMode};`
-                }  
                                              
             `;
 
-            break;
+            return { CheckLabel, tmp, tmp1, checkLimitTMP, duration, fillMode, flag}
 
         case 3:
+            flag = 2
 
-            CheckLabel = styled.img`
+            CheckLabel = css`
                 display: ${Check.displayCheck};
                 width: ${Check.widthImg};
                 height: ${Check.heightImg};
@@ -1306,13 +1531,40 @@ export function getIMGCheck (Check) {
                 transition: .5s;
             `;
 
-            break;
+            return { CheckLabel, tmp, tmp1, checkLimitTMP, duration, fillMode, flag}
 
         default:
             return;
     }
 
-    return CheckLabel
+
+}
+
+export const getAnimationIMG = ({ CheckLabel, tmp, tmp1, checkLimitTMP, duration, fillMode, flag }) => {
+
+    if (flag === 1 ) {
+
+        return css`
+            ${CheckLabel};
+           
+            ${checkLimitTMP ?
+                css`animation: ${tmp1} ${duration} ${fillMode};` :
+                checkLimitTMP === null ? '' : css `animation: ${tmp} ${duration} ${fillMode};`
+            } 
+        `;
+
+    } else {
+
+        return css`
+           
+           ${CheckLabel};
+           
+        `;
+
+    }
+
+
+
 }
 
 checkboxes.propType = {

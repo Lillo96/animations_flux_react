@@ -4,7 +4,6 @@ import Immutable from 'immutable'
 import style from '../styleObject'
 import cardsActionTypes from "./cardsActionTypes";
 import cards from "./cardsObject"
-import {Component} from "react";
 
 class CardsStore extends ReduceStore {
     constructor () {
@@ -171,7 +170,6 @@ class CardsStore extends ReduceStore {
                         }),
                     })
                 );
-                break;
 
             case cardsActionTypes.CHANGE_CARDS_VALUE:
 
@@ -190,7 +188,7 @@ class CardsStore extends ReduceStore {
                 }
 
                 state.map( card => {
-                    if (card.id != action.id){
+                    if (card.id !== action.id){
                         state = state.update(
                             card.id,
 
@@ -212,9 +210,6 @@ class CardsStore extends ReduceStore {
                 );
 
                 return state;
-
-                break;
-
             case cardsActionTypes.UPDATE_VALUE_CARD:
 
                 if (!action.id) {
@@ -228,8 +223,6 @@ class CardsStore extends ReduceStore {
                 )
 
                 return state;
-
-                break;
 
             default:
                 return state

@@ -1,11 +1,9 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-import AppView2 from './App';
 import reportWebVitals from './reportWebVitals'
 import Demo from "./Demo";
 import animationEnv from "./containers/AppContainer"
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import React from "react";
 import cardsActions from "./data/cards/cardsActions";
 import checkboxesActions from "./data/checkboxes/checkboxesActions";
 import itemsActions from "./data/items/itemsActions";

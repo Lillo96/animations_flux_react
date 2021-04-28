@@ -1,46 +1,7 @@
 import getDataAnimation from "./view"
-import checkboxes, {
-    getIMGCheck,
-    getPCheck,
-    getInputCheck
-} from "./components/checkboxes";
-import cards, {
-    getCardContainer,
-    getCardBack,
-    getCardFront,
-    getCardInner,
-    getCardButton,
-    getImageArea,
-    getImageWrapper,
-    getHeaderImage,
-    getName,
-    getIconUL,
-    getIconLi,
-    getCardCenter,
-    getCard,
-    getAdditional,
-    getMoreInfo,
-    getCoords,
-    getCardGeneral,
-    getCardGeneralMore,
-    getCardGeneralTitle,
-    getCardGeneralText,
-} from "./components/cards"
-import items ,{
-    getDivItems,
-    getDivItemsHead,
-    getDivItemsHead_p,
-    getDivItemsHead_hr,
-    getItemsBody,
-    getItemsBodyContent,
-    getItemsBodyContent_icon,
-    getTilesWrap_li,
-    getTilesWrap_p,
-    getTilesWrap_button,
-    setCheckItems,
-    getTilesWrap_button_1,
-    getTilesWrap_button_2
-} from "./components/items"
+import checkboxes from "./components/checkboxes";
+import cards from "./components/cards"
+import items from "./components/items"
 
 import checkboxesObject from "./data/checkboxes/checkboxesObject"
 import cardsObject from "./data/cards/cardsObject"

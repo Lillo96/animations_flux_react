@@ -88,7 +88,7 @@ const items = Immutable.Record({
     textInputSpan: 't',
     toEnableAnimationSpan: false,
 
-    checkIcon: null,
+    checkIcon: true,
     toEnableAnimationIcon: true,
     durationAnimationIcon: '1.5s',
     duration1AnimationIcon: 'infinite',

@@ -1,4 +1,3 @@
-import {keyframes} from "styled-components";
 
 function getAnimation(id, valueDefault, style) {
     const animation = {}

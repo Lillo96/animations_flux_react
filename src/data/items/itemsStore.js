@@ -239,8 +239,6 @@ class ItemsStore extends ReduceStore {
 
                 return state;
 
-                break;
-
             case tabsActionTypes.UPDATE_CHECKLIMIT:
 
                 if(!action.id){
@@ -254,8 +252,6 @@ class ItemsStore extends ReduceStore {
                 );
 
                 return state;
-
-                break;
 
             case tabsActionTypes.UPDATE_CHECKICON:
 
@@ -271,8 +267,6 @@ class ItemsStore extends ReduceStore {
 
                 return state;
 
-                break;
-
             case tabsActionTypes.UPDATE_VALUE_FLAG:
 
                 let tmp = ["flag1", "flag2"]
@@ -286,7 +280,7 @@ class ItemsStore extends ReduceStore {
                     if (item.id === action.id){
 
                         for (let i = 0; i < tmp.length; i++) {
-                            if (tmp[i] != action.idParam) {
+                            if (tmp[i] !== action.idParam) {
 
                                 state = state.update(
                                     item.id,
@@ -322,8 +316,6 @@ class ItemsStore extends ReduceStore {
                 )
 
                 return state;
-
-                break;
 
             default:
                 return state

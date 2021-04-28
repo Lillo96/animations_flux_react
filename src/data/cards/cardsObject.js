@@ -32,7 +32,7 @@ const cards = Immutable.Record({
     colorCardTrans2: 'red',
     fontSizeLCentral: '',
     fontSizePointsCenter: '',
-    directionOfRotation: 'toTheRight',
+    directionOfRotation: 'toTheRight', //toTheRight //toTheLeft
 
     directionOfAnimation: 'topLeftBottomRight', // NEW FOR CARD 2
     directionName: 'FromLeftToRight', // NEW FOR CARD 2

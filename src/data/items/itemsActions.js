@@ -1,7 +1,5 @@
 import animationDispatcher from "../animationDispatcher"
 import itemsActionTypes from "./itemsActionTypes";
-import PropTypes from "prop-types";
-import cardsActionTypes from "../cards/cardsActionTypes";
 
 const itemsActions = {
     newItems (

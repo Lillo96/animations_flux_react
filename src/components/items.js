@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import itemsActions from "../data/items/itemsActions";
 import getAnimation from "../data/animation"
 
-import styled, {keyframes, css} from "styled-components"
+import {keyframes, css} from "styled-components"
 
 function items({
                   id, checkLimit, typeInput, animationCSS, textInput, textValue, borderDim_ContItem, borderType_ContItem,
@@ -126,14 +126,15 @@ export function getDivItems(Item) {
                       }
                   `;
 
-    const DivItemsFinal = styled.div`
+    const DivItemsFinal = css`
+    
           border: ${Item.borderDim_ContItem} ${Item.borderType_ContItem} ${Item.borderColor_ContItem};
           width: ${Item.width_DivItem};
           border-top: ${Item.borderDim_DivItems} ${Item.borderType_DivItems} ${Item.borderColor_DivItems};
-          animation: $1s ${tmp} both;
+          
        `;
 
-    return DivItemsFinal
+    return { DivItemsFinal, tmp }
 }
 
 export function getDivItemsHead(Item) {
@@ -148,50 +149,57 @@ export function getDivItemsHead(Item) {
                       }
                   `;
 
-    const DivItemsHeadFinal = styled.div`
+    const DivItemsHeadFinal = css`
+    
           padding: ${Item.paddingX_DivItemsHeadFinal} ${Item.paddingY_DivItemsHeadFinal};
-          animation: $1s ${tmp} both;
+          
        `;
 
-    return DivItemsHeadFinal
+    return { DivItemsHeadFinal, tmp }
+
 }
 
 export function getDivItemsHead_p(Item) {
 
-    const DivItemsHead_p = styled.p`
+    const DivItemsHead_p = css`
+    
           padding: ${Item.paddingX_DivItemsHeadFinal_p} ${Item.paddingY_DivItemsHeadFinal_p};
           margin: ${Item.margin_DivItemsHeadFinal_p};
           color: ${Item.color_DivItemsHeadFinal_p};
           font-weight: ${Item.fontWeigh_DivItemsHeadFinal_p};
           font-size: ${Item.fontSize_DivItemsHeadFinal_p};
+          
        `;
 
-    return DivItemsHead_p
+    return { DivItemsHead_p }
 }
 
 export function getDivItemsHead_hr(Item) {
 
-    const DivItemsHead_hr = styled.hr`      
+    const DivItemsHead_hr = css`      
       width: ${Item.width_DivItemsHead_hr};
       margin: ${Item.marginX_DivItemsHead_hr} ${Item.marginY_DivItemsHead_hr};
       border: ${Item.borderDim_DivItemsHead_hr} ${Item.borderType_DivItemsHead_hr} ${Item.borderColor_DivItemsHead_hr};
     `;
-    return DivItemsHead_hr
+
+    return { DivItemsHead_hr }
 }
 
 export function getItemsBody(Item) {
 
-    const ItemsBody = styled.div`
+    const ItemsBody = css`
           padding: ${Item.padding_ItemsBody};
           margin: ${Item.margin_ItemsBody};
           display: ${Item.display_ItemsBody};
           grid-gap: ${Item.gripGap_ItemsBody};
     `;
 
-    return ItemsBody
+    return { ItemsBody }
 }
 
 export function getItemsBodyContent(Item, flag) {
+
+    let checkLimitTMP
 
     const tmp = keyframes`
         
@@ -213,7 +221,7 @@ export function getItemsBodyContent(Item, flag) {
          
     `;
 
-    const ItemsBodyContent = styled.div`
+    const ItemsBodyContent = css`
           padding: ${Item.padding_ItemsBodyContent};
           padding-right: ${Item.paddingRight_ItemsBodyContent};
           display: ${Item.display_ItemsBodyContent};
@@ -224,21 +232,27 @@ export function getItemsBodyContent(Item, flag) {
           border: ${Item.borderDim_ItemsBodyContent} ${Item.borderType_ItemsBodyContent} ${Item.borderColor_ItemsBodyContent};
           cursor: pointer;
           
-          ${Item.checkLimit && flag ? css`animation: ${tmp} 1s both;` : (!Item.checkLimit && flag) ? css`animation: ${tmp1} 1s both;`: ''}
-          
       `;
 
-    return ItemsBodyContent
+    checkLimitTMP = Item.checkLimit
+
+    return { ItemsBodyContent, tmp, tmp1, checkLimitTMP, flag }
+
 }
 
 export function getItemsBodySpan(Item, flag) {
 
     let tmp = ( (!Item.transitionYEnable && !Item.transitionYEnable1) && (!Item.transitionXEnable && !Item.transitionXEnable1)) ? true : false
 
-    const ItemBodySpan = styled.span`
+    let checkSpanTMP = Item.checkLimit
+    let enableTo = Item.toEnableAnimationSpan
+    let duration = Item.durationAnimationP
+    let duration1 = Item.duration1AnimationP
+    let fillMode = Item.fillModeAnimationP
+
+    const ItemBodySpan = css`
         
           color: ${Item.checkSpan ? Item.colorEndSpan : Item.colorStartSpan};
-          animation: ${(Item.checkSpan && Item.toEnableAnimationSpan) ? css`icon ${Item.durationAnimationP} ${Item.duration1AnimationP} ${Item.fillModeAnimationP};` : '' };
               
           @keyframes icon {
                 0%,100%{
@@ -257,7 +271,7 @@ export function getItemsBodySpan(Item, flag) {
          
     `;
 
-    return ItemBodySpan
+    return { ItemBodySpan, checkSpanTMP, enableTo, duration, duration1, fillMode }
 
 }
 
@@ -265,13 +279,18 @@ export function getItemsBodyContent_icon(Item) {
 
     let tmp = ( (!Item.transitionYEnable && !Item.transitionYEnable1) && (!Item.transitionXEnable && !Item.transitionXEnable1)) ? true : false
 
-    const ItemsBodyContentIcon = styled.span`
+    let checkIconTMP = Item.checkIcon
+    let enableTo = Item.toEnableAnimationIcon
+    let duration = Item.durationAnimationIcon
+    let duration1 = Item.duration1AnimationIcon
+    let fillMode = Item.fillModeAnimationIcon
+
+    const ItemsBodyContentIcon = css`
       align-self: center;
       font-size: ${Item.fontSize_ItemsBodyContentIcon};
       color: ${Item.checkSpan ? Item.color_ItemsBodyContentIcon_end : Item.color_ItemsBodyContentIcon_start};
       font-weight: ${Item.fontWeight_ItemsBodyContentIcon};
-      animation: ${(Item.checkIcon && Item.toEnableAnimationIcon) ? css`icon ${Item.durationAnimationIcon} ${Item.duration1AnimationIcon} ${Item.fillModeAnimationIcon};` : ''}
-         
+        
       @keyframes icon {
                 0%,100%{
                     transform: ${tmp ? 'translateY(0px)' : Item.transitionYEnableIcon ? 'translateY(0px)' : ''};
@@ -289,8 +308,98 @@ export function getItemsBodyContent_icon(Item) {
 
       `;
 
-    return ItemsBodyContentIcon
+    return { ItemsBodyContentIcon, checkIconTMP, enableTo, duration, duration1, fillMode }
 }
+
+export const getAnimationItem = ({ DivItemsFinal, tmp }) => {
+
+    return css`
+    
+        ${DivItemsFinal};
+    
+        animation: $1s ${tmp} both;
+    `;
+
+};
+
+export const getAnimationItemsHead = ({ DivItemsHeadFinal, tmp }) => {
+
+    return css`
+    
+        ${DivItemsHeadFinal};
+    
+        animation: $1s ${tmp} both;
+        
+    `;
+
+};
+
+export const getAnimationDivItemsHead_p = ({ DivItemsHead_p }) => {
+
+    return css`
+    
+        ${DivItemsHead_p};
+        
+    `;
+
+};
+
+export const getAnimationDivItemsHead_hr = ({ DivItemsHead_hr }) => {
+
+    return css`
+    
+        ${DivItemsHead_hr};
+        
+    `;
+
+};
+
+export const getAnimationItemsBody = ({ ItemsBody }) => {
+
+    return css`
+    
+        ${ItemsBody};
+        
+    `;
+
+};
+
+export const getAnimationItemsBodyContent = ({ ItemsBodyContent, tmp, tmp1, checkLimitTMP, flag }) => {
+
+    return css`
+    
+        ${ItemsBodyContent};
+        
+        ${checkLimitTMP && flag ? css`animation: ${tmp} 1s both;` : (!checkLimitTMP && flag) ? css`animation: ${tmp1} 1s both;`: ''}
+         
+    `;
+
+};
+
+export const getAnimationItemsBodySpan = ({ ItemBodySpan, checkSpanTMP, enableTo, duration, duration1, fillMode }) => {
+
+    return css`
+    
+        ${ItemBodySpan};
+        
+        animation: ${(checkSpanTMP && enableTo) ? css`icon ${duration} ${duration1} ${fillMode};` : '' };
+          
+    `;
+
+};
+
+export const getAnimationItemsBodyContent_icon = ({ ItemsBodyContentIcon, checkIconTMP, enableTo, duration, duration1, fillMode }) => {
+
+    return css`
+    
+        ${ItemsBodyContentIcon};
+        
+        animation: ${(checkIconTMP && enableTo) ? css`icon ${duration} ${duration1} ${fillMode};` : ''}
+        
+    `;
+
+};
+
 
 //  ITEM 2
 
@@ -298,8 +407,9 @@ export function getTilesWrap_li(Item) {
 
     let fillMode = (Item.style === null) ? 'both' : Item.style.fillMode
     let duration = (Item.style === null) ? '1s' : Item.style.duration
+    let checkLimitTMP = Item.checkLimit
 
-    const TilesWrap_li = styled.li`
+    const TilesWrap_li = css`
       display: inline-block;
       width: ${Item.width_TilesWrapLi1};
       min-width: ${Item.minWidthLi};
@@ -313,30 +423,6 @@ export function getTilesWrap_li(Item) {
       background: ${Item.backgroundColor_TilesWrapLi};
       border: ${Item.borderDim_TilesWrapLi} ${Item.borderType_TilesWrapLi} ${Item.borderColor_TilesWrapLi};
       text-align: ${Item.textAlignLi};
-      
-      ${(Item.checkLimit == true) ? 
-              ` 
-              button {
-                  animation: buttonEnter ${duration} ${fillMode}; 
-              }
-              
-              h2 {
-                  animation: h2Enter ${duration} ${fillMode};
-              }
-               
-              `
-                : 
-                    `
-                    button {
-                        animation: buttonEnd ${duration} ${fillMode};
-                    }
-                    
-                    h2 {
-                        animation: h2End ${duration} ${fillMode};
-                    }
-                    
-                    `
-      }
       
       @keyframes buttonEnter {
                 to {
@@ -370,7 +456,7 @@ export function getTilesWrap_li(Item) {
      
     `;
 
-    return TilesWrap_li
+    return { TilesWrap_li, duration, fillMode, checkLimitTMP }
 }
 
 export function getTilesWrap_h2(Item) {
@@ -422,7 +508,7 @@ export function getTilesWrap_h2(Item) {
 
       `;*/
 
-    const TilesWrap_h2 = styled.h2`
+    const TilesWrap_h2 = css`
       font-size: ${Item.fontSize_TilesWrap_h2};
       margin: 0;
       position: absolute;
@@ -433,19 +519,19 @@ export function getTilesWrap_h2(Item) {
             
     `;
 
-    return TilesWrap_h2
+    return { TilesWrap_h2 }
 }
 
 export function getTilesWrap_p(Item) {
 
-    const TilesWrap_p = styled.p`
+    const TilesWrap_p = css`
           font-size: ${Item.fontSize_TilesWrap_p};
           line-height: ${Item.lineHeight_TilesWrap_p};
           color: ${Item.color_TilesWrap_p};
           margin-top: ${Item.marginTopP};
       `;
 
-    return TilesWrap_p
+    return { TilesWrap_p }
 }
 
 export function getTilesWrap_button(Item) {
@@ -457,7 +543,7 @@ export function getTilesWrap_button(Item) {
         // ENTRA DALL ALTO VERSO IL BASSO
         case 'topToBottom':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -500,7 +586,7 @@ export function getTilesWrap_button(Item) {
         // ENTRA DAL BASSO VERSO L ALTO
         case 'bottonToTop':
 
-             TilesWrap_button = styled.button`
+             TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -544,7 +630,7 @@ export function getTilesWrap_button(Item) {
         // ENTRA DA DESTRA VERSO SINISTRA
         case 'rightToLeft':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -587,7 +673,7 @@ export function getTilesWrap_button(Item) {
         // ENTRA DA SINISTRA VERSO DESTRA
         case 'leftToRight':
 
-             TilesWrap_button = styled.button`
+             TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -609,7 +695,7 @@ export function getTilesWrap_button(Item) {
             return;
     }
 
-    return TilesWrap_button
+    return { TilesWrap_button }
 }
 
 export function getTilesWrap_button_1(Item) {
@@ -621,7 +707,7 @@ export function getTilesWrap_button_1(Item) {
         // ENTRA DALL ALTO VERSO IL BASSO
         case 'topToBottom':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -664,7 +750,7 @@ export function getTilesWrap_button_1(Item) {
         // ENTRA DAL BASSO VERSO L ALTO
         case 'bottonToTop':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -707,7 +793,7 @@ export function getTilesWrap_button_1(Item) {
         // ENTRA DA DESTRA VERSO SINISTRA
         case 'rightToLeft':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -750,7 +836,7 @@ export function getTilesWrap_button_1(Item) {
         // ENTRA DA SINISTRA VERSO DESTRA
         case 'leftToRight':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton};
                   border: ${Item.borderWrap1} ${Item.borderWrap2} ${Item.borderWrap3};
                   padding: ${Item.paddingWrap1} ${Item.paddingWrap2};
@@ -800,7 +886,7 @@ export function getTilesWrap_button_1(Item) {
             return;
     }
 
-    return TilesWrap_button
+    return { TilesWrap_button }
 }
 
 export function getTilesWrap_button_2(Item) {
@@ -812,7 +898,7 @@ export function getTilesWrap_button_2(Item) {
         // ENTRA DALL ALTO VERSO IL BASSO
         case 'topToBottom':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton_2};
                   border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
                   padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
@@ -855,7 +941,7 @@ export function getTilesWrap_button_2(Item) {
         // ENTRA DAL BASSO VERSO L ALTO
         case 'bottonToTop':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton_2};
                   border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
                   padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
@@ -898,7 +984,7 @@ export function getTilesWrap_button_2(Item) {
         // ENTRA DA DESTRA VERSO SINISTRA
         case 'rightToLeft':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton_2};
                   border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
                   padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
@@ -941,7 +1027,7 @@ export function getTilesWrap_button_2(Item) {
         // ENTRA DA SINISTRA VERSO DESTRA
         case 'leftToRight':
 
-            TilesWrap_button = styled.button`
+            TilesWrap_button = css`
                   background: ${Item.backgroundWrapButton_2};
                   border: ${Item.borderWrap1_2} ${Item.borderWrap2_2} ${Item.borderWrap3_2};
                   padding: ${Item.paddingWrap1_2} ${Item.paddingWrap2_2};
@@ -990,7 +1076,74 @@ export function getTilesWrap_button_2(Item) {
         default:
             return;
     }
+
+    return { TilesWrap_button }
+
 }
+
+export const getAnimationTilesWrap_li = ({ TilesWrap_li, duration, fillMode, checkLimitTMP  }) => {
+
+    return css`
+    
+        ${TilesWrap_li};
+    
+        ${(checkLimitTMP === true) ?
+            ` 
+                  button {
+                      animation: buttonEnter ${duration} ${fillMode}; 
+                  }
+                  
+                  h2 {
+                      animation: h2Enter ${duration} ${fillMode};
+                  }
+                   
+                  `
+            :
+            `
+                        button {
+                            animation: buttonEnd ${duration} ${fillMode};
+                        }
+                        
+                        h2 {
+                            animation: h2End ${duration} ${fillMode};
+                        }
+                        
+                        `
+        }
+    
+    `;
+
+};
+
+export const getAnimationTilesWrap_p = ({ TilesWrap_p }) => {
+
+    return css`
+    
+        ${TilesWrap_p};
+    
+    `;
+
+};
+
+export const getAnimationTilesWrap_button = ({ TilesWrap_button }) => {
+
+    return css`
+    
+        ${TilesWrap_button};
+    
+    `;
+
+};
+
+export const getAnimationTilesWrap_h2 = ({ TilesWrap_h2 }) => {
+
+    return css`
+    
+        ${TilesWrap_h2};
+    
+    `;
+
+};
 
 //
 
@@ -1141,7 +1294,7 @@ function checkValue (variableArray, rest) {
         "transitionFillModeWrap2",
         "opacityWrap",
          "cursorWrap",
-         ù"overflowWrap",
+         "overflowWrap",
           "marginWrap",
         "backgroundWrapButton_2",
          "borderWrap1_2",
@@ -1163,127 +1316,10 @@ function checkValue (variableArray, rest) {
 
     for (let i = 0; i < variableArray.length; i++) {
 
-        if ((variableArray[i] != rest.get(tmp[i])) && variableArray[i] != 61) {
+        if ((variableArray[i] !== rest.get(tmp[i])) && variableArray[i] !== 61) {
             itemsActions.changeValue(rest.get('id'), tmp[i], variableArray[i])
         }
 
-    }
-
-}
-
-export function setCheckItems(value, typeTag, type) {
-
-    switch (type) {
-
-        case 'transitionMouse':
-
-            switch (typeTag) {
-
-                case 'ItemBodySpan':
-
-                    itemsActions.changeValue(this.id, 'checkSpan', value)
-
-                    break;
-
-                case 'ItemsBodyContent':
-                case 'ItemsWrap':
-
-                    itemsActions.changeValue(this.id, 'checkLimit', value)
-
-                    break;
-
-                case 'ItemsBodyContentIcon':
-
-                    itemsActions.changeValue(this.id, 'checkIcon', value)
-
-                    break;
-
-                default:
-                    return;
-            }
-
-            break;
-
-        case 'clickMouse':
-
-            switch (typeTag) {
-
-                case 'ItemBodySpan':
-
-                    let r = (value === this.checkSpan) ? !value : value
-                    itemsActions.changeValue(this.id, 'checkSpan', r)
-
-                    break;
-
-                case 'ItemsBodyContent':
-                case 'ItemsWrap':
-
-                    let result = (value === this.checkLimit) ? !value : value
-                    itemsActions.changeValue(this.id, 'checkLimit', result)
-
-                    break;
-
-                case 'ItemsBodyContentIcon':
-
-                    let re = (value === this.checkIcon) ? !value : value
-                    itemsActions.changeValue(this.id, 'checkIcon', re)
-
-                    break;
-
-                default:
-                    return;
-            }
-
-
-            break;
-
-        case 'keyDown':
-
-            switch (typeTag) {
-
-                case 'ItemBodySpan':
-
-                    if (this.textInputSpan === null) itemsActions.changeValue(this.id, 'checkSpan', !this.checkSpan)
-
-                    if (value.key === this.textInputSpan) {
-                        let result = (value === this.checkSpan) ? !value : value
-                        itemsActions.changeValue(this.id, 'checkSpan', result)
-                    }
-
-                    break;
-
-                case 'ItemsBodyContent':
-                case 'ItemsWrap':
-
-                    if (this.textInput === null) itemsActions.changeValue(this.id, 'checkLimit', !this.checkLimit)
-
-                    if (value.key === this.textInput) {
-                        let result = (value === this.checkLimit) ? !value : value
-                        itemsActions.changeValue(this.id, 'checkLimit', result)
-                    }
-
-                    break;
-
-                case 'ItemsBodyContentIcon':
-
-                    if (this.textInputIcon === null) itemsActions.changeValue(this.id, 'checkIcon', !this.checkIcon)
-
-                    if (value.key === this.textInputIcon) {
-                        let result = (value === this.checkIcon) ? !value : value
-                        itemsActions.changeValue(this.id, 'checkIcon', result)
-                    }
-
-                    break;
-
-                default:
-                    return;
-            }
-
-
-            break;
-
-        default:
-            return;
     }
 
 }

@@ -25,15 +25,12 @@ function objectByType(type) {
     switch (type) {
         case 'checkboxes':
             return checkboxesStore.getState()
-            break;
 
         case 'cards':
             return cardsStore.getState()
-            break;
 
         case 'items':
             return itemsStore.getState()
-            break;
 
         default:
             throw TypeError(`${type}`)

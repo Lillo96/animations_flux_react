@@ -1,6 +1,5 @@
 import animationDispatcher from "../animationDispatcher"
 import checkboxesActionTypes from "./checkboxesActionTypes"
-import cardsActionTypes from "../cards/cardsActionTypes";
 
 const checkboxesActions = {
     newCheckboxes (

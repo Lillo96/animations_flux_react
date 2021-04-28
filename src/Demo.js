@@ -1,8 +1,10 @@
 import React from 'react'
-import imp, {getItems} from './imp'
-
-import {getPCheck } from "./components/checkboxes";
-
+import imp from './imp'
+import {
+    getAnimationCheckP1, getAnimationCheckP2, getAnimationCheckP3,
+    getAnimationIMG,
+    getPCheck
+} from "./components/checkboxes";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from "@material-ui/core/AppBar";
@@ -30,19 +32,48 @@ import {
     getImageWrapper,
     getHeaderImage,
     getName,
-    getIconUL
+    getIconUL,
+    getAnimationCard,
+    getAnimationInner,
+    getAnimationButton,
+    getAnimationImageWrapper,
+    getAnimationHeaderImage,
+    getAnimationName,
+    getAnimationIconUL,
+    getAnimationCard3,
+    getAnimationAdditional,
+    getAnimationMoreInfo,
+    getAnimationCardGeneral,
+    getAnimationCardGeneralMore,
+    getAnimationCardGeneralTitle,
+    getAnimationCardGeneralText, getAnimationCoords
 } from "./components/cards";
 import {
+    getAnimationDivItemsHead_hr,
+    getAnimationDivItemsHead_p,
+    getAnimationItem,
+    getAnimationItemsBody,
+    getAnimationItemsBodyContent, getAnimationItemsBodyContent_icon,
+    getAnimationItemsBodySpan,
+    getAnimationItemsHead,
+    getAnimationTilesWrap_button,
+    getAnimationTilesWrap_h2,
+    getAnimationTilesWrap_li,
+    getAnimationTilesWrap_p,
     getDivItems,
     getDivItemsHead,
     getDivItemsHead_hr,
     getDivItemsHead_p,
     getItemsBody,
     getItemsBodyContent,
-    getItemsBodyContent_icon, getItemsBodySpan, getTilesWrap_button,
+    getItemsBodyContent_icon,
+    getItemsBodySpan,
+    getTilesWrap_button, getTilesWrap_button_1, getTilesWrap_button_2,
     getTilesWrap_h2,
     getTilesWrap_li,
 } from "./components/items";
+
+import styled from "styled-components"
 
 // FORM
 
@@ -171,14 +202,15 @@ function SimpleSelect(props) {
 
          if(props.checkboxes.state.size <= 2) return null
 
+
             let checkbox = [...props.checkboxes.state][0][1]
             let checkbox1 = [...props.checkboxes.state][1][1]
             let checkbox2 = [...props.checkboxes.state][2][1]
 
             const CheckBoxLabelP3 = getPCheck(checkbox)
-
             const CheckBoxLabelP4 = getPCheck(checkbox1)
             const CheckBoxLabelP5 = getPCheck(checkbox2)
+
 
             return (
 
@@ -419,14 +451,14 @@ function SimpleSelect(props) {
                                 props.checkboxes.updateCheckLimitCheckbox(checkbox.id)
                             }}/>
                             <label>
-                                <CheckBoxLabelP3 onMouseEnter={() => {
-                                    props.checkboxes.updateCheckAnimationCheckbox(checkbox.id)
-                                }} onMouseLeave={() => {
-                                    props.checkboxes.updateCheckAnimationCheckbox(checkbox.id)
-                                }}>MARCO</CheckBoxLabelP3>
-                                {/* <CheckBoxLabelP>MARCO</CheckBoxLabelP> */}
-                                {/*<CheckBoxLabelIMG style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}}>
-                                            </CheckBoxLabelIMG>*/}
+                                    <CheckBoxLabelP3Final onMouseEnter={() => {
+                                        props.checkboxes.updateCheckAnimationCheckbox(checkbox.id)
+                                    }} onMouseLeave={() => {
+                                        props.checkboxes.updateCheckAnimationCheckbox(checkbox.id)
+                                    }} {...CheckBoxLabelP3}>MARCO</CheckBoxLabelP3Final>
+                                    {/* <CheckBoxLabelP>MARCO</CheckBoxLabelP> */}
+                                    {/*<CheckBoxLabelIMGFinal style={{backgroundImage: `url(http://www.web-assistant.it/wp-content/uploads/2015/10/scaricare-immagini-gratis.jpg)`}} {...CheckBoxLabelIMG}>
+                                                </CheckBoxLabelIMG>*/}
                             </label>
 
                         </imp.checkboxes>
@@ -443,11 +475,11 @@ function SimpleSelect(props) {
                                 props.checkboxes.updateCheckLimitCheckbox(checkbox1.id)
                             }}/>
                             <label>
-                                <CheckBoxLabelP4 onMouseEnter={() => {
+                                <CheckBoxLabelP4Final onMouseEnter={() => {
                                     props.checkboxes.updateCheckAnimationCheckbox(checkbox1.id)
                                 }} onMouseLeave={() => {
                                     props.checkboxes.updateCheckAnimationCheckbox(checkbox1.id)
-                                }}>LILLO</CheckBoxLabelP4>
+                                }} {...CheckBoxLabelP4}>LILLO</CheckBoxLabelP4Final>
                             </label>
 
                         </imp.checkboxes>
@@ -466,14 +498,14 @@ function SimpleSelect(props) {
                                 props.checkboxes.updateCheckLimitCheckbox(checkbox2.id)
                             }}/>
                             <label>
-                                <CheckBoxLabelP5 onMouseEnter={() => {
+                                <CheckBoxLabelP5Final onMouseEnter={() => {
                                     props.checkboxes.updateCheckAnimationCheckbox(checkbox2.id)
                                 }} onMouseLeave={() => {
                                     {
                                         props.checkboxes.updateCheckAnimationCheckbox(checkbox2.id)
                                     }
-                                }}>
-                                    {checkbox2.textValueFinal}</CheckBoxLabelP5>
+                                }} {...CheckBoxLabelP5}>
+                                    {checkbox2.textValueFinal}</CheckBoxLabelP5Final>
                             </label>
 
                         </imp.checkboxes>
@@ -484,9 +516,6 @@ function SimpleSelect(props) {
                 </div>
 
             )
-
-
-        break;
 
         case '4':
 
@@ -545,23 +574,24 @@ function SimpleSelect(props) {
 
                     {/* CARD MOUSE ENTER / LEAVE */}
                     <h3>CARD MOUSE ENTER / LEAVE</h3>
-                    <imp.cards key={card1.id} id={card1.id} typeInput={1} height="100%" width="100%" directionOfRotation={DirectionOfRotation}
-                               duration='1s' fillMode="both" {...props}>
+                    <imp.cards key={card1.id} id={card1.id} typeInput={1} height="100%" width="100%"
+                               duration='1s' fillMode="both" directionOfRotation={DirectionOfRotation} {...props}>
 
-                        <CardContainer key={card1.id}>
-                            <CardInner onMouseEnter={() => {props.cards.updateCheckLimitCard(card1.id)}}
-                                       onMouseLeave={() => {props.cards.updateCheckLimitCard(card1.id)}}>
-                                <CardFront>
+                        <CardContainerFinal key={card1.id} {...CardContainer}>
+                            <CardInnerFinal onMouseEnter={() => {props.cards.updateCheckLimitCard(card1.id)}}
+                                       onMouseLeave={() => {props.cards.updateCheckLimitCard(card1.id)}}
+                                            {...CardInner}>
+                                <CardFrontFinal {...CardFront}>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                </CardFront>
-                                <CardBack>
+                                </CardFrontFinal>
+                                <CardBackFinal {...CardBack}>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                </CardBack>
+                                </CardBackFinal>
 
-                            </CardInner>
-                        </CardContainer>
+                            </CardInnerFinal>
+                        </CardContainerFinal>
 
                      </imp.cards>
 
@@ -573,18 +603,18 @@ function SimpleSelect(props) {
                    <imp.cards key={card2.id} id={card2.id} typeInput={2} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" height="100%" width="100%" {...props}>
 
-                        <CardContainer1 key={card2.id}>
-                            <CardInner1 onClick={ () => {props.cards.updateCheckLimitCard(card2.id)}} Card={card2} {...props}>
-                                <CardFront1 Card={card2} {...props}>
+                        <CardContainerFinal key={card2.id} {...CardContainer1}>
+                            <CardInnerFinal onClick={ () => {props.cards.updateCheckLimitCard(card2.id)}} Card={card2} {...CardInner1}>
+                                <CardFrontFinal Card={card2} {...CardFront1}>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                </CardFront1>
-                                <CardBack1 Card={card2} {...props}>
+                                </CardFrontFinal>
+                                <CardBackFinal Card={card2} {...CardBack1}>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                </CardBack1>
-                            </CardInner1>
-                        </CardContainer1>
+                                </CardBackFinal>
+                            </CardInnerFinal>
+                        </CardContainerFinal>
 
                     </imp.cards>
 
@@ -595,18 +625,18 @@ function SimpleSelect(props) {
                    <imp.cards key={card3.id} id={card3.id} typeInput={3} directionOfRotation={DirectionOfRotation} textInput="i"
                                duration='1s' fillMode="both" height="100%" width="100%" {...props}>
 
-                        <CardContainer2 key={card3.id}>
-                            <CardInner2 tabIndex="0" onKeyDown={onKeyDown}>
-                                <CardFront2>
+                        <CardContainerFinal key={card3.id} {...CardContainer2}>
+                            <CardInnerFinal tabIndex="0" onKeyDown={onKeyDown} {...CardInner2}>
+                                <CardFrontFinal {...CardFront2}>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                </CardFront2>
-                                <CardBack2>
+                                </CardFrontFinal>
+                                <CardBackFinal {...CardBack2}>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                </CardBack2>
-                            </CardInner2>
-                        </CardContainer2>
+                                </CardBackFinal>
+                            </CardInnerFinal>
+                        </CardContainerFinal>
 
                    </imp.cards>
 
@@ -617,21 +647,21 @@ function SimpleSelect(props) {
                     <imp.cards key={card4.id} id={card4.id} typeInput={4} directionOfRotation={DirectionOfRotation}
                                duration='1s' fillMode="both" toEnableAnimationButton={true} transitionYEnable={true} height="100%" width="100%" {...props}>
 
-                        <CardContainer3 key={card4.id}>
-                            <CardInner3 >
-                                <CardFront3>
+                        <CardContainerFinal key={card4.id} {...CardContainer3}>
+                            <CardInnerFinal {...CardInner3}>
+                                <CardFrontFinal {...CardFront3}>
                                     <h2>Title</h2>
                                     <p>Here is some content for the front</p>
-                                    <CardButton onClick={ () => props.cards.updateCheckLimitCard(card4.id)}>Back</CardButton>
-                                </CardFront3>
-                                <CardBack3>
+                                    <CardButtonFinal onClick={ () => props.cards.updateCheckLimitCard(card4.id)} {...CardButton}>Back</CardButtonFinal>
+                                </CardFrontFinal>
+                                <CardBackFinal {...CardBack3}>
                                     <h2>Back the title</h2>
                                     <p>Here is the content that goes on the back</p>
-                                    <CardButton onClick={ () => props.cards.updateCheckLimitCard(card4.id)}>Title</CardButton>
-                                </CardBack3>
+                                    <CardButtonFinal onClick={ () => props.cards.updateCheckLimitCard(card4.id)} {...CardButton}>Title</CardButtonFinal>
+                                </CardBackFinal>
 
-                            </CardInner3>
-                        </CardContainer3>
+                            </CardInnerFinal>
+                        </CardContainerFinal>
 
                     </imp.cards>
 
@@ -641,27 +671,22 @@ function SimpleSelect(props) {
 
                 );
 
-            break;
-
         case '5':
 
             //CARD 5
             let card5 = [...props.cards.state][4][1]
-
             const ImageWrapper = getImageWrapper(card5)
             const HeaderImage = getHeaderImage(card5)
             const NameCard = getName(card5)
 
             //CARD 6
             let card6 = [...props.cards.state][5][1]
-
             const ImageWrapper1 = getImageWrapper(card6)
             const HeaderImage1 = getHeaderImage(card6)
             const NameCard1 = getName(card6)
 
             //CARD 7
             let card7 = [...props.cards.state][6][1]
-
             const ImageWrapper2 = getImageWrapper(card7)
             const HeaderImage2 = getHeaderImage(card7)
             const NameCard2 = getName(card7)
@@ -674,7 +699,6 @@ function SimpleSelect(props) {
 
             //CARD 8
             let card8 = [...props.cards.state][7][1]
-
             const ImageWrapper3 = getImageWrapper(card8)
             const HeaderImage3 = getHeaderImage(card8)
             const NameCard3 = getName(card8)
@@ -714,14 +738,15 @@ function SimpleSelect(props) {
 
                     {/* CARD MOUSE ENTER / LEAVE */}
                     <h3>CARD MOUSE ENTER / LEAVE</h3>
-                    <imp.cards id={card5.id} toEnableAnimationWrapper={false} typeInput={1} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName} {...props}>
+                    <imp.cards id={card5.id} toEnableAnimationWrapper={true} typeInput={1} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName} {...props}>
 
-                            <ImageWrapper key={card5.id} onMouseEnter={() => {props.cards.updateCheckLimitCard(card5.id)} } onMouseLeave={() => {props.cards.updateCheckLimitCard(card5.id)} }
-                                style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
-                                <HeaderImage/>
-                                <NameCard>David James</NameCard>
+                            <ImageWrapperFinal key={card5.id} onMouseEnter={() => {props.cards.updateCheckLimitCard(card5.id)} } onMouseLeave={() => {props.cards.updateCheckLimitCard(card5.id)} }
+                                style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}
+                                          {...ImageWrapper}>
+                                <HeaderImageFinal {...HeaderImage}/>
+                                <NameCardFinal {...NameCard}>David James</NameCardFinal>
 
-                            </ImageWrapper>
+                            </ImageWrapperFinal>
 
                     </imp.cards>
 
@@ -731,11 +756,12 @@ function SimpleSelect(props) {
                     <h3>CARD CLICK</h3>
                     <imp.cards id={card6.id} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName} typeInput={2} {...props}>
 
-                            <ImageWrapper1 key={card6.id} onClick={ () => {props.cards.updateCheckLimitCard(card6.id)} }
-                            style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
-                                <HeaderImage1/>
-                                <NameCard1>David</NameCard1>
-                            </ImageWrapper1>
+                            <ImageWrapperFinal key={card6.id} onClick={ () => {props.cards.updateCheckLimitCard(card6.id)} }
+                            style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}
+                                                {...ImageWrapper1}>
+                                <HeaderImageFinal {...HeaderImage1}/>
+                                <NameCardFinal {...NameCard1}>David</NameCardFinal>
+                            </ImageWrapperFinal>
 
                     </imp.cards>
 
@@ -746,11 +772,12 @@ function SimpleSelect(props) {
                     <imp.cards id={card7.id} directionOfAnimation={DirectionOfAnimation} directionName={DirectionName}
                                typeInput={3} textInput="i" {...props}>
 
-                            <ImageWrapper2 key={card7.id} tabIndex="0" onKeyDown={onKeyDown1}
-                            style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
-                                <HeaderImage2/>
-                                <NameCard2>Marco</NameCard2>
-                            </ImageWrapper2>
+                            <ImageWrapperFinal key={card7.id} tabIndex="0" onKeyDown={onKeyDown1}
+                            style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}
+                                           {...ImageWrapper2}>
+                                <HeaderImageFinal {...HeaderImage2}/>
+                                <NameCardFinal {...NameCard2}>Marco</NameCardFinal>
+                            </ImageWrapperFinal>
 
                     </imp.cards>
 
@@ -761,24 +788,23 @@ function SimpleSelect(props) {
                     <imp.cards id={card8.id} directionOfAnimation={DirectionOfAnimation} directionName='FromRightHandToSinister'
                                typeInput={4} toEnableAnimationButton={true} {...props}>
 
-                            <ImageWrapper3 key={card8.id} style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}>
-                                <HeaderImage3/>
-                                <NameCard3>Lillo</NameCard3>
+                            <ImageWrapperFinal key={card8.id} style={{ backgroundImage: `url(https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)`}}
+                                           {...ImageWrapper3}>
+                                <HeaderImageFinal {...HeaderImage3}/>
+                                <NameCardFinal {...NameCard3}>Lillo</NameCardFinal>
 
-                                <IconUL3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {props.cards.updateCheckLimitCard(card8.id)}}></IconUL3>
+                                <IconULFinal3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {props.cards.updateCheckLimitCard(card8.id)}} {...IconUL3}></IconULFinal3>
 
-                            </ImageWrapper3>
+                            </ImageWrapperFinal>
 
                     </imp.cards>
 
                 </div>
             );
-            break;
 
         case '6':
 
             let card9 = [...props.cards.state][8][1]
-
             const Card = getCard(card9)
             const Additional = getAdditional(card9)
             const MoreInfo = getMoreInfo(card9)
@@ -788,7 +814,6 @@ function SimpleSelect(props) {
             const GeneralMoreText = getCardGeneralText(card9)
 
             let card10 = [...props.cards.state][9][1]
-
             const Card1 = getCard(card10)
             const Additional1 = getAdditional(card10)
             const MoreInfo1 = getMoreInfo(card10)
@@ -798,7 +823,6 @@ function SimpleSelect(props) {
             const GeneralMoreText1 = getCardGeneralText(card10)
 
             let card11 = [...props.cards.state][10][1]
-
             const Card2 = getCard(card11)
             const Additional2 = getAdditional(card11)
             const MoreInfo2 = getMoreInfo(card11)
@@ -814,7 +838,6 @@ function SimpleSelect(props) {
             }
 
             let card12 = [...props.cards.state][11][1]
-
             const Card3 = getCard(card12)
             const Additional3 = getAdditional(card12)
             const MoreInfo3 = getMoreInfo(card12)
@@ -846,18 +869,19 @@ function SimpleSelect(props) {
                     <h3>CARD MOUSE ENTER / LEAVE</h3>
                     <imp.cards id={card9.id} typeInput={1} directionOfRotation1={DirectionOfRotation1} {...props}>
 
-                        <Card onMouseEnter={() => {props.cards.updateCheckLimitCard(card9.id)} } onMouseLeave={() => {props.cards.updateCheckLimitCard(card9.id)} } >
-                                <Additional>
-                                    <MoreInfo>
+                        <CardFinal onMouseEnter={() => {props.cards.updateCheckLimitCard(card9.id)} } onMouseLeave={() => {props.cards.updateCheckLimitCard(card9.id)} }
+                                   {...Card}>
+                                <AdditionalFinal {...Additional}>
+                                    <MoreInfoFinal {...MoreInfo}>
                                         <a href={""} ><i className={"fa fa-link fa-1x"}></i></a>
-                                    </MoreInfo>
-                                </Additional>
-                                <General>
-                                    <GeneralMoreTitle>Jane Doe</GeneralMoreTitle>
-                                    <GeneralMoreText>Lorem ipsum dolor sit amet</GeneralMoreText>
-                                    <GeneralMore>Mouse over the card for more info</GeneralMore>
-                                </General>
-                            </Card>
+                                    </MoreInfoFinal>
+                                </AdditionalFinal>
+                                <GeneralFinal {...General}>
+                                    <GeneralMoreTitleFinal {...GeneralMoreTitle}>Jane Doe</GeneralMoreTitleFinal>
+                                    <GeneralMoreTextFinal {...GeneralMoreText}>Lorem ipsum dolor sit amet</GeneralMoreTextFinal>
+                                    <GeneralMoreFinal {...GeneralMore}>Mouse over the card for more info</GeneralMoreFinal>
+                                </GeneralFinal>
+                            </CardFinal>
 
                     </imp.cards>
 
@@ -867,18 +891,18 @@ function SimpleSelect(props) {
                     <h3>CARD CLICK</h3>
                     <imp.cards id={card10.id} typeInput={2} directionOfRotation1={DirectionOfRotation1} {...props}>
 
-                            <Card1 key={card10.id} onClick={ () => {props.cards.updateCheckLimitCard(card10.id)} } >
-                                <Additional1>
-                                    <MoreInfo1>
+                            <CardFinal key={card10.id} onClick={ () => {props.cards.updateCheckLimitCard(card10.id)} } {...Card1}>
+                                <AdditionalFinal {...Additional1}>
+                                    <MoreInfoFinal {...MoreInfo1}>
                                         <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
-                                    </MoreInfo1>
-                                </Additional1>
-                                <General1>
-                                    <GeneralMoreTitle1>Jane Doe</GeneralMoreTitle1>
-                                    <GeneralMoreText1>Lorem ipsum dolor sit amet</GeneralMoreText1>
-                                    <GeneralMore1>Mouse over the card for more info</GeneralMore1>
-                                </General1>
-                            </Card1>
+                                    </MoreInfoFinal>
+                                </AdditionalFinal>
+                                <GeneralFinal {...General1}>
+                                    <GeneralMoreTitleFinal {...GeneralMoreTitle1}>Jane Doe</GeneralMoreTitleFinal>
+                                    <GeneralMoreTextFinal {...GeneralMoreText1}>Lorem ipsum dolor sit amet</GeneralMoreTextFinal>
+                                    <GeneralMoreFinal {...GeneralMore1}>Mouse over the card for more info</GeneralMoreFinal>
+                                </GeneralFinal>
+                            </CardFinal>
 
                     </imp.cards>
 
@@ -888,18 +912,18 @@ function SimpleSelect(props) {
                     <h3>CARD TASTO</h3>
                     <imp.cards id={card11.id} typeInput={3} directionOfRotation1={DirectionOfRotation1} textInput="i" {...props}>
 
-                            <Card2 key={card11.id} tabIndex="0" onKeyDown={onKeyDown2}>
-                                <Additional2>
-                                    <MoreInfo2>
+                            <CardFinal key={card11.id} tabIndex="0" onKeyDown={onKeyDown2} {...Card2}>
+                                <AdditionalFinal {...Additional2}>
+                                    <MoreInfoFinal {...MoreInfo2}>
                                         <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
-                                    </MoreInfo2>
-                                </Additional2>
-                                <General2>
-                                    <GeneralMoreTitle2>Jane Doe</GeneralMoreTitle2>
-                                    <GeneralMoreText2>Lorem ipsum dolor sit amet</GeneralMoreText2>
-                                    <GeneralMore2>Mouse over the card for more info</GeneralMore2>
-                                </General2>
-                            </Card2>
+                                    </MoreInfoFinal>
+                                </AdditionalFinal>
+                                <GeneralFinal {...General2}>
+                                    <GeneralMoreTitleFinal {...GeneralMoreTitle2}>Jane Doe</GeneralMoreTitleFinal>
+                                    <GeneralMoreTextFinal {...GeneralMoreText2}>Lorem ipsum dolor sit amet</GeneralMoreTextFinal>
+                                    <GeneralMoreFinal {...GeneralMore2}>Mouse over the card for more info</GeneralMoreFinal>
+                                </GeneralFinal>
+                            </CardFinal>
 
                     </imp.cards>
 
@@ -910,26 +934,25 @@ function SimpleSelect(props) {
 
                     <imp.cards id={card12.id} typeInput={4} directionOfRotation1={DirectionOfRotation1} {...props}>
 
-                            <Card3 key={card11.id} >
-                                <Additional3>
-                                    <Coords3 className={"fa fa-location-arrow fa-1x"} onClick={ () => {props.cards.updateCheckLimitCard(card12.id)} }></Coords3>
-                                    <MoreInfo3>
+                            <CardFinal key={card11.id} {...Card3}>
+                                <AdditionalFinal {...Additional3}>
+                                    <CoordsFinal className={"fa fa-location-arrow fa-1x"} onClick={ () => {props.cards.updateCheckLimitCard(card12.id)} } {...Coords3}></CoordsFinal>
+                                    <MoreInfoFinal {...MoreInfo3}>
                                         <a href={""}><i className={"fa fa-link fa-1x"}></i></a>
-                                    </MoreInfo3>
-                                </Additional3>
+                                    </MoreInfoFinal>
+                                </AdditionalFinal>
 
-                                <General3>
-                                    <GeneralMoreTitle3>Jane Doe</GeneralMoreTitle3>
-                                    <GeneralMoreText3>Lorem ipsum dolor sit amet</GeneralMoreText3>
-                                    <GeneralMore3>Mouse over the card for more info</GeneralMore3>
-                                </General3>
-                            </Card3>
+                                <GeneralFinal {...General3}>
+                                    <GeneralMoreTitleFinal {...GeneralMoreTitle3}>Jane Doe</GeneralMoreTitleFinal>
+                                    <GeneralMoreTextFinal {...GeneralMoreText3}>Lorem ipsum dolor sit amet</GeneralMoreTextFinal>
+                                    <GeneralMoreFinal {...GeneralMore3}>Mouse over the card for more info</GeneralMoreFinal>
+                                </GeneralFinal>
+                            </CardFinal>
 
                     </imp.cards>
 
                 </div>
             );
-            break;
 
         case '7':
 
@@ -969,6 +992,7 @@ function SimpleSelect(props) {
             };
 
             return (
+
               <div>
 {/*                  <FormControl className={classes.formControl}>
                       <InputLabel id="demo-simple-select-label"></InputLabel>
@@ -996,87 +1020,90 @@ function SimpleSelect(props) {
                       </Select>
 
                   </FormControl>*/}
-                    <imp.items id={item.id} {...props}>
-                              <DivItems>
-                                  <DivItemsHead>
-                                      <DivItemsHead_p>UX DESIGN</DivItemsHead_p>
-                                      <DivItemsHead_hr></DivItemsHead_hr>
-                                  </DivItemsHead>
+                    <imp.items id={item.id} toEnableAnimationIcon={true} {...props}>
+                              <DivItemsFinal {...DivItems}>
+                                  <DivItemsHeadFinal {...DivItemsHead}>
+                                      <DivItemsHead_pFinal {...DivItemsHead_p}>UX DESIGN</DivItemsHead_pFinal>
+                                      <DivItemsHead_hrFinal {...DivItemsHead_hr}></DivItemsHead_hrFinal>
+                                  </DivItemsHeadFinal>
 
-                                  <ItemsBody>
+                                  <ItemsBodyFinal {...ItemsBody}>
                                       {/* ITEM CON TRANSIZIONE MOUSE */}
-                                      <ItemsBodyContent1>
-                                          <ItemBodySpan1 onMouseEnter={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag1', item.flag1)} }
-                                                        onMouseLeave={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag1', item.flag1)} }>
+                                      <ItemsBodyContentFinal1 {...ItemsBodyContent1}>
+                                          <ItemBodySpanFinal1 onMouseEnter={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag1', item.flag1)} }
+                                                        onMouseLeave={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag1', item.flag1)} }
+                                                         {...ItemBodySpan1}>
                                               Web Usabilty Testing
-                                          </ItemBodySpan1>
-                                          <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                      </ItemsBodyContent1>
+                                          </ItemBodySpanFinal1>
+                                          <ItemsBodyContentIconFinal className="fa fa-angle-right" {...ItemsBodyContentIcon}></ItemsBodyContentIconFinal>
+                                      </ItemsBodyContentFinal1>
 
                                       {/* ITEM CON CLICK CON MOUSE */}
-                                      <ItemsBodyContent2 onClick={() => {props.items.updateCheckLimit(item.id); props.items.updateFlag(item.id, 'flag2', item.flag2)} }>
-                                          <ItemBodySpan2 tabIndex="0" onKeyDown={onKeyDown4}>
+                                      <ItemsBodyContentFinal2 onClick={() => {props.items.updateCheckLimit(item.id); props.items.updateFlag(item.id, 'flag2', item.flag2)} } {...ItemsBodyContent2}>
+                                          <ItemBodySpanFinal2 tabIndex="0" onKeyDown={onKeyDown4} {...ItemBodySpan2}>
                                               Design of Everyday Things
-                                          </ItemBodySpan2>
-                                          <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                      </ItemsBodyContent2>
+                                          </ItemBodySpanFinal2>
+                                          <ItemsBodyContentIconFinal className="fa fa-angle-right" {...ItemsBodyContentIcon}></ItemsBodyContentIconFinal>
+                                      </ItemsBodyContentFinal2>
 
                                       {/* ITEM CON PRESSIONE TASTO */}
-                                      <ItemsBodyContent3 tabIndex="0" onKeyDown={onKeyDown5}>
-                                          <ItemBodySpan3 onMouseEnter={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag3', item.flag3)} }
-                                                        onMouseLeave={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag3', item.flag3)} }>
+                                      <ItemsBodyContentFinal3 tabIndex="0" onKeyDown={onKeyDown5} {...ItemsBodyContent3}>
+                                          <ItemBodySpanFinal3 onMouseEnter={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag3', item.flag3)} }
+                                                        onMouseLeave={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag3', item.flag3)} } {...ItemBodySpan3}>
                                               Practical Empathy: For Collaboration & Creativity in Your Work
-                                          </ItemBodySpan3>
-                                          <ItemsBodyContentIcon className="fa fa-angle-right"></ItemsBodyContentIcon>
-                                      </ItemsBodyContent3>
+                                          </ItemBodySpanFinal3>
+                                          <ItemsBodyContentIconFinal className="fa fa-angle-right" {...ItemsBodyContentIcon}></ItemsBodyContentIconFinal>
+                                      </ItemsBodyContentFinal3>
 
-                                  </ItemsBody>
-                              </DivItems>
+                                  </ItemsBodyFinal>
+                              </DivItemsFinal>
                       </imp.items>
+
               </div>
             );
-            break;
 
         case '8':
 
             let item1 = [...props.items.state][1][1]
-
             const TilesWrap_li = getTilesWrap_li(item1)
             const TilesWrap_h2 = getTilesWrap_h2(item1)
             const TilesWrap_button = getTilesWrap_button(item1)
+            const TilesWrap_button1 = getTilesWrap_button_1(item1)
+            const TilesWrap_button2 = getTilesWrap_button_2(item1)
 
             return (
               <div>
 
-                  <imp.items id={item1.id} {...props}>
+                  <imp.items id={item1.id} typeTransitionButton1={"leftToRight"} typeTransitionButton2={"rightToLeft"} typeTransitionButton={"leftToRight"} {...props}>
 
                       {/* TUTTI NELLA STESSA DIREZIONE */}
-                          <TilesWrap_li onClick={() => {props.items.updateCheckLimit(item1.id)} }>
-                              <TilesWrap_h2>01</TilesWrap_h2>
+                          {/*<TilesWrap_liFinal onClick={() => {props.items.updateCheckLimit(item1.id)} } {...TilesWrap_li}>
+                              <TilesWrap_h2Final {...TilesWrap_h2}>01</TilesWrap_h2Final>
 
-                              <TilesWrap_button>Read more 1</TilesWrap_button>
-                              <TilesWrap_button>Read more 2</TilesWrap_button>
-                              <TilesWrap_button>Read more 3</TilesWrap_button>
-                              <TilesWrap_button>Read more 4</TilesWrap_button>
-                              <TilesWrap_button>Read more 5</TilesWrap_button>
-                          </TilesWrap_li>
+                              <TilesWrap_buttonFinal {...TilesWrap_button}>Read more 1</TilesWrap_buttonFinal>
+                              <TilesWrap_buttonFinal {...TilesWrap_button}>Read more 2</TilesWrap_buttonFinal>
+                              <TilesWrap_buttonFinal {...TilesWrap_button}>Read more 3</TilesWrap_buttonFinal>
+                              <TilesWrap_buttonFinal {...TilesWrap_button}>Read more 4</TilesWrap_buttonFinal>
+                              <TilesWrap_buttonFinal {...TilesWrap_button}>Read more 5</TilesWrap_buttonFinal>
+                          </TilesWrap_liFinal>*/}
 
                       {/* DIVERSE DIREZIONI */}
 
-{/*                      <TilesWrap_li>
-                          <TilesWrap_button1>Read more</TilesWrap_button1>
-                          <TilesWrap_button2>Read more</TilesWrap_button2>
-                          <TilesWrap_button1>Read more</TilesWrap_button1>
-                          <TilesWrap_button2>Read more</TilesWrap_button2>
-                          <TilesWrap_button1>Read more</TilesWrap_button1>
-                          <TilesWrap_button2>Read more</TilesWrap_button2>
-                      </TilesWrap_li>*/}
+                      <h2>DIVERSO</h2>
+
+                      <TilesWrap_liFinal onClick={() => {props.items.updateCheckLimit(item1.id)} } {...TilesWrap_li}>
+                          <TilesWrap_buttonFinal1 {...TilesWrap_button1}>Read left</TilesWrap_buttonFinal1>
+                          <TilesWrap_buttonFinal2 {...TilesWrap_button2}>Read right</TilesWrap_buttonFinal2>
+                          <TilesWrap_buttonFinal1 {...TilesWrap_button1}>Read left</TilesWrap_buttonFinal1>
+                          <TilesWrap_buttonFinal2 {...TilesWrap_button2}>Read right</TilesWrap_buttonFinal2>
+                          <TilesWrap_buttonFinal1 {...TilesWrap_button1}>Read left</TilesWrap_buttonFinal1>
+                          <TilesWrap_buttonFinal2 {...TilesWrap_button2}>Read right</TilesWrap_buttonFinal2>
+                      </TilesWrap_liFinal>
 
                   </imp.items>
 
               </div>
             );
-            break;
 
         default:
             return
@@ -1114,13 +1141,6 @@ const useStyles2 = makeStyles((theme) => ({
 
 function VerticalTabs(props) {
 
-    const demoHeaderConst = {
-        width: '240px',
-        height: '200px',
-        margin: '10px',
-        float: 'left',
-    }
-
     const classes = useStyles2();
     const [value, setValue] = React.useState(0);
 
@@ -1149,7 +1169,6 @@ function VerticalTabs(props) {
                     </TabPanel2>
                 </div>
             );
-            break;
 
         // CARD
         case '2':
@@ -1178,7 +1197,6 @@ function VerticalTabs(props) {
                     </TabPanel2>
                 </div>
             );
-            break;
 
         // ITEM
         case '3':
@@ -1204,11 +1222,9 @@ function VerticalTabs(props) {
 
                 </div>
             );
-            break;
 
         default:
             return
-            break;
     }
 
 }
@@ -1308,60 +1324,6 @@ function Demo(props) {
     };
 
     return (
-        /*        <div className="Demo" style={{textAlign: 'center'}}>
-                <header className="Demo-header" style={ tmp }>
-
-                    <div className="Checkboxes">
-
-{/!*                        <imp.checkboxes id='checkboxprova' typeInput={1} checkLimit={ true }
-                                        colorStart='yellow' colorEnd='white' opacityNotCheck='1'
-                                        opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both' {...props}>
-
-                            <label>
-                                <input type="checkbox"
-                                       checked={!checked}
-                                       onChange={() => setChecked(!checked)}
-                                       onClick={() => { checkbox1.setCheckLimit(!checked) }}
-                                />
-                                Checkbox
-                            </label>
-
-                        </imp.checkboxes>*!/}
-
-{/!*
-                       <imp.checkboxes id='checkboxprova2' typeInput={2} checkLimit={ true }
-                                       colorStart='yellow' colorEnd='white' opacityNotCheck='1'
-                                       opacityCheck='2' timeAnimation='4s' typeAnimFillMode='both' transition='' {...props}>
-
-                            <label>
-                                <input type="checkbox"
-                                       checked={!checked1}
-                                       onChange={() => setChecked1(!checked1)}
-                                       onClick={() => { checkbox2.setCheckLimit(!checked1) }}
-                                />
-                                Checkbox
-                            </label>
-
-                        </imp.checkboxes>*!/}
-
-{/!*                       <imp.checkboxes id='checkboxprova3' typeInput={3} checkLimit={ true } textInput='Checkbox off'
-                                       colorStart='yellow' colorEnd='white' opacityNotCheck='1'
-                                       opacityCheck='2' timeAnimation='0s' typeAnimFillMode='both' {...props}>
-
-                            <label>
-                                <input type="checkbox"
-                                       checked={!checked2}
-                                       onChange={() => setChecked2(!checked2)}
-                                       onClick={() => { checkbox3.setTextValue(!checked2, 'Checkbox on'); checkbox3.setCheckLimit(!checked2);}}
-                                />
-                                { getCheckboxes('checkboxprova3').textValue }
-                            </label>
-
-                        </imp.checkboxes>*!/}
-
-                    </div>
-                </header>
-        </div>*/
 
         <div className={classes.root} {...props}>
             <AppBar position="static" style={ demoHeaderConst } {...props}>
@@ -1386,5 +1348,175 @@ function Demo(props) {
     )
 
 }
+
+// CHECK 1
+
+const CheckBoxLabelP3Final = styled.p`
+    ${getAnimationCheckP1}
+`;
+
+const CheckBoxLabelP4Final = styled.p`
+    ${getAnimationCheckP2}
+`;
+const CheckBoxLabelP5Final = styled.p`
+    ${getAnimationCheckP3}
+`;
+
+const CheckBoxLabelIMGFinal = styled.img`
+    ${getAnimationIMG}
+`;
+
+
+// CARD 1
+
+const CardContainerFinal = styled.div`
+    ${getAnimationCard}
+`;
+
+const CardFrontFinal = styled.div`
+    ${getAnimationCard}
+`;
+
+const CardBackFinal = styled.div`
+    ${getAnimationCard}
+`;
+
+const CardInnerFinal = styled.div`
+    ${getAnimationInner}
+`;
+
+const CardButtonFinal = styled.button`
+    ${getAnimationButton}
+`;
+
+// CARD 2
+
+const ImageWrapperFinal = styled.div`
+    ${getAnimationImageWrapper}
+`;
+
+const HeaderImageFinal = styled.img`
+    ${getAnimationHeaderImage}
+`;
+
+const NameCardFinal = styled.h2`
+    ${getAnimationName}
+`;
+
+const IconULFinal3 = styled.button`
+    ${getAnimationIconUL}
+`;
+
+
+//CARD 3
+
+const CardFinal = styled.div`
+    ${getAnimationCard3}
+`;
+
+const AdditionalFinal = styled.div`
+    ${getAnimationAdditional}
+`;
+
+const MoreInfoFinal = styled.div`
+    ${getAnimationMoreInfo}
+`;
+
+const GeneralFinal = styled.div`
+    ${getAnimationCardGeneral}
+`;
+
+const GeneralMoreFinal = styled.span`
+    ${getAnimationCardGeneralMore}
+`;
+
+const GeneralMoreTitleFinal = styled.h1`
+    ${getAnimationCardGeneralTitle}
+`;
+
+const GeneralMoreTextFinal = styled.p`
+    ${getAnimationCardGeneralText}
+`;
+
+const CoordsFinal = styled.button`
+    ${getAnimationCoords}
+`;
+
+//ITEM 1
+
+const DivItemsFinal = styled.div`
+    ${getAnimationItem}
+`;
+
+const DivItemsHeadFinal = styled.div`
+    ${getAnimationItemsHead}
+`;
+
+const DivItemsHead_pFinal = styled.p`
+    ${getAnimationDivItemsHead_p}
+`;
+
+const DivItemsHead_hrFinal = styled.hr`
+    ${getAnimationDivItemsHead_hr}
+`;
+
+const ItemsBodyFinal = styled.div`
+    ${getAnimationItemsBody}
+`;
+
+const ItemsBodyContentIconFinal = styled.span`
+    ${getAnimationItemsBodyContent_icon}
+`;
+
+const ItemsBodyContentFinal1 = styled.div`
+    ${getAnimationItemsBodyContent}
+`;
+
+const ItemBodySpanFinal1 = styled.span`
+    ${getAnimationItemsBodySpan}
+`;
+
+const ItemsBodyContentFinal2 = styled.div`
+    ${getAnimationItemsBodyContent}
+`;
+
+const ItemBodySpanFinal2 = styled.span`
+    ${getAnimationItemsBodySpan}
+`;
+
+const ItemsBodyContentFinal3 = styled.div`
+    ${getAnimationItemsBodyContent}
+`;
+
+const ItemBodySpanFinal3 = styled.span`
+    ${getAnimationItemsBodySpan}
+`;
+
+//ITEM 2
+
+const TilesWrap_liFinal = styled.li`
+    ${getAnimationTilesWrap_li}
+`;
+
+const TilesWrap_h2Final = styled.h2`
+    ${getAnimationTilesWrap_h2}
+`;
+
+const TilesWrap_buttonFinal = styled.button`
+    ${getAnimationTilesWrap_button}
+`;
+
+const TilesWrap_buttonFinal1 = styled.button`
+    ${getAnimationTilesWrap_button}
+`;
+
+const TilesWrap_buttonFinal2 = styled.button`
+    ${getAnimationTilesWrap_button}
+`;
+
+const TilesWrap_pFinal = styled.p`
+    ${getAnimationTilesWrap_p}
+`;
+
 
 export default Demo
