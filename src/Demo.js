@@ -1023,7 +1023,7 @@ function SimpleSelect(props) {
                     <imp.items id={item.id} toEnableAnimationIcon={true} {...props}>
                               <DivItemsFinal {...DivItems}>
                                   <DivItemsHeadFinal {...DivItemsHead}>
-                                      <DivItemsHead_pFinal {...DivItemsHead_p}>UX DESIGN</DivItemsHead_pFinal>
+                                      <DivItemsHead_pFinal {...DivItemsHead_p}>Esempio</DivItemsHead_pFinal>
                                       <DivItemsHead_hrFinal {...DivItemsHead_hr}></DivItemsHead_hrFinal>
                                   </DivItemsHeadFinal>
 
@@ -1033,7 +1033,7 @@ function SimpleSelect(props) {
                                           <ItemBodySpanFinal1 onMouseEnter={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag1', item.flag1)} }
                                                         onMouseLeave={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag1', item.flag1)} }
                                                          {...ItemBodySpan1}>
-                                              Web Usabilty Testing
+                                              Esempio 1
                                           </ItemBodySpanFinal1>
                                           <ItemsBodyContentIconFinal className="fa fa-angle-right" {...ItemsBodyContentIcon}></ItemsBodyContentIconFinal>
                                       </ItemsBodyContentFinal1>
@@ -1041,7 +1041,7 @@ function SimpleSelect(props) {
                                       {/* ITEM CON CLICK CON MOUSE */}
                                       <ItemsBodyContentFinal2 onClick={() => {props.items.updateCheckLimit(item.id); props.items.updateFlag(item.id, 'flag2', item.flag2)} } {...ItemsBodyContent2}>
                                           <ItemBodySpanFinal2 tabIndex="0" onKeyDown={onKeyDown4} {...ItemBodySpan2}>
-                                              Design of Everyday Things
+                                              Esempio 2
                                           </ItemBodySpanFinal2>
                                           <ItemsBodyContentIconFinal className="fa fa-angle-right" {...ItemsBodyContentIcon}></ItemsBodyContentIconFinal>
                                       </ItemsBodyContentFinal2>
@@ -1050,7 +1050,7 @@ function SimpleSelect(props) {
                                       <ItemsBodyContentFinal3 tabIndex="0" onKeyDown={onKeyDown5} {...ItemsBodyContent3}>
                                           <ItemBodySpanFinal3 onMouseEnter={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag3', item.flag3)} }
                                                         onMouseLeave={() => {props.items.updateCheckSpan(item.id); props.items.updateFlag(item.id, 'flag3', item.flag3)} } {...ItemBodySpan3}>
-                                              Practical Empathy: For Collaboration & Creativity in Your Work
+                                              Esempio 3
                                           </ItemBodySpanFinal3>
                                           <ItemsBodyContentIconFinal className="fa fa-angle-right" {...ItemsBodyContentIcon}></ItemsBodyContentIconFinal>
                                       </ItemsBodyContentFinal3>
@@ -1089,7 +1089,6 @@ function SimpleSelect(props) {
 
                       {/* DIVERSE DIREZIONI */}
 
-                      <h2>DIVERSO</h2>
 
                       <TilesWrap_liFinal onClick={() => {props.items.updateCheckLimit(item1.id)} } {...TilesWrap_li}>
                           <TilesWrap_buttonFinal1 {...TilesWrap_button1}>Read left</TilesWrap_buttonFinal1>
